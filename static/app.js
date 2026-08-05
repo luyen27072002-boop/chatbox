@@ -421,12 +421,17 @@ function applyUIText() {
   setText('#loginForm label:nth-of-type(2) span', t.auth.password);
   setText('#loginForm .remember-row span', t.auth.remember);
   setText('#loginForm button[type="submit"]', t.auth.loginButton);
-  setText('#registerForm .auth-two-columns label:nth-of-type(1) span', t.auth.displayName);
-  setText('#registerForm .auth-two-columns label:nth-of-type(2) span', t.auth.username);
-  setText('#registerForm > label span', t.auth.email);
-  const registerPwSpans = document.querySelectorAll('#registerForm .auth-two-columns:nth-of-type(2) label span');
-  if (registerPwSpans[0]) registerPwSpans[0].textContent = t.auth.password;
-  if (registerPwSpans[1]) registerPwSpans[1].textContent = t.auth.confirmPassword;
+  [
+    ["registerDisplayName", t.auth.displayName],
+    ["registerUsername", t.auth.username],
+    ["registerEmail", t.auth.email],
+    ["registerPassword", t.auth.password],
+    ["registerPasswordConfirm", t.auth.confirmPassword],
+  ].forEach(([inputId, labelText]) => {
+    const input = document.getElementById(inputId);
+    const labelSpan = input?.closest("label")?.querySelector("span");
+    if (labelSpan) labelSpan.textContent = labelText;
+  });
   setText('#registerForm .remember-row span', t.auth.remember);
   setText('#registerForm button[type="submit"]', t.auth.registerButton);
 
