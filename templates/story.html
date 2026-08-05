@@ -1,0 +1,84 @@
+{% extends "life_base.html" %}
+{% block title %}Viết lại hôm nay · Góc nhỏ cuộc sống{% endblock %}
+{% block content %}
+<section class="feature-hero feature-hero-story">
+  <div class="feature-hero-copy">
+    <p class="page-kicker">Viết lại hôm nay</p>
+    <h1>Bạn cứ kể lộn xộn.<br>Phần còn lại để nơi này giữ giúp.</h1>
+    <p>AI chỉ thay cách kể và sắp xếp thành một chương. Sự kiện vẫn phải là điều bạn thật sự đã trải qua.</p>
+  </div>
+  <div class="feature-hero-art" aria-hidden="true">
+    <svg viewBox="0 0 420 250">
+      <rect width="420" height="250" rx="38" fill="#dfece2"/>
+      <circle cx="330" cy="61" r="31" fill="#fff4d6"/>
+      <path d="M0 191C69 153 120 157 181 183C246 211 314 163 420 155V250H0Z" fill="#88a991"/>
+      <path d="M111 62h116c25 0 45 20 45 45v93H156c-25 0-45-20-45-45Z" fill="#fffdf7"/>
+      <path d="M330 62h-58v138h39c20 0 36-16 36-36V79c0-9-8-17-17-17Z" fill="#f4e5d2"/>
+      <path d="M272 62v138" stroke="#c7b79f" stroke-width="3"/>
+      <path d="M140 101h91M140 125h104M140 149h79" stroke="#78927f" stroke-width="6" stroke-linecap="round" opacity=".58"/>
+      <path d="M337 40c-5 32-21 51-48 59M335 60c18-11 32-10 42-1" fill="none" stroke="#4c735a" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+  </div>
+</section>
+
+<section class="focused-workspace story-workspace">
+  <article class="focus-card editor-card">
+    <div class="card-heading">
+      <div><p class="page-kicker">Bản kể gốc</p><h2>Hôm nay đã xảy ra chuyện gì?</h2></div>
+      <span class="privacy-pill">Chỉ mình bạn thấy</span>
+    </div>
+    <p class="support-copy">Không cần viết hay. Viết đúng điều đã xảy ra, kể cả những đoạn bạn chưa biết gọi tên.</p>
+
+    <div class="form-grid two-fields">
+      <label><span>Ngày</span><input id="storyDate" type="date"></label>
+      <label><span>Cách viết</span>
+        <select id="storyStyle">
+          <option value="honest">Chân thật</option>
+          <option value="gentle">Nhẹ nhàng</option>
+          <option value="humorous">Hài hước</option>
+          <option value="cinematic">Điện ảnh</option>
+          <option value="mature">Trưởng thành</option>
+          <option value="letter">Thư gửi bản thân</option>
+        </select>
+      </label>
+    </div>
+
+    <label class="large-field"><span>Bản kể của bạn</span>
+      <textarea id="storyRaw" rows="13" maxlength="12000" placeholder="Sáng nay mình đi muộn, bị sếp nói. Trưa ăn một mình. Chiều có người nhắn hỏi nhưng mình không biết trả lời thế nào..."></textarea>
+    </label>
+    <p class="ai-usage-note">
+      Gõ nội dung không mất lượt. Mỗi lần bấm “Viết thành một chương” sẽ dùng 1 lượt AI.
+    </p>
+    <div class="form-footer">
+      <span id="storyCount">0 / 12000</span>
+      <button id="createStoryButton" class="primary-button" type="button">Viết thành một chương</button>
+    </div>
+  </article>
+
+  <aside id="storyGuide" class="focus-card calm-guide">
+    <p class="page-kicker">Khi chưa biết bắt đầu</p>
+    <h2>Chỉ cần nhớ lại ba khoảnh khắc</h2>
+    <ol>
+      <li>Điều gì đã thực sự xảy ra?</li>
+      <li>Lúc đó bạn đã nghĩ hoặc cảm thấy gì?</li>
+      <li>Có điều gì vẫn còn mắc lại sau ngày hôm nay?</li>
+    </ol>
+    <blockquote>“Một ngày bình thường vẫn có thể là một chương đáng giữ.”</blockquote>
+  </aside>
+
+  <article id="storyResult" class="focus-card result-card hidden">
+    <div class="card-heading">
+      <div><p class="page-kicker">Trang vừa được lưu</p><h2>Chương của hôm nay</h2></div>
+      <span class="saved-pill">Đã lưu</span>
+    </div>
+    <input id="storyResultTitle" class="title-editor" aria-label="Tiêu đề">
+    <textarea id="storyResultText" class="story-editor" rows="18" aria-label="Nội dung tự truyện"></textarea>
+    <div id="storyTags" class="tag-row"></div>
+    <div class="result-actions">
+      <button id="saveStoryEditButton" class="secondary-button" type="button">Lưu chỉnh sửa</button>
+      <button id="deleteStoryButton" class="danger-button" type="button">Xóa trang</button>
+      <a class="text-link" href="/timeline">Mở Dòng đời →</a>
+    </div>
+  </article>
+</section>
+{% endblock %}

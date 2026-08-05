@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5efe8">
+  <title>Cuộc đời của tôi</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='life.css') }}">
+</head>
+<body data-initial-tab="{{ initial_tab }}">
+  <div class="life-shell">
+    <header class="life-header">
+      <a class="back-link" href="/home">← Không gian của tôi</a>
+      <div>
+        <p class="eyebrow">Một nơi để giữ lại</p>
+        <h1>Cuộc đời của tôi</h1>
+        <p class="header-copy">Những gì đã qua, điều chưa nói và những chuyện vẫn đang tiếp diễn đều ở đây.</p>
+      </div>
+      <div class="user-chip">{{ display_name }}</div>
+    </header>
+
+    <nav class="life-tabs" aria-label="Các khu vực">
+      <button class="tab-button active" data-tab="overview">Dòng đời</button>
+      <button class="tab-button" data-tab="autobiography">Viết lại hôm nay</button>
+      <button class="tab-button" data-tab="unsent">Điều chưa từng nói</button>
+      <button class="tab-button" data-tab="rehearsal">Nói thử trước</button>
+      <button class="tab-button" data-tab="threads">Chuyện đang mở</button>
+    </nav>
+
+    <main>
+      <section id="panel-overview" class="tab-panel active">
+        <div class="hero-grid">
+          <article class="hero-card hero-primary">
+            <p class="card-kicker">Ghi lại hôm nay</p>
+            <h2>Hôm nay có điều gì bạn muốn giữ lại?</h2>
+            <p>Không cần ngày đặc biệt. Một bữa cơm im lặng, một tin nhắn chưa trả lời hay một lần bạn dám nói không đều có thể thành một chương.</p>
+            <button class="primary-button" data-open-tab="autobiography">Viết lại hôm nay</button>
+          </article>
+          <article class="hero-card quiet-card">
+            <p class="card-kicker">Khi chưa muốn kể nhiều</p>
+            <h2>Viết điều đang mắc trong lòng</h2>
+            <p>Biến nó thành thư không gửi, tin nhắn có thể gửi hoặc chỉ một câu mở đầu.</p>
+            <button class="secondary-button" data-open-tab="unsent">Viết điều chưa nói</button>
+          </article>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card"><span id="statEntries">0</span><small>trang đã viết</small></div>
+          <div class="stat-card"><span id="statThreads">0</span><small>chuyện đang mở</small></div>
+          <div class="stat-card"><span id="statRehearsals">0</span><small>lần đã tập nói</small></div>
+        </div>
+
+        <section class="content-card">
+          <div class="section-heading">
+            <div>
+              <p class="card-kicker">Thư viện riêng</p>
+              <h2>Những trang gần đây</h2>
+            </div>
+          </div>
+          <div id="recentEntries" class="entry-grid empty-state">Chưa có trang nào. Trang đầu tiên thường là trang khó nhất.</div>
+        </section>
+
+        <section class="content-card">
+          <div class="section-heading">
+            <div>
+              <p class="card-kicker">Đời sống đang tiếp diễn</p>
+              <h2>Chuyện chưa khép lại</h2>
+            </div>
+            <button class="text-button" data-open-tab="threads">Xem tất cả</button>
+          </div>
+          <div id="overviewThreads" class="thread-list empty-state">Chưa có chuyện nào được đánh dấu là dang dở.</div>
+        </section>
+      </section>
+
+      <section id="panel-autobiography" class="tab-panel">
+        <div class="editor-layout">
+          <section class="content-card editor-card">
+            <p class="card-kicker">Viết như bạn đang kể</p>
+            <h2>Hôm nay đã xảy ra chuyện gì?</h2>
+            <p class="muted">AI chỉ thay cách kể, không được tự thêm sự kiện.</p>
+            <label class="field-label" for="storyDate">Ngày</label>
+            <input id="storyDate" type="date">
+            <label class="field-label" for="storyStyle">Cách viết</label>
+            <select id="storyStyle">
+              <option value="honest">Chân thật</option>
+              <option value="gentle">Nhẹ nhàng</option>
+              <option value="humorous">Hài hước</option>
+              <option value="cinematic">Điện ảnh</option>
+              <option value="mature">Trưởng thành</option>
+              <option value="letter">Thư gửi bản thân</option>
+            </select>
+            <label class="field-label" for="storyRaw">Bản kể của bạn</label>
+            <textarea id="storyRaw" rows="13" maxlength="12000" placeholder="Ví dụ: Sáng nay mình đi muộn, bị sếp nói. Trưa ăn một mình. Chiều có người nhắn hỏi nhưng mình không biết trả lời thế nào..."></textarea>
+            <div class="form-footer">
+              <span id="storyCount">0 / 12000</span>
+              <button id="createStoryButton" class="primary-button">Viết thành một chương</button>
+            </div>
+          </section>
+
+          <section id="storyResult" class="content-card result-card hidden">
+            <p class="card-kicker">Trang vừa được lưu</p>
+            <input id="storyResultTitle" class="title-editor" aria-label="Tiêu đề">
+            <textarea id="storyResultText" class="story-editor" rows="18" aria-label="Nội dung tự truyện"></textarea>
+            <div id="storyTags" class="tag-row"></div>
+            <div class="result-actions">
+              <button id="saveStoryEditButton" class="secondary-button">Lưu chỉnh sửa</button>
+              <button id="deleteStoryButton" class="danger-button">Xóa trang</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="panel-unsent" class="tab-panel">
+        <div class="editor-layout">
+          <section class="content-card editor-card">
+            <p class="card-kicker">Không tự động gửi cho ai</p>
+            <h2>Điều chưa từng nói</h2>
+            <p class="muted">Viết đúng như nó đang nằm trong đầu. Sau đó chọn cách bạn muốn biến nó thành lời.</p>
+            <label class="field-label" for="unsentRelation">Bạn đang muốn nói với ai?</label>
+            <input id="unsentRelation" maxlength="120" placeholder="Mẹ, một người bạn, người yêu cũ...">
+            <label class="field-label" for="unsentType">Bạn muốn nhận lại</label>
+            <select id="unsentType">
+              <option value="unsent_letter">Một lá thư không gửi</option>
+              <option value="sendable_message">Một tin nhắn có thể gửi</option>
+              <option value="journal">Một đoạn nhật ký</option>
+              <option value="opening_line">Một câu để bắt đầu nói chuyện</option>
+            </select>
+            <label class="field-label" for="unsentRaw">Điều bạn chưa nói</label>
+            <textarea id="unsentRaw" rows="13" maxlength="8000" placeholder="Tao giận mẹ nhưng không muốn nói vì sợ mẹ buồn..."></textarea>
+            <div class="form-footer">
+              <span id="unsentCount">0 / 8000</span>
+              <button id="createUnsentButton" class="primary-button">Viết giúp mình</button>
+            </div>
+          </section>
+
+          <section id="unsentResult" class="content-card result-card hidden">
+            <p class="card-kicker">Đã lưu trong Cuốn đời tôi</p>
+            <h2 id="unsentResultTitle"></h2>
+            <div id="unsentResultText" class="prose-block"></div>
+            <div id="sendableBlock" class="sendable-block hidden">
+              <p class="field-label">Bản có thể gửi</p>
+              <div id="sendableText" class="copy-box"></div>
+              <button id="copySendableButton" class="text-button">Sao chép</button>
+            </div>
+            <div id="coreFeelingBlock" class="insight-box"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="panel-rehearsal" class="tab-panel">
+        <div class="rehearsal-layout">
+          <section id="rehearsalSetup" class="content-card editor-card">
+            <p class="card-kicker">Tập trước khi phải nói thật</p>
+            <h2>Nói thử trước</h2>
+            <label class="field-label" for="rehearsalPerson">AI sẽ đóng vai ai?</label>
+            <input id="rehearsalPerson" maxlength="120" placeholder="Bạn thân, mẹ, quản lý, người yêu...">
+            <label class="field-label" for="rehearsalSituation">Tình huống</label>
+            <textarea id="rehearsalSituation" rows="4" maxlength="2000" placeholder="Mình muốn nói rằng không thích họ đem chuyện riêng ra đùa..."></textarea>
+            <label class="field-label" for="rehearsalGoal">Bạn muốn cuộc nói chuyện đi đến đâu?</label>
+            <input id="rehearsalGoal" maxlength="1000" placeholder="Để họ hiểu và dừng lại, không muốn cãi nhau">
+            <label class="field-label" for="rehearsalOpening">Câu bạn định mở đầu</label>
+            <textarea id="rehearsalOpening" rows="4" maxlength="2000" placeholder="Tao muốn nói chuyện nghiêm túc một chút..."></textarea>
+            <button id="startRehearsalButton" class="primary-button full-button">Bắt đầu tập</button>
+          </section>
+
+          <section id="rehearsalRoom" class="content-card rehearsal-room hidden">
+            <div class="section-heading">
+              <div>
+                <p class="card-kicker">Đang mô phỏng</p>
+                <h2 id="rehearsalRoomTitle">Cuộc nói chuyện</h2>
+              </div>
+              <button id="closeRehearsalButton" class="text-button">Kết thúc</button>
+            </div>
+            <div id="rehearsalMessages" class="rehearsal-messages"></div>
+            <div id="coachPanel" class="coach-panel hidden"></div>
+            <div class="rehearsal-input-row">
+              <textarea id="rehearsalReply" rows="3" maxlength="2000" placeholder="Nói tiếp như ngoài đời..."></textarea>
+              <button id="sendRehearsalReplyButton" class="primary-button">Gửi</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="panel-threads" class="tab-panel">
+        <div class="thread-layout">
+          <section class="content-card">
+            <p class="card-kicker">Những việc vẫn đang đi tiếp</p>
+            <h2>Chuyện đang mở</h2>
+            <p class="muted">Giữ lại để lần sau bạn không phải bắt đầu kể lại từ đầu.</p>
+            <div id="allThreads" class="thread-list empty-state">Chưa có chuyện nào.</div>
+          </section>
+          <aside class="content-card thread-form-card">
+            <p class="card-kicker">Thêm bằng tay</p>
+            <h3>Một chuyện đang mắc lại</h3>
+            <label class="field-label" for="threadTitle">Tên chuyện</label>
+            <input id="threadTitle" maxlength="120" placeholder="Tin nhắn cho Linh">
+            <label class="field-label" for="threadDetail">Điều đang dang dở</label>
+            <textarea id="threadDetail" rows="5" maxlength="1000" placeholder="Mình vẫn chưa biết có nên gửi hay không..."></textarea>
+            <label class="field-label" for="threadStatus">Trạng thái</label>
+            <select id="threadStatus">
+              <option value="unsaid">Chưa nói ra</option>
+              <option value="waiting">Đang chờ phản hồi</option>
+              <option value="deciding">Đang quyết định</option>
+              <option value="letting_go">Đang cố buông</option>
+              <option value="closed">Đã khép lại</option>
+            </select>
+            <button id="addThreadButton" class="primary-button full-button">Thêm chuyện</button>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="loadingOverlay" class="loading-overlay hidden">
+    <div class="loading-card">
+      <span class="loading-dot"></span>
+      <p id="loadingText">Đang viết lại câu chuyện...</p>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='life.js') }}" defer></script>
+</body>
+</html>

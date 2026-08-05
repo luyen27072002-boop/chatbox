@@ -1,0 +1,47 @@
+{% extends "life_base.html" %}
+{% block title %}Chuyện đang mở · Góc nhỏ cuộc sống{% endblock %}
+{% block content %}
+<section class="feature-hero feature-hero-threads">
+  <div class="feature-hero-copy">
+    <p class="page-kicker">Chuyện đang mở</p>
+    <h1>Những việc chưa khép lại<br>không cần phải biến mất.</h1>
+    <p>Giữ lại điều chưa nói, đang chờ hoặc còn phân vân để lần sau bạn không phải kể lại từ đầu.</p>
+  </div>
+  <div class="feature-hero-art" aria-hidden="true">
+    <svg viewBox="0 0 420 250">
+      <rect width="420" height="250" rx="38" fill="#e1ecdf"/>
+      <path d="M0 192C89 139 158 156 230 187C302 218 354 170 420 157V250H0Z" fill="#77987e"/>
+      <path d="M182 250c5-57 37-88 91-119" fill="none" stroke="#f0dfc1" stroke-width="24" stroke-linecap="round"/>
+      <path d="M105 151V66M105 80h94M105 113h70" stroke="#446a52" stroke-width="11" stroke-linecap="round"/>
+      <circle cx="337" cy="72" r="33" fill="#fff0c9"/>
+    </svg>
+  </div>
+</section>
+
+<section class="focused-workspace threads-workspace">
+  <article class="focus-card thread-list-card">
+    <div class="card-heading">
+      <div><p class="page-kicker">Đời sống đang tiếp diễn</p><h2>Danh sách của bạn</h2></div>
+      <span id="threadOpenCount" class="count-pill">0 chuyện đang mở</span>
+    </div>
+    <div id="allThreads" class="thread-list empty-state">Chưa có chuyện nào. Bạn có thể thêm một chuyện ở bên cạnh.</div>
+  </article>
+
+  <aside class="focus-card thread-form-card">
+    <p class="page-kicker">Thêm một chuyện</p>
+    <h2>Điều gì đang mắc lại?</h2>
+    <label><span>Tên chuyện</span><input id="threadTitle" maxlength="120" placeholder="Tin nhắn cho Linh"></label>
+    <label><span>Điều đang dang dở</span><textarea id="threadDetail" rows="6" maxlength="1000" placeholder="Mình vẫn chưa biết có nên gửi hay không..."></textarea></label>
+    <label><span>Trạng thái</span>
+      <select id="threadStatus">
+        <option value="unsaid">Chưa nói ra</option>
+        <option value="waiting">Đang chờ phản hồi</option>
+        <option value="deciding">Đang quyết định</option>
+        <option value="letting_go">Đang cố buông</option>
+        <option value="closed">Đã khép lại</option>
+      </select>
+    </label>
+    <button id="addThreadButton" class="primary-button full-button" type="button">Thêm vào danh sách</button>
+  </aside>
+</section>
+{% endblock %}

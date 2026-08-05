@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import unicodedata
 import uuid
 from datetime import timedelta
 from pathlib import Path
@@ -58,6 +59,7 @@ from prompting import (
     VALID_LANGUAGES,
 )
 from safety import urgent_fallback_detected, urgent_support_message
+from life_features import register_life_features
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
@@ -111,6 +113,8 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         checksum_key=app.config["PAYOS_CHECKSUM_KEY"],
     )
 
+    register_life_features(app)
+
     @app.teardown_request
     def _refund_unfinished_quota(_exc):
         """Không trừ lượt nếu request lỗi bất ngờ sau khi đã giữ chỗ."""
@@ -124,15 +128,43 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         finally:
             g.pending_quota_event_id = ""
 
-    @app.get("/")
-    def index():
+    def _render_chat_page():
         return render_template(
             "index.html",
             brand_name=app.config["BRAND_NAME"],
             brand_tagline=app.config["BRAND_TAGLINE"],
             free_message_limit=app.config["FREE_WELCOME_LIMIT"],
+            # index.html dùng tên daily_limit. Giữ thêm free_daily_limit
+            # để tương thích nếu template cũ vẫn còn tham chiếu tên này.
+            daily_limit=app.config["FREE_DAILY_LIMIT"],
             free_daily_limit=app.config["FREE_DAILY_LIMIT"],
         )
+
+    @app.get("/")
+    def index():
+        # Sau khi đăng nhập, trang gốc trở thành cửa vào Không gian của tôi.
+        # Người chưa đăng nhập vẫn thấy màn hình đăng nhập cũ.
+        if _session_user_id():
+            return redirect("/home")
+        return _render_chat_page()
+
+    @app.get("/home")
+    def home():
+        user_id = _require_user_id()
+        if not user_id:
+            return redirect("/")
+        account = get_account(user_id) or {}
+        return render_template(
+            "home.html",
+            display_name=account.get("display_name", "Bạn"),
+        )
+
+    @app.get("/chat")
+    def chat_page():
+        user_id = _require_user_id()
+        if not user_id:
+            return redirect("/")
+        return _render_chat_page()
 
     @app.get("/health")
     def health():
@@ -464,9 +496,19 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
             else ""
         )
 
+        direct_persona_reply = _persona_direct_reply(
+            message=message,
+            response_style=response_style,
+            pronoun_style=pronoun_style,
+            language=language,
+        )
+
         if urgent_by_text:
             reply = urgent_support_message(pronoun_style, language)
             safety_route = True
+        elif direct_persona_reply:
+            reply = direct_persona_reply
+            safety_route = False
         else:
             try:
                 moderation = ai.moderate(message)
@@ -765,6 +807,106 @@ def _object_value(value: Any, *names: str) -> Any:
             return value[name]
         if hasattr(value, name):
             return getattr(value, name)
+    return None
+
+
+
+PERSONA_IDENTITY_REPLIES = {
+    "adaptive": {
+        "minh_ban": "Mình là người biết thay đổi theo tình huống.",
+        "tao_may": "Tao là người biết thay đổi theo tình huống.",
+    },
+    "strict": {
+        "minh_ban": "Mình là người khó tính.",
+        "tao_may": "Tao là người khó tính.",
+    },
+    "gentle": {
+        "minh_ban": "Mình là người ôn hòa.",
+        "tao_may": "Tao là người ôn hòa.",
+    },
+    "rational": {
+        "minh_ban": "Mình là người lý trí.",
+        "tao_may": "Tao là người lý trí.",
+    },
+    "practical": {
+        "minh_ban": "Mình là người thực tế.",
+        "tao_may": "Tao là người thực tế.",
+    },
+    "light_humor": {
+        "minh_ban": "Mình là người có chút hài hước.",
+        "tao_may": "Tao là người có chút hài hước.",
+    },
+    "luyen": {
+        "minh_ban": "Mình là Luyện thật.",
+        "tao_may": "Tao là Luyện thật.",
+    },
+}
+
+
+def _normalize_persona_text(value: str) -> str:
+    text = unicodedata.normalize("NFD", str(value).lower())
+    text = "".join(
+        char for char in text
+        if unicodedata.category(char) != "Mn"
+    )
+    text = re.sub(r"[^a-z0-9+#]+", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _persona_direct_reply(
+    message: str,
+    response_style: str,
+    pronoun_style: str,
+    language: str,
+) -> str | None:
+    """Khóa các câu dễ khiến persona tự phá vai hoặc tự nhận là AI/máy."""
+
+    if language != "vi":
+        return None
+
+    text = _normalize_persona_text(message)
+    if not text:
+        return None
+
+    text = re.sub(r"\b(ko|k|kh)\b", "khong", text)
+    text = re.sub(r"\s+", " ", text).strip()
+
+    identity_markers = (
+        "la ai",
+        "ten gi",
+        "co phai ai",
+        "phai ai",
+        "la bot",
+        "phai bot",
+        "la robot",
+        "phai robot",
+        "la may",
+        "phai may",
+        "nguoi hay may",
+        "nguoi that",
+        "khong phai nguoi",
+        "khong phai nguoi that",
+        "co phai nguoi",
+        "co phai nguoi that",
+        "luyen la ai",
+        "luyen la bot",
+        "luyen la robot",
+        "luyen la may",
+    )
+    asks_identity = any(marker in text for marker in identity_markers)
+
+    ai_identity_pattern = re.search(
+        r"\b(luyen|may|ban|minh|tao|m)\b.*\b"
+        r"(la|phai|co phai)\b.*\b(ai|bot|robot|may|nguoi that)\b",
+        text,
+    )
+    if asks_identity or ai_identity_pattern:
+        replies = PERSONA_IDENTITY_REPLIES.get(
+            response_style,
+            PERSONA_IDENTITY_REPLIES["luyen"],
+        )
+        return replies.get(pronoun_style, replies["minh_ban"])
+
     return None
 
 

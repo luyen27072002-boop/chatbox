@@ -40,7 +40,7 @@ const uiText = {
       loginId: "Tên đăng nhập hoặc email",
       password: "Mật khẩu",
       remember: "Giữ đăng nhập trên máy này",
-      loginButton: "Vào trò chuyện",
+      loginButton: "Vào không gian của tôi",
       registerTitle: "Tạo một góc riêng",
       registerDesc: "Mỗi tài khoản có lịch sử và phần ghi nhớ riêng.",
       displayName: "Tên hiển thị",
@@ -71,8 +71,8 @@ const uiText = {
       light_humor: { name: "Hài hước nhẹ", description: "Đỡ căng nhưng không đùa quá trớn" },
       luyen: { name: "Luyện", description: "Thử nhé!" },
     },
-    experiencesButton: { minh_ban: "Những gì bạn đã trải qua", tao_may: "Những gì mày đã trải qua" },
-    usageSuffix: "lượt miễn phí",
+    experiencesButton: { minh_ban: "Dòng đời", tao_may: "Dòng đời" },
+    usageSuffix: "lượt hôm nay",
     welcome: {
       eyebrow: { minh_ban: "Có mình ở đây rồi", tao_may: "Có tao ở đây rồi" },
       title: { minh_ban: "Kể mình nghe, hôm nay bạn đã gặp phải chuyện gì?", tao_may: "Kể tao nghe, hôm nay mày đã gặp phải chuyện gì?" },
@@ -93,9 +93,9 @@ const uiText = {
       optionDescriptions: { adaptive: "Tùy tâm trạng nhé!", strict: "Thẳng, công bằng, không nuông chiều", gentle: "Mềm nhưng không nói cho vui", rational: "Nhìn dữ kiện trước cảm xúc", practical: "Chốt việc làm được ngay", light_humor: "Đỡ căng nhưng không đùa quá trớn", luyen: "Muốn nói chuyện với mình khum?" },
     },
     conversations: {
-      eyebrow: "Những gì bạn đã trải qua",
-      title: "Chuyện cũ vẫn ở đây",
-      copy: "Mở lại một câu chuyện để nói tiếp, hoặc bắt đầu một chuyện mới.",
+      eyebrow: "Dòng đời",
+      title: "Những chuyện đã đi qua",
+      copy: "Mở lại một đoạn để nói tiếp, hoặc bắt đầu một câu chuyện mới.",
       newButton: "Cuộc trò chuyện mới",
       searchPlaceholder: "Tìm trong chuyện cũ...",
       emptyTitle: "Chưa có chuyện nào được lưu",
@@ -130,7 +130,7 @@ const uiText = {
     styleButtonDesc: "Soft or direct, depending on the moment",
     styles: { adaptive: { name: "Whatever fits today", description: "Let's see what you need today" }, strict: { name: "Tough one", description: "Direct, fair, no sugarcoating" }, gentle: { name: "Gentle one", description: "Soft, but still honest" }, rational: { name: "Rational one", description: "Facts before feelings" }, practical: { name: "Practical one", description: "Focus on what can be done next" }, light_humor: { name: "Light humor", description: "A little lighter, not careless" }, luyen: { name: "Luyện", description: "Give it a try" } },
     experiencesButton: "What you've been through",
-    usageSuffix: "free messages",
+    usageSuffix: "messages today",
     welcome: { eyebrow: "I'm here with you", title: "Tell me, what happened to you today?", starters: { love: { title: "Love", desc: "Someone is on my mind", message: "I'm a bit tangled up in a relationship issue." }, study: { title: "Study", desc: "Pressure, major, future", message: "Lately studying has been wearing me out." }, career: { title: "Work", desc: "Boss, coworkers, money", message: "I'm stuck on something related to work." }, family: { title: "Family", desc: "Parents, partner, children", message: "There's something going on in my family that I want to talk about." } } },
     placeholder: "Tell me what happened...",
     send: "Send",
@@ -158,7 +158,7 @@ const uiText = {
     styleButtonDesc: "柔和一点，或直接一点，都可以",
     styles: { adaptive: { name: "看情况来", description: "先看看你今天更需要什么" }, strict: { name: "严格型", description: "直接、公平、不拐弯" }, gentle: { name: "温和型", description: "柔和，但不敷衍" }, rational: { name: "理性型", description: "先看事实，再看情绪" }, practical: { name: "务实型", description: "先做最实际的下一步" }, light_humor: { name: "轻松一点", description: "稍微轻松，但不会乱开玩笑" }, luyen: { name: "Luyện", description: "来试试看" } },
     experiencesButton: "你经历过的事",
-    usageSuffix: "免费消息",
+    usageSuffix: "今日消息数",
     welcome: { eyebrow: "我在这里", title: "跟我说说，你今天遇到了什么事？", starters: { love: { title: "感情", desc: "有人让我想很多", message: "我最近被一段感情的事弄得有点乱。" }, study: { title: "学习", desc: "压力、专业、未来", message: "最近学习上的事让我很累。" }, career: { title: "工作", desc: "上司、同事、钱", message: "我有件和工作有关的事卡住了。" }, family: { title: "家庭", desc: "父母、伴侣、孩子", message: "我有件家里的事想说。" } } },
     placeholder: "跟我说说吧……",
     send: "发送",
@@ -186,7 +186,7 @@ const uiText = {
     styleButtonDesc: "柔和一點，或直接一點，都可以",
     styles: { adaptive: { name: "看情況來", description: "先看看你今天更需要什麼" }, strict: { name: "嚴格型", description: "直接、公平、不拐彎" }, gentle: { name: "溫和型", description: "柔和，但不敷衍" }, rational: { name: "理性型", description: "先看事實，再看情緒" }, practical: { name: "務實型", description: "先做最實際的下一步" }, light_humor: { name: "輕鬆一點", description: "稍微輕鬆，但不會亂開玩笑" }, luyen: { name: "Luyện", description: "來試試看" } },
     experiencesButton: "你經歷過的事",
-    usageSuffix: "免費訊息",
+    usageSuffix: "今日訊息數",
     welcome: { eyebrow: "我在這裡", title: "跟我說說，你今天遇到了什麼事？", starters: { love: { title: "感情", desc: "有人讓我想很多", message: "我最近被一段感情的事弄得有點亂。" }, study: { title: "學習", desc: "壓力、科系、未來", message: "最近學習上的事讓我很累。" }, career: { title: "工作", desc: "上司、同事、錢", message: "我有件和工作有關的事卡住了。" }, family: { title: "家庭", desc: "父母、伴侶、孩子", message: "我有件家裡的事想說。" } } },
     placeholder: "跟我說說吧……",
     send: "送出",
@@ -199,62 +199,6 @@ const uiText = {
     profileCardDefaultDesc: "20 個簡短的性格問題",
     userMeta: "你",
     statuses: { saved: "已儲存。", languageChanged: "語言已切換。", safetyPriority: "我會先優先處理你的安全。", thinking: "正在思考……" },
-  },
-};
-
-
-const billingUiText = {
-  vi: {
-    sidebar: "Nạp lượt và gói tháng",
-    topbar: "Nạp tiền",
-    title: "Chọn gói phù hợp với bạn",
-    eyebrow: "Lượt trò chuyện",
-    balance: "Hiện có",
-    topups: "Mua lượt",
-    monthly: "Gói tháng",
-    buy: "Thanh toán",
-    popular: "Phổ biến",
-    loading: "Đang tải bảng giá...",
-    checkout: "Đang tạo mã thanh toán...",
-    notConfigured: "Thanh toán chưa được bật trên server.",
-    returnChecking: "Đang kiểm tra kết quả thanh toán...",
-    paid: "Thanh toán thành công. Lượt đã được cộng vào tài khoản.",
-    pending: "Ngân hàng đã chuyển trang về nhưng webhook chưa tới. Đang kiểm tra lại...",
-    cancelled: "Bạn đã hủy thanh toán. Không có lượt nào bị trừ hoặc cộng.",
-    remaining: "{n} lượt còn lại",
-    unlimited: "Gói không giới hạn đang hoạt động",
-    permanentTest: "Tài khoản test không giới hạn",
-    quotaParts: "Hôm nay {daily} · Chào mừng {welcome} · Đã mua {paid}",
-  },
-  en: {
-    sidebar: "Messages & monthly plans", topbar: "Top up", title: "Choose a plan", eyebrow: "Chat messages",
-    balance: "Available", topups: "Message packs", monthly: "Monthly plans", buy: "Pay now",
-    popular: "Popular", loading: "Loading plans...", checkout: "Creating checkout...",
-    notConfigured: "Payments are not enabled on this server.", returnChecking: "Checking payment...",
-    paid: "Payment confirmed. Your balance has been updated.", pending: "Waiting for payment confirmation...",
-    cancelled: "Payment cancelled.", remaining: "{n} messages left", unlimited: "Unlimited plan active",
-    permanentTest: "Unlimited test account",
-    quotaParts: "Today {daily} · Welcome {welcome} · Purchased {paid}",
-  },
-  "zh-Hans": {
-    sidebar: "购买消息与月卡", topbar: "充值", title: "选择适合你的方案", eyebrow: "聊天消息",
-    balance: "当前可用", topups: "购买次数", monthly: "月度方案", buy: "去付款",
-    popular: "热门", loading: "正在加载价格...", checkout: "正在创建付款链接...",
-    notConfigured: "服务器尚未启用付款。", returnChecking: "正在确认付款结果...",
-    paid: "付款成功，次数已到账。", pending: "正在等待付款确认...", cancelled: "已取消付款。",
-    remaining: "剩余 {n} 次", unlimited: "无限方案生效中",
-    permanentTest: "永久测试账号",
-    quotaParts: "今日 {daily} · 新人 {welcome} · 已购买 {paid}",
-  },
-  "zh-Hant": {
-    sidebar: "購買訊息與月卡", topbar: "儲值", title: "選擇適合你的方案", eyebrow: "聊天訊息",
-    balance: "目前可用", topups: "購買次數", monthly: "月度方案", buy: "前往付款",
-    popular: "熱門", loading: "正在載入價格...", checkout: "正在建立付款連結...",
-    notConfigured: "伺服器尚未啟用付款。", returnChecking: "正在確認付款結果...",
-    paid: "付款成功，次數已入帳。", pending: "正在等待付款確認...", cancelled: "已取消付款。",
-    remaining: "剩餘 {n} 次", unlimited: "無限方案生效中",
-    permanentTest: "永久測試帳號",
-    quotaParts: "今日 {daily} · 新人 {welcome} · 已購買 {paid}",
   },
 };
 
@@ -285,12 +229,8 @@ const state = {
   language: localStorage.getItem("oday_language") || "vi",
   responseStyle: localStorage.getItem("oday_response_style") || "luyen",
   toneStyle: localStorage.getItem("oday_tone_style") || "gentle",
-  usedTotal: 0,
-  freeLimit: window.APP_CONFIG?.freeMessageLimit || 10,
-  quota: null,
-  paymentConfigured: false,
-  pricing: null,
-  billingTab: "topups",
+  usedToday: 0,
+  dailyLimit: window.APP_CONFIG?.dailyLimit || 20,
   currentConversationId: null,
   currentConversationTitle: "",
   conversations: [],
@@ -327,15 +267,6 @@ const els = {
   welcome: document.getElementById("welcomeCard"),
   status: document.getElementById("statusLine"),
   usage: document.getElementById("usageText"),
-  billingButton: document.getElementById("billingButton"),
-  topbarBillingButton: document.getElementById("topbarBillingButton"),
-  billingDialog: document.getElementById("billingDialog"),
-  closeBillingButton: document.getElementById("closeBillingButton"),
-  billingBalanceText: document.getElementById("billingBalanceText"),
-  billingTopupPlans: document.getElementById("billingTopupPlans"),
-  billingMonthlyPlans: document.getElementById("billingMonthlyPlans"),
-  billingNotes: document.getElementById("billingNotes"),
-  billingStatus: document.getElementById("billingStatus"),
   stylePickerButton: document.getElementById("stylePickerButton"),
   selectedStyleIcon: document.getElementById("selectedStyleIcon"),
   selectedStyleName: document.getElementById("selectedStyleName"),
@@ -394,17 +325,11 @@ const els = {
   accountDisplayName: document.getElementById("accountDisplayName"),
   accountUsername: document.getElementById("accountUsername"),
   accountEmail: document.getElementById("accountEmail"),
-  accountBillingButton: document.getElementById("accountBillingButton"),
-  accountQuotaText: document.getElementById("accountQuotaText"),
 };
 
 
 function localeText() {
   return uiText[state.language] || uiText.vi;
-}
-
-function billingText() {
-  return billingUiText[state.language] || billingUiText.vi;
 }
 
 function toneOptions() {
@@ -499,7 +424,7 @@ function applyUIText() {
   setText('#registerForm .auth-two-columns label:nth-of-type(1) span', t.auth.displayName);
   setText('#registerForm .auth-two-columns label:nth-of-type(2) span', t.auth.username);
   setText('#registerForm > label span', t.auth.email);
-  const registerPwSpans = document.querySelectorAll('#registerForm .auth-two-columns:last-of-type label span');
+  const registerPwSpans = document.querySelectorAll('#registerForm .auth-two-columns:nth-of-type(2) label span');
   if (registerPwSpans[0]) registerPwSpans[0].textContent = t.auth.password;
   if (registerPwSpans[1]) registerPwSpans[1].textContent = t.auth.confirmPassword;
   setText('#registerForm .remember-row span', t.auth.remember);
@@ -546,15 +471,6 @@ function applyUIText() {
   });
 
   setText('#experiencesButton span', pickText(t.experiencesButton));
-  const bt = billingText();
-  setText('#billingButton span', bt.sidebar);
-  setText('#topbarBillingButton span', bt.topbar);
-  if (els.topbarBillingButton) els.topbarBillingButton.setAttribute('aria-label', bt.topbar);
-  setText('#billingEyebrow', bt.eyebrow);
-  setText('#billingTitle', bt.title);
-  const billingTabs = document.querySelectorAll('[data-billing-tab]');
-  if (billingTabs[0]) billingTabs[0].textContent = bt.topups;
-  if (billingTabs[1]) billingTabs[1].textContent = bt.monthly;
   if (!state.profileCompleted || !state.profile) {
     els.profileArchetypeName.textContent = t.profileCardDefaultName;
     els.profileArchetypeDescription.textContent = t.profileCardDefaultDesc;
@@ -593,11 +509,6 @@ function applyUIText() {
   setText('#saveRenameConversationButton', t.renameDialog.save);
   setText('#accountDialog .dialog-header .eyebrow', t.account.eyebrow);
   setText('#logoutButton', t.account.logout);
-
-  // applyUIText có thể chạy sau khi quota/bảng giá đã tải. Vẽ lại để bản dịch
-  // không ghi đè số lượt còn lại hoặc nội dung gói hiện tại.
-  if (state.quota) updateUsage(state.usedTotal, state.freeLimit, state.quota);
-  if (state.pricing) renderBillingPlans();
 }
 
 async function init() {
@@ -623,7 +534,15 @@ async function startApp() {
   await loadProfileSchema();
   await openSession();
   startNewConversation(false);
-  await handlePaymentReturn();
+  const query = new URLSearchParams(window.location.search);
+  const requestedConversation = query.get("conversation");
+  const requestedView = query.get("open");
+  if (requestedConversation) {
+    window.setTimeout(() => loadConversation(requestedConversation), 180);
+  } else if (requestedView === "dong-doi") {
+    // Giữ tương thích link V22 cũ. Dòng đời mới có trang riêng tại /timeline.
+    window.setTimeout(() => openConversations(), 180);
+  }
   if (!state.profileCompleted) setTimeout(() => openProfile(true), 500);
   if ("serviceWorker" in navigator && window.isSecureContext) {
     navigator.serviceWorker.register("/static/sw.js").catch(() => {});
@@ -866,16 +785,6 @@ function bindAppEvents() {
   document
     .getElementById("desktopExperiencesButton")
     .addEventListener("click", openConversations);
-  els.billingButton.addEventListener("click", openBilling);
-  els.topbarBillingButton?.addEventListener("click", openBilling);
-  els.accountBillingButton.addEventListener("click", async () => {
-    closeDialog(els.accountDialog);
-    await openBilling();
-  });
-  els.closeBillingButton.addEventListener("click", () => closeDialog(els.billingDialog));
-  document.querySelectorAll("[data-billing-tab]").forEach((button) => {
-    button.addEventListener("click", () => selectBillingTab(button.dataset.billingTab));
-  });
   els.closeConversationsButton.addEventListener("click", () =>
     closeDialog(els.conversationsDialog),
   );
@@ -1037,8 +946,7 @@ async function openSession() {
   localStorage.setItem("oday_tone_style", state.toneStyle);
   applySavedControls();
   renderAccount();
-  state.paymentConfigured = Boolean(data.payment_configured);
-  updateUsage(data.used_total, data.free_limit, data.quota);
+  updateUsage(data.used_today, data.daily_limit);
 }
 
 function clearRenderedMessages() {
@@ -1157,15 +1065,10 @@ function renderConversationList(searchText = "") {
     menu.append(renameButton, deleteButton);
     menuButton.addEventListener("click", (event) => {
       event.stopPropagation();
-      const willOpen = menu.hidden;
       document.querySelectorAll(".conversation-item-menu").forEach((other) => {
         if (other !== menu) other.hidden = true;
       });
-      document.querySelectorAll(".conversation-item.menu-open").forEach((otherItem) => {
-        if (otherItem !== item) otherItem.classList.remove("menu-open");
-      });
-      menu.hidden = !willOpen;
-      item.classList.toggle("menu-open", willOpen);
+      menu.hidden = !menu.hidden;
     });
     menuWrap.append(menuButton, menu);
     item.append(openButton, menuWrap);
@@ -1206,9 +1109,6 @@ function openRenameConversation(conversation) {
   els.renameConversationInput.value = conversation.title || "";
   document.querySelectorAll(".conversation-item-menu").forEach((menu) => {
     menu.hidden = true;
-  });
-  document.querySelectorAll(".conversation-item.menu-open").forEach((item) => {
-    item.classList.remove("menu-open");
   });
   openDialog(els.renameConversationDialog);
   setTimeout(() => {
@@ -1253,9 +1153,6 @@ async function saveConversationRename() {
 async function deleteConversationItem(conversation) {
   document.querySelectorAll(".conversation-item-menu").forEach((menu) => {
     menu.hidden = true;
-  });
-  document.querySelectorAll(".conversation-item.menu-open").forEach((item) => {
-    item.classList.remove("menu-open");
   });
   const t = localeText().conversations;
   const confirmed = window.confirm(
@@ -1594,159 +1491,20 @@ async function sendMessage() {
       true,
       data.response_style || state.responseStyle,
     );
-    updateUsage(data.used_total, data.free_limit, data.quota);
+    updateUsage(data.used_today, data.daily_limit);
     setStatus(
       data.safety_route ? localeText().statuses.safetyPriority : "",
     );
   } catch (error) {
     loading.remove();
-    if (error.quota) updateUsage(state.usedTotal, state.freeLimit, error.quota);
     renderMessage("assistant", `Có lỗi: ${error.message}`, true, state.responseStyle);
     setStatus(error.message, true);
-    if (error.code === "quota_exhausted") setTimeout(() => openBilling(), 250);
   } finally {
     state.isSending = false;
     els.send.disabled = false;
     els.input.disabled = false;
     els.input.focus();
   }
-}
-
-function formatVnd(value) {
-  return `${Number(value || 0).toLocaleString('vi-VN')}đ`;
-}
-
-function formatQuota(quota = state.quota) {
-  if (!quota) return billingText().loading;
-  if (quota.permanent_test) return billingText().permanentTest;
-  if (quota.unlimited_active && Number(quota.unlimited_daily_remaining || 0) > 0) {
-    return `${billingText().unlimited} · ${quota.unlimited_daily_remaining} lượt hôm nay`;
-  }
-  return billingText().quotaParts
-    .replace('{daily}', String(quota.daily_remaining || 0))
-    .replace('{welcome}', String(quota.welcome_remaining || 0))
-    .replace('{paid}', String((quota.purchased_credits || 0) + (quota.subscription_remaining || 0)));
-}
-
-function selectBillingTab(tab) {
-  state.billingTab = tab === 'monthly' ? 'monthly' : 'topups';
-  document.querySelectorAll('[data-billing-tab]').forEach((button) => {
-    button.classList.toggle('active', button.dataset.billingTab === state.billingTab);
-  });
-  document.querySelectorAll('[data-billing-panel]').forEach((panel) => {
-    panel.hidden = panel.dataset.billingPanel !== state.billingTab;
-  });
-}
-
-async function openBilling() {
-  closeSidebar();
-  openDialog(els.billingDialog);
-  els.billingStatus.textContent = billingText().loading;
-  els.billingStatus.classList.remove('error');
-  try {
-    const data = await api('/api/billing/plans');
-    state.pricing = data.plans;
-    state.paymentConfigured = Boolean(data.payment_configured);
-    updateUsage(state.usedTotal, state.freeLimit, data.quota);
-    renderBillingPlans();
-    els.billingStatus.textContent = state.paymentConfigured ? '' : billingText().notConfigured;
-    els.billingStatus.classList.toggle('error', !state.paymentConfigured);
-  } catch (error) {
-    els.billingStatus.textContent = error.message;
-    els.billingStatus.classList.add('error');
-  }
-}
-
-function renderBillingPlans() {
-  if (!state.pricing) return;
-  renderBillingPlanGroup(els.billingTopupPlans, state.pricing.topups || []);
-  renderBillingPlanGroup(els.billingMonthlyPlans, state.pricing.monthly || []);
-  els.billingNotes.replaceChildren();
-  (state.pricing.notes || []).forEach((note) => {
-    const p = document.createElement('p');
-    p.textContent = note;
-    els.billingNotes.appendChild(p);
-  });
-  selectBillingTab(state.billingTab);
-}
-
-function renderBillingPlanGroup(container, plans) {
-  container.replaceChildren();
-  plans.forEach((plan) => {
-    const card = document.createElement('article');
-    card.className = `billing-plan-card${plan.popular ? ' popular' : ''}`;
-    if (plan.popular) {
-      const badge = document.createElement('span');
-      badge.className = 'billing-plan-badge';
-      badge.textContent = billingText().popular;
-      card.appendChild(badge);
-    }
-    const title = document.createElement('h4');
-    title.textContent = plan.name;
-    const price = document.createElement('div');
-    price.className = 'billing-plan-price';
-    price.textContent = formatVnd(plan.price_vnd);
-    const desc = document.createElement('p');
-    desc.textContent = plan.description || '';
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.textContent = billingText().buy;
-    button.disabled = !state.paymentConfigured;
-    button.addEventListener('click', () => startCheckout(plan, button));
-    card.append(title, price, desc, button);
-    container.appendChild(card);
-  });
-}
-
-async function startCheckout(plan, button) {
-  const oldText = button.textContent;
-  button.disabled = true;
-  button.textContent = billingText().checkout;
-  els.billingStatus.textContent = '';
-  try {
-    const data = await api('/api/billing/checkout', {
-      method: 'POST',
-      body: { plan_id: plan.id },
-    });
-    window.location.href = data.checkout_url;
-  } catch (error) {
-    button.disabled = false;
-    button.textContent = oldText;
-    els.billingStatus.textContent = error.message;
-    els.billingStatus.classList.add('error');
-  }
-}
-
-async function handlePaymentReturn() {
-  const params = new URLSearchParams(window.location.search);
-  const paymentState = params.get('payment');
-  const orderId = params.get('order_id');
-  if (!paymentState) return;
-  history.replaceState({}, document.title, window.location.pathname);
-  await openBilling();
-  if (paymentState === 'cancel') {
-    els.billingStatus.textContent = billingText().cancelled;
-    return;
-  }
-  if (!orderId) return;
-  els.billingStatus.textContent = billingText().returnChecking;
-  for (let attempt = 0; attempt < 8; attempt += 1) {
-    try {
-      const data = await api(`/api/billing/orders/${encodeURIComponent(orderId)}`);
-      updateUsage(state.usedTotal, state.freeLimit, data.quota);
-      if (data.order.status === 'paid') {
-        els.billingStatus.textContent = billingText().paid;
-        els.billingStatus.classList.remove('error');
-        return;
-      }
-    } catch (error) {
-      els.billingStatus.textContent = error.message;
-      els.billingStatus.classList.add('error');
-      return;
-    }
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-  }
-  els.billingStatus.textContent = billingText().pending;
 }
 
 function renderMessage(
@@ -1818,26 +1576,11 @@ function scrollToBottom() {
     els.messages.scrollTop = els.messages.scrollHeight;
   });
 }
-function updateUsage(used, limit, quota = null) {
-  state.usedTotal = Number(used || 0);
-  state.freeLimit = Number(limit || 10);
-  if (quota) state.quota = quota;
-  const activeQuota = state.quota;
-  if (!activeQuota) {
-    els.usage.textContent = `${used}/${limit}`;
-    setText('#usageSuffix', localeText().usageSuffix);
-    return;
-  }
-  const total = Number(activeQuota.finite_remaining || 0) + Number(activeQuota.unlimited_daily_remaining || 0);
-  els.usage.textContent = activeQuota.permanent_test
-    ? billingText().permanentTest
-    : activeQuota.unlimited_active
-      ? billingText().unlimited
-      : billingText().remaining.replace('{n}', String(total));
-  setText('#usageSuffix', '');
-  const detail = formatQuota(activeQuota);
-  if (els.billingBalanceText) els.billingBalanceText.textContent = detail;
-  if (els.accountQuotaText) els.accountQuotaText.textContent = detail;
+function updateUsage(used, limit) {
+  state.usedToday = used;
+  state.dailyLimit = limit;
+  els.usage.textContent = `${used}/${limit}`;
+  setText('#usageSuffix', localeText().usageSuffix);
 }
 function setStatus(text, isError = false) {
   els.status.textContent = text || "";
@@ -1875,7 +1618,6 @@ async function api(url, options = {}) {
     error.status = response.status;
     error.code = data.code || "";
     error.payload = data;
-    error.quota = data.quota || null;
     throw error;
   }
   return data;

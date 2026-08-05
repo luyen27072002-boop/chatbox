@@ -167,6 +167,10 @@
         <path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6" />
         <path d="M4 4v4.6h4.6M12 7v5l3 2" />
       </symbol>
+      <symbol id="icon-home" viewBox="0 0 24 24">
+        <path d="M3 11.5 12 4l9 7.5" />
+        <path d="M5.5 10.5V20h13v-9.5M9.5 20v-6h5v6" />
+      </symbol>
       <symbol id="icon-more" viewBox="0 0 24 24">
         <circle cx="5" cy="12" r="1" fill="currentColor" stroke="none" />
         <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
@@ -307,7 +311,7 @@
               ></label
             >
             <button class="primary-auth-button" type="submit">
-              Vào trò chuyện
+              Vào không gian của tôi
             </button>
             <p class="auth-status" id="loginStatus"></p>
           </form>
@@ -488,21 +492,17 @@
         </section>
 
         <div class="sidebar-footer">
-          <button
-            class="footer-action billing-action"
-            id="billingButton"
-            type="button"
-          >
-            <svg><use href="#icon-plus"></use></svg>
-            <span>Nạp lượt và gói tháng</span>
-          </button>
+          <a class="footer-action home-footer-action" href="/home">
+            <svg><use href="#icon-home"></use></svg>
+            <span>Không gian của tôi</span>
+          </a>
           <button
             class="footer-action experiences-action"
             id="experiencesButton"
             type="button"
           >
             <svg><use href="#icon-history"></use></svg>
-            <span>Những gì bạn đã trải qua</span>
+            <span>Dòng đời</span>
           </button>
         </div>
       </aside>
@@ -526,12 +526,20 @@
               <p>
                 <span id="modeTitle">Chỉ lắng nghe</span
                 ><span class="meta-dot">·</span
-                ><span id="usageText">0/{{ free_message_limit }}</span>
-                <span id="usageSuffix">lượt miễn phí</span>
+                ><span id="usageText">0/{{ daily_limit }}</span>
+                <span id="usageSuffix">lượt hôm nay</span>
               </p>
             </div>
           </div>
           <div class="topbar-actions">
+            <a
+              class="round-action home-round-action"
+              href="/home"
+              aria-label="Mở Không gian của tôi"
+              title="Không gian của tôi"
+            >
+              <svg><use href="#icon-home"></use></svg>
+            </a>
             <label class="toolbar-select" title="Language">
               <svg><use href="#icon-globe"></use></svg>
               <select id="languageSelect" aria-label="Language"></select>
@@ -554,18 +562,9 @@
               class="round-action desktop-experiences"
               id="desktopExperiencesButton"
               type="button"
-              aria-label="Mở những cuộc trò chuyện trước"
+              aria-label="Mở Dòng đời"
             >
               <svg><use href="#icon-history"></use></svg>
-            </button>
-            <button
-              class="topbar-billing-button"
-              id="topbarBillingButton"
-              type="button"
-              aria-label="Nạp tiền"
-            >
-              <svg><use href="#icon-plus"></use></svg>
-              <span>Nạp tiền</span>
             </button>
             <button
               class="account-button"
@@ -963,37 +962,6 @@
       </div>
     </dialog>
 
-    <dialog id="billingDialog" class="billing-dialog">
-      <div class="dialog-card billing-dialog-card">
-        <div class="dialog-header">
-          <div>
-            <p class="eyebrow" id="billingEyebrow">Lượt trò chuyện</p>
-            <h3 id="billingTitle">Chọn gói phù hợp với bạn</h3>
-          </div>
-          <button
-            type="button"
-            class="close-button"
-            id="closeBillingButton"
-            aria-label="Đóng"
-          >
-            <svg><use href="#icon-close"></use></svg>
-          </button>
-        </div>
-        <div class="billing-balance" id="billingBalance">
-          <span>Hiện có</span>
-          <strong id="billingBalanceText">Đang tải...</strong>
-        </div>
-        <div class="billing-tabs" role="tablist">
-          <button type="button" class="active" data-billing-tab="topups">Mua lượt</button>
-          <button type="button" data-billing-tab="monthly">Gói tháng</button>
-        </div>
-        <div class="billing-plan-grid" id="billingTopupPlans" data-billing-panel="topups"></div>
-        <div class="billing-plan-grid" id="billingMonthlyPlans" data-billing-panel="monthly" hidden></div>
-        <div class="billing-note-list" id="billingNotes"></div>
-        <p class="billing-status" id="billingStatus"></p>
-      </div>
-    </dialog>
-
     <dialog id="accountDialog">
       <div class="dialog-card account-dialog-card">
         <div class="dialog-header">
@@ -1017,18 +985,7 @@
             ><span id="accountEmail">email@example.com</span>
           </div>
         </div>
-        <div class="account-quota-card">
-          <span>Số lượt hiện có</span>
-          <strong id="accountQuotaText">Đang tải...</strong>
-        </div>
         <div class="account-actions">
-          <button
-            type="button"
-            class="secondary-button account-billing"
-            id="accountBillingButton"
-          >
-            <svg><use href="#icon-plus"></use></svg>Nạp lượt
-          </button>
           <button
             type="button"
             class="secondary-button account-logout"
@@ -1044,8 +1001,7 @@
       window.APP_CONFIG = {
         brandName: {{ brand_name|tojson }},
         brandTagline: {{ brand_tagline|tojson }},
-        freeMessageLimit: {{ free_message_limit|tojson }},
-        freeDailyLimit: {{ free_daily_limit|tojson }}
+        dailyLimit: {{ daily_limit|tojson }}
       };
     </script>
     <script src="{{ url_for('static', filename='app.js') }}" defer></script>

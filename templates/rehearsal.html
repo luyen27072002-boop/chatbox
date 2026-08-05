@@ -1,0 +1,50 @@
+{% extends "life_base.html" %}
+{% block title %}Nói thử trước · Góc nhỏ cuộc sống{% endblock %}
+{% block content %}
+<section class="feature-hero feature-hero-rehearsal">
+  <div class="feature-hero-copy">
+    <p class="page-kicker">Nói thử trước</p>
+    <h1>Đừng để cuộc nói chuyện khó<br>là lần đầu bạn nói câu đó.</h1>
+    <p>Tập trước với một người đối diện mô phỏng, xem phản ứng có thể xảy ra và chỉnh lại cách nói.</p>
+  </div>
+  <div class="feature-hero-art" aria-hidden="true">
+    <svg viewBox="0 0 420 250">
+      <rect width="420" height="250" rx="38" fill="#dfeae5"/>
+      <circle cx="211" cy="73" r="57" fill="#f3e5d3"/>
+      <path d="M124 191h61v19h-61zM235 191h61v19h-61z" fill="#4b7058"/>
+      <path d="M131 136h48v57h-48zM241 136h48v57h-48z" fill="#fffaf2" stroke="#6f8e7a" stroke-width="5"/>
+      <path d="M155 131c0-32 16-54 48-66M265 131c0-32-16-54-48-66" fill="none" stroke="#4b7058" stroke-width="8" stroke-linecap="round"/>
+      <path d="M194 93h40" stroke="#b99b76" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+  </div>
+</section>
+
+<section class="single-stage">
+  <article id="rehearsalSetup" class="focus-card rehearsal-setup-card">
+    <div class="card-heading">
+      <div><p class="page-kicker">Bước chuẩn bị</p><h2>Dựng tình huống cần tập</h2></div>
+      <span class="privacy-pill">Chỉ là mô phỏng</span>
+    </div>
+    <div class="form-grid two-fields">
+      <label><span>AI sẽ đóng vai ai?</span><input id="rehearsalPerson" maxlength="120" placeholder="Bạn thân, mẹ, quản lý, người yêu..."></label>
+      <label><span>Bạn muốn đi đến đâu?</span><input id="rehearsalGoal" maxlength="1000" placeholder="Để họ hiểu và dừng lại, không muốn cãi nhau"></label>
+    </div>
+    <label class="large-field"><span>Tình huống</span><textarea id="rehearsalSituation" rows="5" maxlength="2000" placeholder="Mình muốn nói rằng không thích họ đem chuyện riêng ra đùa..."></textarea></label>
+    <label class="large-field"><span>Câu bạn định mở đầu</span><textarea id="rehearsalOpening" rows="4" maxlength="2000" placeholder="Tao muốn nói chuyện nghiêm túc một chút..."></textarea></label>
+    <div class="form-footer align-end"><button id="startRehearsalButton" class="primary-button" type="button">Bắt đầu tập nói</button></div>
+  </article>
+
+  <article id="rehearsalRoom" class="focus-card rehearsal-room hidden">
+    <div class="card-heading">
+      <div><p class="page-kicker">Đang mô phỏng</p><h2 id="rehearsalRoomTitle">Cuộc nói chuyện</h2></div>
+      <button id="closeRehearsalButton" class="secondary-button compact-button" type="button">Kết thúc</button>
+    </div>
+    <div id="rehearsalMessages" class="rehearsal-messages"></div>
+    <div id="coachPanel" class="coach-panel hidden"></div>
+    <div class="rehearsal-input-row">
+      <textarea id="rehearsalReply" rows="3" maxlength="2000" placeholder="Nói tiếp như ngoài đời..."></textarea>
+      <button id="sendRehearsalReplyButton" class="primary-button" type="button">Gửi</button>
+    </div>
+  </article>
+</section>
+{% endblock %}

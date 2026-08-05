@@ -1,0 +1,70 @@
+{% extends "life_base.html" %}
+{% block title %}Điều chưa nói · Góc nhỏ cuộc sống{% endblock %}
+{% block content %}
+<section class="feature-hero feature-hero-unsent">
+  <div class="feature-hero-copy">
+    <p class="page-kicker">Điều chưa nói</p>
+    <h1>Có những câu chưa cần gửi,<br>nhưng vẫn cần được viết ra.</h1>
+    <p>Biến điều đang mắc trong lòng thành một lá thư, một tin nhắn có thể gửi hoặc chỉ một câu mở đầu.</p>
+  </div>
+  <div class="feature-hero-art" aria-hidden="true">
+    <svg viewBox="0 0 420 250">
+      <rect width="420" height="250" rx="38" fill="#e4eee7"/>
+      <circle cx="107" cy="67" r="37" fill="#f6ddc8"/>
+      <path d="M95 193h243V83H95Z" fill="#fffaf1"/>
+      <path d="m95 83 121 88L338 83" fill="#f2e7d9" stroke="#ccbba4" stroke-width="4"/>
+      <path d="M95 193l89-80M338 193l-89-80" stroke="#d3c3af" stroke-width="4"/>
+      <path d="M48 224c10-55 31-91 66-119M57 190c-21-17-36-19-47-10M75 154c23-16 41-17 55-7" fill="none" stroke="#4b7358" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+  </div>
+</section>
+
+<section class="focused-workspace unsent-workspace">
+  <article class="focus-card editor-card">
+    <div class="card-heading">
+      <div><p class="page-kicker">Không tự động gửi cho ai</p><h2>Viết điều đang mắc lại</h2></div>
+      <span class="privacy-pill">Không gian riêng</span>
+    </div>
+    <p class="support-copy">Viết thẳng như nó đang nằm trong đầu. Bạn vẫn là người quyết định có gửi hay không.</p>
+
+    <div class="form-grid two-fields">
+      <label><span>Bạn đang muốn nói với ai?</span><input id="unsentRelation" maxlength="120" placeholder="Mẹ, một người bạn, người yêu cũ..."></label>
+      <label><span>Bạn muốn nhận lại</span>
+        <select id="unsentType">
+          <option value="unsent_letter">Một lá thư không gửi</option>
+          <option value="sendable_message">Một tin nhắn có thể gửi</option>
+          <option value="journal">Một đoạn nhật ký</option>
+          <option value="opening_line">Một câu để bắt đầu nói chuyện</option>
+        </select>
+      </label>
+    </div>
+    <label class="large-field"><span>Điều bạn chưa nói</span>
+      <textarea id="unsentRaw" rows="13" maxlength="8000" placeholder="Mình giận nhưng vẫn sợ người đó buồn. Mình muốn nói rằng..."></textarea>
+    </label>
+    <div class="form-footer">
+      <span id="unsentCount">0 / 8000</span>
+      <button id="createUnsentButton" class="primary-button" type="button">Viết thành lời</button>
+    </div>
+  </article>
+
+  <aside id="unsentGuide" class="focus-card calm-guide">
+    <p class="page-kicker">Bạn không cần phải gửi</p>
+    <h2>Mục tiêu đầu tiên là hiểu mình muốn nói gì</h2>
+    <p>Đôi khi điều cần nhất chưa phải một tin nhắn hoàn hảo, mà là nhìn thấy rõ sự tổn thương, mong muốn hoặc ranh giới của chính mình.</p>
+    <div class="guide-note">Bạn có thể lưu bản này trong Dòng đời và quay lại khi đã sẵn sàng.</div>
+  </aside>
+
+  <article id="unsentResult" class="focus-card result-card hidden">
+    <p class="page-kicker">Đã giữ lại</p>
+    <h2 id="unsentResultTitle"></h2>
+    <div id="unsentResultText" class="prose-block"></div>
+    <div id="sendableBlock" class="sendable-block hidden">
+      <p class="field-label">Bản có thể gửi</p>
+      <div id="sendableText" class="copy-box"></div>
+      <button id="copySendableButton" class="secondary-button compact-button" type="button">Sao chép</button>
+    </div>
+    <div id="coreFeelingBlock" class="insight-box hidden"></div>
+    <a class="text-link" href="/timeline">Xem trong Dòng đời →</a>
+  </article>
+</section>
+{% endblock %}

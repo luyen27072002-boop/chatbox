@@ -1,0 +1,39 @@
+{% extends "life_base.html" %}
+{% block title %}Dòng đời · Góc nhỏ cuộc sống{% endblock %}
+{% block content %}
+<section class="feature-hero feature-hero-timeline">
+  <div class="feature-hero-copy">
+    <p class="page-kicker">Dòng đời</p>
+    <h1>Những gì bạn đã đi qua<br>được giữ lại cùng một nơi.</h1>
+    <p>Đây là lịch sử của bạn: các cuộc trò chuyện, những trang đã viết và điều từng chưa nói.</p>
+  </div>
+  <div class="feature-hero-art" aria-hidden="true">
+    <svg viewBox="0 0 420 250">
+      <rect width="420" height="250" rx="38" fill="#e6eee7"/>
+      <path d="M0 195C72 153 134 159 197 188C261 217 333 160 420 166V250H0Z" fill="#89a991"/>
+      <path d="M61 70h264v132H61z" fill="#fffdf8"/>
+      <circle cx="91" cy="103" r="9" fill="#7a9a82"/><circle cx="91" cy="137" r="9" fill="#c09c75"/><circle cx="91" cy="171" r="9" fill="#54765e"/>
+      <path d="M118 103h112M118 137h154M118 171h127" stroke="#9db0a1" stroke-width="7" stroke-linecap="round"/>
+      <path d="M327 46c-4 34-19 57-46 69M325 69c19-13 34-14 45-4" fill="none" stroke="#4c7157" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+  </div>
+</section>
+
+<section class="timeline-layout">
+  <article class="focus-card timeline-section">
+    <div class="card-heading">
+      <div><p class="page-kicker">Những trang đã giữ</p><h2>Nhật ký và điều chưa nói</h2></div>
+      <span id="timelineEntryCount" class="count-pill">0 trang</span>
+    </div>
+    <div id="timelineEntries" class="timeline-list empty-state">Chưa có trang nào được lưu.</div>
+  </article>
+
+  <article class="focus-card timeline-section">
+    <div class="card-heading">
+      <div><p class="page-kicker">Những cuộc trò chuyện</p><h2>Chuyện cũ vẫn ở đây</h2></div>
+      <a class="secondary-button compact-button" href="/chat">Trò chuyện mới</a>
+    </div>
+    <div id="timelineConversations" class="timeline-list empty-state">Chưa có cuộc trò chuyện nào.</div>
+  </article>
+</section>
+{% endblock %}

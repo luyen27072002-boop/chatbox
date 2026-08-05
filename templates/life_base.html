@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e8f1e9">
+  <title>{% block title %}Không gian của tôi{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='life.css') }}">
+</head>
+<body data-life-page="{{ life_page }}">
+  <div class="page-atmosphere" aria-hidden="true">
+    <span class="wash wash-one"></span>
+    <span class="wash wash-two"></span>
+    <span class="leaf-ring leaf-ring-one"></span>
+    <span class="leaf-ring leaf-ring-two"></span>
+  </div>
+
+  <div class="life-page-shell">
+    <header class="life-topbar">
+      <div class="life-topbar-left">
+        <a class="back-home" href="/home" aria-label="Quay lại Không gian của tôi">
+          <span aria-hidden="true">←</span>
+          <span>Không gian của tôi</span>
+        </a>
+        <a class="life-brand" href="/home">
+          <span class="life-brand-mark"><img src="{{ url_for('static', filename='icons/brand-logo.png') }}" alt=""></span>
+          <span><strong>Góc nhỏ cuộc sống</strong><small>Một nơi riêng để chậm lại</small></span>
+        </a>
+      </div>
+
+      <div class="home-account-wrap life-account-wrap">
+        <button
+          class="home-account-button life-account-button"
+          id="homeAccountButton"
+          type="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="homeAccountMenu"
+        >
+          <span class="home-account-avatar" id="homeAccountInitial">{{ (display_name or 'B')[:1]|upper }}</span>
+          <span class="home-account-copy">
+            <strong id="homeAccountName">{{ display_name }}</strong>
+            <small id="homeAccountStatus">Đang tải trạng thái…</small>
+          </span>
+          <span class="home-account-chevron" aria-hidden="true">⌄</span>
+        </button>
+
+        <div class="home-account-menu" id="homeAccountMenu" hidden>
+          <div class="home-account-menu-head">
+            <span class="home-account-avatar home-account-avatar-large" id="homeAccountInitialLarge">{{ (display_name or 'B')[:1]|upper }}</span>
+            <div>
+              <strong id="homeMenuName">{{ display_name }}</strong>
+              <span id="homeMenuUsername">Đang tải thông tin…</span>
+              <span id="homeMenuEmail"></span>
+            </div>
+          </div>
+          <div class="home-account-quota" id="homeAccountQuota">Đang kiểm tra số lượt hiện có…</div>
+          <div class="home-account-actions">
+            <a href="/chat">Vào trò chuyện</a>
+            <button id="homeLogoutButton" type="button">Đăng xuất</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="life-main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="loadingOverlay" class="loading-overlay hidden" aria-live="polite">
+    <div class="loading-card">
+      <span class="loading-dot"></span>
+      <p id="loadingText">Đang xử lý…</p>
+    </div>
+  </div>
+
+  <div id="entryModal" class="entry-modal hidden" role="dialog" aria-modal="true" aria-labelledby="entryModalTitle">
+    <button class="entry-modal-backdrop" data-close-entry-modal aria-label="Đóng"></button>
+    <article class="entry-modal-card">
+      <button class="entry-modal-close" data-close-entry-modal type="button" aria-label="Đóng">×</button>
+      <p class="page-kicker" id="entryModalMeta"></p>
+      <h2 id="entryModalTitle"></h2>
+      <div id="entryModalText" class="entry-modal-prose"></div>
+    </article>
+  </div>
+
+  <script src="{{ url_for('static', filename='home.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='life.js') }}" defer></script>
+</body>
+</html>
