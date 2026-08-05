@@ -1,0 +1,34 @@
+NƠI CÓ BẠN - V7 FRONTEND + TÀI KHOẢN
+
+File thay đổi:
+- app.py
+- db.py
+- templates/index.html
+- static/app.js
+- static/styles.css
+- static/sw.js
+- static/manifest.json
+- static/icons/icon-192.png
+- static/icons/icon-512.png
+- .env.example
+
+Điểm chính:
+- Có đăng ký, đăng nhập, giữ đăng nhập và đăng xuất thật bằng session.
+- Mỗi tài khoản dùng user_id riêng nên lịch sử, hồ sơ và phần ghi nhớ tách biệt.
+- Sửa lỗi toàn bộ nút không hoạt động khi mở bằng địa chỉ LAN http://192.168.x.x.
+  Nguyên nhân bản cũ dùng crypto.randomUUID(), tính năng này không có trên HTTP LAN.
+- Tên mới: Nơi Có Bạn.
+- Logo khuôn mặt có má hồng.
+- Khôi phục 3 tên: Chỉ lắng nghe / Cùng phân tích / Cho hướng xử lý.
+- Không cần cài thư viện mới.
+
+Giữ nguyên khi chép đè:
+- .env
+- .venv
+- app.db
+
+Sau khi chép:
+1. Tắt server bằng Ctrl + C.
+2. Chạy lại: .\.venv\Scripts\python.exe app.py
+3. Chrome: Ctrl + Shift + R.
+4. Nếu giao diện cũ còn cache: DevTools > Application > Service Workers > Unregister.

@@ -1,0 +1,11 @@
+Bản này là gói chồng hoàn chỉnh V20, đã bao gồm:
+- V19: sửa mode/persona, menu lịch sử, form đăng ký, quota cũ.
+- Luyện V3: DNA, prompt, rules và examples.
+- V20: 10 welcome + 3/day, bảng giá, ví lượt, gói tháng, unlimited fair-use, payOS.
+
+Không chứa:
+- .env thật và API key
+- app.db của người dùng
+- .venv
+
+Chép đè mã nguồn nhưng giữ nguyên .env và app.db hiện tại.

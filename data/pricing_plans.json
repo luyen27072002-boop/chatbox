@@ -1,0 +1,134 @@
+{
+  "version": 2,
+  "currency": "VND",
+  "free": {
+    "welcome_messages": 10,
+    "daily_messages": 3,
+    "daily_messages_rollover": false
+  },
+  "topups": [
+    {
+      "id": "topup_5k",
+      "kind": "topup",
+      "name": "Gói 5K",
+      "price_vnd": 5000,
+      "credits": 25,
+      "description": "25 lượt, không hết hạn",
+      "active": true
+    },
+    {
+      "id": "topup_10k",
+      "kind": "topup",
+      "name": "Gói 10K",
+      "price_vnd": 10000,
+      "credits": 55,
+      "description": "55 lượt, không hết hạn",
+      "active": true
+    },
+    {
+      "id": "topup_20k",
+      "kind": "topup",
+      "name": "Gói 20K",
+      "price_vnd": 20000,
+      "credits": 120,
+      "description": "120 lượt, không hết hạn",
+      "active": true
+    },
+    {
+      "id": "topup_50k",
+      "kind": "topup",
+      "name": "Gói 50K",
+      "price_vnd": 50000,
+      "credits": 320,
+      "description": "320 lượt, không hết hạn",
+      "active": true,
+      "popular": true
+    },
+    {
+      "id": "topup_100k",
+      "kind": "topup",
+      "name": "Gói 100K",
+      "price_vnd": 100000,
+      "credits": 700,
+      "description": "700 lượt, không hết hạn",
+      "active": true
+    },
+    {
+      "id": "topup_200k",
+      "kind": "topup",
+      "name": "Gói 200K",
+      "price_vnd": 200000,
+      "credits": 1500,
+      "description": "1.500 lượt, không hết hạn",
+      "active": true
+    },
+    {
+      "id": "topup_500k",
+      "kind": "topup",
+      "name": "Gói 500K",
+      "price_vnd": 500000,
+      "credits": 4000,
+      "description": "4.000 lượt, không hết hạn",
+      "active": true
+    }
+  ],
+  "monthly": [
+    {
+      "id": "month_49k",
+      "kind": "monthly",
+      "name": "Bạn nhỏ",
+      "price_vnd": 49000,
+      "messages": 400,
+      "duration_days": 30,
+      "description": "400 lượt trong 30 ngày",
+      "active": true
+    },
+    {
+      "id": "month_99k",
+      "kind": "monthly",
+      "name": "Đồng hành",
+      "price_vnd": 99000,
+      "messages": 900,
+      "duration_days": 30,
+      "description": "900 lượt trong 30 ngày",
+      "active": true,
+      "popular": true
+    },
+    {
+      "id": "month_199k",
+      "kind": "monthly",
+      "name": "Thân thiết",
+      "price_vnd": 199000,
+      "messages": 1800,
+      "duration_days": 30,
+      "description": "1.800 lượt trong 30 ngày",
+      "active": true
+    },
+    {
+      "id": "month_399k",
+      "kind": "monthly",
+      "name": "Bên nhau nhiều",
+      "price_vnd": 399000,
+      "messages": 3600,
+      "duration_days": 30,
+      "description": "3.600 lượt trong 30 ngày",
+      "active": true
+    },
+    {
+      "id": "month_unlimited_799k",
+      "kind": "monthly",
+      "name": "Không giới hạn",
+      "price_vnd": 799000,
+      "unlimited": true,
+      "daily_fair_limit": 200,
+      "duration_days": 30,
+      "description": "Không giới hạn trong 30 ngày, tối đa 200 lượt/ngày theo chính sách sử dụng hợp lý",
+      "active": true
+    }
+  ],
+  "notes": [
+    "10 lượt chào mừng cho tài khoản mới và 3 lượt miễn phí mỗi ngày.",
+    "Lượt mua thêm không hết hạn. Lượt của gói tháng hết hạn sau 30 ngày.",
+    "Gói Không giới hạn: tối đa 200 lượt/ngày."
+  ]
+}

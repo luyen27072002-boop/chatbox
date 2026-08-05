@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+
+.venv/
+venv/
+
+__pycache__/
+*.pyc
+.pytest_cache/
+
+app.db
+*.db
+instance/
+
+.vscode/
+.idea/

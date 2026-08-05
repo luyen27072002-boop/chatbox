@@ -1,0 +1,23 @@
+VALIDATION REPORT V20
+=====================
+
+Python syntax: PASS
+JavaScript syntax: PASS
+Automated tests: 30/30 PASS
+
+Đã kiểm tra:
+- 3 mode và 7 persona đi đúng luồng.
+- Luyện không rò prompt sang persona khác.
+- 10 lượt chào mừng + 3 lượt miễn phí/ngày.
+- Xóa lịch sử không reset quota.
+- Toàn bộ bảng giá đúng cấu hình.
+- Tạo checkout cho gói mua lượt.
+- Webhook đúng tiền cộng lượt một lần.
+- Webhook trùng không cộng lần hai.
+- Webhook sai số tiền không cộng lượt.
+- Gói tháng tạo subscription hữu hạn.
+- Gói Không giới hạn tạo subscription có fair-use 200 lượt/ngày.
+- Payload mẫu khi payOS confirm webhook được chấp nhận nhưng không cộng lượt.
+- Lỗi request bất ngờ không làm mất quota đã giữ.
+
+Chưa thể thực hiện giao dịch ngân hàng thật vì cần khóa payOS và domain HTTPS của chủ dự án.

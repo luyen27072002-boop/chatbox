@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f9f1ef" />
+    <meta
+      name="description"
+      content="Thêm một người bạn để kể chuyện, nghe chuyện và cùng nhau tìm hướng giải quyết."
+    />
+    <title>{{ brand_name }}</title>
+    <meta name="application-name" content="{{ brand_name }}" />
+    <meta name="apple-mobile-web-app-title" content="{{ brand_name }}" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="msapplication-TileColor" content="#fff8f3" />
+    <meta
+      name="msapplication-TileImage"
+      content="{{ url_for('static', filename='icons/mstile-150x150.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='icons/favicon.ico') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ url_for('static', filename='icons/favicon-16x16.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ url_for('static', filename='icons/favicon-32x32.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="{{ url_for('static', filename='icons/favicon-48x48.png') }}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}"
+    />
+    <link
+      rel="manifest"
+      href="{{ url_for('static', filename='manifest.json') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body data-persona="luyen">
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-friend-face" viewBox="0 0 64 64">
+        <rect
+          x="4"
+          y="4"
+          width="56"
+          height="56"
+          rx="21"
+          fill="currentColor"
+          opacity=".12"
+        />
+        <circle cx="24" cy="29" r="2.7" fill="currentColor" />
+        <circle cx="40" cy="29" r="2.7" fill="currentColor" />
+        <path
+          d="M25 39c2 2.4 4.3 3.6 7 3.6s5-1.2 7-3.6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3.2"
+          stroke-linecap="round"
+        />
+        <ellipse cx="17" cy="37" rx="6" ry="3.2" fill="#f3a4ad" opacity=".78" />
+        <ellipse cx="47" cy="37" rx="6" ry="3.2" fill="#f3a4ad" opacity=".78" />
+        <path
+          d="M18 19c3.2-3.4 7-5.1 11.5-5.1M46 19c-3.2-3.4-7-5.1-11.5-5.1"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.4"
+          stroke-linecap="round"
+          opacity=".65"
+        />
+      </symbol>
+      <symbol id="icon-ear" viewBox="0 0 24 24">
+        <path
+          d="M12.5 4.3a6 6 0 0 0-6 6c0 3.7 2.8 4.2 2.8 7.2a2.7 2.7 0 0 0 5.4 0c0-1.3.7-2.1 1.6-3 1-1 2.2-2.4 2.2-4.7a6 6 0 0 0-6-5.5Z"
+        />
+        <path
+          d="M10 10.2a2.7 2.7 0 0 1 5.4 0c0 1.2-.7 2-1.5 2.8-.9.9-1.8 1.9-1.8 3.6"
+        />
+      </symbol>
+      <symbol id="icon-layers" viewBox="0 0 24 24">
+        <path d="m12 3 8 4.5-8 4.5-8-4.5L12 3Z" />
+        <path d="m4 12 8 4.5 8-4.5" />
+        <path d="m4 16.5 8 4.5 8-4.5" />
+      </symbol>
+      <symbol id="icon-route" viewBox="0 0 24 24">
+        <circle cx="5" cy="18" r="2" />
+        <circle cx="19" cy="6" r="2" />
+        <path d="M7 18h3a3 3 0 0 0 3-3v-6a3 3 0 0 1 3-3h1" />
+      </symbol>
+      <symbol id="icon-shuffle" viewBox="0 0 24 24">
+        <path d="M4 7h3.5c4.8 0 4.2 10 9 10H20" />
+        <path d="m17 14 3 3-3 3" />
+        <path d="M4 17h3.5c1.8 0 2.8-1.4 3.7-3" />
+        <path d="M13 9c.9-1.2 1.8-2 3.5-2H20" />
+        <path d="m17 4 3 3-3 3" />
+      </symbol>
+      <symbol id="icon-strict" viewBox="0 0 24 24">
+        <path d="m12 3 7 3v5c0 4.5-2.8 8-7 10-4.2-2-7-5.5-7-10V6l7-3Z" />
+        <path d="m9 12 2 2 4-4" />
+      </symbol>
+      <symbol id="icon-leaf" viewBox="0 0 24 24">
+        <path d="M20 4C12 4 6 7.5 6 13a5 5 0 0 0 5 5c5.5 0 9-6 9-14Z" />
+        <path d="M4 20c3-5 7-8 12-10" />
+      </symbol>
+      <symbol id="icon-scale" viewBox="0 0 24 24">
+        <path d="M12 3v18" />
+        <path d="M5 6h14" />
+        <path d="m7 6-3 6h6L7 6Z" />
+        <path d="m17 6-3 6h6l-3-6Z" />
+        <path d="M8 21h8" />
+      </symbol>
+      <symbol id="icon-tool" viewBox="0 0 24 24">
+        <path
+          d="M14.5 6.5a4 4 0 0 0-5 5L4 17l3 3 5.5-5.5a4 4 0 0 0 5-5l-2.5 2.5-3-3 2.5-2.5Z"
+        />
+      </symbol>
+      <symbol id="icon-smile" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M8.5 14.5c1 1.2 2.1 1.8 3.5 1.8s2.5-.6 3.5-1.8" />
+        <path d="M9 9h.01M15 9h.01" />
+      </symbol>
+      <symbol id="icon-spark" viewBox="0 0 24 24">
+        <path
+          d="m12 3 1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3Z"
+        />
+        <path
+          d="m18.5 14 .8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z"
+        />
+      </symbol>
+      <symbol id="icon-globe" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+        <path d="M12 3a14 14 0 0 1 0 18" />
+        <path d="M12 3a14 14 0 0 0 0 18" />
+      </symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4.5 21a7.5 7.5 0 0 1 15 0" />
+      </symbol>
+      <symbol id="icon-memory" viewBox="0 0 24 24">
+        <path d="M8 4a3 3 0 0 0-3 3v1a3 3 0 0 0-1 5.2A3 3 0 0 0 6 18h2" />
+        <path d="M16 4a3 3 0 0 1 3 3v1a3 3 0 0 1 1 5.2A3 3 0 0 1 18 18h-2" />
+        <path d="M9 8h6M9 12h6M9 16h6" />
+      </symbol>
+      <symbol id="icon-history" viewBox="0 0 24 24">
+        <path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6" />
+        <path d="M4 4v4.6h4.6M12 7v5l3 2" />
+      </symbol>
+      <symbol id="icon-more" viewBox="0 0 24 24">
+        <circle cx="5" cy="12" r="1" fill="currentColor" stroke="none" />
+        <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
+        <circle cx="19" cy="12" r="1" fill="currentColor" stroke="none" />
+      </symbol>
+      <symbol id="icon-edit" viewBox="0 0 24 24">
+        <path d="M4 20h4l11-11-4-4L4 16v4Z" />
+        <path d="m13.5 6.5 4 4" />
+      </symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </symbol>
+      <symbol id="icon-heart" viewBox="0 0 24 24">
+        <path
+          d="M20.8 5.8a5.2 5.2 0 0 0-7.4 0L12 7.2l-1.4-1.4a5.2 5.2 0 1 0-7.4 7.4L12 22l8.8-8.8a5.2 5.2 0 0 0 0-7.4Z"
+        />
+      </symbol>
+      <symbol id="icon-book" viewBox="0 0 24 24">
+        <path
+          d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v17H7.5A3.5 3.5 0 0 0 4 22V5.5Z"
+        />
+        <path
+          d="M20 5.5A3.5 3.5 0 0 0 16.5 2H13v17h3.5A3.5 3.5 0 0 1 20 22V5.5Z"
+        />
+      </symbol>
+      <symbol id="icon-briefcase" viewBox="0 0 24 24">
+        <rect x="3" y="7" width="18" height="13" rx="2" />
+        <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2" />
+      </symbol>
+      <symbol id="icon-cloud" viewBox="0 0 24 24">
+        <path
+          d="M7 18h10a4 4 0 0 0 .7-7.9A6 6 0 0 0 6.3 8.8 4.6 4.6 0 0 0 7 18Z"
+        />
+      </symbol>
+      <symbol id="icon-send" viewBox="0 0 24 24">
+        <path d="m21 3-7.5 18-3.2-7.3L3 10.5 21 3Z" />
+        <path d="m10.3 13.7 4.4-4.4" />
+      </symbol>
+      <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m9 18 6-6-6-6" />
+      </symbol>
+      <symbol id="icon-trash" viewBox="0 0 24 24">
+        <path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6M14 11v6" />
+      </symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M18 6 6 18" />
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6" />
+      </symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24">
+        <rect x="4" y="10" width="16" height="11" rx="3" />
+        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+      </symbol>
+      <symbol id="icon-logout" viewBox="0 0 24 24">
+        <path d="M10 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5" />
+        <path d="m15 8 4 4-4 4M8 12h11" />
+      </symbol>
+      <symbol id="icon-family" viewBox="0 0 24 24">
+        <circle cx="8" cy="8" r="3" />
+        <circle cx="16" cy="8" r="3" />
+        <circle cx="12" cy="14" r="2.5" />
+        <path d="M3.5 21v-1.5A4.5 4.5 0 0 1 8 15h1" />
+        <path d="M20.5 21v-1.5A4.5 4.5 0 0 0 16 15h-1" />
+        <path d="M8 21v-1a4 4 0 0 1 8 0v1" />
+      </symbol>
+    </svg>
+
+    <section class="auth-view" id="authView" hidden>
+      <div class="auth-backdrop auth-backdrop-one"></div>
+      <div class="auth-backdrop auth-backdrop-two"></div>
+      <div class="auth-shell">
+        <section class="auth-story">
+          <div class="auth-brand">
+            <span class="brand-logo-shell brand-logo-shell-large">
+              <img
+                class="brand-logo-image"
+                src="{{ url_for('static', filename='icons/brand-logo.png') }}"
+                alt="{{ brand_name }}"
+              />
+            </span>
+            <div>
+              <strong>{{ brand_name }}</strong><span id="authBrandTagline">{{ brand_tagline }}</span>
+            </div>
+          </div>
+          <div class="auth-copy">
+            <p class="auth-kicker">Ở đây không cần phải tỏ ra ổn</p>
+            <h1>Có chuyện thì cứ kể.</h1>
+            <p>
+              Một cuộc trò chuyện riêng, nhớ được câu chuyện của bạn và biết lúc
+              nào nên nghe, lúc nào nên nói thẳng.
+            </p>
+          </div>
+          <div class="auth-bubbles" aria-hidden="true">
+            <div class="auth-bubble auth-bubble-user">
+              Dạo này mình thấy mệt mà không biết nói với ai.
+            </div>
+            <div class="auth-bubble auth-bubble-friend">
+              <span class="mini-cheeks"></span>Ừ, kể từ đoạn làm bạn nặng đầu
+              nhất đi.
+            </div>
+          </div>
+        </section>
+
+        <section class="auth-card">
+          <div class="auth-tabs" role="tablist">
+            <button class="auth-tab active" type="button" data-auth-tab="login">
+              Đăng nhập
+            </button>
+            <button class="auth-tab" type="button" data-auth-tab="register">
+              Tạo tài khoản
+            </button>
+          </div>
+
+          <form class="auth-form active" id="loginForm" data-auth-panel="login">
+            <div class="auth-form-heading">
+              <h2>Chào mừng quay lại</h2>
+              <p>Câu chuyện cũ vẫn ở đúng chỗ.</p>
+            </div>
+            <label
+              ><span>Tên đăng nhập hoặc email</span
+              ><input id="loginIdentifier" autocomplete="username" required
+            /></label>
+            <label
+              ><span>Mật khẩu</span
+              ><input
+                id="loginPassword"
+                type="password"
+                autocomplete="current-password"
+                required
+            /></label>
+            <label class="remember-row"
+              ><input id="loginRemember" type="checkbox" checked /><span
+                >Giữ đăng nhập trên máy này</span
+              ></label
+            >
+            <button class="primary-auth-button" type="submit">
+              Vào trò chuyện
+            </button>
+            <p class="auth-status" id="loginStatus"></p>
+          </form>
+
+          <form class="auth-form" id="registerForm" data-auth-panel="register">
+            <div class="auth-form-heading">
+              <h2>Tạo một góc riêng</h2>
+              <p>Mỗi tài khoản có lịch sử và phần ghi nhớ riêng.</p>
+            </div>
+            <div class="auth-two-columns">
+              <label
+                ><span>Tên hiển thị</span
+                ><input
+                  id="registerDisplayName"
+                  autocomplete="name"
+                  maxlength="40"
+                  required
+              /></label>
+              <label
+                ><span>Tên đăng nhập</span
+                ><input
+                  id="registerUsername"
+                  autocomplete="username"
+                  maxlength="24"
+                  required
+              /></label>
+            </div>
+            <label
+              ><span>Email</span
+              ><input
+                id="registerEmail"
+                type="email"
+                autocomplete="email"
+                required
+            /></label>
+            <div class="auth-two-columns">
+              <label
+                ><span>Mật khẩu</span
+                ><input
+                  id="registerPassword"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+              /></label>
+              <label
+                ><span>Nhập lại mật khẩu</span
+                ><input
+                  id="registerPasswordConfirm"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+              /></label>
+            </div>
+            <label class="remember-row"
+              ><input id="registerRemember" type="checkbox" checked /><span
+                >Giữ đăng nhập trên máy này</span
+              ></label
+            >
+            <button class="primary-auth-button" type="submit">
+              Tạo tài khoản
+            </button>
+            <p class="auth-status" id="registerStatus"></p>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <div class="page-glow glow-one"></div>
+    <div class="page-glow glow-two"></div>
+
+    <div class="app-shell" id="appView" hidden>
+      <button
+        class="sidebar-scrim"
+        id="sidebarScrim"
+        type="button"
+        aria-label="Đóng menu"
+      ></button>
+      <aside class="sidebar" id="sidebar">
+        <div class="brand-block">
+          <span class="brand-logo-shell">
+            <img
+              class="brand-logo-image"
+              src="{{ url_for('static', filename='icons/brand-logo.png') }}"
+              alt="{{ brand_name }}"
+            />
+          </span>
+          <div>
+            <h1>{{ brand_name }}</h1>
+            <p id="sidebarBrandTagline">{{ brand_tagline }}</p>
+          </div>
+        </div>
+
+        <section class="panel-section">
+          <p class="section-label">Bạn đang cần gì?</p>
+          <div class="mode-list" id="modeList">
+            <button class="mode-button active" type="button" data-mode="listen">
+              <span class="mode-icon tint-peach"
+                ><svg><use href="#icon-ear"></use></svg
+              ></span>
+              <span
+                ><strong>Lắng nghe</strong
+                ><small>Cho mình biết bạn đang cảm thấy thế nào?</small></span
+              >
+            </button>
+            <button class="mode-button" type="button" data-mode="clarify">
+              <span class="mode-icon tint-blue"
+                ><svg><use href="#icon-layers"></use></svg
+              ></span>
+              <span
+                ><strong>Cùng phân tích</strong
+                ><small
+                  >Chúng ta cùng nhau xem tại sao nó lại như vậy.</small
+                ></span
+              >
+            </button>
+            <button class="mode-button" type="button" data-mode="advice">
+              <span class="mode-icon tint-mint"
+                ><svg><use href="#icon-route"></use></svg
+              ></span>
+              <span
+                ><strong>Cho hướng xử lý</strong
+                ><small>Cùng mình tìm hướng giải quyết nhé.</small></span
+              >
+            </button>
+          </div>
+        </section>
+
+        <section class="panel-section response-style-section">
+          <p class="section-label">Bạn muốn nghe từ ai?</p>
+          <button
+            class="style-picker-button"
+            id="stylePickerButton"
+            type="button"
+          >
+            <span class="style-avatar" aria-hidden="true"
+              ><svg id="selectedStyleIcon"><use href="#icon-spark"></use></svg
+            ></span>
+            <span class="style-picker-copy"
+              ><strong id="selectedStyleName">Luyện</strong
+              ><span id="selectedStyleDescription"
+                >Tùy chuyện mà mềm hay thẳng</span
+              ></span
+            >
+            <svg class="chevron-icon"><use href="#icon-chevron"></use></svg>
+          </button>
+        </section>
+
+        <section class="panel-section profile-section">
+          <p class="section-label">Tính cách của bạn</p>
+          <button class="profile-card" id="profileButton" type="button">
+            <span class="profile-card-mark" aria-hidden="true"
+              ><svg><use href="#icon-user"></use></svg
+            ></span>
+            <span class="profile-card-copy"
+              ><strong id="profileArchetypeName">Chưa làm quen</strong
+              ><span id="profileArchetypeDescription"
+                >20 câu ngắn về tính cách</span
+              ></span
+            >
+            <svg class="chevron-icon"><use href="#icon-chevron"></use></svg>
+          </button>
+        </section>
+
+        <section class="panel-section compact-fields">
+          <label
+            ><span id="categoryFieldLabel">Chuyện đang kể</span
+            ><select id="categorySelect">
+              <option value="love">Tình cảm</option>
+              <option value="study">Học tập</option>
+              <option value="family">Gia đình</option>
+              <option value="career">Công việc và tương lai</option>
+              <option value="friends">Bạn bè</option>
+              <option value="other" selected>Chuyện khác</option>
+            </select></label
+          >
+        </section>
+
+        <div class="sidebar-footer">
+          <button
+            class="footer-action billing-action"
+            id="billingButton"
+            type="button"
+          >
+            <svg><use href="#icon-plus"></use></svg>
+            <span>Nạp lượt và gói tháng</span>
+          </button>
+          <button
+            class="footer-action experiences-action"
+            id="experiencesButton"
+            type="button"
+          >
+            <svg><use href="#icon-history"></use></svg>
+            <span>Những gì bạn đã trải qua</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="chat-area">
+        <header class="topbar">
+          <button
+            class="menu-button"
+            id="menuButton"
+            type="button"
+            aria-label="Mở menu"
+          >
+            <svg><use href="#icon-menu"></use></svg>
+          </button>
+          <div class="conversation-person">
+            <span class="topbar-avatar style-avatar"
+              ><svg id="topbarPersonaIcon"><use href="#icon-spark"></use></svg
+            ></span>
+            <div>
+              <h2 id="activeStyleText">Luyện</h2>
+              <p>
+                <span id="modeTitle">Chỉ lắng nghe</span
+                ><span class="meta-dot">·</span
+                ><span id="usageText">0/{{ free_message_limit }}</span>
+                <span id="usageSuffix">lượt miễn phí</span>
+              </p>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <label class="toolbar-select" title="Language">
+              <svg><use href="#icon-globe"></use></svg>
+              <select id="languageSelect" aria-label="Language"></select>
+            </label>
+            <label class="toolbar-select tone-toolbar-select" title="Cách nói">
+              <select id="toneSelect" aria-label="Cách nói"></select>
+            </label>
+            <label class="toolbar-select pronoun-toolbar-select" title="Xưng hô">
+              <select id="pronounSelect" aria-label="Xưng hô"></select>
+            </label>
+            <button
+              class="round-action desktop-profile"
+              id="desktopProfileButton"
+              type="button"
+              aria-label="Mở hồ sơ"
+            >
+              <svg><use href="#icon-user"></use></svg>
+            </button>
+            <button
+              class="round-action desktop-experiences"
+              id="desktopExperiencesButton"
+              type="button"
+              aria-label="Mở những cuộc trò chuyện trước"
+            >
+              <svg><use href="#icon-history"></use></svg>
+            </button>
+            <button
+              class="topbar-billing-button"
+              id="topbarBillingButton"
+              type="button"
+              aria-label="Nạp tiền"
+            >
+              <svg><use href="#icon-plus"></use></svg>
+              <span>Nạp tiền</span>
+            </button>
+            <button
+              class="account-button"
+              id="accountButton"
+              type="button"
+              aria-label="Tài khoản"
+            >
+              <span id="accountInitial">B</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="messages" id="messages" aria-live="polite">
+          <div class="welcome-card" id="welcomeCard">
+            <div class="welcome-face">
+              <svg><use href="#icon-friend-face"></use></svg>
+            </div>
+            <p class="eyebrow">Có mình ở đây rồi</p>
+            <h3>Kể mình nghe, hôm nay bạn đã gặp phải chuyện gì?</h3>
+            <div class="starter-grid">
+              <button
+                type="button"
+                data-starter="Mình đang rối vì một chuyện tình cảm."
+                data-category="love"
+              >
+                <span class="starter-icon tint-pink"
+                  ><svg><use href="#icon-heart"></use></svg></span
+                ><span
+                  ><strong>Tình cảm</strong
+                  ><small>Có người làm mình nghĩ nhiều</small></span
+                >
+              </button>
+              <button
+                type="button"
+                data-starter="Dạo này chuyện học hành làm mình khá mệt."
+                data-category="study"
+              >
+                <span class="starter-icon tint-blue"
+                  ><svg><use href="#icon-book"></use></svg></span
+                ><span
+                  ><strong>Học hành</strong
+                  ><small>Áp lực, chọn ngành, tương lai</small></span
+                >
+              </button>
+              <button
+                type="button"
+                data-starter="Mình đang mắc ở một chuyện công việc."
+                data-category="career"
+              >
+                <span class="starter-icon tint-yellow"
+                  ><svg><use href="#icon-briefcase"></use></svg></span
+                ><span
+                  ><strong>Công việc</strong
+                  ><small>Sếp, đồng nghiệp, tiền bạc</small></span
+                >
+              </button>
+              <button
+                type="button"
+                data-starter="Mình đang có một chuyện trong gia đình muốn kể."
+                data-category="family"
+              >
+                <span class="starter-icon tint-mint">
+                  <svg><use href="#icon-family"></use></svg>
+                </span>
+
+                <span>
+                  <strong>Gia đình</strong>
+                  <small>Bố mẹ, vợ chồng, con cái</small>
+                </span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="composer-wrap">
+          <div class="status-line" id="statusLine"></div>
+          <form class="composer" id="chatForm">
+            <textarea
+              id="messageInput"
+              rows="1"
+              maxlength="4000"
+              placeholder="Kể mình nghe..."
+            ></textarea>
+            <button type="submit" id="sendButton">
+              <span id="sendButtonText">Gửi</span><svg><use href="#icon-send"></use></svg>
+            </button>
+          </form>
+          <p class="composer-note" id="composerNote">Shift + Enter để xuống dòng</p>
+        </div>
+      </main>
+    </div>
+
+    <dialog id="styleDialog">
+      <form method="dialog" class="dialog-card style-dialog-card">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Chọn người nói chuyện</p>
+            <h3>Hôm nay bạn muốn nghe từ ai?</h3>
+          </div>
+          <button value="cancel" class="close-button" aria-label="Đóng">
+            <svg><use href="#icon-close"></use></svg>
+          </button>
+        </div>
+        <p class="dialog-copy">
+          Cùng một câu chuyện, nhưng mỗi người sẽ nhìn theo một cách khác.
+        </p>
+        <div class="style-option-list" id="styleOptionList">
+          <button
+            type="button"
+            class="style-option active"
+            data-response-style="adaptive"
+          >
+            <span class="style-avatar"
+              ><svg><use href="#icon-shuffle"></use></svg></span
+            ><span
+              ><strong>Lúc này lúc kia</strong
+              ><small>Tùy tâm trạng nhé!</small></span
+            ><span class="style-check"
+              ><svg><use href="#icon-check"></use></svg
+            ></span>
+          </button>
+          <button
+            type="button"
+            class="style-option"
+            data-response-style="strict"
+          >
+            <span class="style-avatar"
+              ><svg><use href="#icon-strict"></use></svg></span
+            ><span
+              ><strong>Người khó tính</strong
+              ><small>Thẳng, công bằng, không nuông chiều</small></span
+            ><span class="style-check"
+              ><svg><use href="#icon-check"></use></svg
+            ></span>
+          </button>
+          <button
+            type="button"
+            class="style-option"
+            data-response-style="gentle"
+          >
+            <span class="style-avatar"
+              ><svg><use href="#icon-leaf"></use></svg></span
+            ><span
+              ><strong>Người ôn hòa</strong
+              ><small>Mềm nhưng không nói cho vui</small></span
+            ><span class="style-check"
+              ><svg><use href="#icon-check"></use></svg
+            ></span>
+          </button>
+          <button
+            type="button"
+            class="style-option"
+            data-response-style="rational"
+          >
+            <span class="style-avatar"
+              ><svg><use href="#icon-scale"></use></svg></span
+            ><span
+              ><strong>Người lý trí</strong
+              ><small>Nhìn dữ kiện trước cảm xúc</small></span
+            ><span class="style-check"
+              ><svg><use href="#icon-check"></use></svg
+            ></span>
+          </button>
+          <button
+            type="button"
+            class="style-option"
+            data-response-style="practical"
+          >
+            <span class="style-avatar"
+              ><svg><use href="#icon-tool"></use></svg></span
+            ><span
+              ><strong>Người thực tế</strong
+              ><small>Chốt việc làm được ngay</small></span
+            ><span class="style-check"
+              ><svg><use href="#icon-check"></use></svg
+            ></span>
+          </button>
+          <button
+            type="button"
+            class="style-option"
+            data-response-style="light_humor"
+          >
+            <span class="style-avatar"
+              ><svg><use href="#icon-smile"></use></svg></span
+            ><span
+              ><strong>Hài hước nhẹ</strong
+              ><small>Đỡ căng nhưng không đùa quá trớn</small></span
+            ><span class="style-check"
+              ><svg><use href="#icon-check"></use></svg
+            ></span>
+          </button>
+          <button
+            type="button"
+            class="style-option luyen-option"
+            data-response-style="luyen"
+          >
+            <span class="style-avatar"
+              ><svg><use href="#icon-spark"></use></svg></span
+            ><span
+              ><strong>Nói chuyện với Luyện</strong
+              ><small>Muốn nói chuyện với mình khum?</small></span
+            ><span class="style-check"
+              ><svg><use href="#icon-check"></use></svg
+            ></span>
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="profileDialog" class="profile-dialog">
+      <div class="dialog-card profile-dialog-card">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Làm quen một chút</p>
+            <h3 id="profileDialogTitle">Bạn là người thế nào?</h3>
+          </div>
+          <button
+            type="button"
+            class="close-button"
+            id="closeProfileButton"
+            aria-label="Đóng"
+          >
+            <svg><use href="#icon-close"></use></svg>
+          </button>
+        </div>
+        <p class="dialog-copy" id="profileDialogCopy">
+          Một ít bối cảnh và 20 câu ngắn về thói quen, cảm xúc và cách bạn nhìn
+          thế giới.
+        </p>
+        <div class="profile-progress" aria-label="Tiến trình">
+          <span class="active" data-profile-dot="1">1</span><i></i
+          ><span data-profile-dot="2">2</span><i></i
+          ><span data-profile-dot="3">3</span>
+        </div>
+        <section class="profile-step active" data-profile-step="1">
+          <div class="step-heading">
+            <span class="step-number">01</span>
+            <div>
+              <h4>Cuộc sống của bạn dạo này</h4>
+              <p>
+                Chọn phần đúng với hiện tại. Mục nào không muốn kể thì để trống.
+              </p>
+            </div>
+          </div>
+          <div class="profile-grid">
+            <label
+              ><span>Độ tuổi</span
+              ><select id="profileAgeGroup"></select></label
+            ><label
+              ><span>Giai đoạn hiện tại</span
+              ><select id="profileLifeStage"></select></label
+            ><label
+              ><span>Giới tính</span
+              ><select id="profileGender"></select></label
+            ><label class="hidden" id="genderNoteField"
+              ><span>Bạn muốn mô tả thế nào?</span
+              ><input
+                id="profileGenderNote"
+                maxlength="80"
+                type="text" /></label
+            ><label
+              ><span>Chuyện tình cảm</span
+              ><select id="profileRelationshipStatus"></select></label
+            ><label
+              ><span>Con cái</span
+              ><select id="profileChildrenStatus"></select></label
+            ><label
+              ><span>Đang sống cùng</span
+              ><select id="profileLivingContext"></select
+            ></label>
+          </div>
+        </section>
+        <section class="profile-step" data-profile-step="2">
+          <div class="step-heading">
+            <span class="step-number">02</span>
+            <div>
+              <h4>20 câu về tính cách</h4>
+              <p>Chọn mức giống bạn nhất trong phần lớn thời gian.</p>
+            </div>
+          </div>
+          <div class="quiz-meter">
+            <span id="quizProgressText">Câu 1/20</span>
+            <div><i id="quizProgressFill"></i></div>
+          </div>
+          <div class="question-list" id="profileQuestionList"></div>
+        </section>
+        <section class="profile-step" data-profile-step="3">
+          <div class="profile-result-mark">
+            <svg><use href="#icon-spark"></use></svg>
+          </div>
+          <p class="eyebrow">Nét nổi bật</p>
+          <h4 id="profileResultName">Đã hiểu thêm về bạn</h4>
+          <p
+            class="profile-result-description"
+            id="profileResultDescription"
+          ></p>
+          <div class="profile-score-list" id="profileScoreList"></div>
+          <p class="step-copy">
+            Đây chỉ là bức phác nhanh. Bạn có thể làm lại bất cứ lúc nào.
+          </p>
+        </section>
+        <div class="dialog-actions profile-actions">
+          <button type="button" class="secondary-button" id="profileBackButton">
+            Để sau</button
+          ><button type="button" id="profileNextButton">Bắt đầu 20 câu</button>
+        </div>
+        <div class="profile-error" id="profileError"></div>
+      </div>
+    </dialog>
+
+    <dialog id="conversationsDialog" class="conversations-dialog">
+      <div class="dialog-card conversations-dialog-card">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Những gì bạn đã trải qua</p>
+            <h3>Chuyện cũ vẫn ở đây</h3>
+          </div>
+          <button
+            type="button"
+            class="close-button"
+            id="closeConversationsButton"
+            aria-label="Đóng"
+          >
+            <svg><use href="#icon-close"></use></svg>
+          </button>
+        </div>
+        <p class="dialog-copy">
+          Mở lại một câu chuyện để nói tiếp, hoặc bắt đầu một chuyện mới.
+        </p>
+        <div class="conversation-toolbar">
+          <button
+            type="button"
+            class="new-conversation-button"
+            id="newConversationButton"
+          >
+            <svg><use href="#icon-plus"></use></svg>
+            <span>Cuộc trò chuyện mới</span>
+          </button>
+          <label class="conversation-search">
+            <span class="sr-only">Tìm cuộc trò chuyện</span>
+            <input
+              id="conversationSearchInput"
+              type="search"
+              placeholder="Tìm trong chuyện cũ..."
+            />
+          </label>
+        </div>
+        <div class="conversation-list" id="conversationList"></div>
+        <div class="conversation-empty" id="conversationEmpty" hidden>
+          <span class="conversation-empty-icon"
+            ><svg><use href="#icon-history"></use></svg
+          ></span>
+          <strong>Chưa có chuyện nào được lưu</strong>
+          <p>
+            Khi bạn gửi tin nhắn đầu tiên, cuộc trò chuyện sẽ tự xuất hiện ở
+            đây.
+          </p>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="renameConversationDialog" class="rename-conversation-dialog">
+      <div class="dialog-card">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Đổi tên</p>
+            <h3>Đặt tên cho câu chuyện này</h3>
+          </div>
+          <button
+            type="button"
+            class="close-button"
+            id="closeRenameConversationButton"
+            aria-label="Đóng"
+          >
+            <svg><use href="#icon-close"></use></svg>
+          </button>
+        </div>
+        <input
+          class="rename-conversation-input"
+          id="renameConversationInput"
+          maxlength="80"
+        />
+        <div class="dialog-actions">
+          <button
+            type="button"
+            class="secondary-button"
+            id="cancelRenameConversationButton"
+          >
+            Hủy
+          </button>
+          <button type="button" id="saveRenameConversationButton">
+            Lưu tên
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="billingDialog" class="billing-dialog">
+      <div class="dialog-card billing-dialog-card">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow" id="billingEyebrow">Lượt trò chuyện</p>
+            <h3 id="billingTitle">Chọn gói phù hợp với bạn</h3>
+          </div>
+          <button
+            type="button"
+            class="close-button"
+            id="closeBillingButton"
+            aria-label="Đóng"
+          >
+            <svg><use href="#icon-close"></use></svg>
+          </button>
+        </div>
+        <div class="billing-balance" id="billingBalance">
+          <span>Hiện có</span>
+          <strong id="billingBalanceText">Đang tải...</strong>
+        </div>
+        <div class="billing-tabs" role="tablist">
+          <button type="button" class="active" data-billing-tab="topups">Mua lượt</button>
+          <button type="button" data-billing-tab="monthly">Gói tháng</button>
+        </div>
+        <div class="billing-plan-grid" id="billingTopupPlans" data-billing-panel="topups"></div>
+        <div class="billing-plan-grid" id="billingMonthlyPlans" data-billing-panel="monthly" hidden></div>
+        <div class="billing-note-list" id="billingNotes"></div>
+        <p class="billing-status" id="billingStatus"></p>
+      </div>
+    </dialog>
+
+    <dialog id="accountDialog">
+      <div class="dialog-card account-dialog-card">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Tài khoản</p>
+            <h3 id="accountDisplayName">Bạn</h3>
+          </div>
+          <button
+            type="button"
+            class="close-button"
+            id="closeAccountButton"
+            aria-label="Đóng"
+          >
+            <svg><use href="#icon-close"></use></svg>
+          </button>
+        </div>
+        <div class="account-summary">
+          <span class="account-avatar-large" id="accountInitialLarge">B</span>
+          <div>
+            <strong id="accountUsername">@ban</strong
+            ><span id="accountEmail">email@example.com</span>
+          </div>
+        </div>
+        <div class="account-quota-card">
+          <span>Số lượt hiện có</span>
+          <strong id="accountQuotaText">Đang tải...</strong>
+        </div>
+        <div class="account-actions">
+          <button
+            type="button"
+            class="secondary-button account-billing"
+            id="accountBillingButton"
+          >
+            <svg><use href="#icon-plus"></use></svg>Nạp lượt
+          </button>
+          <button
+            type="button"
+            class="secondary-button account-logout"
+            id="logoutButton"
+          >
+            <svg><use href="#icon-logout"></use></svg>Đăng xuất
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      window.APP_CONFIG = {
+        brandName: {{ brand_name|tojson }},
+        brandTagline: {{ brand_tagline|tojson }},
+        freeMessageLimit: {{ free_message_limit|tojson }},
+        freeDailyLimit: {{ free_daily_limit|tojson }}
+      };
+    </script>
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </body>
+</html>

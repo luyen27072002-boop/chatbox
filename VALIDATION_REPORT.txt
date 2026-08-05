@@ -1,0 +1,14 @@
+VALIDATION REPORT - V13
+
+Đã kiểm tra:
+- Python AST/compile: OK
+- Tất cả file JSON: OK
+- Frontend có đủ 7 persona: OK
+- Backend nhận và xác thực response_style: OK
+- Database không ghi đè persona đã lưu về Luyện: OK
+- Thứ tự bộ chọn: Ngôn ngữ -> Giọng -> Xưng hô: OK
+- Persona examples: 36 mẫu, đủ 6 persona ngoài Luyện x 3 mode x 2 giọng: OK
+- Dataset Luyện nhiều lượt: 54 lượt: OK
+- Prompt inject đúng persona đang chọn: OK
+
+Chưa chạy được pytest/Flask hoàn chỉnh trong môi trường đóng gói vì môi trường không có Flask và không thể tải package từ internet. Cú pháp và cấu trúc đã được kiểm tra tĩnh; chạy `pytest -q` sau khi cài requirements trên máy đích.

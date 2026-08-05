@@ -1,0 +1,10 @@
+GÓC NHỎ CUỘC SỐNG V13
+
+- Mở khóa đủ 7 persona ở frontend, backend và database.
+- Lưu persona người dùng chọn, không tự ghi đè về Luyện.
+- Giữ bộ chọn Nhẹ nhàng / Thực tế giữa ngôn ngữ và xưng hô.
+- Luyện dùng 54 lượt dataset hội thoại nhiều lượt.
+- 6 persona còn lại có 36 ví dụ test: đủ 3 mode × 2 giọng.
+- Thêm personas.json để mỗi persona có góc nhìn và nhịp nói riêng.
+- Prompt phân tách rõ Mode / Persona / Giọng.
+- Demo mode cũng trả lời khác nhau theo persona, không chỉ khác tone.
