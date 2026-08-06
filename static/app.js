@@ -951,7 +951,7 @@ async function openSession() {
   localStorage.setItem("oday_tone_style", state.toneStyle);
   applySavedControls();
   renderAccount();
-  updateUsage(data.used_today, data.daily_limit);
+  updateUsage(data.quota || { daily_used: data.used_today, daily_limit: data.daily_limit });
 }
 
 function clearRenderedMessages() {
@@ -1496,7 +1496,7 @@ async function sendMessage() {
       true,
       data.response_style || state.responseStyle,
     );
-    updateUsage(data.used_today, data.daily_limit);
+    updateUsage(data.quota || { daily_used: data.used_today, daily_limit: data.daily_limit });
     setStatus(
       data.safety_route ? localeText().statuses.safetyPriority : "",
     );
@@ -1581,11 +1581,44 @@ function scrollToBottom() {
     els.messages.scrollTop = els.messages.scrollHeight;
   });
 }
-function updateUsage(used, limit) {
+function updateUsage(quotaOrUsed, legacyLimit) {
+  const quota =
+    quotaOrUsed && typeof quotaOrUsed === "object"
+      ? quotaOrUsed
+      : {
+          daily_used: quotaOrUsed,
+          daily_limit: legacyLimit,
+        };
+
+  const fallbackLimit = Number(window.APP_CONFIG?.dailyLimit || 3);
+  const used = Number.isFinite(Number(quota.daily_used))
+    ? Number(quota.daily_used)
+    : 0;
+  const limit = Number.isFinite(Number(quota.daily_limit))
+    ? Number(quota.daily_limit)
+    : fallbackLimit;
+
   state.usedToday = used;
   state.dailyLimit = limit;
+
+  if (quota.permanent_test) {
+    els.usage.textContent = "Không giới hạn";
+    setText("#usageSuffix", "");
+    return;
+  }
+
+  if (quota.unlimited_active) {
+    const remaining = Number(quota.unlimited_daily_remaining);
+    els.usage.textContent =
+      Number.isFinite(remaining) && remaining > 0
+        ? `${remaining} lượt còn lại`
+        : "Không giới hạn";
+    setText("#usageSuffix", "");
+    return;
+  }
+
   els.usage.textContent = `${used}/${limit}`;
-  setText('#usageSuffix', localeText().usageSuffix);
+  setText("#usageSuffix", localeText().usageSuffix);
 }
 function setStatus(text, isError = false) {
   els.status.textContent = text || "";

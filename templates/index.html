@@ -55,7 +55,7 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}"
+      href="{{ url_for('static', filename='styles.css') }}?v=22.5"
     />
   </head>
   <body data-persona="luyen">
@@ -1004,6 +1004,6 @@
         dailyLimit: {{ daily_limit|tojson }}
       };
     </script>
-    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='app.js') }}?v=22.5" defer></script>
   </body>
 </html>
