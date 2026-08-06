@@ -27,28 +27,7 @@ const TONE_OPTIONS = {
 const uiText = {
   vi: {
     brandTagline: "Nơi bạn là chính mình.",
-    auth: {
-      kicker: "Ở đây không cần phải tỏ ra ổn",
-      title: "Có chuyện thì cứ kể.",
-      desc: "Một cuộc trò chuyện riêng, nhớ được câu chuyện của bạn và biết lúc nào nên nghe, lúc nào nên nói thẳng.",
-      bubbleUser: "Dạo này mình thấy mệt mà không biết nói với ai.",
-      bubbleBot: "Ừ, kể từ đoạn làm bạn nặng đầu nhất đi.",
-      loginTab: "Đăng nhập",
-      registerTab: "Tạo tài khoản",
-      loginTitle: "Chào mừng quay lại",
-      loginDesc: "Câu chuyện cũ vẫn ở đúng chỗ.",
-      loginId: "Tên đăng nhập hoặc email",
-      password: "Mật khẩu",
-      remember: "Giữ đăng nhập trên máy này",
-      loginButton: "Vào không gian của tôi",
-      registerTitle: "Tạo một góc riêng",
-      registerDesc: "Mỗi tài khoản có lịch sử và phần ghi nhớ riêng.",
-      displayName: "Tên hiển thị",
-      username: "Tên đăng nhập",
-      email: "Email",
-      confirmPassword: "Nhập lại mật khẩu",
-      registerButton: "Tạo tài khoản",
-    },
+    auth: { kicker: "Một tài khoản cho học tập, sự nghiệp và cuộc sống", title: "Bắt đầu từ nơi bạn đang cần.", desc: "Luyện ngoại ngữ, chuẩn bị CV, tìm việc phù hợp và giữ một góc trò chuyện riêng — tất cả trong cùng một tài khoản.", bubbleUser: "", bubbleBot: "", loginTab: "Đăng nhập", registerTab: "Tạo tài khoản", loginTitle: "Chào mừng quay lại", loginDesc: "Đăng nhập để tiếp tục hành trình của bạn.", loginId: "Tên đăng nhập hoặc email", password: "Mật khẩu", remember: "Giữ đăng nhập trên máy này", loginButton: "Vào Mở Lối", registerTitle: "Tạo tài khoản", registerDesc: "Một tài khoản dùng chung cho học tập, sự nghiệp và cuộc sống.", displayName: "Tên hiển thị", username: "Tên đăng nhập", email: "Email", confirmPassword: "Nhập lại mật khẩu", registerButton: "Tạo tài khoản", languageLabel: "Ngôn ngữ", features: { language: { title: "Ngoại ngữ nhập vai", desc: "Học qua tình huống thực tế" }, cv: { title: "CV & phỏng vấn", desc: "Chuẩn bị hồ sơ tự tin hơn" }, jobs: { title: "Tìm việc phù hợp", desc: "Định hướng cơ hội rõ hơn" }, life: { title: "Trò chuyện & nhật ký", desc: "Giữ góc riêng của bạn" } } },
     needsLabel: { minh_ban: "Bạn đang cần gì?", tao_may: "Mày đang cần gì?" },
     hearFromLabel: { minh_ban: "Bạn muốn nghe từ ai?", tao_may: "Mày muốn nghe từ ai?" },
     personalityLabel: { minh_ban: "Tính cách của bạn", tao_may: "Tính cách của mày" },
@@ -118,7 +97,7 @@ const uiText = {
   },
   en: {
     brandTagline: "A quiet corner where you can be yourself.",
-    auth: { kicker: "You don't have to pretend you're okay here", title: "If you need to talk, talk.", desc: "A private conversation that remembers your story and knows when to listen and when to be direct.", bubbleUser: "Lately I've felt tired and I don't know who to talk to.", bubbleBot: "Yeah, start with the part that's weighing on you the most.", loginTab: "Sign in", registerTab: "Create account", loginTitle: "Welcome back", loginDesc: "Your old conversations are still here.", loginId: "Username or email", password: "Password", remember: "Keep me signed in on this device", loginButton: "Enter chat", registerTitle: "Create your own corner", registerDesc: "Each account has its own history and memory.", displayName: "Display name", username: "Username", email: "Email", confirmPassword: "Confirm password", registerButton: "Create account" },
+    auth: { kicker: "One account for learning, career, and life", title: "Start where you need help today.", desc: "Practice languages, prepare your CV, find suitable jobs, and keep a private chat corner — all with one account.", bubbleUser: "", bubbleBot: "", loginTab: "Sign in", registerTab: "Create account", loginTitle: "Welcome back", loginDesc: "Sign in to continue your journey.", loginId: "Username or email", password: "Password", remember: "Keep me signed in on this device", loginButton: "Enter Mo Loi", registerTitle: "Create account", registerDesc: "One shared account for learning, career, and life.", displayName: "Display name", username: "Username", email: "Email", confirmPassword: "Confirm password", registerButton: "Create account", languageLabel: "Language", features: { language: { title: "Role-play languages", desc: "Learn through real situations" }, cv: { title: "CV & interview", desc: "Prepare your profile with confidence" }, jobs: { title: "Find matching jobs", desc: "See opportunities more clearly" }, life: { title: "Chat & journal", desc: "Keep your own private corner" } } },
     needsLabel: "What do you need right now?",
     hearFromLabel: "Who do you want to hear from?",
     personalityLabel: "Your personality",
@@ -146,7 +125,7 @@ const uiText = {
   },
   "zh-Hans": {
     brandTagline: "一个可以做自己的小角落。",
-    auth: { kicker: "在这里，你不用假装自己没事", title: "有话就说吧。", desc: "这是一个私密的对话空间，会记得你的故事，也知道什么时候该倾听，什么时候该说得直接一点。", bubbleUser: "最近我很累，但不知道该跟谁说。", bubbleBot: "嗯，那就先从最让你心烦的那部分开始说。", loginTab: "登录", registerTab: "创建账号", loginTitle: "欢迎回来", loginDesc: "你以前的对话都还在。", loginId: "用户名或邮箱", password: "密码", remember: "在这台设备上保持登录", loginButton: "进入对话", registerTitle: "创建你的专属角落", registerDesc: "每个账号都有独立的记录与记忆。", displayName: "显示名称", username: "用户名", email: "邮箱", confirmPassword: "确认密码", registerButton: "创建账号" },
+    auth: { kicker: "一个账号连接学习、职涯与生活", title: "从你现在最需要的地方开始。", desc: "练习语言、准备履历、寻找合适工作，并保留一个私人的聊天角落——全部都在同一个账号里。", bubbleUser: "", bubbleBot: "", loginTab: "登录", registerTab: "创建账号", loginTitle: "欢迎回来", loginDesc: "登录后继续你的旅程。", loginId: "用户名或邮箱", password: "密码", remember: "在这台设备上保持登录", loginButton: "进入 Mở Lối", registerTitle: "创建账号", registerDesc: "一个账号共用学习、职涯与生活空间。", displayName: "显示名称", username: "用户名", email: "邮箱", confirmPassword: "确认密码", registerButton: "创建账号", languageLabel: "语言", features: { language: { title: "情境语言学习", desc: "透过真实情境学习" }, cv: { title: "履历与面试", desc: "更有自信地准备资料" }, jobs: { title: "适合的工作", desc: "更清楚地看见机会" }, life: { title: "聊天与日记", desc: "保留属于你的私人角落" } } },
     needsLabel: "你现在最需要什么？",
     hearFromLabel: "你想听谁的回应？",
     personalityLabel: "你的性格",
@@ -174,7 +153,7 @@ const uiText = {
   },
   "zh-Hant": {
     brandTagline: "一個可以做自己的小角落。",
-    auth: { kicker: "在這裡，你不用假裝自己沒事", title: "有話就說吧。", desc: "這是一個私密的對話空間，會記得你的故事，也知道什麼時候該傾聽，什麼時候該說得直接一點。", bubbleUser: "最近我很累，但不知道該跟誰說。", bubbleBot: "嗯，那就先從最讓你煩的那部分開始說。", loginTab: "登入", registerTab: "建立帳號", loginTitle: "歡迎回來", loginDesc: "你以前的對話都還在。", loginId: "使用者名稱或電子郵件", password: "密碼", remember: "在這台裝置上保持登入", loginButton: "進入對話", registerTitle: "建立你的專屬角落", registerDesc: "每個帳號都有自己的記錄與記憶。", displayName: "顯示名稱", username: "使用者名稱", email: "電子郵件", confirmPassword: "確認密碼", registerButton: "建立帳號" },
+    auth: { kicker: "一個帳號連結學習、職涯與生活", title: "從你現在最需要的地方開始。", desc: "練習語言、準備履歷、尋找適合工作，並保留一個私人的聊天角落——全部都在同一個帳號裡。", bubbleUser: "", bubbleBot: "", loginTab: "登入", registerTab: "建立帳號", loginTitle: "歡迎回來", loginDesc: "登入後繼續你的旅程。", loginId: "使用者名稱或電子郵件", password: "密碼", remember: "在這台裝置上保持登入", loginButton: "進入 Mở Lối", registerTitle: "建立帳號", registerDesc: "一個帳號共用學習、職涯與生活空間。", displayName: "顯示名稱", username: "使用者名稱", email: "電子郵件", confirmPassword: "確認密碼", registerButton: "建立帳號", languageLabel: "語言", features: { language: { title: "情境語言學習", desc: "透過真實情境學習" }, cv: { title: "履歷與面試", desc: "更有自信地準備資料" }, jobs: { title: "適合的工作", desc: "更清楚地看見機會" }, life: { title: "聊天與日記", desc: "保留屬於你的私人角落" } } },
     needsLabel: "你現在最需要什麼？",
     hearFromLabel: "你想聽誰的回應？",
     personalityLabel: "你的性格",
@@ -434,6 +413,16 @@ function applyUIText() {
   });
   setText('#registerForm .remember-row span', t.auth.remember);
   setText('#registerForm button[type="submit"]', t.auth.registerButton);
+  setText('#authLanguageLabel', t.auth.languageLabel || 'Language');
+  const authFeatures = t.auth.features || {};
+  setText('#authFeatureLangTitle', authFeatures.language?.title || 'Role-play languages');
+  setText('#authFeatureLangDesc', authFeatures.language?.desc || 'Learn through real situations');
+  setText('#authFeatureCvTitle', authFeatures.cv?.title || 'CV & interview');
+  setText('#authFeatureCvDesc', authFeatures.cv?.desc || 'Prepare your profile with confidence');
+  setText('#authFeatureJobsTitle', authFeatures.jobs?.title || 'Find matching jobs');
+  setText('#authFeatureJobsDesc', authFeatures.jobs?.desc || 'See opportunities more clearly');
+  setText('#authFeatureLifeTitle', authFeatures.life?.title || 'Chat & journal');
+  setText('#authFeatureLifeDesc', authFeatures.life?.desc || 'Keep your own private corner');
 
   const sectionLabels = document.querySelectorAll('.panel-section .section-label');
   if (sectionLabels[0]) sectionLabels[0].textContent = pickText(t.needsLabel);

@@ -247,33 +247,55 @@
       <div class="auth-backdrop auth-backdrop-two"></div>
       <div class="auth-shell">
         <section class="auth-story">
-          <div class="auth-brand">
-            <span class="brand-logo-shell brand-logo-shell-large">
-              <img
-                class="brand-logo-image"
-                src="{{ url_for('static', filename='icons/brand-logo.png') }}"
-                alt="{{ brand_name }}"
-              />
-            </span>
-            <div>
-              <strong>{{ brand_name }}</strong><span id="authBrandTagline">{{ brand_tagline }}</span>
+          <div class="auth-story-top">
+            <div class="auth-brand">
+              <span class="brand-logo-shell brand-logo-shell-large">
+                <img
+                  class="brand-logo-image"
+                  src="{{ url_for('static', filename='icons/brand-logo.png') }}"
+                  alt="{{ brand_name }}"
+                />
+              </span>
+              <div>
+                <strong>{{ brand_name }}</strong><span id="authBrandTagline">{{ brand_tagline }}</span>
+              </div>
             </div>
           </div>
           <div class="auth-copy">
-            <p class="auth-kicker">Ở đây không cần phải tỏ ra ổn</p>
-            <h1>Có chuyện thì cứ kể.</h1>
+            <p class="auth-kicker">Một tài khoản cho học tập, sự nghiệp và cuộc sống</p>
+            <h1>Bắt đầu từ nơi bạn đang cần.</h1>
             <p>
-              Một cuộc trò chuyện riêng, nhớ được câu chuyện của bạn và biết lúc
-              nào nên nghe, lúc nào nên nói thẳng.
+              Luyện ngoại ngữ, chuẩn bị CV, tìm việc phù hợp và giữ một góc trò chuyện riêng — tất cả trong cùng một tài khoản.
             </p>
           </div>
-          <div class="auth-bubbles" aria-hidden="true">
-            <div class="auth-bubble auth-bubble-user">
-              Dạo này mình thấy mệt mà không biết nói với ai.
+          <div class="auth-highlights" aria-hidden="true">
+            <div class="auth-highlight-card">
+              <span class="auth-highlight-icon tint-green"><svg><use href="#icon-globe"></use></svg></span>
+              <div>
+                <strong id="authFeatureLangTitle">Ngoại ngữ nhập vai</strong>
+                <small id="authFeatureLangDesc">Học qua tình huống thực tế</small>
+              </div>
             </div>
-            <div class="auth-bubble auth-bubble-friend">
-              <span class="mini-cheeks"></span>Ừ, kể từ đoạn làm bạn nặng đầu
-              nhất đi.
+            <div class="auth-highlight-card">
+              <span class="auth-highlight-icon tint-gold"><svg><use href="#icon-briefcase"></use></svg></span>
+              <div>
+                <strong id="authFeatureCvTitle">CV &amp; phỏng vấn</strong>
+                <small id="authFeatureCvDesc">Chuẩn bị hồ sơ tự tin hơn</small>
+              </div>
+            </div>
+            <div class="auth-highlight-card">
+              <span class="auth-highlight-icon tint-blue"><svg><use href="#icon-route"></use></svg></span>
+              <div>
+                <strong id="authFeatureJobsTitle">Tìm việc phù hợp</strong>
+                <small id="authFeatureJobsDesc">Định hướng cơ hội rõ hơn</small>
+              </div>
+            </div>
+            <div class="auth-highlight-card">
+              <span class="auth-highlight-icon tint-peach"><svg><use href="#icon-book"></use></svg></span>
+              <div>
+                <strong id="authFeatureLifeTitle">Trò chuyện &amp; nhật ký</strong>
+                <small id="authFeatureLifeDesc">Giữ góc riêng của bạn</small>
+              </div>
             </div>
           </div>
         </section>
@@ -291,7 +313,7 @@
           <form class="auth-form active" id="loginForm" data-auth-panel="login">
             <div class="auth-form-heading">
               <h2>Chào mừng quay lại</h2>
-              <p>Câu chuyện cũ vẫn ở đúng chỗ.</p>
+              <p>Đăng nhập để tiếp tục hành trình của bạn.</p>
             </div>
             <label
               ><span>Tên đăng nhập hoặc email</span
@@ -311,15 +333,15 @@
               ></label
             >
             <button class="primary-auth-button" type="submit">
-              Vào không gian của tôi
+              Vào Mở Lối
             </button>
             <p class="auth-status" id="loginStatus"></p>
           </form>
 
           <form class="auth-form" id="registerForm" data-auth-panel="register">
             <div class="auth-form-heading">
-              <h2>Tạo một góc riêng</h2>
-              <p>Mỗi tài khoản có lịch sử và phần ghi nhớ riêng.</p>
+              <h2>Tạo tài khoản</h2>
+              <p>Một tài khoản dùng chung cho học tập, sự nghiệp và cuộc sống.</p>
             </div>
             <div class="auth-two-columns">
               <label
@@ -381,7 +403,7 @@
       </div>
     </section>
 
-    <div class="page-glow glow-one"></div>
+    <div class="page-glow glow-one"></div></div>
     <div class="page-glow glow-two"></div>
 
     <div class="app-shell" id="appView" hidden>
