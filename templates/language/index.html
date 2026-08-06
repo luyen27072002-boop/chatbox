@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f0e5">
+  <title data-i18n-title="language.meta.title">Ngoại ngữ nhập vai — Mở Lối</title>
+  <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='language/style.css') }}">
+</head>
+<body data-page="language">
+<header class="topbar">
+  <div class="topbar-left">
+    <a class="back-platform" href="/home"><span data-i18n="language.back">← Trang chính</span></a>
+    <a class="brand" href="/language"><span><img src="{{ url_for('static', filename='icons/brand-logo.png') }}" alt="" class="brand-logo-small"></span><div><strong>Mở Lối</strong><small data-i18n="language.brand.subtitle">Ngoại ngữ nhập vai</small></div></a>
+  </div>
+  <div class="topbar-actions"><label class="lang-global"><span data-i18n="common.language">Ngôn ngữ</span><select class="global-language-select"><option value="vi">Tiếng Việt</option><option value="en">English</option><option value="zh">繁體中文</option></select></label>
+    <span class="user-name">{{ display_name }}</span>
+    <b id="quotaBadge">Đang tải lượt…</b>
+    <b id="modeBadge">{{ 'TRỰC TUYẾN' if ai_configured else 'DEMO DỰ PHÒNG' }}</b>
+    <button id="howBtn" type="button">Cách chơi</button>
+  </div>
+</header>
+
+<main>
+  <section id="landing" class="landing">
+    <div class="hero-copy">
+      <small>VISUAL ROLE-PLAY LANGUAGE GAME</small>
+      <h1>Đừng chỉ học thuộc.<br><mark>Vào vai rồi phản xạ.</mark></h1>
+      <p>Chọn tình huống, tự trả lời bằng ngoại ngữ và hoàn thành nhiệm vụ trước khi câu chuyện biến thành meme.</p>
+      <div class="setup">
+        <label><span data-i18n="language.label.language">Ngôn ngữ</span><select id="languageSelect"><option value="all">Tất cả</option><option value="en">English</option><option value="zh">繁體中文</option></select></label>
+        <label><span data-i18n="language.label.level">Trình độ</span><select id="levelSelect"><option>A1-A2</option><option>B1-B2</option><option>C1-C2</option></select></label>
+        <label><span data-i18n="language.label.humor">Độ tấu hài</span><select id="humorSelect"><option value="chaotic-meme">Meme hỗn loạn</option><option value="deadpan">Tỉnh bơ vô tri</option><option value="dramatic">Drama quá mức</option><option value="gentle">Tếu nhưng hiền</option></select></label>
+      </div>
+    </div>
+    <div class="hero-card">
+      <img src="{{ url_for('static', filename='language/images/hero.svg') }}" alt="Minh hoạ game">
+      <div><small>NPC</small><strong>“Do you want coffee… or are you proposing to the menu?”</strong></div>
+    </div>
+
+    <div class="section-head"><div><small>CHỌN VŨ TRỤ GẶP NẠN</small><h2>Cảnh nhập vai</h2></div><p>Mỗi cảnh có nhiệm vụ, nhân vật và mức độ mất kiểm soát riêng.</p></div>
+    <div id="sceneGrid" class="scene-grid">
+      {% for scene in scenes %}
+      <article class="scene-card" data-language="{{ scene.language }}">
+        <div class="scene-image"><img src="{{ url_for('static', filename='language/images/' + scene.image) }}" alt="{{ scene.title }}"><span>{{ 'ENGLISH' if scene.language == 'en' else '繁體中文' }}</span><em>{{ scene.difficulty }}</em></div>
+        <div class="scene-body"><b class="icon">{{ scene.icon }}</b><h3>{{ scene.title }}</h3><p>{{ scene.subtitle }}</p><div class="mission"><small>NHIỆM VỤ</small>{{ scene.mission }}</div><button class="playBtn" type="button" data-scene="{{ scene.id }}">Nhập vai ngay →</button></div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <section class="recent-section">
+      <div class="section-head recent-head"><div><small>LỊCH SỬ CỦA TÀI KHOẢN</small><h2>Phiên gần đây</h2></div><p>Điểm và tiến độ đã được lưu vào tài khoản, không mất khi server khởi động lại.</p></div>
+      <div id="recentSessions" class="recent-grid"><div class="empty-recent">Chưa có phiên nào. Chọn một cảnh phía trên để bắt đầu.</div></div>
+    </section>
+  </section>
+
+  <section id="game" class="game hidden">
+    <div class="toolbar"><button id="backBtn" type="button">← Chọn cảnh khác</button><div class="stats"><div><small>ĐIỂM</small><b id="scoreText">50</b></div><div><small>TIẾN ĐỘ</small><div class="bar"><i id="progressBar"></i></div></div></div></div>
+    <div class="game-layout">
+      <aside class="panel mission-panel">
+        <small>NHIỆM VỤ HIỆN TẠI</small><h2 id="missionTitle"></h2><p id="missionText"></p>
+        <div class="role"><small>VAI CỦA MÀY</small><b id="playerRole"></b></div>
+        <small>PHAO CỨU SINH</small><div id="vocabChips" class="chips"></div>
+        <button id="hintBtn" class="pink" type="button">Tung phao gợi ý</button><p class="micro">Không trừ lượt. Lòng tự trọng thì có thể.</p>
+        <div id="completionBox" class="completion hidden"><strong>Hoàn thành cảnh</strong><p>Điểm và tiến độ đã được lưu.</p><button id="newSceneBtn" type="button">Chọn cảnh mới</button></div>
+      </aside>
+      <section id="stage" class="stage">
+        <img id="sceneBackground" class="bg" src="" alt=""><div class="shade"></div><div id="effectLayer"></div>
+        <img id="characterImage" class="character" src="" alt="Nhân vật">
+        <div class="dialogue"><div id="narratorBox" class="narrator hidden"></div><div class="speaker"><b id="speakerName"></b><span id="moodLabel">ĐANG ĐỢI MÀY NÓI</span></div><div id="dialogueText"></div></div>
+      </section>
+      <aside class="panel chat-panel">
+        <div class="chat-head"><div><small>HỘI THOẠI TRỰC TIẾP</small><b id="chatCharacter"></b></div><span id="liveLabel">● SẴN SÀNG</span></div>
+        <div id="chatLog" class="chat-log"></div>
+        <div id="feedbackBox" class="feedback hidden"><small>GỠ RỐI SAU CÁNH GÀ</small><p id="feedbackText"></p><button id="useSuggestionBtn" type="button"></button></div>
+        <form id="replyForm"><textarea id="replyInput" maxlength="500" placeholder="Nhập câu trả lời trong vai của mày…"></textarea><div><span id="charCount">0/500</span><button id="sendBtn" type="submit">Nói câu này</button></div></form>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<dialog id="howDialog"><button id="closeHowBtn" class="close" type="button">×</button><small>CÁCH CHƠI</small><h2>Không có đáp án ABCD.</h2><p>Mày tự nhập câu trả lời. Nhân vật giữ vai, phản ứng trước rồi mới góp ý ngắn bằng tiếng Việt.</p><ol><li>Chọn cảnh.</li><li>Trả lời bằng ngôn ngữ đang học.</li><li>Mỗi phản hồi dùng một lượt chung của tài khoản.</li><li>Hoàn thành thanh nhiệm vụ.</li></ol></dialog>
+
+<script>
+  window.LANGUAGE_SCENES = {{ scenes|tojson }};
+  window.LANGUAGE_IMAGE_BASE = {{ url_for('static', filename='language/images/')|tojson }};
+</script>
+<script src="{{ url_for('static', filename='global_i18n.js') }}" defer></script>
+<script src="{{ url_for('static', filename='language/app.js') }}" defer></script>
+</body>
+</html>

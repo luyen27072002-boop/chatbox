@@ -211,9 +211,11 @@ def _render_life_page(template_name: str, page_name: str):
 
 @bp.get("/life")
 def life_home():
-    # Tương thích link V21/V22 cũ nhưng đưa mỗi chức năng sang một trang riêng.
-    requested = str(request.args.get("tab", "timeline")).strip().lower()
-    return redirect(LIFE_PAGE_ROUTES.get(requested, "/timeline"))
+    # /life là cổng riêng của nhóm Trò chuyện & Nhật ký. Link cũ có tab vẫn hoạt động.
+    requested = str(request.args.get("tab", "")).strip().lower()
+    if requested:
+        return redirect(LIFE_PAGE_ROUTES.get(requested, "/life-space"))
+    return redirect("/life-space")
 
 
 @bp.get("/story")

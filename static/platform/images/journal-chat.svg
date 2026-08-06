@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-labelledby="title desc">
+  <title id="title">Minh hoạ trò chuyện và nhật ký</title>
+  <desc id="desc">Một cuốn nhật ký mở, bong bóng trò chuyện và người đang viết.</desc>
+  <rect width="640" height="460" rx="42" fill="#EAF5EC"/>
+  <circle cx="532" cy="92" r="76" fill="#CDECD5"/>
+  <rect x="60" y="40" width="118" height="72" rx="24" fill="#FFD76B"/>
+  <g transform="translate(57 81)">
+    <path d="M22 43c97-35 176-20 226 18v258c-58-36-137-46-226-10Z" fill="#FFFFFF" stroke="#173928" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M474 43c-97-35-176-20-226 18v258c58-36 137-46 226-10Z" fill="#FFFFFF" stroke="#173928" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M248 61v258" stroke="#173928" stroke-width="9"/>
+    <path d="M61 105h130M61 142h151M61 179h112M292 105h130M292 142h151M292 179h105" stroke="#B9CEC0" stroke-width="11" stroke-linecap="round"/>
+    <path d="M61 233c44 12 82 6 123-9" fill="none" stroke="#6C8DFF" stroke-width="12" stroke-linecap="round"/>
+    <path d="M291 235c46-18 93-18 139 0" fill="none" stroke="#77BF8B" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(388 23)">
+    <path d="M31 24h141a24 24 0 0 1 24 24v69a24 24 0 0 1-24 24h-60l-39 31 8-31H31A24 24 0 0 1 7 117V48a24 24 0 0 1 24-24Z" fill="#FFB36B" stroke="#173928" stroke-width="8"/>
+    <path d="M45 70h106M45 103h70" stroke="#173928" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(432 241)">
+    <circle cx="78" cy="60" r="55" fill="#EEC7A8" stroke="#173928" stroke-width="9"/>
+    <path d="M27 56c3-51 82-71 107-24-24 1-45-4-66 10-16 10-26 14-41 14Z" fill="#173928"/>
+    <path d="M2 202v-56c0-50 40-90 90-90s90 40 90 90v56" fill="#6C8DFF" stroke="#173928" stroke-width="9"/>
+    <path d="M66 76h2M104 76h2" stroke="#173928" stroke-width="11" stroke-linecap="round"/>
+    <path d="M67 104c13 8 26 8 39 0" fill="none" stroke="#173928" stroke-width="6" stroke-linecap="round"/>
+    <path d="M29 164l-71-15" stroke="#173928" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

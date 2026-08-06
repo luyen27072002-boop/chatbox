@@ -1,6 +1,8 @@
 (() => {
   "use strict";
 
+  const t = (key, vars = {}) => window.ML_I18N?.t ? window.ML_I18N.t(key, vars) : key;
+
   const excerpt = (value, max = 120) => {
     const clean = String(value || "").replace(/\s+/g, " ").trim();
     return clean.length > max ? `${clean.slice(0, max).trim()}…` : clean;
@@ -85,12 +87,12 @@
       document.getElementById("homeAccountInitial").textContent = initial;
       document.getElementById("homeAccountInitialLarge").textContent = initial;
       document.getElementById("homeMenuName").textContent = name;
-      document.getElementById("homeMenuUsername").textContent = username ? `@${username}` : "Tài khoản đã đăng nhập";
+      document.getElementById("homeMenuUsername").textContent = username ? `@${username}` : t("common.loggedIn");
       document.getElementById("homeMenuEmail").textContent = email;
       document.getElementById("homeAccountQuota").textContent = status;
     } catch {
-      document.getElementById("homeAccountStatus").textContent = "Đã đăng nhập";
-      document.getElementById("homeAccountQuota").textContent = "Không tải được trạng thái lượt lúc này.";
+      document.getElementById("homeAccountStatus").textContent = t("common.loggedIn");
+      document.getElementById("homeAccountQuota").textContent = t("common.loadingQuotaLong");
     }
   }
 

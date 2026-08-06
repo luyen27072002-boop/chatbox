@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-labelledby="title desc">
+  <title id="title">Minh hoạ CV và phỏng vấn</title>
+  <desc id="desc">Một hồ sơ CV, thẻ điểm và người chuẩn bị phỏng vấn.</desc>
+  <rect width="640" height="460" rx="42" fill="#E8F4EA"/>
+  <rect x="28" y="28" width="180" height="112" rx="28" fill="#C9ECD1"/>
+  <rect x="466" y="34" width="128" height="92" rx="26" fill="#FFD76B"/>
+  <g transform="translate(82 48)">
+    <rect x="0" y="0" width="296" height="362" rx="24" fill="#FFFFFF" stroke="#173928" stroke-width="10"/>
+    <rect x="34" y="34" width="78" height="78" rx="22" fill="#AEE2BC"/>
+    <circle cx="73" cy="59" r="19" fill="#EFC4A7"/>
+    <path d="M49 92c8-24 41-24 48 0" fill="#2F744F"/>
+    <rect x="132" y="42" width="116" height="16" rx="8" fill="#2F744F"/>
+    <rect x="132" y="72" width="92" height="11" rx="6" fill="#8299E8"/>
+    <rect x="34" y="147" width="220" height="14" rx="7" fill="#D9E9DD"/>
+    <rect x="34" y="177" width="191" height="14" rx="7" fill="#D9E9DD"/>
+    <rect x="34" y="225" width="101" height="14" rx="7" fill="#FFB36B"/>
+    <rect x="34" y="256" width="226" height="14" rx="7" fill="#D9E9DD"/>
+    <rect x="34" y="287" width="188" height="14" rx="7" fill="#D9E9DD"/>
+    <rect x="34" y="318" width="150" height="14" rx="7" fill="#D9E9DD"/>
+  </g>
+  <g transform="translate(350 120)">
+    <path d="M40 282v-99c0-64 50-116 112-116s112 52 112 116v99" fill="#6C8DFF" stroke="#173928" stroke-width="10"/>
+    <circle cx="152" cy="88" r="67" fill="#F2C6A6" stroke="#173928" stroke-width="10"/>
+    <path d="M89 84c4-67 104-88 132-26-30-1-54-5-80 11-19 11-33 17-52 19Z" fill="#173928"/>
+    <circle cx="130" cy="100" r="7" fill="#173928"/>
+    <circle cx="175" cy="100" r="7" fill="#173928"/>
+    <path d="M131 130c13 10 30 10 43 0" fill="none" stroke="#173928" stroke-width="7" stroke-linecap="round"/>
+    <path d="M95 221h112" stroke="#173928" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(366 42)">
+    <rect width="176" height="78" rx="22" fill="#D7FF72" stroke="#173928" stroke-width="8"/>
+    <text x="88" y="31" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#173928">ĐỘ PHÙ HỢP</text>
+    <text x="88" y="59" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="900" fill="#173928">86%</text>
+  </g>
+</svg>

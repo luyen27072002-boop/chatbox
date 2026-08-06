@@ -373,3 +373,33 @@ a { color: inherit; }
     width: min(340px, calc(100vw - 40px));
   }
 }
+
+/* Nền tảng đa chức năng: khu Cuộc sống có thêm nút quay lại trang chính. */
+.home-account > .home-chat-link:first-child {
+  background: rgba(255, 253, 247, .92);
+  color: var(--green-dark);
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 760px) {
+  .home-account {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    gap: 9px;
+  }
+  .home-account-wrap {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .home-account-button {
+    width: 100%;
+    max-width: none;
+  }
+  .home-account-menu {
+    width: 100%;
+  }
+}
+
+.home-language{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fffdf8;color:var(--muted);font-size:12px;font-weight:800}.home-language select{border:0;background:transparent;color:var(--ink);font-weight:800;outline:none}
+@media (max-width:760px){.home-language{order:-1}}

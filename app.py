@@ -60,6 +60,7 @@ from prompting import (
 )
 from safety import urgent_fallback_detected, urgent_support_message
 from life_features import register_life_features
+from language_game import register_language_game
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
@@ -73,8 +74,8 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
     app.config.from_mapping(
         SECRET_KEY=os.getenv("SECRET_KEY", "dev-change-me"),
         DATABASE=os.getenv("DATABASE_PATH", str(BASE_DIR / "app.db")),
-        BRAND_NAME=os.getenv("BRAND_NAME", "Góc nhỏ cuộc sống"),
-        BRAND_TAGLINE=os.getenv("BRAND_TAGLINE", "Một chỗ để nói thật lòng."),
+        BRAND_NAME=os.getenv("PLATFORM_BRAND_NAME", "Mở Lối"),
+        BRAND_TAGLINE=os.getenv("PLATFORM_BRAND_TAGLINE", "Học tập · Sự nghiệp · Cuộc sống"),
         OPENAI_API_KEY=os.getenv("OPENAI_API_KEY", ""),
         OPENAI_MODEL=os.getenv("OPENAI_MODEL", "gpt-5.6-luna"),
         FREE_WELCOME_LIMIT=int(os.getenv("FREE_WELCOME_LIMIT", os.getenv("FREE_MESSAGE_LIMIT", "10"))),
@@ -94,6 +95,7 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         PAYOS_API_KEY=os.getenv("PAYOS_API_KEY", ""),
         PAYOS_CHECKSUM_KEY=os.getenv("PAYOS_CHECKSUM_KEY", ""),
         PAYMENT_ALLOW_LOCALHOST=os.getenv("PAYMENT_ALLOW_LOCALHOST", "false").lower() in {"1", "true", "yes"},
+        LANGUAGE_MAX_MESSAGE_CHARS=int(os.getenv("LANGUAGE_MAX_MESSAGE_CHARS", "500")),
     )
     if test_config:
         app.config.update(test_config)
@@ -114,6 +116,7 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
     )
 
     register_life_features(app)
+    register_language_game(app)
 
     @app.teardown_request
     def _refund_unfinished_quota(_exc):
@@ -159,6 +162,41 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
             display_name=account.get("display_name", "Bạn"),
         )
 
+    @app.get("/life-space")
+    def life_space():
+        user_id = _require_user_id()
+        if not user_id:
+            return redirect("/")
+        account = get_account(user_id) or {}
+        return render_template(
+            "life_hub.html",
+            display_name=account.get("display_name", "Bạn"),
+        )
+
+    @app.get("/career/cv")
+    def career_cv():
+        user_id = _require_user_id()
+        if not user_id:
+            return redirect("/")
+        account = get_account(user_id) or {}
+        return render_template(
+            "career_coming_soon.html",
+            display_name=account.get("display_name", "Bạn"),
+            career_mode="cv",
+        )
+
+    @app.get("/career/jobs")
+    def career_jobs():
+        user_id = _require_user_id()
+        if not user_id:
+            return redirect("/")
+        account = get_account(user_id) or {}
+        return render_template(
+            "career_coming_soon.html",
+            display_name=account.get("display_name", "Bạn"),
+            career_mode="jobs",
+        )
+
     @app.get("/chat")
     def chat_page():
         user_id = _require_user_id()
@@ -178,6 +216,7 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 "conversation_engine": "v5-billing-payos",
                 "payment_configured": bool(payment_service.is_configured),
                 "auth": "session",
+                "modules": ["language", "career", "life"],
             }
         )
 

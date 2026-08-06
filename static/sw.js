@@ -1,8 +1,14 @@
-const CACHE = "goc-nho-static-v12";
+const CACHE = "oday-platform-static-v23";
 const STATIC_ASSETS = [
   "/",
   "/static/styles.css",
   "/static/app.js",
+  "/static/platform.css",
+  "/static/platform.js",
+  "/static/home.css",
+  "/static/home.js",
+  "/static/language/style.css",
+  "/static/language/app.js",
   "/static/manifest.json",
   "/static/icons/brand-logo.png",
   "/static/icons/favicon.ico",

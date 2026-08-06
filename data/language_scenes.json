@@ -1,0 +1,169 @@
+[
+  {
+    "id": "coffee-chaos",
+    "language": "en",
+    "difficulty": "A1–B1",
+    "icon": "☕",
+    "title": "Coffee Shop: Accidental Proposal",
+    "subtitle": "Gọi một cốc cà phê mà không vô tình cầu hôn nhân viên.",
+    "image": "scene-cafe.svg",
+    "background": "bg-cafe.svg",
+    "character": {"happy": "jamie-happy.svg", "confused": "jamie-confused.svg", "shocked": "jamie-shocked.svg"},
+    "npc_name": "Jamie — Barista",
+    "npc_role": "A barista who has seen too many strange customers today.",
+    "player_role": "Một sinh viên buồn ngủ cần gọi cà phê.",
+    "mission": "Gọi đúng đồ uống, kích cỡ và cách dùng tại quán hoặc mang đi.",
+    "opening": "Hi! What can I get for you today? Please don't say ‘your heart.’ That happened twice already.",
+    "vocab": ["I'd like…", "medium", "no sugar", "less ice", "to go", "please"],
+    "suggestions": [
+      "I'd like a medium latte with less ice, please.",
+      "Can I get an iced coffee with no sugar to go?",
+      "A small cappuccino, please. I'll have it here."
+    ],
+    "expected": {
+      "keywords": ["coffee", "latte", "cappuccino", "tea", "small", "medium", "large"],
+      "polite": ["please", "i'd like", "can i get", "could i have"]
+    },
+    "demo_replies": {
+      "great": [
+        "Perfect. One medium latte with less ice. Finally, a customer who is not trying to marry the menu.",
+        "Got it! Your coffee is on the way. The espresso machine has accepted your request without filing a complaint."
+      ],
+      "okay": [
+        "I think I understand. Which size would you like—or should I roll a dice and let destiny choose?",
+        "Sure… probably. Is that for here or to go? The cup is having an identity crisis."
+      ],
+      "chaos": [
+        "Sir, this is a coffee shop. The banana cannot be your legal representative.",
+        "I understood exactly three emotions and zero drink orders. Try again before the espresso machine explodes."
+      ]
+    },
+    "narrator": {
+      "great": ["Jamie nods. Somewhere, a language teacher sheds one proud tear.", "The coffee machine purrs like a financially stable cat."],
+      "okay": ["Jamie smiles politely while their brain displays a loading icon.", "A suspicious silence spreads across the café."],
+      "chaos": ["BOÀNG. Your dignity respawns at the nearest checkpoint.", "A customer in the corner quietly updates their emergency contact."]
+    },
+    "feedback": {
+      "great": ["Câu rõ ý, lịch sự và đủ thông tin để nhân viên xử lý ngay.", "Tốt: có món, kích cỡ và yêu cầu cụ thể."],
+      "okay": ["Người nghe hiểu gần đúng, nhưng còn thiếu kích cỡ hoặc cách dùng.", "Ý chính ổn; thêm ‘please’ và một thông tin cụ thể sẽ tự nhiên hơn."],
+      "chaos": ["Câu chưa thành yêu cầu gọi đồ rõ ràng. Dùng mẫu ‘I'd like…’ trước.", "Mày vừa mở một nhánh cốt truyện không liên quan. Quay lại món uống nhé."]
+    },
+    "ending_replies": ["Mission complete! Here is your coffee. It contains caffeine, hope, and absolutely no accidental engagement.", "You did it. The drink is correct, the barista is calm, and nobody called security."],
+    "ending_narrator": ["NHIỆM VỤ HOÀN THÀNH. Mày rời quán với cà phê và danh dự còn nguyên.", "Achievement unlocked: Functional Human Before 9 A.M."]
+  },
+  {
+    "id": "interview-disaster",
+    "language": "en",
+    "difficulty": "B1–C1",
+    "icon": "💼",
+    "title": "Job Interview: Corporate Boss Battle",
+    "subtitle": "Thuyết phục nhà tuyển dụng rằng mày có năng lực và không phải ba con gấu trong áo khoác.",
+    "image": "scene-interview.svg",
+    "background": "bg-interview.svg",
+    "character": {"happy": "morgan-happy.svg", "confused": "morgan-confused.svg", "shocked": "morgan-shocked.svg"},
+    "npc_name": "Morgan — Recruiter",
+    "npc_role": "A sharp recruiter with dry humor and a suspiciously powerful eyebrow.",
+    "player_role": "Ứng viên đang cố vượt qua cuộc phỏng vấn.",
+    "mission": "Giới thiệu bản thân, mô tả một điểm mạnh và trả lời lý do muốn nhận công việc.",
+    "opening": "Welcome. Tell me about yourself—and please don't start with your zodiac sign.",
+    "vocab": ["I have experience in…", "My strength is…", "I learned…", "I’m interested in…", "I can contribute…"],
+    "suggestions": [
+      "I’m a student with experience in team projects, and I enjoy solving practical problems.",
+      "My strength is learning quickly and staying calm when a project changes.",
+      "I’m interested in this role because I can contribute while developing my skills."
+    ],
+    "expected": {
+      "keywords": ["experience", "student", "project", "skill", "strength", "learn", "interested", "contribute"],
+      "polite": ["thank", "glad", "appreciate", "i'm"]
+    },
+    "demo_replies": {
+      "great": ["Good answer. Clear, relevant, and no astrology. My eyebrow has lowered by three millimeters.", "That sounds practical. Tell me about one project where things went wrong and you didn't disappear into the forest."],
+      "okay": ["Interesting. Give me one specific example. ‘I work hard’ is currently fighting 400 identical CVs.", "I see the idea, but it needs evidence: one project, one action, one result."],
+      "chaos": ["You listed sleeping as a leadership skill. Bold. Legally confusing, but bold.", "That answer has escaped the interview and is now living independently in another genre."]
+    },
+    "narrator": {
+      "great": ["Morgan writes a note. It is not a drawing of a warning sign.", "The office plant seems impressed."],
+      "okay": ["Morgan's eyebrow enters evaluation mode.", "The silence now has a LinkedIn account."],
+      "chaos": ["A printer jams out of second-hand embarrassment.", "BOÀNG. Corporate damage detected."]
+    },
+    "feedback": {
+      "great": ["Câu trả lời liên quan và nghe giống người thật, không giống mẫu CV.", "Tốt: mày kết nối kinh nghiệm với giá trị cho công việc."],
+      "okay": ["Thêm một ví dụ cụ thể để câu trả lời có sức nặng.", "Tránh từ chung chung; dùng cấu trúc hành động và kết quả."],
+      "chaos": ["Quay lại ba phần: mày là ai, đã làm gì, có thể đóng góp gì.", "Câu trả lời đang lệch khỏi mục tiêu phỏng vấn."]
+    },
+    "ending_replies": ["That concludes the interview. You communicated clearly, and my eyebrow is now neutral.", "You survived. HR will contact you—unless the office plant hires you first."],
+    "ending_narrator": ["Boss battle cleared: Corporate Communication.", "Mày bước ra ngoài như một ứng viên và không còn như một nghi phạm."]
+  },
+  {
+    "id": "convenience-store",
+    "language": "zh",
+    "difficulty": "A1–B1",
+    "icon": "🍙",
+    "title": "便利商店：微波危機",
+    "subtitle": "Mua đồ ăn đêm và trả lời nhân viên trước khi cơm nắm tiến hoá.",
+    "image": "scene-store.svg",
+    "background": "bg-store.svg",
+    "character": {"happy": "xiaoyu-happy.svg", "confused": "xiaoyu-confused.svg", "shocked": "xiaoyu-shocked.svg"},
+    "npc_name": "小宇 — 店員",
+    "npc_role": "一位值夜班、靠咖啡維持理智的便利商店店員。",
+    "player_role": "Một sinh viên mua đồ ăn khuya ở cửa hàng tiện lợi.",
+    "mission": "Hỏi giá, trả lời có cần hâm nóng và chọn phương thức thanh toán.",
+    "opening": "晚上好！這個飯糰要微波嗎？先說好，微波太久它可能會得到超能力。",
+    "vocab": ["請問多少錢？", "要微波", "不用袋子", "刷卡", "付現", "謝謝"],
+    "suggestions": ["要微波，謝謝。請問一共多少錢？", "不用微波，也不用袋子。我刷卡。", "請幫我微波一下，我付現，謝謝。"],
+    "expected": {"keywords": ["微波", "多少錢", "刷卡", "付現", "袋子", "不用", "要"], "polite": ["請", "謝謝", "麻煩"]},
+    "demo_replies": {
+      "great": ["好的，幫你微波。總共八十五元。飯糰目前還沒有超能力，請放心。", "沒問題，不用袋子、刷卡。你拯救了地球，也拯救了我的夜班心情。"],
+      "okay": ["好的……所以要微波嗎？飯糰正在等待命運的判決。", "我大概懂了。你要刷卡還是付現？收銀機已經開始猜拳了。"],
+      "chaos": ["你剛剛說要去火星。這裡只有微波爐，距離可能不太夠。", "等等，飯糰不是你的主管。請再說一次你要不要微波。"]
+    },
+    "narrator": {
+      "great": ["店員熟練地操作微波爐。世界暫時安全。", "收銀機發出認可的嗶聲。"],
+      "okay": ["店員的眼神出現了一個小小的問號。", "飯糰安靜地觀看這場語言危機。"],
+      "chaos": ["BOÀNG。你的中文自信掉在了關東煮旁邊。", "後面的客人開始研究逃生路線。"]
+    },
+    "feedback": {
+      "great": ["Câu rõ ràng, có hành động và cách thanh toán.", "Tốt: dùng từ lịch sự và đủ thông tin."],
+      "okay": ["Người nghe hiểu một phần; nói rõ có cần hâm nóng và trả bằng gì.", "Thêm ‘請’ hoặc ‘謝謝’ để tự nhiên hơn."],
+      "chaos": ["Quay lại câu hỏi chính: 要不要微波？", "Câu trả lời đang đi du lịch khỏi cửa hàng tiện lợi."]
+    },
+    "ending_replies": ["完成！這是你的飯糰和發票。今晚沒有任何食物獲得超能力。", "任務成功。你買到宵夜，店員保住理智，微波爐也平安下班。"],
+    "ending_narrator": ["任務完成：便利商店生存術。", "Mày rời cửa hàng với đồ ăn nóng và tiếng Trung chưa nổ tung."]
+  },
+  {
+    "id": "professor-meeting",
+    "language": "zh",
+    "difficulty": "B1–C1",
+    "icon": "🧪",
+    "title": "教授辦公室：進度報告求生",
+    "subtitle": "Báo cáo tiến độ mà không dùng câu huyền thoại: ‘Em gần xong rồi ạ.’",
+    "image": "scene-professor.svg",
+    "background": "bg-professor.svg",
+    "character": {"happy": "professor-happy.svg", "confused": "professor-confused.svg", "shocked": "professor-shocked.svg"},
+    "npc_name": "陳教授",
+    "npc_role": "一位嚴格但幽默、能聞到模糊報告的教授。",
+    "player_role": "Một sinh viên đang báo cáo tiến độ dự án.",
+    "mission": "Nói phần đã hoàn thành, vấn đề đang gặp và kế hoạch tiếp theo.",
+    "opening": "你說「快做完了」已經兩個星期了。今天我們來定義一下，你的「快」到底是哪一個時區？",
+    "vocab": ["目前已經完成…", "遇到的問題是…", "原因可能是…", "下一步我會…", "預計…以前完成"],
+    "suggestions": ["目前已經完成基本測試，遇到的問題是結果不穩定，下一步我會先檢查資料和參數。", "目前進度大約百分之六十，主要問題是硬體延遲，預計星期五以前完成測試。", "我已經找到可能的原因，下一步會做三組對照實驗來確認。"],
+    "expected": {"keywords": ["完成", "問題", "原因", "下一步", "預計", "測試", "進度", "資料"], "polite": ["老師", "教授", "我會", "目前"]},
+    "demo_replies": {
+      "great": ["這次很清楚：完成項目、問題和下一步都有。很好，我的血壓也比較清楚了。", "可以。請把三組測試的結果整理成表格，下次不要只帶著希望來。"],
+      "okay": ["方向有了，但還不夠具體。你說的「很快」是星期五，還是下一個文明？", "請給我一個日期和一個可以檢查的結果，不要讓進度只存在你的心裡。"],
+      "chaos": ["你說資料在跟你作對。資料目前沒有律師，所以請提供更科學的證據。", "這不是進度報告，這是一首關於拖延的現代詩。再試一次。"]
+    },
+    "narrator": {
+      "great": ["教授點頭。實驗室的空氣突然可以呼吸了。", "白板上的公式停止了嘲笑。"],
+      "okay": ["教授拿起筆。那支筆看起來很有攻擊性。", "時鐘的滴答聲變得像審判。"],
+      "chaos": ["BOÀNG。你的「快做完」被送去重新定義。", "隔壁實驗室也感受到了尷尬的震波。"]
+    },
+    "feedback": {
+      "great": ["Cấu trúc báo cáo rõ: đã làm, vấn đề, bước tiếp theo.", "Tốt: có nội dung kiểm chứng được và thời hạn."],
+      "okay": ["Cần thêm con số, thời hạn hoặc đầu ra cụ thể.", "Đừng chỉ nói ‘sẽ làm’; hãy nói làm gì và khi nào xong."],
+      "chaos": ["Dùng khung: 目前完成…／問題是…／下一步…", "Câu trả lời chưa phải báo cáo tiến độ có thể kiểm tra."]
+    },
+    "ending_replies": ["好，這次報告合格。下星期帶結果來，不要只帶咖啡和樂觀。", "任務完成。教授相信你的計畫了，大概有七成。這已經是學術奇蹟。"],
+    "ending_narrator": ["任務完成：教授辦公室生還者。", "Mày bước ra khỏi phòng. Deadline vẫn còn, nhưng danh dự đã được cứu."]
+  }
+]

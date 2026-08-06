@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 560" role="img" aria-labelledby="title desc">
+  <title id="title">Minh hoạ học ngoại ngữ nhập vai</title>
+  <desc id="desc">Hai người đang trò chuyện cùng các thẻ hội thoại và tai nghe.</desc>
+  <rect width="760" height="560" rx="48" fill="#E8F4EA"/>
+  <circle cx="650" cy="86" r="92" fill="#BFE8C8"/>
+  <circle cx="105" cy="478" r="135" fill="#D8F2DD"/>
+  <rect x="86" y="58" width="132" height="78" rx="24" fill="#FFD76B"/>
+  <path d="M90 430C190 350 286 360 390 430C492 499 598 493 712 406V560H90Z" fill="#2F744F" opacity=".14"/>
+  <g fill="none" stroke="#173928" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M144 158h196a30 30 0 0 1 30 30v79a30 30 0 0 1-30 30H226l-55 41 13-41h-40a30 30 0 0 1-30-30v-79a30 30 0 0 1 30-30Z" fill="#FFFFFF"/>
+    <path d="M420 116h193a29 29 0 0 1 29 29v69a29 29 0 0 1-29 29h-77l-46 36 9-36h-79a29 29 0 0 1-29-29v-69a29 29 0 0 1 29-29Z" fill="#8299E8"/>
+    <path d="M162 206h158M162 241h111"/>
+    <path d="M438 164h150M438 198h98" stroke="#FFFFFF"/>
+  </g>
+  <g transform="translate(116 286)">
+    <path d="M64 221v-86c0-55 44-100 99-100s100 45 100 100v86" fill="#6CCB95" stroke="#173928" stroke-width="10"/>
+    <circle cx="163" cy="90" r="67" fill="#F4CBAE" stroke="#173928" stroke-width="10"/>
+    <path d="M101 82c5-62 111-84 137-17-29-8-64-20-92-3-15 10-28 18-45 20Z" fill="#173928"/>
+    <circle cx="139" cy="98" r="7" fill="#173928"/>
+    <circle cx="189" cy="98" r="7" fill="#173928"/>
+    <path d="M141 127c14 12 31 12 45 0" fill="none" stroke="#173928" stroke-width="7" stroke-linecap="round"/>
+    <path d="M92 76c-31 11-37 50-20 76M233 75c31 11 37 50 20 76" fill="none" stroke="#173928" stroke-width="12" stroke-linecap="round"/>
+    <rect x="51" y="116" width="37" height="69" rx="18" fill="#FFFFFF" stroke="#173928" stroke-width="9"/>
+    <rect x="238" y="116" width="37" height="69" rx="18" fill="#FFFFFF" stroke="#173928" stroke-width="9"/>
+  </g>
+  <g transform="translate(426 289)">
+    <rect x="0" y="0" width="232" height="195" rx="32" fill="#FFFFFF" stroke="#173928" stroke-width="10"/>
+    <circle cx="66" cy="66" r="31" fill="#EFD1B6" stroke="#173928" stroke-width="8"/>
+    <path d="M36 60c4-30 55-42 63-7-16-2-30-4-43 5-7 5-12 5-20 2Z" fill="#173928"/>
+    <rect x="113" y="40" width="76" height="18" rx="9" fill="#FFB36B"/>
+    <rect x="113" y="72" width="55" height="13" rx="7" fill="#8299E8"/>
+    <rect x="38" y="125" width="154" height="18" rx="9" fill="#DCECE0"/>
+    <rect x="38" y="158" width="105" height="18" rx="9" fill="#B9EBC6"/>
+  </g>
+  <g transform="translate(609 314)">
+    <circle cx="41" cy="41" r="41" fill="#D7FF72" stroke="#173928" stroke-width="8"/>
+    <path d="M23 42l12 12 25-29" fill="none" stroke="#173928" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

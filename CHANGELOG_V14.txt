@@ -1,9 +1,0 @@
-GÓC NHỎ V14 — API ONLY
-
-- Xóa DEMO_MODE khỏi cấu hình và giao diện.
-- Không còn tự trả câu mẫu khi thiếu API key.
-- Mặc định dùng gpt-5.6-luna; vẫn đổi được bằng OPENAI_MODEL.
-- Thiếu key sẽ trả lỗi rõ ràng.
-- /health hiển thị api_configured và model.
-- Giữ nguyên 7 persona, 2 giọng, 3 mode và toàn bộ dataset V13.
-- Test nội bộ dùng stub riêng, không liên quan luồng chạy thật.

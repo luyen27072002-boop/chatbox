@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eef4ef">
+  <title data-i18n-title="{{ 'career.cv.meta.title' if career_mode == 'cv' else 'career.jobs.meta.title' }}">{{ 'CV & phỏng vấn' if career_mode == 'cv' else 'Tìm kiếm việc làm' }} — Mở Lối</title>
+  <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='career.css') }}">
+</head>
+<body data-page="career">
+  <div class="career-shell">
+    <header>
+      <a href="/home" data-i18n="common.backHome">← Trang chính</a>
+      <div class="career-top-right"><label class="career-language"><span data-i18n="common.language">Ngôn ngữ</span><select class="global-language-select"><option value="vi">Tiếng Việt</option><option value="en">English</option><option value="zh">繁體中文</option></select></label><div class="user-chip">{{ display_name }}</div></div>
+    </header>
+
+    {% if career_mode == 'cv' %}
+    <main>
+      <p class="eyebrow">KHU SỰ NGHIỆP · ĐANG PHÁT TRIỂN</p>
+      <h1 data-i18n="career.cv.title">CV và luyện phỏng vấn</h1>
+      <p class="lead">Khu này đã được giữ chỗ trong hệ thống chung. Khi bắt đầu phát triển, nó sẽ dùng lại tài khoản, số lượt và hồ sơ hiện tại.</p>
+      <section class="feature-list">
+        <article><span>01</span><h2>Tạo và sửa CV</h2><p>Nhập thông tin một lần, viết lại kinh nghiệm rõ hơn và xuất thành mẫu chuyên nghiệp.</p></article>
+        <article><span>02</span><h2>CV tiếng Anh</h2><p>Không dịch máy từng chữ; chuyển nội dung theo cách nhà tuyển dụng thực sự đọc.</p></article>
+        <article><span>03</span><h2>Luyện phỏng vấn</h2><p>Tạo câu hỏi dựa trên chính CV và công việc người dùng muốn ứng tuyển.</p></article>
+      </section>
+    </main>
+    {% else %}
+    <main>
+      <p class="eyebrow">KHU SỰ NGHIỆP · ĐANG PHÁT TRIỂN</p>
+      <h1 data-i18n="career.jobs.title">Tìm kiếm việc làm</h1>
+      <p class="lead">Bản đầu sẽ tập trung vào việc lọc và đánh giá tin tuyển dụng, thay vì cố xây một mạng xã hội nghề nghiệp khổng lồ.</p>
+      <section class="feature-list">
+        <article><span>01</span><h2>Lọc tin phù hợp</h2><p>Chuẩn hóa vị trí, địa điểm, kinh nghiệm và loại bỏ tin trùng hoặc hết hạn.</p></article>
+        <article><span>02</span><h2>So với CV</h2><p>Chỉ ra mức phù hợp, kỹ năng còn thiếu và điều cần sửa trước khi nộp hồ sơ.</p></article>
+        <article><span>03</span><h2>Theo dõi ứng tuyển</h2><p>Lưu công việc, hạn nộp, tình trạng hồ sơ và bước tiếp theo.</p></article>
+      </section>
+    </main>
+    {% endif %}
+
+    <footer><a href="/language">Trong lúc chờ, thử một cảnh ngoại ngữ →</a></footer>
+  </div>
+  <script src="{{ url_for('static', filename='global_i18n.js') }}" defer></script>
+</body>
+</html>

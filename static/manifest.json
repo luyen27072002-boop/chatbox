@@ -1,13 +1,13 @@
 {
-  "name": "Góc nhỏ cuộc sống",
-  "short_name": "Góc nhỏ",
-  "description": "Một góc nhỏ để kể chuyện, được lắng nghe và cùng nhau nghĩ rõ hơn.",
+  "name": "Mở Lối — Học tập, sự nghiệp và cuộc sống",
+  "short_name": "Mở Lối",
+  "description": "Một nền tảng cho ngoại ngữ, sự nghiệp, trò chuyện và nhật ký.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#fff8f3",
-  "theme_color": "#f9f1ef",
+  "background_color": "#edf4ee",
+  "theme_color": "#315f49",
   "icons": [
     {
       "src": "/static/icons/icon-192.png",

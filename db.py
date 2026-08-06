@@ -41,6 +41,14 @@ def _column_names(db: sqlite3.Connection, table: str) -> set[str]:
     return {str(row["name"]) for row in rows}
 
 
+def _table_exists(db: sqlite3.Connection, table: str) -> bool:
+    row = db.execute(
+        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?",
+        (table,),
+    ).fetchone()
+    return row is not None
+
+
 def init_db() -> None:
     db = get_db()
     db.executescript(
@@ -782,11 +790,31 @@ def increment_usage(user_id: str) -> None:
 
 
 def clear_user_data(user_id: str) -> None:
-    """Xóa dữ liệu trò chuyện/hồ sơ nhưng giữ tài khoản đăng nhập."""
+    """Xóa nội dung cá nhân ở mọi module nhưng giữ tài khoản và lịch sử thanh toán."""
     db = get_db()
     db.execute("DELETE FROM messages WHERE user_id = ?", (user_id,))
     db.execute("DELETE FROM conversations WHERE user_id = ?", (user_id,))
-    # Không xóa usage_daily: xóa lịch sử không được làm mới 10 lượt miễn phí.
+
+    # Các bảng module được tạo sau init_db, vì vậy phải kiểm tra trước để bản cũ
+    # vẫn nâng cấp an toàn khi người dùng chép file đè lên dự án hiện tại.
+    if _table_exists(db, "language_messages"):
+        db.execute("DELETE FROM language_messages WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "language_sessions"):
+        db.execute("DELETE FROM language_sessions WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "rehearsal_messages") and _table_exists(db, "rehearsal_sessions"):
+        db.execute(
+            "DELETE FROM rehearsal_messages WHERE session_id IN "
+            "(SELECT id FROM rehearsal_sessions WHERE user_id = ?)",
+            (user_id,),
+        )
+    if _table_exists(db, "rehearsal_sessions"):
+        db.execute("DELETE FROM rehearsal_sessions WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "life_threads"):
+        db.execute("DELETE FROM life_threads WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "life_entries"):
+        db.execute("DELETE FROM life_entries WHERE user_id = ?", (user_id,))
+
+    # Không xóa usage/quota/payment: xóa lịch sử không được làm mới lượt miễn phí.
     now = _now()
     default_json = json.dumps(default_profile(), ensure_ascii=False)
     db.execute(
@@ -803,15 +831,48 @@ def clear_user_data(user_id: str) -> None:
 
 
 def export_user_data(user_id: str) -> dict[str, Any]:
+    db = get_db()
     conversations = list_conversations(user_id, limit=300)
     for conversation in conversations:
         conversation["messages"] = get_history(
             user_id, str(conversation["id"]), limit=10000
         )
+
+    language_sessions: list[dict[str, Any]] = []
+    if _table_exists(db, "language_sessions"):
+        rows = db.execute(
+            "SELECT * FROM language_sessions WHERE user_id = ? ORDER BY updated_at DESC",
+            (user_id,),
+        ).fetchall()
+        for row in rows:
+            item = dict(row)
+            if _table_exists(db, "language_messages"):
+                item["messages"] = [
+                    dict(message)
+                    for message in db.execute(
+                        "SELECT * FROM language_messages WHERE session_id = ? ORDER BY id ASC",
+                        (item["id"],),
+                    ).fetchall()
+                ]
+            language_sessions.append(item)
+
+    life_data: dict[str, list[dict[str, Any]]] = {}
+    for table in ("life_entries", "life_threads", "rehearsal_sessions"):
+        if _table_exists(db, table):
+            life_data[table] = [
+                dict(row)
+                for row in db.execute(
+                    f"SELECT * FROM {table} WHERE user_id = ? ORDER BY created_at DESC",
+                    (user_id,),
+                ).fetchall()
+            ]
+
     return {
         "account": get_account(user_id),
         "user": get_or_create_user(user_id),
         "conversations": conversations,
+        "language_sessions": language_sessions,
+        "life": life_data,
     }
 
 

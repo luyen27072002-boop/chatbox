@@ -3,56 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#edf4ee">
-  <title>Không gian của tôi</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+  <meta name="theme-color" content="#eaf5ec">
+  <title data-i18n-title="home.meta.title">Mở Lối — Học tập, sự nghiệp và cuộc sống</title>
+  <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='platform.css') }}">
 </head>
-<body>
-  <div class="home-bg" aria-hidden="true">
-    <span class="mist mist-one"></span>
-    <span class="mist mist-two"></span>
-    <span class="leaf-shadow leaf-one"></span>
-    <span class="leaf-shadow leaf-two"></span>
+<body data-page="home">
+  <div class="platform-background" aria-hidden="true">
+    <span class="glow glow-one"></span>
+    <span class="glow glow-two"></span>
+    <span class="grid-lines"></span>
   </div>
 
-  <div class="home-shell">
-    <header class="home-topbar">
-      <a class="home-brand" href="/home" aria-label="Không gian của tôi">
-        <span class="home-logo"><img src="{{ url_for('static', filename='icons/brand-logo.png') }}" alt=""></span>
-        <span><strong>Góc nhỏ cuộc sống</strong><small>Không gian của riêng bạn</small></span>
+  <div class="platform-shell">
+    <header class="platform-topbar">
+      <a class="platform-brand" href="/home" aria-label="Mở Lối - Trang chủ">
+        <span class="brand-mark brand-mark-image" aria-hidden="true"><img src="{{ url_for('static', filename='icons/brand-logo.png') }}" alt=""></span>
+        <span class="brand-copy"><strong>Mở Lối</strong><small data-i18n="home.brand.tagline">Học tập · Sự nghiệp · Cuộc sống</small></span>
       </a>
-      <div class="home-account">
-        <a class="quiet-link home-chat-link" href="/chat">Mở trò chuyện</a>
-        <div class="home-account-wrap">
-          <button
-            class="home-account-button"
-            id="homeAccountButton"
-            type="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-            aria-controls="homeAccountMenu"
-          >
-            <span class="home-account-avatar" id="homeAccountInitial">{{ (display_name or 'B')[:1]|upper }}</span>
-            <span class="home-account-copy">
-              <strong id="homeAccountName">{{ display_name }}</strong>
-              <small id="homeAccountStatus">Đang tải trạng thái tài khoản…</small>
-            </span>
-            <span class="home-account-chevron" aria-hidden="true">⌄</span>
-          </button>
 
-          <div class="home-account-menu" id="homeAccountMenu" hidden>
-            <div class="home-account-menu-head">
-              <span class="home-account-avatar home-account-avatar-large" id="homeAccountInitialLarge">{{ (display_name or 'B')[:1]|upper }}</span>
-              <div>
-                <strong id="homeMenuName">{{ display_name }}</strong>
-                <span id="homeMenuUsername">Đang tải thông tin…</span>
-                <span id="homeMenuEmail"></span>
-              </div>
-            </div>
-            <div class="home-account-quota" id="homeAccountQuota">Đang kiểm tra số lượt hiện có…</div>
-            <div class="home-account-actions">
-              <a href="/chat">Vào trò chuyện</a>
-              <button id="homeLogoutButton" type="button">Đăng xuất</button>
+      <nav class="platform-nav" aria-label="Điều hướng chính">
+        <a href="/language" data-i18n="home.nav.language">Ngoại ngữ</a>
+        <a href="/career/cv" data-i18n="home.nav.cv">CV & phỏng vấn</a>
+        <a href="/career/jobs" data-i18n="home.nav.jobs">Tìm việc</a>
+        <a href="/life-space" data-i18n="home.nav.life">Trò chuyện & nhật ký</a>
+      </nav>
+
+      <div class="platform-controls">
+        <label class="platform-language">
+          <span data-i18n="common.language">Ngôn ngữ</span>
+          <select class="global-language-select" aria-label="Ngôn ngữ giao diện">
+            <option value="vi">Tiếng Việt</option>
+            <option value="en">English</option>
+            <option value="zh">繁體中文</option>
+          </select>
+        </label>
+
+        <div class="platform-account-wrap">
+          <button id="platformAccountButton" class="platform-account-button" type="button" aria-expanded="false" aria-controls="platformAccountMenu">
+            <span id="platformAccountInitial" class="account-avatar">{{ (display_name or 'B')[:1]|upper }}</span>
+            <span class="account-copy"><strong id="platformAccountName">{{ display_name }}</strong><small id="platformAccountStatus" data-i18n="common.loadingQuota">Đang tải số lượt…</small></span>
+            <span class="account-chevron" aria-hidden="true">⌄</span>
+          </button>
+          <div id="platformAccountMenu" class="platform-account-menu" hidden>
+            <strong id="platformMenuName">{{ display_name }}</strong>
+            <span id="platformMenuIdentity" data-i18n="common.loadingAccount">Đang tải tài khoản…</span>
+            <p id="platformMenuQuota" data-i18n="common.loadingQuotaLong">Đang kiểm tra số lượt hiện có…</p>
+            <div class="account-actions">
+              <a href="/chat" data-i18n="common.quickChat">Trò chuyện nhanh</a>
+              <button id="platformLogoutButton" type="button" data-i18n="common.logout">Đăng xuất</button>
             </div>
           </div>
         </div>
@@ -60,157 +59,90 @@
     </header>
 
     <main>
-      <section class="home-hero">
+      <section class="platform-hero">
         <div class="hero-copy">
-          <p class="eyebrow">Chậm lại một chút</p>
-          <h1>Hôm nay bạn muốn làm gì?</h1>
-          <p>Không cần bắt đầu bằng một câu chuyện hoàn chỉnh. Chọn đúng nơi với điều đang nằm trong lòng bạn.</p>
+          <p class="eyebrow" data-i18n="home.hero.eyebrow">Nền tảng phát triển dành cho người Việt trẻ</p>
+          <h1 data-i18n-html="home.hero.title">Học tốt hơn.<br>Đi làm tự tin hơn.</h1>
+          <div class="hero-actions">
+            <a class="primary-action" href="/language" data-i18n="home.hero.start">Bắt đầu miễn phí</a>
+            <a class="secondary-action" href="#products" data-i18n="home.hero.tools">Khám phá công cụ</a>
+          </div>
         </div>
-        <div class="hero-scene" aria-hidden="true">
-          <svg viewBox="0 0 520 260" role="img">
-            <defs>
-              <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#dbe9df"/>
-                <stop offset="1" stop-color="#f6eadb"/>
-              </linearGradient>
-              <linearGradient id="hill" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#6f987c"/>
-                <stop offset="1" stop-color="#456b59"/>
-              </linearGradient>
-            </defs>
-            <rect width="520" height="260" rx="34" fill="url(#sky)"/>
-            <circle cx="408" cy="66" r="28" fill="#fff7d9" opacity=".88"/>
-            <path d="M0 197C75 153 124 166 189 189C267 217 333 164 411 155C456 150 492 164 520 183V260H0Z" fill="#9bb8a2"/>
-            <path d="M0 218C80 188 139 193 204 219C274 247 358 188 431 192C468 194 495 206 520 219V260H0Z" fill="url(#hill)"/>
-            <path d="M260 260C268 224 283 207 312 187C338 169 363 159 386 147" fill="none" stroke="#f0dfc2" stroke-width="18" stroke-linecap="round" opacity=".9"/>
-            <g fill="#315847">
-              <path d="M93 184C75 155 76 126 99 96C103 124 104 153 93 184Z"/>
-              <path d="M116 191C115 157 129 132 155 116C146 145 134 170 116 191Z"/>
-              <path d="M76 198C50 181 38 158 42 132C57 154 69 175 76 198Z"/>
-            </g>
-            <g transform="translate(360 165)">
-              <rect x="-24" y="18" width="48" height="34" rx="11" fill="#f7f1e7"/>
-              <path d="M-14 18C-8 2 8 2 14 18" fill="none" stroke="#315847" stroke-width="5" stroke-linecap="round"/>
-              <circle cx="-7" cy="33" r="3" fill="#315847"/>
-              <circle cx="7" cy="33" r="3" fill="#315847"/>
-            </g>
-          </svg>
+
+        <div class="hero-collage" aria-label="Các công cụ trên Mở Lối">
+          <a class="hero-picture hero-picture-main" href="/language">
+            <img src="{{ url_for('static', filename='platform/images/language-hero.svg') }}" alt="Minh hoạ học ngoại ngữ nhập vai">
+            <span class="picture-label"><small data-i18n="home.picture.active">Đang hoạt động</small><strong data-i18n="home.picture.language">Ngoại ngữ nhập vai</strong></span>
+          </a>
+          <a class="hero-picture hero-picture-cv" href="/career/cv">
+            <img src="{{ url_for('static', filename='platform/images/cv-career.svg') }}" alt="Minh hoạ tạo CV và luyện phỏng vấn">
+            <span class="picture-label"><small data-i18n="home.picture.soon">Sắp ra mắt</small><strong data-i18n="home.picture.cv">CV & phỏng vấn</strong></span>
+          </a>
+          <a class="hero-picture hero-picture-jobs" href="/career/jobs">
+            <img src="{{ url_for('static', filename='platform/images/job-search.svg') }}" alt="Minh hoạ tìm kiếm việc làm phù hợp">
+            <span class="picture-label"><small data-i18n="home.picture.soon">Sắp ra mắt</small><strong data-i18n="home.picture.jobs">Tìm việc phù hợp</strong></span>
+          </a>
+          <a class="hero-picture hero-picture-life" href="/life-space">
+            <img src="{{ url_for('static', filename='platform/images/journal-chat.svg') }}" alt="Minh hoạ trò chuyện và viết nhật ký">
+            <span class="picture-label"><small data-i18n="home.picture.active">Đang hoạt động</small><strong data-i18n="home.picture.life">Trò chuyện & nhật ký</strong></span>
+          </a>
         </div>
       </section>
 
-      <section class="choice-section" aria-labelledby="choiceTitle">
+      <section id="products" class="product-section" aria-labelledby="productTitle">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Sáu cách để bắt đầu</p>
-            <h2 id="choiceTitle">Mỗi chức năng là một cánh cửa</h2>
+            <p class="eyebrow" data-i18n="home.products.eyebrow">Chọn đúng công cụ</p>
+            <h2 id="productTitle" data-i18n="home.products.title">Hôm nay bạn muốn bắt đầu từ đâu?</h2>
           </div>
-          <p>Không có chức năng chính hay phụ. Chọn thứ hợp với bạn lúc này.</p>
         </div>
 
-        <div class="feature-grid">
-          <a class="feature-card feature-chat" href="/chat">
-            <div class="feature-art">
-              <svg viewBox="0 0 360 190" aria-hidden="true">
-                <rect width="360" height="190" rx="26" fill="#dcebe1"/>
-                <path d="M0 150C70 112 119 120 168 144C229 174 286 116 360 122V190H0Z" fill="#89aa93"/>
-                <path d="M82 109c0-29 25-52 55-52h42c30 0 55 23 55 52s-25 52-55 52h-18l-22 20 3-20h-5c-30 0-55-23-55-52Z" fill="#fffdf7"/>
-                <circle cx="136" cy="108" r="5" fill="#4e705c"/><circle cx="159" cy="108" r="5" fill="#4e705c"/><circle cx="182" cy="108" r="5" fill="#4e705c"/>
-                <path d="M285 40c-15 26-17 50-7 75M286 55c17-17 31-20 42-13M280 79c-20-15-36-17-48-7" fill="none" stroke="#426b53" stroke-width="7" stroke-linecap="round"/>
-              </svg>
+        <div class="product-grid">
+          <a class="product-card product-ready" href="/language">
+            <div class="product-image"><img src="{{ url_for('static', filename='platform/images/language-hero.svg') }}" alt=""></div>
+            <div class="product-copy">
+              <div class="product-topline"><span>01</span><em data-i18n="home.card.ready">Đang hoạt động</em></div>
+              <h3 data-i18n="home.card.language.title">Ngoại ngữ cho sinh viên &amp; người đi làm</h3>
+              <p data-i18n="home.card.language.desc">Luyện phản xạ qua những tình huống có nhân vật, câu chuyện và phản hồi tức thì.</p>
+              <div class="product-meta"><span id="languageProgressText" data-i18n="home.dynamic.noSession">Chưa có phiên học nào</span><b data-i18n="home.card.language.cta">Mở ngay</b></div>
             </div>
-            <div class="feature-copy"><span class="feature-number">01</span><h3>Trò chuyện</h3><p>Kể trực tiếp với Luyện hoặc một góc nhìn khác.</p><span class="feature-action">Bắt đầu nói chuyện →</span></div>
           </a>
 
-          <a class="feature-card feature-story" href="/story">
-            <div class="feature-art">
-              <svg viewBox="0 0 360 190" aria-hidden="true">
-                <rect width="360" height="190" rx="26" fill="#edf1df"/>
-                <path d="M78 47h93c22 0 40 18 40 40v71H118c-22 0-40-18-40-40Z" fill="#fffdf7"/>
-                <path d="M282 47h-71v111h54c18 0 32-14 32-32V62c0-8-7-15-15-15Z" fill="#f6ead9"/>
-                <path d="M211 47v111" stroke="#c9b99f" stroke-width="3"/>
-                <path d="M99 79h76M99 98h89M99 117h67" stroke="#809480" stroke-width="5" stroke-linecap="round" opacity=".55"/>
-                <path d="M260 42c-4 30-19 47-44 54M257 59c18-10 30-9 39-1" fill="none" stroke="#55775f" stroke-width="7" stroke-linecap="round"/>
-              </svg>
+          <a class="product-card" href="/career/cv">
+            <div class="product-image"><img src="{{ url_for('static', filename='platform/images/cv-career.svg') }}" alt=""></div>
+            <div class="product-copy">
+              <div class="product-topline"><span>02</span><em class="building" data-i18n="home.card.building">Đang phát triển</em></div>
+              <h3 data-i18n="home.card.cv.title">CV & phỏng vấn</h3>
+              <p data-i18n="home.card.cv.desc">Viết hồ sơ rõ ràng hơn và chuẩn bị câu trả lời dựa trên chính kinh nghiệm của bạn.</p>
+              <div class="product-meta"><span data-i18n="home.card.cv.meta">Sẽ dùng chung tài khoản</span><b data-i18n="home.card.cv.cta">Xem trước</b></div>
             </div>
-            <div class="feature-copy"><span class="feature-number">02</span><h3>Viết lại hôm nay</h3><p>Bạn kể lộn xộn, AI giữ lại thành một chương có câu chuyện.</p><span class="feature-action">Mở trang viết →</span></div>
           </a>
 
-          <a class="feature-card feature-unsent" href="/unsent">
-            <div class="feature-art">
-              <svg viewBox="0 0 360 190" aria-hidden="true">
-                <rect width="360" height="190" rx="26" fill="#e8eee8"/>
-                <circle cx="88" cy="60" r="35" fill="#f6e3d2"/>
-                <path d="M74 145h210V66H74Z" fill="#fffaf1"/>
-                <path d="m74 66 105 70L284 66" fill="#f4eadc" stroke="#cdbca5" stroke-width="3"/>
-                <path d="M74 145l77-63M284 145l-77-63" stroke="#d5c6b4" stroke-width="3"/>
-                <path d="M36 170c9-45 26-72 55-93M44 144c-18-15-30-17-39-10M59 116c19-14 34-15 46-7" fill="none" stroke="#4d7057" stroke-width="7" stroke-linecap="round"/>
-              </svg>
+          <a class="product-card" href="/career/jobs">
+            <div class="product-image"><img src="{{ url_for('static', filename='platform/images/job-search.svg') }}" alt=""></div>
+            <div class="product-copy">
+              <div class="product-topline"><span>03</span><em class="building" data-i18n="home.card.building">Đang phát triển</em></div>
+              <h3 data-i18n="home.card.jobs.title">Tìm việc phù hợp</h3>
+              <p data-i18n="home.card.jobs.desc">Lọc tin tuyển dụng và đối chiếu yêu cầu công việc với năng lực hiện tại.</p>
+              <div class="product-meta"><span data-i18n="home.card.jobs.meta">Tìm việc cơ bản dự kiến miễn phí</span><b data-i18n="home.card.jobs.cta">Xem trước</b></div>
             </div>
-            <div class="feature-copy"><span class="feature-number">03</span><h3>Điều chưa nói</h3><p>Viết thành thư không gửi, tin nhắn hoặc một câu mở đầu.</p><span class="feature-action">Viết điều trong lòng →</span></div>
           </a>
 
-          <a class="feature-card feature-rehearsal" href="/rehearsal">
-            <div class="feature-art">
-              <svg viewBox="0 0 360 190" aria-hidden="true">
-                <rect width="360" height="190" rx="26" fill="#dfe9e4"/>
-                <circle cx="181" cy="65" r="48" fill="#f5ead9"/>
-                <path d="M109 147h53v16h-53zM199 147h53v16h-53z" fill="#4f705c"/>
-                <path d="M115 105h41v44h-41zM205 105h41v44h-41z" fill="#fffaf2" stroke="#6c8977" stroke-width="4"/>
-                <path d="M136 101c0-26 13-44 39-54M226 101c0-26-13-44-39-54" fill="none" stroke="#4f705c" stroke-width="6" stroke-linecap="round"/>
-                <path d="M165 73h33" stroke="#bd9f7a" stroke-width="5" stroke-linecap="round"/>
-              </svg>
+          <a class="product-card product-ready" href="/life-space">
+            <div class="product-image"><img src="{{ url_for('static', filename='platform/images/journal-chat.svg') }}" alt=""></div>
+            <div class="product-copy">
+              <div class="product-topline"><span>04</span><em data-i18n="home.card.ready">Đang hoạt động</em></div>
+              <h3 data-i18n="home.card.life.title">Trò chuyện & nhật ký</h3>
+              <p data-i18n="home.card.life.desc">Trò chuyện, viết lại một ngày và giữ các câu chuyện vẫn đang tiếp diễn.</p>
+              <div class="product-meta"><span id="lifeProgressText" data-i18n="home.dynamic.lifeWaiting">Góc riêng đang chờ câu đầu tiên</span><b data-i18n="home.card.life.cta">Đi vào</b></div>
             </div>
-            <div class="feature-copy"><span class="feature-number">04</span><h3>Nói thử trước</h3><p>Tập một cuộc trò chuyện khó trước khi phải nói ngoài đời.</p><span class="feature-action">Vào phòng tập nói →</span></div>
           </a>
-
-          <a class="feature-card feature-thread" href="/threads">
-            <div class="feature-art">
-              <svg viewBox="0 0 360 190" aria-hidden="true">
-                <rect width="360" height="190" rx="26" fill="#e3ecdf"/>
-                <path d="M0 155C77 111 140 124 204 150C268 176 312 140 360 128V190H0Z" fill="#73937a"/>
-                <path d="M157 190c4-46 30-71 75-96" fill="none" stroke="#f2e4ca" stroke-width="20" stroke-linecap="round"/>
-                <path d="M89 123V54M89 65h78M89 93h58" stroke="#456752" stroke-width="9" stroke-linecap="round"/>
-                <circle cx="286" cy="59" r="28" fill="#f8efd3"/>
-              </svg>
-            </div>
-            <div class="feature-copy"><span class="feature-number">05</span><h3>Chuyện đang mở</h3><p>Giữ lại những việc chưa nói, đang chờ hoặc chưa biết nên làm gì.</p><span class="feature-action">Xem chuyện đang tiếp diễn →</span></div>
-          </a>
-
-          <a class="feature-card feature-timeline" href="/timeline">
-            <div class="feature-art">
-              <svg viewBox="0 0 360 190" aria-hidden="true">
-                <rect width="360" height="190" rx="26" fill="#e7eee8"/>
-                <path d="M77 39h206v118H77z" fill="#fffdf8"/>
-                <path d="M103 69h71M103 91h128M103 113h105M103 135h82" stroke="#84998a" stroke-width="6" stroke-linecap="round" opacity=".65"/>
-                <circle cx="87" cy="69" r="7" fill="#557760"/><circle cx="87" cy="91" r="7" fill="#be9b78"/><circle cx="87" cy="113" r="7" fill="#557760"/><circle cx="87" cy="135" r="7" fill="#be9b78"/>
-                <path d="M264 30c-13 23-15 43-7 63M266 43c13-12 24-14 33-9" fill="none" stroke="#4a6c55" stroke-width="7" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="feature-copy"><span class="feature-number">06</span><h3>Dòng đời</h3><p>Mở lại những cuộc trò chuyện và các đoạn đã đi qua.</p><span class="feature-action">Xem những ngày đã qua →</span></div>
-          </a>
-        </div>
-      </section>
-
-      <section class="life-snapshot">
-        <div class="snapshot-heading">
-          <div><p class="eyebrow">Cuộc sống đang tiếp diễn</p><h2>Một góc nhìn nhanh</h2></div>
-          <a href="/timeline">Mở Dòng đời đầy đủ →</a>
-        </div>
-        <div class="snapshot-grid">
-          <article><strong id="homeEntries">0</strong><span>trang đã giữ lại</span></article>
-          <article><strong id="homeThreads">0</strong><span>chuyện đang mở</span></article>
-          <article><strong id="homeRehearsals">0</strong><span>lần đã tập nói</span></article>
-          <article class="snapshot-note"><span id="homeRecentNote">Hôm nay vẫn còn trống. Một câu ngắn cũng đủ để bắt đầu.</span></article>
         </div>
       </section>
     </main>
-
-    <footer class="home-footer">
-      <span>Không cần kể cho tròn câu.</span>
-      <a href="/chat">Có chuyện thì cứ kể.</a>
-    </footer>
   </div>
 
-  <script src="{{ url_for('static', filename='home.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='global_i18n.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='platform.js') }}" defer></script>
 </body>
 </html>
