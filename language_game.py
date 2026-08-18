@@ -1,4 +1,5 @@
 from __future__ import annotations
+from db_backend import column_names as backend_column_names
 
 import copy
 import json
@@ -261,8 +262,8 @@ def _question_earns_clue(raw_scene: dict[str, Any], message: str) -> bool:
     relevant = any(keyword in text for keyword in keywords) if keywords else True
     return generic or relevant
 
-def _ensure_column(db: sqlite3.Connection, table: str, column: str, ddl: str) -> None:
-    columns = {str(row["name"]) for row in db.execute(f"PRAGMA table_info({table})").fetchall()}
+def _ensure_column(db, table: str, column: str, ddl: str) -> None:
+    columns = backend_column_names(db, table)
     if column not in columns:
         db.execute(f"ALTER TABLE {table} ADD COLUMN {column} {ddl}")
 
