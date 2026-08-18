@@ -1,0 +1,22 @@
+MỞ LỐI - PATCH TỬ VI & LÁ SỐ V1
+
+Chép toàn bộ nội dung thư mục patch vào thư mục gốc oday-ai-mvp và chọn Replace/Overwrite.
+Không xóa .env, app.db, .venv hoặc .git.
+
+Chạy:
+  .\.venv\Scripts\Activate.ps1
+  python app.py
+
+Route mới:
+  /astrology
+  GET  /api/astrology/overview
+  POST /api/astrology/chart
+  POST /api/astrology/ask
+
+Không có dependency Python mới.
+Các bảng SQLite mới tự tạo khi app khởi động.
+
+Lưu ý sản phẩm:
+- Can Chi, con giáp, nạp âm và giờ chi được backend tính tự động.
+- Phần diễn giải và xu hướng tương lai gần là nội dung tham khảo/giải trí.
+- MVP này chưa phải bộ máy an toàn bộ sao của Tử Vi Đẩu Số cổ điển.

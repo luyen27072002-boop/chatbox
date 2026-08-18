@@ -55,7 +55,7 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}?v=22.5"
+      href="{{ url_for('static', filename='styles.css') }}?v=23.0"
     />
   </head>
   <body data-persona="luyen">
@@ -247,55 +247,33 @@
       <div class="auth-backdrop auth-backdrop-two"></div>
       <div class="auth-shell">
         <section class="auth-story">
-          <div class="auth-story-top">
-            <div class="auth-brand">
-              <span class="brand-logo-shell brand-logo-shell-large">
-                <img
-                  class="brand-logo-image"
-                  src="{{ url_for('static', filename='icons/brand-logo.png') }}"
-                  alt="{{ brand_name }}"
-                />
-              </span>
-              <div>
-                <strong>{{ brand_name }}</strong><span id="authBrandTagline">{{ brand_tagline }}</span>
-              </div>
+          <div class="auth-brand">
+            <span class="brand-logo-shell brand-logo-shell-large">
+              <img
+                class="brand-logo-image"
+                src="{{ url_for('static', filename='icons/brand-logo.png') }}"
+                alt="{{ brand_name }}"
+              />
+            </span>
+            <div>
+              <strong>{{ brand_name }}</strong><span id="authBrandTagline">{{ brand_tagline }}</span>
             </div>
           </div>
           <div class="auth-copy">
-            <p class="auth-kicker">Một tài khoản cho học tập, sự nghiệp và cuộc sống</p>
-            <h1>Bắt đầu từ nơi bạn đang cần.</h1>
+            <p class="auth-kicker">Ở đây không cần phải tỏ ra ổn</p>
+            <h1>Có chuyện thì cứ kể.</h1>
             <p>
-              Luyện ngoại ngữ, chuẩn bị CV, tìm việc phù hợp và giữ một góc trò chuyện riêng — tất cả trong cùng một tài khoản.
+              Một cuộc trò chuyện riêng, nhớ được câu chuyện của bạn và biết lúc
+              nào nên nghe, lúc nào nên nói thẳng.
             </p>
           </div>
-          <div class="auth-highlights" aria-hidden="true">
-            <div class="auth-highlight-card">
-              <span class="auth-highlight-icon tint-green"><svg><use href="#icon-globe"></use></svg></span>
-              <div>
-                <strong id="authFeatureLangTitle">Ngoại ngữ nhập vai</strong>
-                <small id="authFeatureLangDesc">Học qua tình huống thực tế</small>
-              </div>
+          <div class="auth-bubbles" aria-hidden="true">
+            <div class="auth-bubble auth-bubble-user">
+              Dạo này mình thấy mệt mà không biết nói với ai.
             </div>
-            <div class="auth-highlight-card">
-              <span class="auth-highlight-icon tint-gold"><svg><use href="#icon-briefcase"></use></svg></span>
-              <div>
-                <strong id="authFeatureCvTitle">CV &amp; phỏng vấn</strong>
-                <small id="authFeatureCvDesc">Chuẩn bị hồ sơ tự tin hơn</small>
-              </div>
-            </div>
-            <div class="auth-highlight-card">
-              <span class="auth-highlight-icon tint-blue"><svg><use href="#icon-route"></use></svg></span>
-              <div>
-                <strong id="authFeatureJobsTitle">Tìm việc phù hợp</strong>
-                <small id="authFeatureJobsDesc">Định hướng cơ hội rõ hơn</small>
-              </div>
-            </div>
-            <div class="auth-highlight-card">
-              <span class="auth-highlight-icon tint-peach"><svg><use href="#icon-book"></use></svg></span>
-              <div>
-                <strong id="authFeatureLifeTitle">Trò chuyện &amp; nhật ký</strong>
-                <small id="authFeatureLifeDesc">Giữ góc riêng của bạn</small>
-              </div>
+            <div class="auth-bubble auth-bubble-friend">
+              <span class="mini-cheeks"></span>Ừ, kể từ đoạn làm bạn nặng đầu
+              nhất đi.
             </div>
           </div>
         </section>
@@ -313,7 +291,7 @@
           <form class="auth-form active" id="loginForm" data-auth-panel="login">
             <div class="auth-form-heading">
               <h2>Chào mừng quay lại</h2>
-              <p>Đăng nhập để tiếp tục hành trình của bạn.</p>
+              <p>Câu chuyện cũ vẫn ở đúng chỗ.</p>
             </div>
             <label
               ><span>Tên đăng nhập hoặc email</span
@@ -333,15 +311,15 @@
               ></label
             >
             <button class="primary-auth-button" type="submit">
-              Vào Mở Lối
+              Vào không gian của tôi
             </button>
             <p class="auth-status" id="loginStatus"></p>
           </form>
 
           <form class="auth-form" id="registerForm" data-auth-panel="register">
             <div class="auth-form-heading">
-              <h2>Tạo tài khoản</h2>
-              <p>Một tài khoản dùng chung cho học tập, sự nghiệp và cuộc sống.</p>
+              <h2>Tạo một góc riêng</h2>
+              <p>Mỗi tài khoản có lịch sử và phần ghi nhớ riêng.</p>
             </div>
             <div class="auth-two-columns">
               <label
@@ -394,6 +372,11 @@
                 >Giữ đăng nhập trên máy này</span
               ></label
             >
+            <div class="legal-consent-box">
+              <label><input id="acceptTerms" type="checkbox" required><span>Tôi đồng ý <a href="/terms" target="_blank" rel="noopener">Điều khoản sử dụng</a>.</span></label>
+              <label><input id="acceptPrivacy" type="checkbox" required><span>Tôi đã đọc <a href="/privacy" target="_blank" rel="noopener">Chính sách quyền riêng tư</a>.</span></label>
+              <label><input id="ackAI" type="checkbox" required><span>Tôi hiểu Mở Lối/Luyện là dịch vụ có sử dụng AI và nội dung AI có thể sai.</span></label>
+            </div>
             <button class="primary-auth-button" type="submit">
               Tạo tài khoản
             </button>
@@ -403,7 +386,7 @@
       </div>
     </section>
 
-    <div class="page-glow glow-one"></div></div>
+    <div class="page-glow glow-one"></div>
     <div class="page-glow glow-two"></div>
 
     <div class="app-shell" id="appView" hidden>
@@ -427,41 +410,6 @@
             <p id="sidebarBrandTagline">{{ brand_tagline }}</p>
           </div>
         </div>
-
-        <section class="panel-section">
-          <p class="section-label">Bạn đang cần gì?</p>
-          <div class="mode-list" id="modeList">
-            <button class="mode-button active" type="button" data-mode="listen">
-              <span class="mode-icon tint-peach"
-                ><svg><use href="#icon-ear"></use></svg
-              ></span>
-              <span
-                ><strong>Lắng nghe</strong
-                ><small>Cho mình biết bạn đang cảm thấy thế nào?</small></span
-              >
-            </button>
-            <button class="mode-button" type="button" data-mode="clarify">
-              <span class="mode-icon tint-blue"
-                ><svg><use href="#icon-layers"></use></svg
-              ></span>
-              <span
-                ><strong>Cùng phân tích</strong
-                ><small
-                  >Chúng ta cùng nhau xem tại sao nó lại như vậy.</small
-                ></span
-              >
-            </button>
-            <button class="mode-button" type="button" data-mode="advice">
-              <span class="mode-icon tint-mint"
-                ><svg><use href="#icon-route"></use></svg
-              ></span>
-              <span
-                ><strong>Cho hướng xử lý</strong
-                ><small>Cùng mình tìm hướng giải quyết nhé.</small></span
-              >
-            </button>
-          </div>
-        </section>
 
         <section class="panel-section response-style-section">
           <p class="section-label">Bạn muốn nghe từ ai?</p>
@@ -546,11 +494,12 @@
             <div>
               <h2 id="activeStyleText">Luyện</h2>
               <p>
-                <span id="modeTitle">Chỉ lắng nghe</span
+                <span id="modeTitle">Nói chuyện tự nhiên</span
                 ><span class="meta-dot">·</span
                 ><span id="usageText">0/{{ daily_limit }}</span>
                 <span id="usageSuffix">lượt hôm nay</span>
               </p>
+              <small class="ai-disclosure-inline">Luyện là người bạn đồng hành được vận hành bởi AI.</small>
             </div>
           </div>
           <div class="topbar-actions">
@@ -587,6 +536,15 @@
               aria-label="Mở Dòng đời"
             >
               <svg><use href="#icon-history"></use></svg>
+            </button>
+            <button
+              class="round-action export-conversation-button"
+              id="exportConversationButton"
+              type="button"
+              aria-label="Xuất cuộc trò chuyện"
+              title="Xuất cuộc trò chuyện"
+            >
+              <svg><use href="#icon-cloud"></use></svg>
             </button>
             <button
               class="account-button"
@@ -663,7 +621,18 @@
 
         <div class="composer-wrap">
           <div class="status-line" id="statusLine"></div>
+          <div class="pending-attachments" id="pendingAttachments" hidden></div>
           <form class="composer" id="chatForm">
+            <button class="attachment-button" id="attachmentButton" type="button" aria-label="Đính kèm tệp" title="Đính kèm tệp">
+              <svg><use href="#icon-plus"></use></svg>
+            </button>
+            <input
+              id="attachmentInput"
+              type="file"
+              multiple
+              hidden
+              accept=".png,.jpg,.jpeg,.webp,.pdf,.docx,.pptx,.xlsx,.xls,.csv,.txt,.md,.json,.py,.js,.ts,.html,.css,.xml,.yaml,.yml"
+            />
             <textarea
               id="messageInput"
               rows="1"
@@ -674,7 +643,7 @@
               <span id="sendButtonText">Gửi</span><svg><use href="#icon-send"></use></svg>
             </button>
           </form>
-          <p class="composer-note" id="composerNote">Shift + Enter để xuống dòng</p>
+          <p class="composer-note" id="composerNote">Có thể gửi chữ, ảnh hoặc tệp · Shift + Enter để xuống dòng</p>
         </div>
       </main>
     </div>
@@ -984,6 +953,21 @@
       </div>
     </dialog>
 
+    <dialog id="exportDialog">
+      <div class="dialog-card export-dialog-card">
+        <div class="dialog-header">
+          <div><p class="eyebrow">Xuất nội dung</p><h3>Chọn định dạng</h3></div>
+          <button type="button" class="close-button" id="closeExportDialog" aria-label="Đóng"><svg><use href="#icon-close"></use></svg></button>
+        </div>
+        <div class="export-format-grid">
+          <button type="button" data-export-format="txt"><strong>TXT</strong><small>Văn bản thuần</small></button>
+          <button type="button" data-export-format="docx"><strong>Word</strong><small>.docx</small></button>
+          <button type="button" data-export-format="pdf"><strong>PDF</strong><small>Tài liệu PDF</small></button>
+          <button type="button" data-export-format="xlsx"><strong>Excel</strong><small>.xlsx</small></button>
+        </div>
+      </div>
+    </dialog>
+
     <dialog id="accountDialog">
       <div class="dialog-card account-dialog-card">
         <div class="dialog-header">
@@ -1026,6 +1010,6 @@
         dailyLimit: {{ daily_limit|tojson }}
       };
     </script>
-    <script src="{{ url_for('static', filename='app.js') }}?v=22.5" defer></script>
+    <script src="{{ url_for('static', filename='app.js') }}?v=23.0" defer></script>
   </body>
 </html>

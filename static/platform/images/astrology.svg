@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-labelledby="title desc">
+  <title id="title">Minh hoạ tử vi và lá số</title>
+  <desc id="desc">Một lá số cách điệu với các ô cung, mặt trăng và các thẻ xu hướng.</desc>
+  <rect width="640" height="460" rx="42" fill="#EAF5EC"/>
+  <circle cx="535" cy="84" r="67" fill="#FFD76B"/>
+  <circle cx="553" cy="66" r="58" fill="#EAF5EC"/>
+  <g transform="translate(72 58)">
+    <rect width="376" height="342" rx="28" fill="#FFFFFF" stroke="#173928" stroke-width="9"/>
+    <g fill="#EDF7EF" stroke="#173928" stroke-width="4">
+      <rect x="24" y="24" width="92" height="72" rx="14"/><rect x="128" y="24" width="92" height="72" rx="14"/><rect x="232" y="24" width="120" height="72" rx="14"/>
+      <rect x="24" y="108" width="92" height="72" rx="14"/><rect x="260" y="108" width="92" height="72" rx="14"/>
+      <rect x="24" y="192" width="92" height="72" rx="14"/><rect x="260" y="192" width="92" height="72" rx="14"/>
+      <rect x="24" y="276" width="92" height="42" rx="14"/><rect x="128" y="276" width="92" height="42" rx="14"/><rect x="232" y="276" width="120" height="42" rx="14"/>
+    </g>
+    <rect x="128" y="108" width="120" height="156" rx="20" fill="#2F744F"/>
+    <circle cx="188" cy="158" r="31" fill="#D7FF72"/>
+    <path d="M174 158l10 10 21-25" fill="none" stroke="#173928" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="153" y="209" width="70" height="12" rx="6" fill="#D9F0E0"/>
+    <rect x="164" y="231" width="48" height="9" rx="5" fill="#A9D8B7"/>
+  </g>
+  <g transform="translate(430 246)">
+    <rect width="152" height="100" rx="22" fill="#8299E8" stroke="#173928" stroke-width="8"/>
+    <text x="76" y="37" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">TÌNH CẢM</text>
+    <text x="76" y="73" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-weight="900" fill="#FFFFFF">78</text>
+  </g>
+  <g transform="translate(455 130)">
+    <rect width="132" height="88" rx="22" fill="#FFB36B" stroke="#173928" stroke-width="8"/>
+    <path d="M28 50h76" stroke="#173928" stroke-width="9" stroke-linecap="round"/>
+    <path d="M28 28h48" stroke="#173928" stroke-width="9" stroke-linecap="round"/>
+  </g>
+</svg>

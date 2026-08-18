@@ -1,0 +1,24 @@
+MỞ LỐI — Career CV + Interview + Jobs V1
+08/08/2026
+
+Đã làm
+- /career/cv: hồ sơ nghề nghiệp, CV preview, local match với JD, AI rewrite không được bịa facts, print/save PDF qua trình duyệt.
+- /career/cv tab Phỏng vấn: câu hỏi miễn phí bằng code, AI feedback theo từng câu (1 lượt nếu AI configured), lưu session theo user.
+- /career/jobs: tìm remote từ Remotive public API với cache 6 giờ + attribution/link gốc.
+- Dán JD Việt Nam/nguồn khác để chấm match bằng code.
+- Lưu/xóa việc theo user.
+- Trang chủ chuyển 02/03 thành Đang hoạt động và hiện progress.
+- Career data có export/delete account.
+- Rate limit các route AI/job search.
+- DATA_MAP và VENDOR_MAP đã cập nhật.
+
+Không đụng
+- .env, app.db, auth provider, payment, pricing.
+- Tử vi, finance, self-discovery, language logic.
+- Không scrape LinkedIn/TopCV/VietnamWorks hay nguồn không có API/permission.
+- Không gửi profile user sang Remotive.
+
+Chi phí
+- Lưu CV/profile, ATS match, tạo câu hỏi phỏng vấn, job matching, job search: không dùng OpenAI.
+- AI rewrite CV: 1 lượt.
+- AI chấm mỗi câu phỏng vấn: 1 lượt.

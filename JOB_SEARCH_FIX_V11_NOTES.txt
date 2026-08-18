@@ -1,0 +1,24 @@
+MỞ LỐI — JOB SEARCH FIX V11
+
+Sửa lỗi search trắng:
+- Bỏ ui_lang khỏi Brave request.
+- Bỏ freshness khỏi job search.
+- Bỏ exact quotes ở query/location.
+- Query <= 360 chars / <= 45 words.
+- 3 nhóm nguồn đơn giản hơn.
+- Brave request chỉ lấy result_filter=web.
+- Phân biệt auth/query/rate-limit/network error.
+- Có fallback broad query khi grouped search = 0.
+- Giữ Jooble + cache.
+- Template đi kèm để chắc chắn hiện:
+  "Chỉ hiện tin có mức lương".
+
+Sau khi chép patch:
+python diagnose_job_sources.py
+
+Kỳ vọng:
+Brave HTTP: 200
+Brave web results: > 0
+
+Jooble HTTP: 200
+Jooble jobs: > 0

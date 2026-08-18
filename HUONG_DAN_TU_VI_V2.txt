@@ -1,0 +1,25 @@
+TỬ VI & LÁ SỐ V2 — LÁ SỐ TRUYỀN THỐNG
+
+Bản V2 thay phần 12 ô trang trí bằng lá số Tử Vi Đẩu Số có dữ liệu an sao:
+- 12 cung theo địa bàn Tý/Sửu/.../Hợi
+- Chính tinh / phụ tinh
+- trạng thái Miếu/Vượng/Đắc/Bình/Hãm khi engine có dữ liệu
+- Cung Thân, Tuần, Triệt
+- Đại Hạn, Tiểu Hạn
+- Thiên Bàn ở giữa: ngày dương/âm, Cục, Mệnh chủ, Thân chủ...
+- AI chỉ luận dữ liệu đã được engine an sao, không tự đặt sao.
+
+CÀI ĐẶT SAU KHI CHÉP PATCH:
+1. Kích hoạt .venv
+2. Chạy:
+   pip install -r requirements.txt
+3. Chạy lại:
+   python app.py
+
+Package mới:
+ansaotuvi==0.1.28
+
+LƯU Ý:
+- Giờ sinh và Nam/Nữ bắt buộc để an sao đầy đủ.
+- Bản hiện tại dùng múi giờ Việt Nam GMT+7.
+- Phần 30-45 ngày là xu hướng tham khảo dựa trên lá số + Đại Hạn hiện tại. Lưu niên/lưu nguyệt chuyên sâu cần engine vận hạn riêng ở bước sau.

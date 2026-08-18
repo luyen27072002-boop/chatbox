@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#eaf5ec">
+  <title>CV, phỏng vấn & tìm việc — Mở Lối</title>
+  <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='career/style.css') }}">
+</head>
+<body data-initial-mode="{{ initial_mode }}">
+  <header class="career-topbar">
+    <a class="back" href="/home">← Trang chính</a>
+    <a class="brand" href="/home">
+      <img src="{{ url_for('static', filename='icons/brand-logo.png') }}" alt="">
+      <span><strong>Mở Lối</strong><small>Sự nghiệp</small></span>
+    </a>
+    <div class="top-actions">
+      <label><span>Ngôn ngữ</span><select class="global-language-select"><option value="vi">Tiếng Việt</option><option value="en">English</option><option value="zh">繁體中文</option></select></label>
+      <span>{{ display_name }}</span>
+      <b id="quotaBadge">—</b>
+    </div>
+  </header>
+
+  <main class="career-shell">
+    <section class="career-hero">
+      <div>
+        <p class="eyebrow">MỞ LỐI · SỰ NGHIỆP</p>
+        <h1 id="heroTitle">CV rõ hơn. Phỏng vấn chắc hơn. Tìm việc đúng hơn.</h1>
+        <p id="heroDesc">Hồ sơ và kết quả được lưu theo tài khoản của bạn. AI chỉ hỗ trợ viết lại và luyện tập; không tự bịa kinh nghiệm và không quyết định tuyển dụng thay nhà tuyển dụng.</p>
+      </div>
+      <div class="hero-stat">
+        <small>Hồ sơ nghề nghiệp</small>
+        <strong id="profileState">Chưa hoàn thiện</strong>
+        <span id="savedState">0 việc đã lưu</span>
+      </div>
+    </section>
+
+    <nav class="career-tabs" aria-label="Khu sự nghiệp">
+      <button type="button" data-tab="cv">CV</button>
+      <button type="button" data-tab="interview">Phỏng vấn</button>
+      <button type="button" data-tab="jobs">Tìm việc</button>
+    </nav>
+
+    <section class="tab-panel" data-panel="cv">
+      <div class="panel-grid">
+        <article class="card form-card">
+          <div class="card-head"><div><small>HỒ SƠ GỐC</small><h2>Thông tin thật của bạn</h2></div><span class="free-pill">Lưu miễn phí</span></div>
+          <form id="profileForm">
+            <div class="two">
+              <label>Vị trí mục tiêu<input id="desiredRole" maxlength="120" placeholder="Ví dụ: Robotics Engineer"></label>
+              <label>Khu vực<input id="careerLocation" maxlength="120" placeholder="Ví dụ: Hà Nội / TP.HCM / Remote"></label>
+            </div>
+            <div class="two">
+              <label>Hình thức<select id="workType"><option value="">Không giới hạn</option><option value="full_time">Full-time</option><option value="internship">Internship</option><option value="part_time">Part-time</option><option value="contract">Contract</option><option value="remote">Remote</option></select></label>
+              <label>Cấp độ<select id="seniority"><option value="">Chưa chọn</option><option>Intern/Fresher</option><option>Junior</option><option>Mid-level</option><option>Senior</option></select></label>
+            </div>
+            <label>Kỹ năng<input id="skills" maxlength="1200" placeholder="Python, YOLO, ROS2, SolidWorks..."></label>
+            <label>Tóm tắt bản thân<textarea id="summary" rows="4" maxlength="1800" placeholder="Bạn đang làm gì, mạnh ở đâu, muốn đi theo hướng nào..."></textarea></label>
+            <label>Kinh nghiệm<textarea id="experience" rows="7" maxlength="6000" placeholder="Mỗi dòng một công việc/dự án và việc bạn thực sự đã làm."></textarea></label>
+            <label>Học vấn<textarea id="education" rows="4" maxlength="2400"></textarea></label>
+            <label>Dự án nổi bật<textarea id="projects" rows="6" maxlength="4000"></textarea></label>
+            <label>Ngôn ngữ / chứng chỉ<textarea id="languages" rows="3" maxlength="1200"></textarea></label>
+            <div class="form-actions"><button class="primary" type="submit">Lưu hồ sơ</button><span id="profileSaveState"></span></div>
+          </form>
+        </article>
+
+        <article class="card">
+          <div class="card-head"><div><small>CV BUILDER</small><h2>Tạo CV từ dữ liệu thật</h2></div></div>
+          <label>Mô tả công việc mục tiêu (không bắt buộc)<textarea id="cvJobDescription" rows="8" maxlength="18000" placeholder="Dán JD để hệ thống ưu tiên đúng từ khóa."></textarea></label>
+          <div class="button-row">
+            <button id="analyzeCvBtn" class="secondary" type="button">Kiểm tra độ khớp</button>
+            <button id="improveCvBtn" class="primary" type="button">Viết lại CV bằng AI</button>
+          </div>
+          <div id="cvAnalysis" class="result-box hidden"></div>
+          <div id="cvPreview" class="cv-preview empty"><p>Lưu hồ sơ rồi tạo bản CV. AI được yêu cầu không bịa số liệu, công ty, bằng cấp hay kỹ năng.</p></div>
+          <div class="button-row end"><button id="printCvBtn" class="secondary" type="button">In / lưu PDF</button></div>
+          <p class="disclaimer">Hãy kiểm tra lại mọi câu chữ trước khi nộp. Mở Lối hỗ trợ soạn thảo, không xác minh kinh nghiệm thay bạn.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="tab-panel" data-panel="interview" hidden>
+      <div class="panel-grid interview-grid">
+        <article class="card">
+          <div class="card-head"><div><small>LUYỆN PHỎNG VẤN</small><h2>Bắt đầu một phiên</h2></div><span class="free-pill">Tạo câu hỏi miễn phí</span></div>
+          <label>Vị trí muốn luyện<input id="interviewRole" maxlength="140" placeholder="Ví dụ: Automation Engineer"></label>
+          <label>JD nếu có<textarea id="interviewJd" rows="8" maxlength="18000"></textarea></label>
+          <button id="startInterviewBtn" class="primary wide" type="button">Bắt đầu</button>
+          <p class="disclaimer">Câu hỏi được tạo từ vai trò/hồ sơ. Nếu bật AI, mỗi lần chấm câu trả lời dùng 1 lượt.</p>
+        </article>
+        <article class="card interview-stage">
+          <div id="interviewEmpty" class="empty-state"><h3>Chưa có phiên phỏng vấn</h3><p>Bắt đầu ở bên trái. Hệ thống sẽ đi từng câu một.</p></div>
+          <div id="interviewLive" hidden>
+            <div class="question-progress"><span id="questionNumber">Câu 1</span><b id="questionRole"></b></div>
+            <h2 id="questionText"></h2>
+            <textarea id="interviewAnswer" rows="9" maxlength="6000" placeholder="Trả lời như đang phỏng vấn thật..."></textarea>
+            <button id="submitInterviewBtn" class="primary wide" type="button">Gửi để nhận phản hồi</button>
+            <div id="interviewFeedback" class="feedback hidden"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="tab-panel" data-panel="jobs" hidden>
+      <div class="jobs-toolbar card jobs-toolbar-compact">
+        <div class="search-stack">
+          <div class="search-row job-filter-row">
+            <div class="filter-field">
+              <label for="jobCategory">Công việc</label>
+              <select id="jobCategory">
+                <option value="">Chọn công việc</option>
+                <option value="Kế toán">Kế toán</option>
+                <option value="Kiểm toán">Kiểm toán</option>
+                <option value="Tài chính">Tài chính</option>
+                <option value="Ngân hàng">Ngân hàng</option>
+                <option value="Kinh doanh">Kinh doanh / Sales</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Chăm sóc khách hàng">Chăm sóc khách hàng</option>
+                <option value="Hành chính">Hành chính</option>
+                <option value="Nhân sự">Nhân sự</option>
+                <option value="Công nghệ thông tin">Công nghệ thông tin / IT</option>
+                <option value="Lập trình viên">Lập trình viên</option>
+                <option value="Data Analyst">Data Analyst</option>
+                <option value="AI Engineer">AI / Machine Learning</option>
+                <option value="Kỹ sư tự động hóa">Tự động hóa</option>
+                <option value="Kỹ sư robot">Robotics</option>
+                <option value="Kỹ sư cơ khí">Cơ khí</option>
+                <option value="Kỹ sư điện">Điện / Điện tử</option>
+                <option value="Sản xuất">Sản xuất</option>
+                <option value="QA QC">QA / QC</option>
+                <option value="Logistics">Logistics</option>
+                <option value="Supply Chain">Supply Chain</option>
+                <option value="Xuất nhập khẩu">Xuất nhập khẩu</option>
+                <option value="Thiết kế">Thiết kế</option>
+                <option value="Giáo viên">Giáo dục</option>
+                <option value="Y tế">Y tế</option>
+                <option value="Dược">Dược</option>
+                <option value="Luật">Luật / Pháp lý</option>
+                <option value="Xây dựng">Xây dựng</option>
+                <option value="Bất động sản">Bất động sản</option>
+                <option value="Du lịch">Du lịch / Nhà hàng / Khách sạn</option>
+                <option value="other">Khác...</option>
+              </select>
+              <input id="jobQuery" class="conditional-input" maxlength="120" placeholder="Nhập công việc khác..." hidden>
+            </div>
+
+            <div class="filter-field">
+              <label for="jobLocationSelect">Nơi làm</label>
+              <select id="jobLocationSelect">
+                <option value="">Toàn Việt Nam</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
+                <option value="Hải Phòng">Hải Phòng</option>
+                <option value="Cần Thơ">Cần Thơ</option>
+                <option value="Bình Dương">Bình Dương</option>
+                <option value="Đồng Nai">Đồng Nai</option>
+                <option value="Bắc Ninh">Bắc Ninh</option>
+                <option value="Hưng Yên">Hưng Yên</option>
+                <option value="Hải Dương">Hải Dương</option>
+                <option value="Long An">Long An</option>
+                <option value="Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                <option value="Nghệ An">Nghệ An</option>
+                <option value="Thanh Hóa">Thanh Hóa</option>
+                <option value="Thái Nguyên">Thái Nguyên</option>
+                <option value="Remote tại Việt Nam">Remote tại Việt Nam</option>
+                <option value="other">Khác...</option>
+              </select>
+              <input id="jobLocation" class="conditional-input" maxlength="120" placeholder="Nhập tỉnh/thành phố khác..." hidden>
+            </div>
+
+            <button id="searchJobsBtn" class="primary job-search-button" type="button">Tìm việc</button>
+          </div>
+          <div class="advanced-job-filters">
+            <div class="filter-field compact"><label for="jobTypeFilter">Loại hình</label><select id="jobTypeFilter"><option value="">Tất cả</option><option value="full time">Full-time</option><option value="part time">Part-time</option><option value="internship">Thực tập</option><option value="contract">Hợp đồng</option><option value="freelance">Freelance</option></select></div>
+            <div class="filter-field compact"><label for="jobLevelFilter">Kinh nghiệm</label><select id="jobLevelFilter"><option value="">Tất cả</option><option value="entry">Thực tập / Fresher</option><option value="junior">Junior · 1–2 năm</option><option value="mid">Mid · 3–4 năm</option><option value="senior">Senior / Lead · 5+ năm</option></select></div>
+            <div class="filter-field compact"><label for="postedDaysFilter">Thời gian đăng</label><select id="postedDaysFilter"><option value="0">Bất kỳ</option><option value="1">24 giờ qua</option><option value="3">3 ngày qua</option><option value="7">7 ngày qua</option><option value="30">30 ngày qua</option></select></div>
+            <div class="filter-field compact"><label for="radiusFilter">Bán kính</label><select id="radiusFilter"><option value="">Không giới hạn</option><option value="4">4 km</option><option value="8">8 km</option><option value="16">16 km</option><option value="26">26 km</option><option value="40">40 km</option><option value="80">80 km</option></select></div>
+            <div class="filter-field compact"><label for="sortFilter">Sắp xếp</label><select id="sortFilter"><option value="match">Phù hợp hồ sơ</option><option value="newest">Mới nhất</option></select></div>
+            <label class="salary-check"><input id="salaryOnlyFilter" type="checkbox"><span>Chỉ hiện tin có mức lương</span></label>
+          </div>
+          <p class="filter-note">Kinh nghiệm được suy ra từ title/mô tả nên chỉ dùng để lọc nhanh.</p>
+        </div>
+      </div>
+
+      <div class="jobs-layout">
+        <article class="card">
+          <div class="card-head"><div><small>VIỆC LÀM THẬT</small><h2>Kết quả phù hợp</h2></div><span class="source-pill">Ưu tiên Việt Nam</span></div>
+          <div id="providerNotice" class="provider-notice">Nhập công việc và nơi làm để lấy title, công ty, địa điểm, nguồn và link việc tại Việt Nam.</div>
+          <div id="jobResults" class="job-list"><div class="empty-state">Nhấn “Tìm việc” để bắt đầu.</div></div>
+        </article>
+
+        <aside>
+          <article class="card">
+            <div class="card-head"><div><small>TIN VIỆT NAM / NGUỒN KHÁC</small><h2>Dán JD để phân tích</h2></div></div>
+            <label>Vị trí<input id="manualJobTitle" maxlength="180"></label>
+            <label>Công ty<input id="manualJobCompany" maxlength="140"></label>
+            <label>Link gốc<input id="manualJobUrl" maxlength="1200" placeholder="https://..."></label>
+            <label>Mô tả tuyển dụng<textarea id="manualJobDescription" rows="10" maxlength="18000"></textarea></label>
+            <button id="analyzeJobBtn" class="secondary wide" type="button">Chấm độ phù hợp</button>
+            <div id="manualJobResult" class="result-box hidden"></div>
+          </article>
+          <article class="card saved-card">
+            <div class="card-head"><div><small>ĐÃ LƯU</small><h2>Việc bạn đang cân nhắc</h2></div></div>
+            <div id="savedJobs" class="saved-jobs"></div>
+          </article>
+        </aside>
+      </div>
+
+
+      <section class="source-hub card">
+        <div class="card-head source-head">
+          <div>
+            <small>TÌM THÊM TRÊN TỪNG WEBSITE</small>
+            <h2>Nếu muốn mở trực tiếp từng nguồn</h2>
+            <p id="sourceSearchSummary">Đây là fallback; kết quả job thật nằm ở phía trên.</p>
+          </div>
+          <span class="source-count" id="sourceCount">13 nguồn</span>
+        </div>
+        <div id="jobSourceGrid" class="source-grid"></div>
+        <p class="source-legal-note">Mỗi nguồn mở ở tab mới. Mở Lối không đăng nhập hộ, không nộp CV hộ và không gửi hồ sơ nghề nghiệp của bạn sang các nguồn này. Một số website có cấu trúc URL tìm kiếm thay đổi thường xuyên; với các nguồn đó, nút “Tìm nhanh” dùng tìm kiếm web giới hạn đúng domain, còn “Mở nguồn” đi thẳng tới website.</p>
+      </section>
+
+      <p class="job-safety">Cẩn thận tin tuyển dụng yêu cầu chuyển tiền, mua khóa học/thiết bị bắt buộc, gửi OTP hoặc giấy tờ nhạy cảm quá sớm. Luôn kiểm tra lại trên trang nguồn và website chính thức của công ty.</p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script>window.__CAREER_INITIAL_MODE__={{ initial_mode|tojson }};</script>
+  <script src="{{ url_for('static', filename='global_i18n.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='career/app.js') }}" defer></script>
+</body>
+</html>

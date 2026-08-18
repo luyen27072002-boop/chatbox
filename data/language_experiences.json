@@ -1,0 +1,899 @@
+{
+  "en": [
+    {
+      "id": "en-exp-late-class",
+      "level": "A1-A2",
+      "format": "video",
+      "title": "POV: Sắp muộn học",
+      "hook": "Bạn cùng phòng giục mày ra khỏi nhà.",
+      "setting": "bedroom",
+      "duration": 35,
+      "lines": [
+        {
+          "speaker": "Roommate",
+          "text": "Are you ready? Class starts in twenty minutes."
+        },
+        {
+          "speaker": "You",
+          "text": "Almost. I just need my bag."
+        },
+        {
+          "speaker": "Roommate",
+          "text": "You said that five minutes ago."
+        },
+        {
+          "speaker": "You",
+          "text": "Okay, okay. I’m coming now."
+        }
+      ],
+      "terms": [
+        {
+          "term": "almost",
+          "meaning": "gần như; sắp",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "I’m almost ready.",
+              "translation": "Tôi gần xong rồi."
+            },
+            {
+              "text": "We’re almost there.",
+              "translation": "Chúng ta sắp tới rồi."
+            },
+            {
+              "text": "I almost missed the bus.",
+              "translation": "Tôi suýt lỡ xe buýt."
+            }
+          ],
+          "read_check": {
+            "prompt": "“We’re almost there” gần nhất với ý nào?",
+            "options": [
+              "Sắp tới nơi",
+              "Vừa rời đi",
+              "Không biết đường",
+              "Đang ngủ"
+            ],
+            "answer": "Sắp tới nơi"
+          },
+          "speak_prompt": "Nói một câu với almost về việc mày sắp làm xong gì đó.",
+          "write_prompt": "Viết một tin nhắn ngắn dùng almost."
+        },
+        {
+          "term": "ready",
+          "meaning": "sẵn sàng",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "Are you ready?",
+              "translation": "Bạn sẵn sàng chưa?"
+            },
+            {
+              "text": "Dinner is ready.",
+              "translation": "Bữa tối đã sẵn sàng."
+            },
+            {
+              "text": "Get ready for work.",
+              "translation": "Chuẩn bị đi làm."
+            }
+          ],
+          "read_check": {
+            "prompt": "“Dinner is ready” nghĩa là gì?",
+            "options": [
+              "Bữa tối đã sẵn sàng",
+              "Bữa tối bị hủy",
+              "Tôi đang nấu",
+              "Tôi no rồi"
+            ],
+            "answer": "Bữa tối đã sẵn sàng"
+          },
+          "speak_prompt": "Nói khi mày đã sẵn sàng đi ra ngoài.",
+          "write_prompt": "Viết một câu hỏi bạn xem họ đã sẵn sàng chưa."
+        }
+      ]
+    },
+    {
+      "id": "en-exp-coffee-order",
+      "level": "A1-A2",
+      "format": "chat",
+      "title": "Order cà phê như người bình thường",
+      "hook": "Barista hỏi đúng những câu mày gặp ngoài đời.",
+      "setting": "cafe",
+      "duration": 40,
+      "lines": [
+        {
+          "speaker": "Barista",
+          "text": "Hi! What can I get for you?"
+        },
+        {
+          "speaker": "You",
+          "text": "Can I get a large iced coffee, please?"
+        },
+        {
+          "speaker": "Barista",
+          "text": "Sure. Anything else?"
+        },
+        {
+          "speaker": "You",
+          "text": "That’s all, thanks."
+        }
+      ],
+      "terms": [
+        {
+          "term": "anything else",
+          "meaning": "còn gì nữa không",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "Anything else?",
+              "translation": "Còn gì nữa không?"
+            },
+            {
+              "text": "Do you need anything else?",
+              "translation": "Bạn cần thêm gì nữa không?"
+            },
+            {
+              "text": "I don’t want anything else.",
+              "translation": "Tôi không muốn thêm gì nữa."
+            }
+          ],
+          "read_check": {
+            "prompt": "Nhân viên hỏi “Anything else?” thì họ muốn biết gì?",
+            "options": [
+              "Bạn có muốn thêm gì không",
+              "Tên của bạn",
+              "Bạn bao nhiêu tuổi",
+              "Bạn ở đâu"
+            ],
+            "answer": "Bạn có muốn thêm gì không"
+          },
+          "speak_prompt": "Trả lời “Anything else?” như khi mày không muốn gọi thêm.",
+          "write_prompt": "Viết một đoạn order 2 câu có “anything else”."
+        },
+        {
+          "term": "that’s all",
+          "meaning": "chỉ vậy thôi; hết rồi",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "That’s all, thanks.",
+              "translation": "Chỉ vậy thôi, cảm ơn."
+            },
+            {
+              "text": "Is that all?",
+              "translation": "Chỉ vậy thôi à?"
+            },
+            {
+              "text": "That’s all I need.",
+              "translation": "Đó là tất cả những gì tôi cần."
+            }
+          ],
+          "read_check": {
+            "prompt": "“That’s all” phù hợp nhất khi nào?",
+            "options": [
+              "Khi không muốn thêm gì nữa",
+              "Khi muốn đổi bàn",
+              "Khi bị lạc",
+              "Khi muốn hỏi giờ"
+            ],
+            "answer": "Khi không muốn thêm gì nữa"
+          },
+          "speak_prompt": "Nói một câu kết thúc order bằng “That’s all”.",
+          "write_prompt": "Viết câu trả lời cho nhân viên khi mày đã gọi đủ."
+        }
+      ]
+    },
+    {
+      "id": "en-exp-plan-change",
+      "level": "A1-A2",
+      "format": "chat",
+      "title": "Bạn đổi giờ phút chót",
+      "hook": "Một tin nhắn rất đời thường nhưng có mấy cụm cực hữu dụng.",
+      "setting": "phone",
+      "duration": 35,
+      "lines": [
+        {
+          "speaker": "Mia",
+          "text": "I’m still at work. Can we meet at 7:30 instead?"
+        },
+        {
+          "speaker": "You",
+          "text": "Sure. I’ll probably get there around 7:20."
+        },
+        {
+          "speaker": "Mia",
+          "text": "Perfect. See you then."
+        }
+      ],
+      "terms": [
+        {
+          "term": "instead",
+          "meaning": "thay vào đó",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "Can we meet at 7:30 instead?",
+              "translation": "Mình gặp lúc 7:30 thay vào đó được không?"
+            },
+            {
+              "text": "Let’s walk instead.",
+              "translation": "Thay vào đó mình đi bộ nhé."
+            },
+            {
+              "text": "I ordered tea instead of coffee.",
+              "translation": "Tôi gọi trà thay vì cà phê."
+            }
+          ],
+          "read_check": {
+            "prompt": "“Let’s walk instead” nghĩa gần nhất là?",
+            "options": [
+              "Thay vào đó hãy đi bộ",
+              "Hãy chạy nhanh hơn",
+              "Hãy ở nhà",
+              "Hãy gọi taxi"
+            ],
+            "answer": "Thay vào đó hãy đi bộ"
+          },
+          "speak_prompt": "Đề nghị một lựa chọn khác bằng instead.",
+          "write_prompt": "Nhắn bạn đổi kế hoạch và dùng instead."
+        },
+        {
+          "term": "probably",
+          "meaning": "có lẽ; chắc là",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "I’ll probably be late.",
+              "translation": "Tôi có lẽ sẽ muộn."
+            },
+            {
+              "text": "She’s probably at home.",
+              "translation": "Cô ấy chắc là ở nhà."
+            },
+            {
+              "text": "It will probably rain.",
+              "translation": "Trời có lẽ sẽ mưa."
+            }
+          ],
+          "read_check": {
+            "prompt": "“probably” thể hiện điều gì?",
+            "options": [
+              "Khả năng khá cao nhưng chưa chắc",
+              "Chắc chắn 100%",
+              "Không bao giờ",
+              "Mệnh lệnh"
+            ],
+            "answer": "Khả năng khá cao nhưng chưa chắc"
+          },
+          "speak_prompt": "Dự đoán một việc ngày mai bằng probably.",
+          "write_prompt": "Viết một câu về thứ mày có lẽ sẽ làm tối nay."
+        }
+      ]
+    },
+    {
+      "id": "en-exp-bus-crowded",
+      "level": "A1-A2",
+      "format": "audio",
+      "title": "Xe buýt đông nghẹt",
+      "hook": "Nghe một câu thông báo và hội thoại ngắn.",
+      "setting": "bus",
+      "duration": 45,
+      "lines": [
+        {
+          "speaker": "Announcement",
+          "text": "This bus is very crowded. Please move to the back."
+        },
+        {
+          "speaker": "Passenger",
+          "text": "Excuse me, is this seat taken?"
+        },
+        {
+          "speaker": "You",
+          "text": "No, you can sit here."
+        }
+      ],
+      "terms": [
+        {
+          "term": "crowded",
+          "meaning": "đông đúc",
+          "importance": 4,
+          "contexts": [
+            {
+              "text": "The train is crowded.",
+              "translation": "Tàu rất đông."
+            },
+            {
+              "text": "This café gets crowded at lunch.",
+              "translation": "Quán này đông vào giờ trưa."
+            },
+            {
+              "text": "I don’t like crowded places.",
+              "translation": "Tôi không thích nơi đông người."
+            }
+          ],
+          "read_check": {
+            "prompt": "“crowded” mô tả nơi như thế nào?",
+            "options": [
+              "Có nhiều người",
+              "Rất yên tĩnh",
+              "Đã đóng cửa",
+              "Rất xa"
+            ],
+            "answer": "Có nhiều người"
+          },
+          "speak_prompt": "Nói một nơi gần mày thường rất đông.",
+          "write_prompt": "Viết một câu với crowded."
+        },
+        {
+          "term": "taken",
+          "meaning": "đã có người dùng/chiếm (chỗ)",
+          "importance": 4,
+          "contexts": [
+            {
+              "text": "Is this seat taken?",
+              "translation": "Chỗ này có người ngồi chưa?"
+            },
+            {
+              "text": "Sorry, this table is taken.",
+              "translation": "Xin lỗi, bàn này có người rồi."
+            },
+            {
+              "text": "That room is already taken.",
+              "translation": "Phòng đó đã có người dùng rồi."
+            }
+          ],
+          "read_check": {
+            "prompt": "Ở quán, “this table is taken” nghĩa là?",
+            "options": [
+              "Bàn đã có người",
+              "Bàn bị vỡ",
+              "Bàn miễn phí",
+              "Bàn rất sạch"
+            ],
+            "answer": "Bàn đã có người"
+          },
+          "speak_prompt": "Hỏi xem một chỗ ngồi đã có người chưa.",
+          "write_prompt": "Viết câu trả lời lịch sự rằng bàn này đã có người."
+        }
+      ]
+    },
+    {
+      "id": "en-exp-borrow-charger",
+      "level": "A1-A2",
+      "format": "comic",
+      "title": "Điện thoại còn 2% pin",
+      "hook": "Một tình huống mà ai cũng từng gặp.",
+      "setting": "office",
+      "duration": 35,
+      "lines": [
+        {
+          "speaker": "You",
+          "text": "My phone is almost dead."
+        },
+        {
+          "speaker": "Coworker",
+          "text": "Do you need a charger?"
+        },
+        {
+          "speaker": "You",
+          "text": "Yeah. Can I borrow yours for ten minutes?"
+        },
+        {
+          "speaker": "Coworker",
+          "text": "Sure. It’s on my desk."
+        }
+      ],
+      "terms": [
+        {
+          "term": "borrow",
+          "meaning": "mượn",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "Can I borrow your charger?",
+              "translation": "Tôi mượn sạc của bạn được không?"
+            },
+            {
+              "text": "I borrowed a book from Mina.",
+              "translation": "Tôi mượn một cuốn sách từ Mina."
+            },
+            {
+              "text": "You can borrow my umbrella.",
+              "translation": "Bạn có thể mượn ô của tôi."
+            }
+          ],
+          "read_check": {
+            "prompt": "Nếu mày “borrow” một thứ thì mày làm gì?",
+            "options": [
+              "Mượn và sẽ trả lại",
+              "Mua luôn",
+              "Vứt đi",
+              "Bán cho người khác"
+            ],
+            "answer": "Mượn và sẽ trả lại"
+          },
+          "speak_prompt": "Hỏi mượn một đồ vật bằng “Can I borrow…?”.",
+          "write_prompt": "Viết tin nhắn hỏi mượn sạc hoặc ô."
+        },
+        {
+          "term": "dead",
+          "meaning": "hết pin (thiết bị); chết",
+          "importance": 4,
+          "contexts": [
+            {
+              "text": "My phone is dead.",
+              "translation": "Điện thoại tôi hết pin."
+            },
+            {
+              "text": "The battery is almost dead.",
+              "translation": "Pin gần hết."
+            },
+            {
+              "text": "My laptop died during the meeting.",
+              "translation": "Laptop của tôi hết pin/tắt trong lúc họp."
+            }
+          ],
+          "read_check": {
+            "prompt": "“My phone is dead” trong đời thường thường nghĩa gì?",
+            "options": [
+              "Điện thoại hết pin",
+              "Điện thoại bị mất",
+              "Điện thoại rất mới",
+              "Điện thoại đang rung"
+            ],
+            "answer": "Điện thoại hết pin"
+          },
+          "speak_prompt": "Nói điện thoại mày sắp hết pin.",
+          "write_prompt": "Viết một câu xin sạc vì điện thoại gần hết pin."
+        }
+      ]
+    },
+    {
+      "id": "en-exp-awkward-elevator",
+      "level": "B1-B2",
+      "format": "video",
+      "title": "Thang máy im lặng đến khó xử",
+      "hook": "Small talk đời thường cho người đã có nền.",
+      "setting": "elevator",
+      "duration": 45,
+      "lines": [
+        {
+          "speaker": "Neighbor",
+          "text": "This is awkward. We’ve lived on the same floor for six months and I still don’t know your name."
+        },
+        {
+          "speaker": "You",
+          "text": "Honestly, I was thinking the same thing."
+        },
+        {
+          "speaker": "Neighbor",
+          "text": "I’m Sam, by the way."
+        }
+      ],
+      "terms": [
+        {
+          "term": "awkward",
+          "meaning": "ngượng ngùng; khó xử",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "That was awkward.",
+              "translation": "Cái đó ngượng thật."
+            },
+            {
+              "text": "There was an awkward silence.",
+              "translation": "Có một khoảng im lặng khó xử."
+            },
+            {
+              "text": "I felt awkward at the party.",
+              "translation": "Tôi cảm thấy ngượng ở bữa tiệc."
+            }
+          ],
+          "read_check": {
+            "prompt": "“awkward silence” là kiểu im lặng nào?",
+            "options": [
+              "Khó xử/ngượng",
+              "Thoải mái",
+              "Vui vẻ",
+              "Cực kỳ ồn"
+            ],
+            "answer": "Khó xử/ngượng"
+          },
+          "speak_prompt": "Kể một tình huống khiến mày thấy awkward.",
+          "write_prompt": "Viết 2 câu mô tả một khoảnh khắc awkward."
+        },
+        {
+          "term": "by the way",
+          "meaning": "tiện thể; à mà",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "By the way, I’m Sam.",
+              "translation": "À mà, tôi là Sam."
+            },
+            {
+              "text": "By the way, are you free tonight?",
+              "translation": "Tiện thể, tối nay bạn rảnh không?"
+            },
+            {
+              "text": "I like your jacket, by the way.",
+              "translation": "À mà, tôi thích áo khoác của bạn."
+            }
+          ],
+          "read_check": {
+            "prompt": "“by the way” thường dùng để?",
+            "options": [
+              "Chuyển/thêm một ý bên lề",
+              "Kết thúc mọi cuộc nói chuyện",
+              "Ra lệnh",
+              "Nói về quá khứ xa"
+            ],
+            "answer": "Chuyển/thêm một ý bên lề"
+          },
+          "speak_prompt": "Thêm một ý mới vào câu chuyện bằng “by the way”.",
+          "write_prompt": "Viết một tin nhắn có “by the way”."
+        }
+      ]
+    },
+    {
+      "id": "en-exp-work-favor",
+      "level": "B1-B2",
+      "format": "chat",
+      "title": "Đồng nghiệp nhờ vả sát giờ",
+      "hook": "Học cách nhận hoặc từ chối nhẹ nhàng.",
+      "setting": "office",
+      "duration": 50,
+      "lines": [
+        {
+          "speaker": "Coworker",
+          "text": "Could you do me a quick favor before you leave?"
+        },
+        {
+          "speaker": "You",
+          "text": "Depends. How quick are we talking?"
+        },
+        {
+          "speaker": "Coworker",
+          "text": "Five minutes. Probably."
+        }
+      ],
+      "terms": [
+        {
+          "term": "favor",
+          "meaning": "sự giúp đỡ; việc nhờ",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "Can you do me a favor?",
+              "translation": "Bạn giúp tôi một việc được không?"
+            },
+            {
+              "text": "I owe you a favor.",
+              "translation": "Tôi nợ bạn một lần giúp đỡ."
+            },
+            {
+              "text": "Could I ask you a favor?",
+              "translation": "Tôi có thể nhờ bạn một việc không?"
+            }
+          ],
+          "read_check": {
+            "prompt": "“do me a favor” gần nhất là?",
+            "options": [
+              "Giúp tôi một việc",
+              "Trả tiền cho tôi",
+              "Đợi tôi một giờ",
+              "Đừng nói với tôi"
+            ],
+            "answer": "Giúp tôi một việc"
+          },
+          "speak_prompt": "Nhờ ai đó giúp một việc bằng câu tự nhiên.",
+          "write_prompt": "Viết tin nhắn nhờ bạn một favor nhỏ."
+        }
+      ]
+    },
+    {
+      "id": "en-exp-real-life-reply",
+      "level": "A1-A2",
+      "format": "reply",
+      "title": "Trả lời trong 5 giây",
+      "hook": "Phản xạ với một câu cực đời thường.",
+      "setting": "street",
+      "duration": 25,
+      "lines": [
+        {
+          "speaker": "Friend",
+          "text": "Hey, what are you up to?"
+        },
+        {
+          "speaker": "You",
+          "text": "Not much. I’m heading home."
+        }
+      ],
+      "terms": [
+        {
+          "term": "what are you up to",
+          "meaning": "bạn đang làm gì / có kế hoạch gì",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "What are you up to?",
+              "translation": "Bạn đang làm gì thế?"
+            },
+            {
+              "text": "What are you up to tonight?",
+              "translation": "Tối nay bạn định làm gì?"
+            },
+            {
+              "text": "Not much. What about you?",
+              "translation": "Không có gì nhiều. Còn bạn?"
+            }
+          ],
+          "read_check": {
+            "prompt": "Bạn bè hỏi “What are you up to?” thường muốn biết gì?",
+            "options": [
+              "Bạn đang làm/định làm gì",
+              "Bạn bao nhiêu tuổi",
+              "Bạn sống ở đâu",
+              "Bạn có tiền không"
+            ],
+            "answer": "Bạn đang làm/định làm gì"
+          },
+          "speak_prompt": "Trả lời tự nhiên cho “What are you up to?”.",
+          "write_prompt": "Viết một tin nhắn hỏi bạn tối nay họ định làm gì."
+        },
+        {
+          "term": "heading home",
+          "meaning": "đang trên đường/định về nhà",
+          "importance": 4,
+          "contexts": [
+            {
+              "text": "I’m heading home.",
+              "translation": "Tôi đang về nhà."
+            },
+            {
+              "text": "We’re heading to the station.",
+              "translation": "Chúng tôi đang đi về phía ga."
+            },
+            {
+              "text": "I should head home soon.",
+              "translation": "Tôi nên về nhà sớm."
+            }
+          ],
+          "read_check": {
+            "prompt": "“I’m heading home” nghĩa gần nhất là?",
+            "options": [
+              "Tôi đang về nhà",
+              "Tôi vừa mua nhà",
+              "Tôi đang ngủ ở nhà",
+              "Tôi không có nhà"
+            ],
+            "answer": "Tôi đang về nhà"
+          },
+          "speak_prompt": "Nói mày đang đi đâu bằng “heading…”.",
+          "write_prompt": "Viết một câu nói mày sắp về nhà."
+        }
+      ]
+    }
+  ],
+  "zh": [
+    {
+      "id": "zh-exp-breakfast",
+      "level": "A1-A2",
+      "format": "video",
+      "title": "早餐店點餐",
+      "hook": "Một đoạn order bữa sáng đời thường.",
+      "setting": "cafe",
+      "duration": 35,
+      "lines": [
+        {
+          "speaker": "店員",
+          "text": "你好，要吃什麼？"
+        },
+        {
+          "speaker": "你",
+          "text": "我要一個蛋餅，謝謝。"
+        },
+        {
+          "speaker": "店員",
+          "text": "要喝的嗎？"
+        },
+        {
+          "speaker": "你",
+          "text": "一杯豆漿。"
+        }
+      ],
+      "terms": [
+        {
+          "term": "要",
+          "meaning": "muốn; cần",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "我要咖啡。",
+              "translation": "Tôi muốn cà phê."
+            },
+            {
+              "text": "你要去哪裡？",
+              "translation": "Bạn muốn/định đi đâu?"
+            },
+            {
+              "text": "要不要一起去？",
+              "translation": "Có muốn đi cùng không?"
+            }
+          ],
+          "read_check": {
+            "prompt": "「我要咖啡」nghĩa là?",
+            "options": [
+              "Tôi muốn cà phê",
+              "Tôi ghét cà phê",
+              "Tôi bán cà phê",
+              "Tôi đã uống xong"
+            ],
+            "answer": "Tôi muốn cà phê"
+          },
+          "speak_prompt": "Nói một món mày muốn bằng 我要…",
+          "write_prompt": "Viết một câu order dùng 我要…"
+        }
+      ]
+    },
+    {
+      "id": "zh-exp-late",
+      "level": "A1-A2",
+      "format": "chat",
+      "title": "朋友說他會晚到",
+      "hook": "Một tin nhắn rất hay gặp.",
+      "setting": "phone",
+      "duration": 30,
+      "lines": [
+        {
+          "speaker": "朋友",
+          "text": "不好意思，我會晚一點到。"
+        },
+        {
+          "speaker": "你",
+          "text": "沒關係，我等你。"
+        }
+      ],
+      "terms": [
+        {
+          "term": "晚一點",
+          "meaning": "muộn hơn một chút",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "我會晚一點到。",
+              "translation": "Tôi sẽ đến muộn một chút."
+            },
+            {
+              "text": "我們晚一點再說。",
+              "translation": "Lát nữa/muộn hơn mình nói tiếp."
+            },
+            {
+              "text": "可以晚一點嗎？",
+              "translation": "Có thể muộn hơn một chút không?"
+            }
+          ],
+          "read_check": {
+            "prompt": "「我會晚一點到」nghĩa là?",
+            "options": [
+              "Tôi sẽ đến muộn một chút",
+              "Tôi sẽ không đến",
+              "Tôi đã tới rồi",
+              "Tôi muốn về nhà"
+            ],
+            "answer": "Tôi sẽ đến muộn một chút"
+          },
+          "speak_prompt": "Nói rằng mày sẽ đến muộn một chút.",
+          "write_prompt": "Nhắn bạn rằng mày sẽ tới muộn."
+        }
+      ]
+    },
+    {
+      "id": "zh-exp-borrow",
+      "level": "A1-A2",
+      "format": "comic",
+      "title": "手機沒電",
+      "hook": "Hỏi mượn sạc điện thoại.",
+      "setting": "office",
+      "duration": 35,
+      "lines": [
+        {
+          "speaker": "你",
+          "text": "我的手機快沒電了。"
+        },
+        {
+          "speaker": "同事",
+          "text": "你需要充電器嗎？"
+        },
+        {
+          "speaker": "你",
+          "text": "可以借我一下嗎？"
+        }
+      ],
+      "terms": [
+        {
+          "term": "借",
+          "meaning": "mượn/cho mượn tùy cấu trúc",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "可以借我一下嗎？",
+              "translation": "Có thể cho tôi mượn một chút không?"
+            },
+            {
+              "text": "我跟朋友借了一本書。",
+              "translation": "Tôi mượn một cuốn sách từ bạn."
+            },
+            {
+              "text": "這個可以借你。",
+              "translation": "Cái này có thể cho bạn mượn."
+            }
+          ],
+          "read_check": {
+            "prompt": "「可以借我一下嗎？」dùng khi?",
+            "options": [
+              "Muốn mượn thứ gì đó",
+              "Muốn mua thứ gì đó",
+              "Muốn trả hàng",
+              "Muốn gọi taxi"
+            ],
+            "answer": "Muốn mượn thứ gì đó"
+          },
+          "speak_prompt": "Hỏi mượn sạc bằng tiếng Trung.",
+          "write_prompt": "Viết một câu hỏi mượn đồ."
+        }
+      ]
+    },
+    {
+      "id": "zh-exp-crowded",
+      "level": "B1-B2",
+      "format": "audio",
+      "title": "捷運很擠",
+      "hook": "Nghe câu nói đời thường trên tàu.",
+      "setting": "metro",
+      "duration": 40,
+      "lines": [
+        {
+          "speaker": "朋友",
+          "text": "今天捷運超擠的。"
+        },
+        {
+          "speaker": "你",
+          "text": "真的，差點上不去。"
+        }
+      ],
+      "terms": [
+        {
+          "term": "擠",
+          "meaning": "chen chúc; chật đông",
+          "importance": 5,
+          "contexts": [
+            {
+              "text": "捷運很擠。",
+              "translation": "MRT rất đông/chật."
+            },
+            {
+              "text": "這家店週末很擠。",
+              "translation": "Cửa hàng này cuối tuần rất đông."
+            },
+            {
+              "text": "不要擠。",
+              "translation": "Đừng chen."
+            }
+          ],
+          "read_check": {
+            "prompt": "「很擠」mô tả nơi như thế nào?",
+            "options": [
+              "Rất đông/chật",
+              "Rất yên tĩnh",
+              "Rất xa",
+              "Rất lạnh"
+            ],
+            "answer": "Rất đông/chật"
+          },
+          "speak_prompt": "Nói một nơi thường rất đông.",
+          "write_prompt": "Viết câu với 擠."
+        }
+      ]
+    }
+  ]
+}

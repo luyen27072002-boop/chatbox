@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#dceee1">
+  <title>Tử vi & Lá số — Mở Lối</title>
+  <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='astrology/style.css') }}">
+</head>
+<body>
+  <div class="astro-bg" aria-hidden="true"><span></span><span></span><i></i></div>
+  <header class="astro-topbar">
+    <div class="top-left">
+      <a class="back-link" href="/home">← <span data-t="back">Trang chính</span></a>
+      <a class="astro-brand" href="/astrology">
+        <img src="{{ url_for('static', filename='icons/brand-logo.png') }}" alt="">
+        <div><strong>Mở Lối</strong><small data-t="brandSub">Tử vi & Lá số</small></div>
+      </a>
+    </div>
+    <div class="top-actions">
+      <label class="ui-language"><span data-t="language">Ngôn ngữ</span><select class="global-language-select"><option value="vi">Tiếng Việt</option><option value="en">English</option><option value="zh">繁體中文</option></select></label>
+      <span class="user-name">{{ display_name }}</span>
+      <b id="quotaBadge">Đang tải lượt…</b>
+    </div>
+  </header>
+
+  <main class="astro-shell">
+    <section id="introPanel" class="intro-grid">
+      <div class="intro-copy">
+        <p class="eyebrow" data-t="eyebrow">TỬ VI ĐẨU SỐ · LẬP LÁ SỐ TRƯỚC, LUẬN SAU</p>
+        <h1 data-t="heroTitle">Có lá số thật trước.<br>Muốn hỏi gì thì đi sâu phần đó.</h1>
+        <p class="lead" data-t="heroDesc">Hệ thống an 12 cung, chính tinh và phụ tinh từ ngày giờ sinh. Sau đó mới tạo bản tóm tắt, xu hướng gần và phần hỏi sâu.</p>
+        <div class="trust-row">
+          <span data-t="trust1">12 cung + chính tinh/phụ tinh</span>
+          <span data-t="trust2">Đại hạn, Tiểu hạn, Tuần/Triệt</span>
+          <span data-t="trust3">AI chỉ luận dữ liệu đã an sao</span>
+        </div>
+      </div>
+
+      <form id="birthForm" class="birth-card">
+        <div class="form-head"><small data-t="formEyebrow">THÔNG TIN LẬP LÁ SỐ</small><h2 data-t="formTitle">Cần ngày, giờ sinh và giới tính</h2></div>
+        <label><span data-t="birthDate">Ngày sinh dương lịch</span><input id="birthDate" type="date" required></label>
+        <div class="two-col">
+          <label><span data-t="birthTime">Giờ sinh</span><input id="birthTime" type="time" required></label>
+          <label><span data-t="gender">Giới tính dùng để an sao</span><select id="gender" required><option value="" data-t="chooseGender">Chọn</option><option value="female" data-t="female">Nữ</option><option value="male" data-t="male">Nam</option></select></label>
+        </div>
+        <label><span data-t="birthPlace">Nơi sinh</span><input id="birthPlace" maxlength="120" placeholder="Ví dụ: Hà Nội, Việt Nam"></label>
+        <button id="createChartBtn" type="submit" data-t="create">Lập lá số Tử Vi</button>
+        <p class="form-note" data-t="formNote">Bản hiện tại dùng múi giờ Việt Nam GMT+7. Phần an sao được tính bằng engine; phần luận giải chỉ mang tính tham khảo và giải trí.</p>
+      </form>
+    </section>
+
+    <section id="resultPanel" class="result-panel hidden">
+      <div class="result-head">
+        <div><p class="eyebrow" data-t="yourChart">LÁ SỐ TỬ VI ĐẨU SỐ</p><h1 data-t="resultTitle">Lá số truyền thống, nhưng đọc dễ hơn</h1></div>
+        <button id="newChartBtn" class="ghost-btn" type="button" data-t="newChart">Lập lá số khác</button>
+      </div>
+
+      <section class="traditional-chart-section">
+        <div class="chart-toolbar">
+          <div>
+            <strong data-t="chartHeading">Thiên bàn & 12 cung</strong>
+            <span id="chartEngine">—</span>
+          </div>
+          <p data-t="chartScrollHint">Trên điện thoại có thể kéo ngang để xem rõ từng cung.</p>
+        </div>
+        <div class="traditional-chart-scroll rendered-chart-scroll">
+          <figure class="rendered-chart-frame">
+            <div id="chartImageLoading" class="chart-image-loading">Đang dựng lá số đầy đủ…</div>
+            <img id="traditionalChartImage" class="traditional-chart-image" alt="Lá số Tử Vi Đẩu Số đầy đủ" hidden>
+            <div id="chartImageError" class="chart-image-error" hidden></div>
+          </figure>
+        </div>
+        <p class="chart-note" data-t="chartNote">Tên cung, vị trí sao, miếu/vượng/đắc/bình/hãm, Đại Hạn, Tiểu Hạn và Tuần/Triệt lấy từ engine an sao. AI không được tự chuyển sao sang cung khác.</p>
+      </section>
+
+      <section class="summary-grid">
+        <article class="summary-card primary"><small data-t="overall">TỔNG QUAN</small><p id="overviewText"></p></article>
+        <article class="summary-card"><small data-t="personality">NÉT TÍNH CÁCH</small><p id="personalityText"></p></article>
+      </section>
+
+      <section class="future-section">
+        <div class="section-head"><div><p class="eyebrow" data-t="nearFuture">TƯƠNG LAI GẦN</p><h2 data-t="futureTitle">Xu hướng trong khoảng thời gian tới</h2></div><span id="futurePeriod"></span></div>
+        <p id="futureSummary" class="future-summary"></p>
+        <div id="areaGrid" class="area-grid"></div>
+        <p class="future-caveat" data-t="futureCaveat">Phần này dùng lá số nền + bối cảnh Đại Hạn hiện tại để đưa ra xu hướng tham khảo. Muốn xem lưu niên/lưu nguyệt chi tiết hơn sẽ cần thêm engine vận hạn ở phiên bản sau.</p>
+      </section>
+
+      <section class="action-grid">
+        <article class="action-card do-card"><div class="action-title"><span>✓</span><div><small data-t="doEyebrow">NÊN LÀM</small><h2 data-t="doTitle">Chủ động ở những việc này</h2></div></div><ul id="shouldDo"></ul></article>
+        <article class="action-card caution-card"><div class="action-title"><span>!</span><div><small data-t="watchEyebrow">CẨN TRỌNG</small><h2 data-t="watchTitle">Đừng để những điều này kéo lệch nhịp</h2></div></div><ul id="watchOut"></ul></article>
+      </section>
+
+      <section class="closing-card"><small data-t="bottomLine">TÓM LẠI</small><p id="closingText"></p></section>
+
+      <section class="ask-section">
+        <div class="ask-copy"><p class="eyebrow" data-t="askEyebrow">MUỐN XEM KỸ HƠN?</p><h2 data-t="askTitle">Hỏi đúng cung hoặc chuyện bạn đang quan tâm</h2><p data-t="askDesc">Có thể hỏi thẳng về Quan Lộc, Tài Bạch, Phu Thê hoặc hỏi theo tình huống thực tế. Hệ thống sẽ đọc lại đúng các sao trong lá số này.</p></div>
+        <div class="quick-asks">
+          <button type="button" data-question="Phân tích kỹ cung Quan Lộc và công việc của tôi." data-t="quickCareer">Quan Lộc</button>
+          <button type="button" data-question="Phân tích kỹ cung Tài Bạch và chuyện tài chính của tôi." data-t="quickMoney">Tài Bạch</button>
+          <button type="button" data-question="Phân tích kỹ cung Phu Thê và chuyện tình cảm của tôi." data-t="quickLove">Phu Thê</button>
+          <button type="button" data-question="Phân tích kỹ cung Mệnh, điểm mạnh và điểm cần cẩn trọng của tôi." data-t="quickSelf">Cung Mệnh</button>
+        </div>
+        <div id="astroChat" class="astro-chat"></div>
+        <form id="askForm" class="ask-form"><textarea id="questionInput" maxlength="1200" rows="3" data-placeholder="questionPlaceholder" placeholder="Ví dụ: Cung Quan Lộc của tôi có những sao gì và 2 tháng tới nên chú ý điều gì?"></textarea><div><small id="questionCount">0/1200</small><button id="askBtn" type="submit" data-t="askBtn">Hỏi về lá số này</button></div></form>
+      </section>
+    </section>
+  </main>
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="{{ url_for('static', filename='global_i18n.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='astrology/app.js') }}" defer></script>
+</body>
+</html>

@@ -64,8 +64,12 @@
 
   async function loadProgress() {
     try {
-      const [language, life] = await Promise.all([
+      const [language, career, astrology, finance, selfDiscovery, life] = await Promise.all([
         api("/api/language/overview"),
+        api("/api/career/overview"),
+        api("/api/astrology/overview"),
+        api("/api/finance/overview"),
+        api("/api/self-discovery/overview"),
         api("/api/life/overview"),
       ]);
       if (language) {
@@ -80,6 +84,53 @@
               ? t("home.dynamic.triedCount", { count: sessions.length })
               : t("home.dynamic.noSession");
         document.getElementById("languageProgressText").textContent = text;
+      }
+      if (career) {
+        const cvTarget = document.getElementById("careerProgressText");
+        const jobsTarget = document.getElementById("jobsProgressText");
+        if (cvTarget) {
+          cvTarget.textContent = career.latest_cv
+            ? t("home.dynamic.careerReady")
+            : career.profile_ready
+              ? t("home.dynamic.careerProfile")
+              : t("home.dynamic.careerWaiting");
+        }
+        if (jobsTarget) {
+          const count = Number(career.saved_jobs_count || 0);
+          jobsTarget.textContent = count
+            ? t("home.dynamic.jobsReady", { count })
+            : t("home.dynamic.jobsWaiting");
+        }
+      }
+      if (astrology) {
+        const latest = astrology.reading;
+        const target = document.getElementById("astrologyProgressText");
+        if (target) {
+          target.textContent = latest?.profile?.can_chi_year
+            ? t("home.dynamic.astrologyReady", { canChi: latest.profile.can_chi_year })
+            : t("home.dynamic.astrologyWaiting");
+        }
+      }
+      if (finance) {
+        const target = document.getElementById("financeProgressText");
+        if (target) {
+          const amount = Number(finance.summary?.expense || 0);
+          const lang = window.ML_I18N?.getLanguage?.() || "vi";
+          const locale = lang === "zh" ? "zh-TW" : lang === "en" ? "en-US" : "vi-VN";
+          const formatted = new Intl.NumberFormat(locale, { style: "currency", currency: "VND", maximumFractionDigits: 0 }).format(amount);
+          target.textContent = amount > 0
+            ? t("home.dynamic.financeReady", { amount: formatted })
+            : t("home.dynamic.financeWaiting");
+        }
+      }
+      if (selfDiscovery) {
+        const target = document.getElementById("selfProgressText");
+        if (target) {
+          const count = Number(selfDiscovery.completed_count || 0);
+          target.textContent = count > 0
+            ? t("home.dynamic.selfReady", { count })
+            : t("home.dynamic.selfWaiting");
+        }
       }
       if (life) {
         const entries = Array.isArray(life.entries) ? life.entries.length : 0;

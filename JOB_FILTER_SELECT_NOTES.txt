@@ -1,0 +1,17 @@
+MỞ LỐI — JOB FILTER SELECT V4
+
+Đã làm:
+- Công việc là dropdown.
+- Nơi làm là dropdown.
+- Chỉ khi chọn Khác... mới bung input nhập tay.
+- Toàn Việt Nam là lựa chọn mặc định của nơi làm.
+- Nếu career profile cũ có role/location khớp option thì tự chọn.
+- Nếu profile cũ không khớp option thì tự chuyển sang Khác và điền giá trị cũ.
+- Search backend/Jooble/Remotive không thay đổi.
+
+Không đụng:
+- career.py
+- auth/payment/database
+- CV/phỏng vấn
+- tử vi/finance/self-discovery/language
+- .env/app.db

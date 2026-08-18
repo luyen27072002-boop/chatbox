@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#e5f3e8">
+  <title>Quản lý chi tiêu — Mở Lối</title>
+  <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='finance/style.css') }}">
+</head>
+<body>
+  <div class="finance-bg" aria-hidden="true"><span></span><span></span></div>
+  <header class="finance-topbar">
+    <a class="back" href="/home">← <span data-t="back">Trang chính</span></a>
+    <a class="brand" href="/finance"><img src="{{ url_for('static', filename='icons/brand-logo.png') }}" alt=""><div><strong>Mở Lối</strong><small data-t="brand">Quản lý chi tiêu</small></div></a>
+    <div class="top-actions">
+      <label class="language"><span data-t="language">Ngôn ngữ</span><select id="uiLanguage"><option value="vi">Tiếng Việt</option><option value="en">English</option><option value="zh">繁體中文</option></select></label>
+      <span class="user">{{ display_name }}</span>
+    </div>
+  </header>
+
+  <main class="finance-shell">
+    <section class="finance-hero">
+      <div><p class="eyebrow" data-t="eyebrow">TIỀN CỦA MÌNH ĐANG ĐI ĐÂU?</p><h1 data-t="title">Nhìn tiền rõ hơn.<br>Đỡ cuối tháng mới giật mình.</h1></div>
+      <div class="hero-actions"><button id="openPlanBtn" class="soft-btn" type="button" data-t="plan">Đặt kế hoạch tháng</button></div>
+    </section>
+
+    <section class="panel ai-expense-panel">
+      <div id="financeChatMessages" class="finance-chat-messages" aria-live="polite"></div>
+      <div class="finance-chat-examples" aria-label="Lệnh nhanh">
+        <button type="button" data-finance-prompt="tháng này tổng thu chi bao nhiêu">Hỏi tổng tháng</button>
+        <button type="button" data-finance-prompt="xuất Excel">Xuất Excel</button>
+      </div>
+      <form id="financeChatForm" class="finance-chat-form">
+        <input id="financeChatInput" maxlength="1000" autocomplete="off" placeholder="Nhập khoản chi hoặc ra lệnh...">
+        <button id="financeVoiceBtn" class="voice-btn" type="button" aria-label="Nhập bằng giọng nói" aria-pressed="false" title="Nhập bằng giọng nói">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-5a3.5 3.5 0 1 0-7 0v5A3.5 3.5 0 0 0 12 15Zm-6-3.5a1 1 0 0 1 2 0 4 4 0 0 0 8 0 1 1 0 1 1 2 0 6 6 0 0 1-5 5.92V20h3a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h3v-2.58A6 6 0 0 1 6 11.5Z"/></svg>
+        </button>
+        <button id="financeChatSend" class="primary-btn" type="submit">Gửi</button>
+      </form>
+    </section>
+
+    <section class="summary-grid">
+      <article><small data-t="income">Thu vào</small><strong id="incomeValue">0 ₫</strong><span id="incomeProgress">—</span></article>
+      <article><small data-t="expense">Đã chi</small><strong id="expenseValue">0 ₫</strong><span id="budgetProgress">—</span></article>
+      <article class="balance-card"><small data-t="balance">Còn lại</small><strong id="balanceValue">0 ₫</strong><span id="savingProgress">—</span></article>
+      <article><small data-t="budgetLeft">Ngân sách còn</small><strong id="budgetLeftValue">0 ₫</strong><span id="monthStatus">—</span></article>
+    </section>
+
+    <section class="manual-entry-shell">
+      <button id="manualEntryToggle" class="manual-entry-toggle" type="button" aria-expanded="false" aria-controls="manualEntryPanel">
+        <span data-t="manualEntry">Nhập thủ công</span><b aria-hidden="true">＋</b>
+      </button>
+      <section id="manualEntryPanel" class="panel add-panel" hidden>
+        <div class="panel-head"><div><p class="eyebrow" data-t="quickAdd">GHI NHANH</p><h2 data-t="addTitle">Thêm một khoản</h2></div><div class="kind-switch"><button class="active" type="button" data-kind="expense" data-t="spend">Chi</button><button type="button" data-kind="income" data-t="earn">Thu</button></div></div>
+        <form id="transactionForm">
+          <label class="amount-field"><span data-t="amount">Số tiền</span><div><input id="amountInput" inputmode="numeric" autocomplete="off" placeholder="0" required><b>₫</b></div></label>
+          <div class="form-row"><label><span data-t="category">Danh mục</span><select id="categorySelect"></select></label><label><span data-t="date">Ngày</span><input id="transactionDate" type="date" required></label></div>
+          <label><span data-t="note">Ghi chú</span><input id="noteInput" maxlength="180" placeholder="Cà phê, tiền nhà, lương part-time..."></label>
+          <button class="primary-btn" type="submit" data-t="saveTransaction">Lưu khoản này</button>
+        </form>
+      </section>
+    </section>
+
+    <section class="insights-grid">
+      <section class="panel category-panel">
+        <div class="panel-head"><div><p class="eyebrow" data-t="whereSpent">CƠ CẤU CHI</p><h2 data-t="categoryTitle">Chi nhiều vào đâu?</h2></div></div>
+        <div id="categoryList" class="category-list"></div>
+        <div id="emptyCategories" class="empty-state" data-t="noExpense">Chưa có khoản chi nào.</div>
+      </section>
+
+      <section class="panel transactions-panel">
+        <div class="panel-head"><div><p class="eyebrow" data-t="history">LỊCH SỬ</p><h2 data-t="recentTitle">Các khoản gần đây</h2></div><span id="transactionCount"></span></div>
+        <div id="transactionList" class="transaction-list"></div>
+        <div id="emptyTransactions" class="empty-state" data-t="noTransactions">Chưa có giao dịch.</div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="planDialog" class="plan-dialog">
+    <form id="planForm" method="dialog">
+      <div class="dialog-head"><div><small data-t="planEyebrow">KẾ HOẠCH THÁNG</small><h2 data-t="planTitle">Đặt giới hạn trước khi tiêu</h2></div><button id="closePlanBtn" type="button">×</button></div>
+      <label><span data-t="incomeTarget">Thu nhập dự kiến</span><input id="incomeTarget" inputmode="numeric" placeholder="0"></label>
+      <label><span data-t="budgetLimit">Ngân sách chi tối đa</span><input id="budgetLimit" inputmode="numeric" placeholder="0"></label>
+      <label><span data-t="savingTarget">Mục tiêu để dành</span><input id="savingTarget" inputmode="numeric" placeholder="0"></label>
+      <p data-t="planNote">Đây là công cụ lập ngân sách cá nhân, không phải tư vấn đầu tư hay tài chính chuyên nghiệp.</p>
+      <button class="primary-btn" type="submit" data-t="savePlan">Lưu kế hoạch</button>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" hidden></div>
+  <script src="{{ url_for('static', filename='finance/app.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+MỞ LỐI — MULTI-SOURCE JOB SEARCH V2
+08/08/2026
+
+Đã sửa đúng module Tìm việc:
+- Thêm ô địa điểm.
+- 13 nguồn outbound:
+  TopCV, VietnamWorks, CareerViet, Việc Làm 24h, JobsGO, JobOKO,
+  CareerLink, Glints, Indeed Việt Nam, LinkedIn Jobs, ITviec, TopDev, JobStreet.
+- Remotive vẫn hiển thị kết quả remote trực tiếp trong Mở Lối.
+- Hiện title truy vấn + địa điểm riêng trên từng nguồn.
+- Nguồn có URL tìm kiếm ổn định: mở trực tiếp kết quả.
+- Nguồn URL tìm kiếm dễ đổi: "Tìm nhanh" qua web search giới hạn đúng domain + "Mở nguồn".
+- Không scrape/copy kho JD của TopCV/LinkedIn/VietnamWorks/... .
+- Không gửi profile/CV/email của user sang các nguồn này.
+- Link ngoài: target=_blank + rel=noopener noreferrer.
+
+Không đụng:
+- auth, payment, db schema
+- CV/phỏng vấn backend
+- Tử vi, finance, self-discovery, language
+- .env, app.db

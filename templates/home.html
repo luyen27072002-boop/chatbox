@@ -26,6 +26,9 @@
         <a href="/language" data-i18n="home.nav.language">Ngoại ngữ</a>
         <a href="/career/cv" data-i18n="home.nav.cv">CV & phỏng vấn</a>
         <a href="/career/jobs" data-i18n="home.nav.jobs">Tìm việc</a>
+        <a href="/astrology" data-i18n="home.nav.astrology">Tử vi</a>
+        <a href="/finance" data-i18n="home.nav.finance">Chi tiêu</a>
+        <a href="/self-discovery" data-i18n="home.nav.self">Khám phá bản thân</a>
         <a href="/life-space" data-i18n="home.nav.life">Trò chuyện & nhật ký</a>
       </nav>
 
@@ -76,11 +79,11 @@
           </a>
           <a class="hero-picture hero-picture-cv" href="/career/cv">
             <img src="{{ url_for('static', filename='platform/images/cv-career.svg') }}" alt="Minh hoạ tạo CV và luyện phỏng vấn">
-            <span class="picture-label"><small data-i18n="home.picture.soon">Sắp ra mắt</small><strong data-i18n="home.picture.cv">CV & phỏng vấn</strong></span>
+            <span class="picture-label"><small data-i18n="home.picture.active">Đang hoạt động</small><strong data-i18n="home.picture.cv">CV & phỏng vấn</strong></span>
           </a>
           <a class="hero-picture hero-picture-jobs" href="/career/jobs">
             <img src="{{ url_for('static', filename='platform/images/job-search.svg') }}" alt="Minh hoạ tìm kiếm việc làm phù hợp">
-            <span class="picture-label"><small data-i18n="home.picture.soon">Sắp ra mắt</small><strong data-i18n="home.picture.jobs">Tìm việc phù hợp</strong></span>
+            <span class="picture-label"><small data-i18n="home.picture.active">Đang hoạt động</small><strong data-i18n="home.picture.jobs">Tìm việc phù hợp</strong></span>
           </a>
           <a class="hero-picture hero-picture-life" href="/life-space">
             <img src="{{ url_for('static', filename='platform/images/journal-chat.svg') }}" alt="Minh hoạ trò chuyện và viết nhật ký">
@@ -108,30 +111,60 @@
             </div>
           </a>
 
-          <a class="product-card" href="/career/cv">
+          <a class="product-card product-ready" href="/career/cv">
             <div class="product-image"><img src="{{ url_for('static', filename='platform/images/cv-career.svg') }}" alt=""></div>
             <div class="product-copy">
-              <div class="product-topline"><span>02</span><em class="building" data-i18n="home.card.building">Đang phát triển</em></div>
+              <div class="product-topline"><span>02</span><em data-i18n="home.card.ready">Đang hoạt động</em></div>
               <h3 data-i18n="home.card.cv.title">CV & phỏng vấn</h3>
               <p data-i18n="home.card.cv.desc">Viết hồ sơ rõ ràng hơn và chuẩn bị câu trả lời dựa trên chính kinh nghiệm của bạn.</p>
-              <div class="product-meta"><span data-i18n="home.card.cv.meta">Sẽ dùng chung tài khoản</span><b data-i18n="home.card.cv.cta">Xem trước</b></div>
+              <div class="product-meta"><span id="careerProgressText" data-i18n="home.dynamic.careerWaiting">Chưa có hồ sơ nghề nghiệp</span><b data-i18n="home.card.cv.cta">Mở ngay</b></div>
             </div>
           </a>
 
-          <a class="product-card" href="/career/jobs">
+          <a class="product-card product-ready" href="/career/jobs">
             <div class="product-image"><img src="{{ url_for('static', filename='platform/images/job-search.svg') }}" alt=""></div>
             <div class="product-copy">
-              <div class="product-topline"><span>03</span><em class="building" data-i18n="home.card.building">Đang phát triển</em></div>
+              <div class="product-topline"><span>03</span><em data-i18n="home.card.ready">Đang hoạt động</em></div>
               <h3 data-i18n="home.card.jobs.title">Tìm việc phù hợp</h3>
               <p data-i18n="home.card.jobs.desc">Lọc tin tuyển dụng và đối chiếu yêu cầu công việc với năng lực hiện tại.</p>
-              <div class="product-meta"><span data-i18n="home.card.jobs.meta">Tìm việc cơ bản dự kiến miễn phí</span><b data-i18n="home.card.jobs.cta">Xem trước</b></div>
+              <div class="product-meta"><span id="jobsProgressText" data-i18n="home.dynamic.jobsWaiting">Chưa lưu việc nào</span><b data-i18n="home.card.jobs.cta">Tìm việc</b></div>
+            </div>
+          </a>
+
+          <a class="product-card product-ready" href="/astrology">
+            <div class="product-image"><img src="{{ url_for('static', filename='platform/images/astrology.svg') }}" alt=""></div>
+            <div class="product-copy">
+              <div class="product-topline"><span>04</span><em data-i18n="home.card.ready">Đang hoạt động</em></div>
+              <h3 data-i18n="home.card.astrology.title">Tử vi & lá số</h3>
+              <p data-i18n="home.card.astrology.desc">Xem lá số tóm tắt, xu hướng thời gian gần và hỏi sâu đúng điều bạn quan tâm.</p>
+              <div class="product-meta"><span id="astrologyProgressText" data-i18n="home.dynamic.astrologyWaiting">Chưa có lá số nào</span><b data-i18n="home.card.astrology.cta">Xem lá số</b></div>
+            </div>
+          </a>
+
+          <a class="product-card product-ready" href="/finance">
+            <div class="product-image"><img src="{{ url_for('static', filename='platform/images/finance.svg') }}" alt=""></div>
+            <div class="product-copy">
+              <div class="product-topline"><span>05</span><em data-i18n="home.card.ready">Đang hoạt động</em></div>
+              <h3 data-i18n="home.card.finance.title">Quản lý chi tiêu</h3>
+              <p data-i18n="home.card.finance.desc">Ghi thu chi, đặt ngân sách và theo dõi mục tiêu để dành theo từng tháng.</p>
+              <div class="product-meta"><span id="financeProgressText" data-i18n="home.dynamic.financeWaiting">Chưa ghi khoản nào tháng này</span><b data-i18n="home.card.finance.cta">Mở ví</b></div>
+            </div>
+          </a>
+
+          <a class="product-card product-ready" href="/self-discovery">
+            <div class="product-image"><img src="{{ url_for('static', filename='platform/images/self-discovery.svg') }}" alt=""></div>
+            <div class="product-copy">
+              <div class="product-topline"><span>06</span><em data-i18n="home.card.ready">Đang hoạt động</em></div>
+              <h3 data-i18n="home.card.self.title">Khám phá bản thân</h3>
+              <p data-i18n="home.card.self.desc">Big Five, EQ và tư duy logic trong một khu; chấm điểm bằng code, không tốn lượt AI.</p>
+              <div class="product-meta"><span id="selfProgressText" data-i18n="home.dynamic.selfWaiting">Chưa làm bài nào</span><b data-i18n="home.card.self.cta">Khám phá</b></div>
             </div>
           </a>
 
           <a class="product-card product-ready" href="/life-space">
             <div class="product-image"><img src="{{ url_for('static', filename='platform/images/journal-chat.svg') }}" alt=""></div>
             <div class="product-copy">
-              <div class="product-topline"><span>04</span><em data-i18n="home.card.ready">Đang hoạt động</em></div>
+              <div class="product-topline"><span>07</span><em data-i18n="home.card.ready">Đang hoạt động</em></div>
               <h3 data-i18n="home.card.life.title">Trò chuyện & nhật ký</h3>
               <p data-i18n="home.card.life.desc">Trò chuyện, viết lại một ngày và giữ các câu chuyện vẫn đang tiếp diễn.</p>
               <div class="product-meta"><span id="lifeProgressText" data-i18n="home.dynamic.lifeWaiting">Góc riêng đang chờ câu đầu tiên</span><b data-i18n="home.card.life.cta">Đi vào</b></div>
@@ -141,6 +174,8 @@
       </section>
     </main>
   </div>
+
+  <footer class="platform-legal-footer"><span>Mở Lối có sử dụng AI.</span><a href="/privacy">Quyền riêng tư</a><a href="/terms">Điều khoản</a><a href="/account/privacy">Dữ liệu của tôi</a></footer>
 
   <script src="{{ url_for('static', filename='global_i18n.js') }}" defer></script>
   <script src="{{ url_for('static', filename='platform.js') }}" defer></script>

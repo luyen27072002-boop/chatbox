@@ -1,0 +1,19 @@
+MỞ LỐI — JOOBLE REQUEST SAVING V7
+
+Đã sửa:
+- Đổi Loại hình/Kinh nghiệm/Thời gian đăng/Bán kính/Sắp xếp/Chỉ tin có lương
+  KHÔNG tự gọi API nữa.
+- Chỉ khi bấm "Tìm việc" mới gọi backend.
+- Backend cache raw Jooble results 30 phút.
+- Cache key: công việc + nơi làm + bán kính.
+- Các filter local không nằm trong cache key:
+  loại hình, kinh nghiệm, thời gian đăng, chỉ tin có lương, sắp xếp.
+- Tìm lại cùng query/location/radius trong 30 phút dùng cache, không tốn request Jooble mới.
+- Cache in-memory tối đa ~250 query, phù hợp beta 1 instance.
+- Khi scale nhiều instance thì chuyển Redis.
+
+Không đụng:
+- auth/payment/db schema
+- CV/phỏng vấn
+- tử vi/finance/self-discovery/language
+- .env/app.db

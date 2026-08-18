@@ -4,29 +4,30 @@ import json
 import sqlite3
 import uuid
 from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 
 from flask import current_app, g
 
+from db_backend import (
+    DatabaseIntegrityError,
+    column_names as backend_column_names,
+    connect_database,
+    table_exists as backend_table_exists,
+)
+
 from profile_engine import default_profile, normalize_profile
+from storage_backend import storage_from_env
 
 
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def get_db() -> sqlite3.Connection:
+def get_db():
     if "db" not in g:
-        g.db = sqlite3.connect(
-            current_app.config["DATABASE"],
-            detect_types=sqlite3.PARSE_DECLTYPES,
-            check_same_thread=False,
-        )
-        g.db.row_factory = sqlite3.Row
-        g.db.execute("PRAGMA journal_mode=WAL")
-        g.db.execute("PRAGMA foreign_keys=ON")
-        g.db.execute("PRAGMA busy_timeout=10000")
+        g.db = connect_database(current_app.config["DATABASE"])
     return g.db
 
 
@@ -36,17 +37,12 @@ def close_db(_: BaseException | None = None) -> None:
         db.close()
 
 
-def _column_names(db: sqlite3.Connection, table: str) -> set[str]:
-    rows = db.execute(f"PRAGMA table_info({table})").fetchall()
-    return {str(row["name"]) for row in rows}
+def _column_names(db, table: str) -> set[str]:
+    return backend_column_names(db, table)
 
 
-def _table_exists(db: sqlite3.Connection, table: str) -> bool:
-    row = db.execute(
-        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?",
-        (table,),
-    ).fetchone()
-    return row is not None
+def _table_exists(db, table: str) -> bool:
+    return backend_table_exists(db, table)
 
 
 def init_db() -> None:
@@ -62,7 +58,8 @@ def init_db() -> None:
             created_at TEXT NOT NULL,
             updated_at TEXT NOT NULL,
             last_login_at TEXT,
-            permanent_test INTEGER NOT NULL DEFAULT 0
+            permanent_test INTEGER NOT NULL DEFAULT 0,
+            deleted_at TEXT
         );
 
         CREATE TABLE IF NOT EXISTS users (
@@ -94,7 +91,7 @@ def init_db() -> None:
             conversation_id TEXT,
             role TEXT NOT NULL CHECK(role IN ('user', 'assistant')),
             content TEXT NOT NULL,
-            mode TEXT NOT NULL DEFAULT 'listen',
+            mode TEXT NOT NULL DEFAULT 'adaptive',
             category TEXT NOT NULL DEFAULT 'other',
             response_style TEXT NOT NULL DEFAULT 'luyen',
             tone_style TEXT NOT NULL DEFAULT 'gentle',
@@ -102,6 +99,32 @@ def init_db() -> None:
             created_at TEXT NOT NULL,
             FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
             FOREIGN KEY(conversation_id) REFERENCES conversations(id) ON DELETE CASCADE
+        );
+
+        CREATE TABLE IF NOT EXISTS attachments (
+            id TEXT PRIMARY KEY,
+            user_id TEXT NOT NULL,
+            conversation_id TEXT,
+            message_id INTEGER,
+            kind TEXT NOT NULL CHECK(kind IN ('upload', 'generated_image', 'generated_file')),
+            original_name TEXT NOT NULL,
+            stored_name TEXT NOT NULL,
+            mime_type TEXT NOT NULL,
+            size_bytes INTEGER NOT NULL DEFAULT 0,
+            local_path TEXT NOT NULL,
+            openai_file_id TEXT,
+            created_at TEXT NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY(conversation_id) REFERENCES conversations(id) ON DELETE CASCADE,
+            FOREIGN KEY(message_id) REFERENCES messages(id) ON DELETE CASCADE
+        );
+
+        CREATE TABLE IF NOT EXISTS message_attachments (
+            message_id INTEGER NOT NULL,
+            attachment_id TEXT NOT NULL UNIQUE,
+            PRIMARY KEY(message_id, attachment_id),
+            FOREIGN KEY(message_id) REFERENCES messages(id) ON DELETE CASCADE,
+            FOREIGN KEY(attachment_id) REFERENCES attachments(id) ON DELETE CASCADE
         );
 
         CREATE TABLE IF NOT EXISTS usage_daily (
@@ -190,6 +213,18 @@ def init_db() -> None:
             finalized_at TEXT,
             FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
         );
+
+        CREATE TABLE IF NOT EXISTS consent_records (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id TEXT NOT NULL,
+            consent_type TEXT NOT NULL,
+            policy_version TEXT NOT NULL,
+            accepted_at TEXT NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES accounts(id) ON DELETE CASCADE
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_consent_records_user
+        ON consent_records(user_id, accepted_at DESC);
         """
     )
 
@@ -199,6 +234,8 @@ def init_db() -> None:
         db.execute(
             "ALTER TABLE accounts ADD COLUMN permanent_test INTEGER NOT NULL DEFAULT 0"
         )
+    if "deleted_at" not in account_columns:
+        db.execute("ALTER TABLE accounts ADD COLUMN deleted_at TEXT")
 
     user_columns = _column_names(db, "users")
     if "response_style" not in user_columns:
@@ -262,6 +299,19 @@ def init_db() -> None:
 
         CREATE INDEX IF NOT EXISTS idx_quota_events_user_created
         ON quota_events(user_id, created_at DESC);
+
+
+        CREATE INDEX IF NOT EXISTS idx_attachments_user_created
+        ON attachments(user_id, created_at DESC);
+
+        CREATE INDEX IF NOT EXISTS idx_attachments_conversation
+        ON attachments(conversation_id, created_at ASC);
+
+        CREATE INDEX IF NOT EXISTS idx_attachments_message
+        ON attachments(message_id, created_at ASC);
+
+        CREATE INDEX IF NOT EXISTS idx_message_attachments_message
+        ON message_attachments(message_id);
         """
     )
     _migrate_legacy_messages(db)
@@ -365,7 +415,7 @@ def create_account(
             ),
         )
         db.commit()
-    except sqlite3.IntegrityError as exc:
+    except DatabaseIntegrityError as exc:
         text = str(exc).lower()
         if "username" in text:
             raise ValueError("Tên đăng nhập này đã có người dùng.") from exc
@@ -379,7 +429,7 @@ def create_account(
 
 def get_account(account_id: str) -> dict[str, Any] | None:
     row = get_db().execute(
-        "SELECT * FROM accounts WHERE id = ?", (account_id,)
+        "SELECT * FROM accounts WHERE id = ? AND deleted_at IS NULL", (account_id,)
     ).fetchone()
     return _serialize_account(row)
 
@@ -389,7 +439,7 @@ def get_account_for_login(identifier: str) -> dict[str, Any] | None:
     row = get_db().execute(
         """
         SELECT * FROM accounts
-        WHERE lower(username) = ? OR lower(email) = ?
+        WHERE deleted_at IS NULL AND (lower(username) = ? OR lower(email) = ?)
         LIMIT 1
         """,
         (normalized, normalized),
@@ -604,6 +654,22 @@ def rename_conversation(
     return get_conversation(user_id, conversation_id)
 
 
+def _unlink_attachment_rows(rows) -> None:
+    storage_value = str(current_app.config.get("CHAT_STORAGE_DIR", "") or "").strip()
+    if not storage_value:
+        return
+    storage = storage_from_env(storage_value)
+    for row in rows:
+        value = str(row["local_path"] or "").strip()
+        if not value:
+            continue
+        try:
+            storage.delete(value)
+        except Exception:
+            # Metadata deletion must still proceed; stale objects can be cleaned by ops.
+            pass
+
+
 def delete_conversation(user_id: str, conversation_id: str) -> bool:
     db = get_db()
     owned = db.execute(
@@ -612,6 +678,11 @@ def delete_conversation(user_id: str, conversation_id: str) -> bool:
     ).fetchone()
     if not owned:
         return False
+    attachment_rows = db.execute(
+        "SELECT local_path FROM attachments WHERE user_id = ? AND conversation_id = ?",
+        (user_id, conversation_id),
+    ).fetchall()
+    _unlink_attachment_rows(attachment_rows)
     db.execute(
         "DELETE FROM messages WHERE conversation_id = ? AND user_id = ?",
         (conversation_id, user_id),
@@ -647,12 +718,169 @@ def update_conversation_summary(
     db.commit()
 
 
+def _serialize_attachment_row(row: sqlite3.Row | dict[str, Any] | None, *, include_path: bool = False) -> dict[str, Any] | None:
+    if row is None:
+        return None
+    data = dict(row)
+    if not include_path:
+        data.pop("local_path", None)
+        data.pop("stored_name", None)
+        data.pop("openai_file_id", None)
+        data.pop("user_id", None)
+    return data
+
+
+def create_attachment(
+    *,
+    user_id: str,
+    kind: str,
+    original_name: str,
+    stored_name: str,
+    mime_type: str,
+    size_bytes: int,
+    local_path: str,
+    conversation_id: str | None = None,
+    message_id: int | None = None,
+    openai_file_id: str | None = None,
+) -> dict[str, Any]:
+    get_or_create_user(user_id)
+    if kind not in {"upload", "generated_image", "generated_file"}:
+        raise ValueError("Loại tệp đính kèm không hợp lệ.")
+    attachment_id = str(uuid.uuid4())
+    now = _now()
+    db = get_db()
+    db.execute(
+        """
+        INSERT INTO attachments(
+            id, user_id, conversation_id, message_id, kind, original_name, stored_name,
+            mime_type, size_bytes, local_path, openai_file_id, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (
+            attachment_id, user_id, conversation_id, message_id, kind, original_name, stored_name,
+            mime_type, max(0, int(size_bytes)), local_path, openai_file_id, now,
+        ),
+    )
+    if message_id is not None:
+        db.execute(
+            "INSERT INTO message_attachments(message_id, attachment_id) VALUES (?, ?) ON CONFLICT DO NOTHING",
+            (int(message_id), attachment_id),
+        )
+    db.commit()
+    row = db.execute("SELECT * FROM attachments WHERE id = ? AND user_id = ?", (attachment_id, user_id)).fetchone()
+    return _serialize_attachment_row(row, include_path=True) or {}
+
+
+def get_attachment(user_id: str, attachment_id: str, *, include_path: bool = True) -> dict[str, Any] | None:
+    row = get_db().execute(
+        "SELECT * FROM attachments WHERE id = ? AND user_id = ?",
+        (attachment_id, user_id),
+    ).fetchone()
+    return _serialize_attachment_row(row, include_path=include_path)
+
+
+def list_attachments_by_ids(user_id: str, attachment_ids: list[str], *, include_path: bool = True) -> list[dict[str, Any]]:
+    ids = [str(item).strip() for item in attachment_ids if str(item).strip()]
+    if not ids:
+        return []
+    placeholders = ",".join("?" for _ in ids)
+    rows = get_db().execute(
+        f"SELECT * FROM attachments WHERE user_id = ? AND id IN ({placeholders})",
+        (user_id, *ids),
+    ).fetchall()
+    mapping = {str(row["id"]): row for row in rows}
+    return [
+        _serialize_attachment_row(mapping[item], include_path=include_path)
+        for item in ids
+        if item in mapping
+    ]
+
+
+def list_message_attachments(user_id: str, message_id: int, *, include_path: bool = False) -> list[dict[str, Any]]:
+    rows = get_db().execute(
+        """
+        SELECT a.* FROM attachments a
+        JOIN message_attachments ma ON ma.attachment_id = a.id
+        WHERE a.user_id = ? AND ma.message_id = ?
+        ORDER BY a.created_at ASC
+        """,
+        (user_id, int(message_id)),
+    ).fetchall()
+    return [dict(_serialize_attachment_row(row, include_path=include_path) or {}) for row in rows]
+
+
+def bind_attachments_to_message(
+    user_id: str,
+    attachment_ids: list[str],
+    message_id: int,
+    conversation_id: str,
+) -> None:
+    ids = [str(item).strip() for item in attachment_ids if str(item).strip()]
+    if not ids:
+        return
+    attachments = list_attachments_by_ids(user_id, ids, include_path=True)
+    if len(attachments) != len(ids):
+        raise ValueError("Có tệp đính kèm không thuộc tài khoản này.")
+    for attachment in attachments:
+        existing_message = attachment.get("message_id")
+        if existing_message is not None and int(existing_message) != int(message_id):
+            raise ValueError("Tệp đính kèm đã được gắn vào tin nhắn khác.")
+        get_db().execute(
+            """
+            UPDATE attachments
+            SET message_id = ?, conversation_id = ?
+            WHERE id = ? AND user_id = ?
+            """,
+            (int(message_id), conversation_id, attachment["id"], user_id),
+        )
+        get_db().execute(
+            "INSERT INTO message_attachments(message_id, attachment_id) VALUES (?, ?) ON CONFLICT DO NOTHING",
+            (int(message_id), attachment["id"]),
+        )
+    get_db().commit()
+
+
+def delete_pending_attachment(user_id: str, attachment_id: str) -> dict[str, Any] | None:
+    attachment = get_attachment(user_id, attachment_id, include_path=True)
+    if not attachment or attachment.get("message_id") is not None:
+        return None
+    db = get_db()
+    db.execute("DELETE FROM attachments WHERE id = ? AND user_id = ? AND message_id IS NULL", (attachment_id, user_id))
+    db.commit()
+    return attachment
+
+
+def update_attachment_openai_file_id(user_id: str, attachment_id: str, openai_file_id: str) -> None:
+    db = get_db()
+    db.execute(
+        "UPDATE attachments SET openai_file_id = ? WHERE id = ? AND user_id = ?",
+        (str(openai_file_id), attachment_id, user_id),
+    )
+    db.commit()
+
+
+def list_user_attachments(user_id: str, *, include_path: bool = True) -> list[dict[str, Any]]:
+    rows = get_db().execute(
+        "SELECT * FROM attachments WHERE user_id = ? ORDER BY created_at ASC",
+        (user_id,),
+    ).fetchall()
+    return [dict(_serialize_attachment_row(row, include_path=include_path) or {}) for row in rows]
+
+
+def list_conversation_attachments(user_id: str, conversation_id: str, *, include_path: bool = False) -> list[dict[str, Any]]:
+    rows = get_db().execute(
+        "SELECT * FROM attachments WHERE user_id = ? AND conversation_id = ? ORDER BY created_at ASC",
+        (user_id, conversation_id),
+    ).fetchall()
+    return [dict(_serialize_attachment_row(row, include_path=include_path) or {}) for row in rows]
+
+
 def save_message(
     user_id: str,
     conversation_id: str,
     role: str,
     content: str,
-    mode: str = "listen",
+    mode: str = "adaptive",
     category: str = "other",
     response_style: str = "luyen",
     tone_style: str = "gentle",
@@ -669,6 +897,7 @@ def save_message(
             user_id, conversation_id, role, content, mode, category,
             response_style, tone_style, profile_archetype, created_at
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        RETURNING id
         """,
         (
             user_id,
@@ -700,14 +929,19 @@ def save_message(
             """,
             (now, conversation_id, user_id),
         )
+    inserted = cursor.fetchone()
     db.commit()
-    return int(cursor.lastrowid)
+    if not inserted:
+        raise RuntimeError("Không lấy được id tin nhắn vừa tạo.")
+    return int(inserted["id"])
 
 
 def get_history(
     user_id: str,
     conversation_id: str | None = None,
     limit: int = 20,
+    *,
+    include_attachment_private: bool = False,
 ) -> list[dict[str, Any]]:
     db = get_db()
     safe_limit = max(1, min(int(limit), 10000))
@@ -735,7 +969,38 @@ def get_history(
             """,
             (user_id, safe_limit),
         ).fetchall()
-    return [dict(row) for row in reversed(rows)]
+    result: list[dict[str, Any]] = []
+    for row in reversed(rows):
+        item = dict(row)
+        item["attachments"] = list_message_attachments(
+            user_id, int(row["id"]), include_path=include_attachment_private
+        )
+        result.append(item)
+    return result
+
+
+def get_message(user_id: str, message_id: int) -> dict[str, Any] | None:
+    row = get_db().execute(
+        """
+        SELECT id, conversation_id, role, content, mode, category, response_style,
+               tone_style, profile_archetype, created_at
+        FROM messages WHERE id = ? AND user_id = ?
+        """,
+        (int(message_id), user_id),
+    ).fetchone()
+    if not row:
+        return None
+    item = dict(row)
+    item["attachments"] = list_message_attachments(user_id, int(message_id), include_path=False)
+    return item
+
+
+def get_last_message(user_id: str, conversation_id: str) -> dict[str, Any] | None:
+    row = get_db().execute(
+        "SELECT id FROM messages WHERE user_id = ? AND conversation_id = ? ORDER BY id DESC LIMIT 1",
+        (user_id, conversation_id),
+    ).fetchone()
+    return get_message(user_id, int(row["id"])) if row else None
 
 
 def count_user_messages(user_id: str, conversation_id: str | None = None) -> int:
@@ -792,6 +1057,13 @@ def increment_usage(user_id: str) -> None:
 def clear_user_data(user_id: str) -> None:
     """Xóa nội dung cá nhân ở mọi module nhưng giữ tài khoản và lịch sử thanh toán."""
     db = get_db()
+    if _table_exists(db, "attachments"):
+        attachment_rows = db.execute(
+            "SELECT local_path FROM attachments WHERE user_id = ?", (user_id,)
+        ).fetchall()
+        _unlink_attachment_rows(attachment_rows)
+        # Xóa cả upload chưa gắn tin nhắn; cascade sẽ dọn message_attachments.
+        db.execute("DELETE FROM attachments WHERE user_id = ?", (user_id,))
     db.execute("DELETE FROM messages WHERE user_id = ?", (user_id,))
     db.execute("DELETE FROM conversations WHERE user_id = ?", (user_id,))
 
@@ -813,6 +1085,28 @@ def clear_user_data(user_id: str) -> None:
         db.execute("DELETE FROM life_threads WHERE user_id = ?", (user_id,))
     if _table_exists(db, "life_entries"):
         db.execute("DELETE FROM life_entries WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "astrology_messages"):
+        db.execute("DELETE FROM astrology_messages WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "astrology_readings"):
+        db.execute("DELETE FROM astrology_readings WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "astrology_profiles"):
+        db.execute("DELETE FROM astrology_profiles WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "finance_transactions"):
+        db.execute("DELETE FROM finance_transactions WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "finance_monthly_plans"):
+        db.execute("DELETE FROM finance_monthly_plans WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "self_discovery_results"):
+        db.execute("DELETE FROM self_discovery_results WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "career_interview_answers"):
+        db.execute("DELETE FROM career_interview_answers WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "career_interview_sessions"):
+        db.execute("DELETE FROM career_interview_sessions WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "career_cv_versions"):
+        db.execute("DELETE FROM career_cv_versions WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "career_saved_jobs"):
+        db.execute("DELETE FROM career_saved_jobs WHERE user_id = ?", (user_id,))
+    if _table_exists(db, "career_profiles"):
+        db.execute("DELETE FROM career_profiles WHERE user_id = ?", (user_id,))
 
     # Không xóa usage/quota/payment: xóa lịch sử không được làm mới lượt miễn phí.
     now = _now()
@@ -867,13 +1161,140 @@ def export_user_data(user_id: str) -> dict[str, Any]:
                 ).fetchall()
             ]
 
+    astrology_data: dict[str, list[dict[str, Any]]] = {}
+    for table in ("astrology_profiles", "astrology_readings", "astrology_messages"):
+        if _table_exists(db, table):
+            order_column = "created_at" if "created_at" in _column_names(db, table) else "updated_at"
+            astrology_data[table] = [
+                dict(row)
+                for row in db.execute(
+                    f"SELECT * FROM {table} WHERE user_id = ? ORDER BY {order_column} DESC",
+                    (user_id,),
+                ).fetchall()
+            ]
+
+    finance_data: dict[str, list[dict[str, Any]]] = {}
+    for table in ("finance_transactions", "finance_monthly_plans"):
+        if _table_exists(db, table):
+            order_column = "created_at" if "created_at" in _column_names(db, table) else "updated_at"
+            finance_data[table] = [
+                dict(row)
+                for row in db.execute(
+                    f"SELECT * FROM {table} WHERE user_id = ? ORDER BY {order_column} DESC",
+                    (user_id,),
+                ).fetchall()
+            ]
+
+    self_discovery_data: list[dict[str, Any]] = []
+    if _table_exists(db, "self_discovery_results"):
+        self_discovery_data = [
+            dict(row)
+            for row in db.execute(
+                "SELECT * FROM self_discovery_results WHERE user_id = ? ORDER BY created_at DESC",
+                (user_id,),
+            ).fetchall()
+        ]
+
+    career_data: dict[str, list[dict[str, Any]]] = {}
+    for table in (
+        "career_profiles",
+        "career_cv_versions",
+        "career_interview_sessions",
+        "career_interview_answers",
+        "career_saved_jobs",
+    ):
+        if _table_exists(db, table):
+            order_column = "created_at" if "created_at" in _column_names(db, table) else "updated_at"
+            career_data[table] = [
+                dict(row)
+                for row in db.execute(
+                    f"SELECT * FROM {table} WHERE user_id = ? ORDER BY {order_column} DESC",
+                    (user_id,),
+                ).fetchall()
+            ]
+
+    billing_data: dict[str, list[dict[str, Any]]] = {}
+    for table in ("payment_orders", "subscriptions"):
+        if _table_exists(db, table):
+            billing_data[table] = [
+                dict(row)
+                for row in db.execute(
+                    f"SELECT * FROM {table} WHERE user_id = ? ORDER BY created_at DESC",
+                    (user_id,),
+                ).fetchall()
+            ]
+
+    attachment_data = (
+        list_user_attachments(user_id, include_path=False)
+        if _table_exists(db, "attachments")
+        else []
+    )
+
     return {
         "account": get_account(user_id),
         "user": get_or_create_user(user_id),
+        "attachments": attachment_data,
         "conversations": conversations,
         "language_sessions": language_sessions,
         "life": life_data,
+        "astrology": astrology_data,
+        "finance": finance_data,
+        "self_discovery": self_discovery_data,
+        "career": career_data,
+        "billing": billing_data,
     }
+
+
+def record_consents(user_id: str, consent_types: list[str], policy_version: str) -> None:
+    db = get_db()
+    now = _now()
+    for consent_type in consent_types:
+        db.execute(
+            "INSERT INTO consent_records(user_id, consent_type, policy_version, accepted_at) VALUES (?, ?, ?, ?)",
+            (user_id, str(consent_type)[:80], str(policy_version)[:80], now),
+        )
+    db.commit()
+
+
+def list_consents(user_id: str) -> list[dict[str, Any]]:
+    if not _table_exists(get_db(), "consent_records"):
+        return []
+    rows = get_db().execute(
+        "SELECT consent_type, policy_version, accepted_at FROM consent_records WHERE user_id = ? ORDER BY id ASC",
+        (user_id,),
+    ).fetchall()
+    return [dict(row) for row in rows]
+
+
+def anonymize_delete_account(user_id: str) -> None:
+    """Xóa nội dung cá nhân và vô hiệu hóa account nhưng giữ metadata thanh toán/quota.
+
+    Giữ UUID nội bộ để không phá integrity của payment records. Username/email được
+    thay bằng giá trị ngẫu nhiên không còn nhận diện trực tiếp và login bị vô hiệu hóa.
+    """
+    clear_user_data(user_id)
+    db = get_db()
+    now = _now()
+    marker = uuid.uuid4().hex
+    db.execute("DELETE FROM consent_records WHERE user_id = ?", (user_id,))
+    db.execute(
+        """
+        UPDATE accounts
+        SET display_name = 'Đã xóa',
+            username = ?, email = ?, password_hash = ?, permanent_test = 0,
+            updated_at = ?, deleted_at = ?
+        WHERE id = ? AND deleted_at IS NULL
+        """,
+        (
+            f"deleted_{marker[:20]}",
+            f"deleted_{marker}@deleted.invalid",
+            f"!deleted!{marker}",
+            now,
+            now,
+            user_id,
+        ),
+    )
+    db.commit()
 
 
 def _clean_title(value: str) -> str:

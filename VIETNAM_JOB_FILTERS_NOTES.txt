@@ -1,0 +1,8 @@
+MỞ LỐI — VIETNAM JOB FILTERS V6
+- Thêm loại hình, kinh nghiệm, thời gian đăng, bán kính, chỉ tin có lương, sắp xếp.
+- Remote đổi thành Remote tại Việt Nam.
+- Không dùng Remotive khi search Việt Nam.
+- Sửa lại app.js từ bản đầy đủ để không mất Save Job / Dán JD / loadSaved.
+- VN vẫn cần JOOBLE_API_KEY để lấy title job thật.
+Kiểm tra: python check_job_provider.py
+Không đụng auth/payment/db schema/Tử vi/finance/self-discovery/language.

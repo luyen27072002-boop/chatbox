@@ -1,0 +1,15 @@
+MỞ LỐI — JOB COMPACT LAYOUT V8
+
+Đã sửa:
+- Bỏ khối chữ bên trái "TÌM VIỆC PHÙ HỢP / Tìm việc tại Việt Nam trước / mô tả".
+- Công việc + Nơi làm + Tìm việc kéo full chiều ngang.
+- Bỏ dòng hướng dẫn nhỏ dưới hàng đầu.
+- Hàng filter dưới nén thành 1 hàng desktop:
+  Loại hình / Kinh nghiệm / Thời gian đăng / Bán kính / Sắp xếp / Chỉ tin có lương.
+- Tablet/mobile vẫn tự xuống hàng.
+
+Không đụng:
+- backend Jooble/cache
+- auth/payment/database
+- CV/phỏng vấn
+- module khác

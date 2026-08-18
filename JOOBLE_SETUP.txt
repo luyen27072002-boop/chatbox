@@ -1,0 +1,33 @@
+MỞ LỐI — JOB RESULTS V3
+
+Mục tiêu
+- User gõ: "kế toán" + "Hà Nội"
+- Mở Lối hiện job cụ thể:
+  title / company / location / salary / source / snippet / match score / link.
+- Không chỉ hiện card TopCV/VietnamWorks như V2 nữa.
+
+Nguồn job thật
+1. Jooble REST API: ưu tiên cho kho job tổng hợp.
+2. Remotive: bổ sung remote quốc tế.
+3. 13 source cards: giữ ở dưới làm fallback/open-source gateway.
+
+CẦN LÀM 1 LẦN
+1. Xin Jooble REST API key tại trang Jooble API.
+2. Thêm vào .env của project:
+   JOOBLE_API_KEY=your_key_here
+3. Restart Flask:
+   python app.py
+
+Lưu ý security
+- KHÔNG commit .env.
+- Không paste key vào GitHub.
+- Patch này không chứa key.
+- Backend chỉ gửi keywords + location sang Jooble.
+- CV/profile/email của user không gửi sang Jooble.
+
+Không đụng:
+- auth
+- payment
+- db schema
+- CV/phỏng vấn backend ngoài job search
+- tử vi / finance / self-discovery / language

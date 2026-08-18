@@ -1,0 +1,69 @@
+databases:
+  - name: mo-loi-postgres
+    plan: basic-256mb
+    region: singapore
+    postgresMajorVersion: "18"
+    databaseName: moloi
+    user: moloi
+
+services:
+  - type: web
+    name: mo-loi-ai
+    runtime: docker
+    plan: starter
+    region: singapore
+    healthCheckPath: /health
+    numInstances: 1
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: SESSION_COOKIE_SECURE
+        value: "true"
+      - key: TRUST_PROXY_HEADERS
+        value: "true"
+      - key: REQUIRE_POSTGRES
+        value: "true"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mo-loi-postgres
+          property: connectionString
+      - key: REQUIRE_R2_STORAGE
+        value: "true"
+      - key: CHAT_STORAGE_DIR
+        value: /tmp/mo-loi-storage
+      - key: R2_ACCOUNT_ID
+        sync: false
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: R2_BUCKET
+        sync: false
+      - key: R2_PRESIGN_TTL
+        value: "600"
+      - key: MAX_REQUEST_BYTES
+        value: "62914560"
+      - key: CHAT_IMAGE_MAX_BYTES
+        value: "26214400"
+      - key: CHAT_ATTACHMENT_MAX_BYTES
+        value: "52428800"
+      - key: CHAT_ATTACHMENT_TOTAL_MAX_BYTES
+        value: "52428800"
+      - key: CHAT_ATTACHMENT_MAX_FILES
+        value: "10"
+      - key: OPENAI_MODEL
+        value: gpt-5.6-luna
+      - key: OPENAI_FAST_MODEL
+        value: gpt-5.6-luna
+      - key: OPENAI_SMART_MODEL
+        value: gpt-5.6-terra
+      - key: OPENAI_HEAVY_MODEL
+        value: gpt-5.6-sol
+      - key: OPENAI_IMAGE_SMART_MODEL
+        value: gpt-5.6-terra
+      - key: OPENAI_IMAGE_HEAVY_MODEL
+        value: gpt-5.6-sol
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true

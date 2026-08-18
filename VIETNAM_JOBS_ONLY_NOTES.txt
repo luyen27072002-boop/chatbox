@@ -1,0 +1,19 @@
+MỞ LỐI — VIETNAM JOBS ONLY V5
+
+Đã sửa lỗi fallback:
+- Nếu location là Toàn Việt Nam hoặc tỉnh/thành Việt Nam:
+  + KHÔNG gọi Remotive.
+  + KHÔNG hiện Europe/Worldwide để lấp kết quả.
+  + Chỉ dùng Jooble cho job cụ thể trong Mở Lối.
+  + Nếu chưa có JOOBLE_API_KEY: hiện thông báo rõ + 13 nguồn Việt Nam ở dưới.
+- Remotive chỉ bật khi tìm quốc tế/remote ngoài Việt Nam.
+
+Tại sao cần Jooble key:
+- Muốn hiện title job Việt Nam cụ thể ngay trong Mở Lối cần một provider/API job result.
+- Không có key thì không được giả lập/crawl bừa các website tuyển dụng.
+
+Không đụng:
+- auth/payment/db schema
+- CV/phỏng vấn
+- tử vi/finance/self-discovery/language
+- .env/app.db

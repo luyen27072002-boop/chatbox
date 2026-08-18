@@ -1,169 +1,3677 @@
 [
   {
-    "id": "coffee-chaos",
-    "language": "en",
-    "difficulty": "A1–B1",
-    "icon": "☕",
-    "title": "Coffee Shop: Accidental Proposal",
-    "subtitle": "Gọi một cốc cà phê mà không vô tình cầu hôn nhân viên.",
-    "image": "scene-cafe.svg",
-    "background": "bg-cafe.svg",
-    "character": {"happy": "jamie-happy.svg", "confused": "jamie-confused.svg", "shocked": "jamie-shocked.svg"},
-    "npc_name": "Jamie — Barista",
-    "npc_role": "A barista who has seen too many strange customers today.",
-    "player_role": "Một sinh viên buồn ngủ cần gọi cà phê.",
-    "mission": "Gọi đúng đồ uống, kích cỡ và cách dùng tại quán hoặc mang đi.",
-    "opening": "Hi! What can I get for you today? Please don't say ‘your heart.’ That happened twice already.",
-    "vocab": ["I'd like…", "medium", "no sugar", "less ice", "to go", "please"],
-    "suggestions": [
-      "I'd like a medium latte with less ice, please.",
-      "Can I get an iced coffee with no sugar to go?",
-      "A small cappuccino, please. I'll have it here."
+    "id": "student-d1-roommate",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "student"
     ],
-    "expected": {
-      "keywords": ["coffee", "latte", "cappuccino", "tea", "small", "medium", "large"],
-      "polite": ["please", "i'd like", "can i get", "could i have"]
+    "day": 1,
+    "step": 1,
+    "time": "07:20",
+    "location": "Phòng / KTX",
+    "short_title": "Dậy muộn",
+    "title": "Dậy muộn",
+    "mission": "Roommate hỏi lịch hôm nay; nói mình sắp làm gì và xác nhận giờ phải đi.",
+    "travel_theme": "home",
+    "travel_from": "Giường",
+    "travel_to": "Cửa phòng",
+    "background": "bg-professor.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
     },
-    "demo_replies": {
-      "great": [
-        "Perfect. One medium latte with less ice. Finally, a customer who is not trying to marry the menu.",
-        "Got it! Your coffee is on the way. The espresso machine has accepted your request without filing a complaint."
+    "objectives": [
+      "Nói kế hoạch ngay sau khi thức dậy",
+      "Xác nhận thời gian hoặc lịch hôm nay"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Alex — Roommate",
+        "npc_role": "Alex — Roommate",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "You are finally awake. Class starts at nine, right? Are you going straight there or getting breakfast first?",
+        "core_terms": [
+          "class starts",
+          "go straight there",
+          "grab breakfast",
+          "I need to…"
+        ],
+        "suggestions": [
+          "I need to get ready first. What time is it now?",
+          "I’m going to grab breakfast, then head to campus."
+        ],
+        "expected": {
+          "keywords": [
+            "class",
+            "breakfast",
+            "campus",
+            "time",
+            "ready"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "Alex — 室友",
+        "npc_role": "Alex — 室友",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "你終於醒了。你九點不是有課嗎？你要直接去學校，還是先去吃早餐？",
+        "core_terms": [
+          "九點有課",
+          "直接去",
+          "先吃早餐",
+          "我得先…"
+        ],
+        "suggestions": [
+          "我先準備一下。現在幾點？",
+          "我先去買早餐，再去學校。"
+        ],
+        "expected": {
+          "keywords": [
+            "上課",
+            "早餐",
+            "學校",
+            "幾點",
+            "準備"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Roommate hỏi lịch hôm nay; nói mình sắp làm gì và xác nhận giờ phải đi."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "student-d1-store",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "student"
+    ],
+    "day": 1,
+    "step": 2,
+    "time": "07:50",
+    "location": "Cửa hàng tiện lợi",
+    "short_title": "Mua bữa sáng",
+    "title": "Mua bữa sáng",
+    "mission": "Mua đồ ăn nhanh trước khi tới trường và xử lý một câu hỏi phụ của nhân viên.",
+    "travel_theme": "store",
+    "travel_from": "Khu nhà",
+    "travel_to": "Cửa hàng",
+    "background": "bg-store.svg",
+    "character": {
+      "happy": "xiaoyu-happy.svg",
+      "confused": "xiaoyu-confused.svg",
+      "shocked": "xiaoyu-shocked.svg"
+    },
+    "objectives": [
+      "Chọn món mình muốn",
+      "Trả lời ít nhất một câu hỏi phụ của nhân viên"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Mina — Clerk",
+        "npc_role": "Mina — Clerk",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "Morning. You look like you lost a fight with your alarm clock. What are you getting?",
+        "core_terms": [
+          "I’ll take…",
+          "something quick",
+          "heat it up",
+          "to go"
+        ],
+        "suggestions": [
+          "I’ll take this sandwich and a coffee, please.",
+          "Could you heat this up? I need it to go."
+        ],
+        "expected": {
+          "keywords": [
+            "sandwich",
+            "coffee",
+            "take",
+            "heat",
+            "to go"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "小米 — 店員",
+        "npc_role": "小米 — 店員",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "早。你看起來剛剛輸給鬧鐘。今天要買什麼？",
+        "core_terms": [
+          "我要這個",
+          "快一點的",
+          "幫我加熱",
+          "外帶"
+        ],
+        "suggestions": [
+          "我要這個三明治和一杯咖啡，謝謝。",
+          "可以幫我加熱嗎？我要外帶。"
+        ],
+        "expected": {
+          "keywords": [
+            "三明治",
+            "咖啡",
+            "加熱",
+            "外帶",
+            "我要"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Mua đồ ăn nhanh trước khi tới trường và xử lý một câu hỏi phụ của nhân viên."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "student-d1-campus",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "student"
+    ],
+    "day": 1,
+    "step": 3,
+    "time": "08:40",
+    "location": "Khuôn viên trường",
+    "short_title": "Tìm phòng học",
+    "title": "Tìm phòng học",
+    "mission": "Tới trường nhưng chưa chắc phòng học ở đâu; hỏi người khác để đến đúng chỗ.",
+    "travel_theme": "school",
+    "travel_from": "Trạm xe",
+    "travel_to": "Tòa nhà lớp học",
+    "background": "bg-professor.svg",
+    "character": {
+      "happy": "professor-happy.svg",
+      "confused": "professor-confused.svg",
+      "shocked": "professor-shocked.svg"
+    },
+    "objectives": [
+      "Hỏi đường tới đúng nơi",
+      "Xác nhận lại hướng hoặc tầng để tránh đi nhầm"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Sam — Student",
+        "npc_role": "Sam — Student",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "You look lost. Which building are you trying to find?",
+        "core_terms": [
+          "Which building…?",
+          "what floor",
+          "next to",
+          "across from"
+        ],
+        "suggestions": [
+          "I’m looking for Building C. Do you know where it is?",
+          "So I go straight and take the stairs to the second floor, right?"
+        ],
+        "expected": {
+          "keywords": [
+            "building",
+            "floor",
+            "where",
+            "straight",
+            "stairs"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "阿森 — 學生",
+        "npc_role": "阿森 — 學生",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "你看起來迷路了。你要找哪一棟？",
+        "core_terms": [
+          "哪一棟",
+          "幾樓",
+          "旁邊",
+          "對面"
+        ],
+        "suggestions": [
+          "我要找C棟，你知道在哪裡嗎？",
+          "所以我直走，再上二樓，對嗎？"
+        ],
+        "expected": {
+          "keywords": [
+            "哪裡",
+            "幾樓",
+            "直走",
+            "樓梯",
+            "C棟"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Tới trường nhưng chưa chắc phòng học ở đâu; hỏi người khác để đến đúng chỗ."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "student-d1-class",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "student"
+    ],
+    "day": 1,
+    "step": 4,
+    "time": "09:05",
+    "location": "Lớp học",
+    "short_title": "Bị gọi bất ngờ",
+    "title": "Bị gọi bất ngờ",
+    "mission": "Giảng viên gọi tới lượt; phải trả lời đủ để lớp hiểu ý mình.",
+    "travel_theme": "school",
+    "travel_from": "Hành lang",
+    "travel_to": "Chỗ ngồi trong lớp",
+    "background": "bg-professor.svg",
+    "character": {
+      "happy": "professor-happy.svg",
+      "confused": "professor-confused.svg",
+      "shocked": "professor-shocked.svg"
+    },
+    "objectives": [
+      "Trả lời trực tiếp câu hỏi của giảng viên",
+      "Giải thích thêm một lý do hoặc ví dụ"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Professor Lee",
+        "npc_role": "Professor Lee",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "Good morning. Since you arrived with dramatic timing, tell us: what do you hope to get from this course?",
+        "core_terms": [
+          "I hope to…",
+          "I want to improve…",
+          "because…",
+          "for example…"
+        ],
+        "suggestions": [
+          "I want to improve my communication because I need it for real projects.",
+          "I hope to learn practical skills, especially how to explain ideas clearly."
+        ],
+        "expected": {
+          "keywords": [
+            "hope",
+            "improve",
+            "course",
+            "because",
+            "skills"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "李老師",
+        "npc_role": "李老師",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "早安。既然你出場這麼有戲劇效果，那你說說看：你希望從這門課學到什麼？",
+        "core_terms": [
+          "我希望…",
+          "我想加強…",
+          "因為…",
+          "例如…"
+        ],
+        "suggestions": [
+          "我想加強溝通能力，因為做專案時真的需要。",
+          "我希望學到實用的能力，尤其是怎麼把想法說清楚。"
+        ],
+        "expected": {
+          "keywords": [
+            "希望",
+            "加強",
+            "因為",
+            "能力",
+            "課程"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Giảng viên gọi tới lượt; phải trả lời đủ để lớp hiểu ý mình."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "student-d1-lunch",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "student"
+    ],
+    "day": 1,
+    "step": 5,
+    "time": "12:15",
+    "location": "Căn tin",
+    "short_title": "Ngồi chung bàn",
+    "title": "Ngồi chung bàn",
+    "mission": "Mua trưa rồi một nhóm bạn rủ ngồi cùng; tham gia cuộc nói chuyện thay vì chỉ trả lời một từ.",
+    "travel_theme": "cafe",
+    "travel_from": "Lớp học",
+    "travel_to": "Bàn ăn",
+    "background": "bg-cafe.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "objectives": [
+      "Chọn hoặc gọi món",
+      "Tham gia cuộc nói chuyện bằng ít nhất một ý đầy đủ"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Nora — Classmate",
+        "npc_role": "Nora — Classmate",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "Hey, sit with us. We were just arguing about whether morning classes should be illegal. What did you get?",
+        "core_terms": [
+          "I got…",
+          "I think…",
+          "honestly",
+          "what about you?"
+        ],
+        "suggestions": [
+          "I got noodles. And honestly, I agree—eight a.m. classes are cruel.",
+          "I got the chicken set. What are you guys talking about?"
+        ],
+        "expected": {
+          "keywords": [
+            "got",
+            "think",
+            "agree",
+            "class",
+            "what about"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "小諾 — 同學",
+        "npc_role": "小諾 — 同學",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "來，坐這裡。我們正在吵早八到底應不應該違法。你買了什麼？",
+        "core_terms": [
+          "我買了…",
+          "我覺得…",
+          "老實說",
+          "你呢"
+        ],
+        "suggestions": [
+          "我買麵。老實說我同意，早八真的太殘忍。",
+          "我買雞肉套餐。你們剛剛在聊什麼？"
+        ],
+        "expected": {
+          "keywords": [
+            "買了",
+            "覺得",
+            "同意",
+            "早八",
+            "你呢"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Mua trưa rồi một nhóm bạn rủ ngồi cùng; tham gia cuộc nói chuyện thay vì chỉ trả lời một từ."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "student-d1-cafe",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "student"
+    ],
+    "day": 1,
+    "step": 6,
+    "time": "16:40",
+    "location": "Quán café",
+    "short_title": "Bạn rủ đi chơi",
+    "title": "Bạn rủ đi chơi",
+    "mission": "Tan học, bạn rủ làm gì đó tối nay; thương lượng kế hoạch phù hợp.",
+    "travel_theme": "cafe",
+    "travel_from": "Cổng trường",
+    "travel_to": "Quán café",
+    "background": "bg-cafe.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "objectives": [
+      "Phản hồi lời rủ",
+      "Đề xuất hoặc điều chỉnh thời gian / địa điểm"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Nora — Friend",
+        "npc_role": "Nora — Friend",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "We survived class. Want to do something tonight, or are you going home to become furniture?",
+        "core_terms": [
+          "Are you free…?",
+          "how about…",
+          "I can…",
+          "maybe later"
+        ],
+        "suggestions": [
+          "I’m free after seven. How about dinner near the station?",
+          "I can hang out, but not too late. I have class tomorrow."
+        ],
+        "expected": {
+          "keywords": [
+            "free",
+            "dinner",
+            "station",
+            "later",
+            "tomorrow"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "小諾 — 朋友",
+        "npc_role": "小諾 — 朋友",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "我們活著下課了。晚上要不要做點什麼，還是你打算回家變成家具？",
+        "core_terms": [
+          "你有空嗎",
+          "要不要…",
+          "我可以…",
+          "晚一點"
+        ],
+        "suggestions": [
+          "我七點以後有空。要不要去車站附近吃飯？",
+          "我可以出去，但不能太晚，明天還有課。"
+        ],
+        "expected": {
+          "keywords": [
+            "有空",
+            "吃飯",
+            "車站",
+            "晚一點",
+            "明天"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Tan học, bạn rủ làm gì đó tối nay; thương lượng kế hoạch phù hợp."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "student-d1-home",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "student"
+    ],
+    "day": 1,
+    "step": 7,
+    "time": "22:30",
+    "location": "Nhà / KTX",
+    "short_title": "Kết thúc ngày",
+    "title": "Kết thúc ngày",
+    "mission": "Về nhà, roommate hỏi hôm nay thế nào và ngày mai có gì; kể lại ngắn gọn.",
+    "travel_theme": "home",
+    "travel_from": "Đường phố",
+    "travel_to": "Phòng",
+    "background": "bg-professor.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "objectives": [
+      "Kể lại ít nhất một việc đã xảy ra",
+      "Nói kế hoạch hoặc lo lắng cho ngày mai"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Alex — Roommate",
+        "npc_role": "Alex — Roommate",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "You’re back. So, was today productive, chaotic, or both?",
+        "core_terms": [
+          "today was…",
+          "I ended up…",
+          "tomorrow I have to…",
+          "the weirdest part was…"
+        ],
+        "suggestions": [
+          "It was both. I got called on in class, then went out with a friend.",
+          "Tomorrow I have to work on a group project, so I should sleep early."
+        ],
+        "expected": {
+          "keywords": [
+            "today",
+            "class",
+            "friend",
+            "tomorrow",
+            "project"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "Alex — 室友",
+        "npc_role": "Alex — 室友",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "你回來啦。今天算有收穫、很混亂，還是兩個都有？",
+        "core_terms": [
+          "今天…",
+          "結果我…",
+          "明天我得…",
+          "最奇怪的是…"
+        ],
+        "suggestions": [
+          "兩個都有。我上課被點名，後來又跟朋友出去。",
+          "明天要做小組作業，所以我最好早點睡。"
+        ],
+        "expected": {
+          "keywords": [
+            "今天",
+            "上課",
+            "朋友",
+            "明天",
+            "小組"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Về nhà, roommate hỏi hôm nay thế nào và ngày mai có gì; kể lại ngắn gọn."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "student-d2-bus",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "student"
+    ],
+    "day": 2,
+    "step": 1,
+    "time": "08:15",
+    "location": "Trên đường",
+    "short_title": "Xe trễ",
+    "title": "Xe trễ",
+    "mission": "Xe buýt trễ, người đang đợi gọi hỏi; giải thích tình hình và ước lượng thời gian tới.",
+    "travel_theme": "street",
+    "travel_from": "Nhà",
+    "travel_to": "Trạm xe",
+    "background": "bg-cafe.svg",
+    "character": {
+      "happy": "morgan-happy.svg",
+      "confused": "morgan-confused.svg",
+      "shocked": "morgan-shocked.svg"
+    },
+    "objectives": [
+      "Giải thích vì sao mình chậm",
+      "Ước lượng khi nào sẽ tới"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Nora — Phone call",
+        "npc_role": "Nora — Phone call",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "Where are you? We’re about to start.",
+        "core_terms": [
+          "the bus is delayed",
+          "I’ll be there in…",
+          "traffic",
+          "sorry"
+        ],
+        "suggestions": [
+          "The bus is delayed. I think I’ll be there in about ten minutes."
+        ],
+        "expected": {
+          "keywords": [
+            "bus",
+            "delayed",
+            "minutes",
+            "traffic",
+            "sorry"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "小諾 — 電話",
+        "npc_role": "小諾 — 電話",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "你在哪？我們快開始了。",
+        "core_terms": [
+          "公車誤點",
+          "我大概…到",
+          "塞車",
+          "抱歉"
+        ],
+        "suggestions": [
+          "公車誤點了，我大概十分鐘後到。"
+        ],
+        "expected": {
+          "keywords": [
+            "公車",
+            "誤點",
+            "分鐘",
+            "塞車",
+            "抱歉"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Xe buýt trễ, người đang đợi gọi hỏi; giải thích tình hình và ước lượng thời gian tới."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "student-d2-project",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "student"
+    ],
+    "day": 2,
+    "step": 2,
+    "time": "10:00",
+    "location": "Phòng học nhóm",
+    "short_title": "Chia việc nhóm",
+    "title": "Chia việc nhóm",
+    "mission": "Nhóm chưa thống nhất ai làm gì; đề xuất phần việc và xác nhận deadline.",
+    "travel_theme": "school",
+    "travel_from": "Trạm xe",
+    "travel_to": "Phòng học nhóm",
+    "background": "bg-professor.svg",
+    "character": {
+      "happy": "professor-happy.svg",
+      "confused": "professor-confused.svg",
+      "shocked": "professor-shocked.svg"
+    },
+    "objectives": [
+      "Đề xuất mình hoặc người khác phụ trách một phần",
+      "Xác nhận deadline hoặc cách phối hợp"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Kai — Teammate",
+        "npc_role": "Kai — Teammate",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "We still haven’t divided the work. What part do you want to take?",
+        "core_terms": [
+          "I can handle…",
+          "could you take…",
+          "deadline",
+          "send it by…"
+        ],
+        "suggestions": [
+          "I can handle the slides. Could you take the data section?",
+          "Let’s send our parts by Thursday so we can review them together."
+        ],
+        "expected": {
+          "keywords": [
+            "handle",
+            "slides",
+            "data",
+            "deadline",
+            "Thursday"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "小凱 — 組員",
+        "npc_role": "小凱 — 組員",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "我們還沒分工。你想負責哪一部分？",
+        "core_terms": [
+          "我可以負責…",
+          "你可以負責…嗎",
+          "截止時間",
+          "星期…前傳"
+        ],
+        "suggestions": [
+          "我可以負責簡報。你可以做資料分析那一部分嗎？",
+          "我們星期四以前把各自的部分傳出來，再一起檢查。"
+        ],
+        "expected": {
+          "keywords": [
+            "負責",
+            "簡報",
+            "資料",
+            "截止",
+            "星期四"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Nhóm chưa thống nhất ai làm gì; đề xuất phần việc và xác nhận deadline."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "worker-d1-home",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "worker"
+    ],
+    "day": 1,
+    "step": 1,
+    "time": "06:45",
+    "location": "Nhà",
+    "short_title": "Chuẩn bị đi làm",
+    "title": "Chuẩn bị đi làm",
+    "mission": "Người sống cùng hỏi lịch hôm nay; nói việc quan trọng nhất và lúc sẽ về.",
+    "travel_theme": "home",
+    "travel_from": "Phòng ngủ",
+    "travel_to": "Cửa nhà",
+    "background": "bg-professor.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "objectives": [
+      "Nói việc quan trọng nhất trong ngày",
+      "Nói hoặc ước lượng thời gian sẽ về"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Alex — Housemate",
+        "npc_role": "Alex — Housemate",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "Big day? You look like your calendar personally offended you.",
+        "core_terms": [
+          "I have a meeting",
+          "I need to finish…",
+          "I should be back by…"
+        ],
+        "suggestions": [
+          "I have a client meeting this morning, then I need to finish a report.",
+          "I should be back around seven, unless work explodes."
+        ],
+        "expected": {
+          "keywords": [
+            "meeting",
+            "finish",
+            "report",
+            "back",
+            "seven"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "Alex — 室友",
+        "npc_role": "Alex — 室友",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "今天很忙嗎？你看起來像行事曆得罪你了。",
+        "core_terms": [
+          "我有會議",
+          "我得完成…",
+          "我大概…回來"
+        ],
+        "suggestions": [
+          "我早上有客戶會議，之後要把報告做完。",
+          "我大概七點回來，除非公司爆炸。"
+        ],
+        "expected": {
+          "keywords": [
+            "會議",
+            "完成",
+            "報告",
+            "回來",
+            "七點"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Người sống cùng hỏi lịch hôm nay; nói việc quan trọng nhất và lúc sẽ về."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "worker-d1-coffee",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "worker"
+    ],
+    "day": 1,
+    "step": 2,
+    "time": "07:35",
+    "location": "Café gần công ty",
+    "short_title": "Cà phê trước ca",
+    "title": "Cà phê trước ca",
+    "mission": "Mua cà phê khi đang vội và phản ứng khi nhân viên báo món quen đã hết.",
+    "travel_theme": "cafe",
+    "travel_from": "Khu nhà",
+    "travel_to": "Quán café",
+    "background": "bg-cafe.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "objectives": [
+      "Gọi đồ uống",
+      "Chọn phương án khác khi món muốn gọi không có"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Jamie — Barista",
+        "npc_role": "Jamie — Barista",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "Morning. Bad news: we’re out of your usual drink. What’s plan B?",
+        "core_terms": [
+          "I’ll have…",
+          "instead",
+          "do you have…",
+          "to go"
+        ],
+        "suggestions": [
+          "Then I’ll have an iced latte instead, please.",
+          "Do you have cold brew? I need it to go."
+        ],
+        "expected": {
+          "keywords": [
+            "latte",
+            "instead",
+            "cold brew",
+            "to go",
+            "have"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "Jamie — 店員",
+        "npc_role": "Jamie — 店員",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "早。壞消息：你平常喝的賣完了。B計畫是什麼？",
+        "core_terms": [
+          "那我改要…",
+          "有…嗎",
+          "外帶"
+        ],
+        "suggestions": [
+          "那我改喝冰拿鐵，謝謝。",
+          "有冷萃咖啡嗎？我要外帶。"
+        ],
+        "expected": {
+          "keywords": [
+            "改要",
+            "拿鐵",
+            "有嗎",
+            "外帶",
+            "謝謝"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Mua cà phê khi đang vội và phản ứng khi nhân viên báo món quen đã hết."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "worker-d1-office",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "worker"
+    ],
+    "day": 1,
+    "step": 3,
+    "time": "08:55",
+    "location": "Văn phòng",
+    "short_title": "Đồng nghiệp hỏi gấp",
+    "title": "Đồng nghiệp hỏi gấp",
+    "mission": "Vừa tới chỗ làm đã bị hỏi về một việc chưa xong; giải thích trạng thái và bước tiếp theo.",
+    "travel_theme": "office",
+    "travel_from": "Đường phố",
+    "travel_to": "Bàn làm việc",
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "morgan-happy.svg",
+      "confused": "morgan-confused.svg",
+      "shocked": "morgan-shocked.svg"
+    },
+    "objectives": [
+      "Nói rõ việc đã xong / chưa xong",
+      "Nói bước tiếp theo hoặc thời gian hoàn thành"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Maya — Coworker",
+        "npc_role": "Maya — Coworker",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "Morning. Did you finish the numbers for the meeting, or should I start panicking professionally?",
+        "core_terms": [
+          "I’ve finished…",
+          "I’m still working on…",
+          "I’ll send it by…"
+        ],
+        "suggestions": [
+          "I’ve finished most of it. I’m checking the final numbers now.",
+          "I’ll send you the updated file before the meeting starts."
+        ],
+        "expected": {
+          "keywords": [
+            "finished",
+            "working",
+            "send",
+            "numbers",
+            "meeting"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "Maya — 同事",
+        "npc_role": "Maya — 同事",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "早。會議的數字你弄完了嗎？還是我要開始專業地恐慌？",
+        "core_terms": [
+          "我已經完成…",
+          "我還在處理…",
+          "我會在…前傳"
+        ],
+        "suggestions": [
+          "大部分完成了，我現在在確認最後的數字。",
+          "我會在會議開始前把更新檔傳給你。"
+        ],
+        "expected": {
+          "keywords": [
+            "完成",
+            "處理",
+            "傳",
+            "數字",
+            "會議"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Vừa tới chỗ làm đã bị hỏi về một việc chưa xong; giải thích trạng thái và bước tiếp theo."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "worker-d1-lunch",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "worker"
+    ],
+    "day": 1,
+    "step": 4,
+    "time": "12:20",
+    "location": "Quán ăn",
+    "short_title": "Ăn trưa với đồng nghiệp",
+    "title": "Ăn trưa với đồng nghiệp",
+    "mission": "Đồng nghiệp hỏi ý kiến về công việc; tham gia cuộc nói chuyện thay vì trả lời xã giao.",
+    "travel_theme": "cafe",
+    "travel_from": "Văn phòng",
+    "travel_to": "Quán ăn",
+    "background": "bg-cafe.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "objectives": [
+      "Nói ý kiến cá nhân",
+      "Hỏi lại hoặc tiếp tục cuộc trò chuyện"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Maya — Coworker",
+        "npc_role": "Maya — Coworker",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "So, be honest. Do you actually like this project, or are you just emotionally attached to the deadline?",
+        "core_terms": [
+          "I think…",
+          "the hardest part is…",
+          "what about you?"
+        ],
+        "suggestions": [
+          "I like the project, but the deadline is too tight. What about you?",
+          "The hardest part is coordinating with everyone."
+        ],
+        "expected": {
+          "keywords": [
+            "project",
+            "deadline",
+            "hardest",
+            "think",
+            "what about"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "Maya — 同事",
+        "npc_role": "Maya — 同事",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "老實說，你是真的喜歡這個專案，還是只是跟截止日產生感情？",
+        "core_terms": [
+          "我覺得…",
+          "最難的是…",
+          "你呢"
+        ],
+        "suggestions": [
+          "我喜歡這個專案，但時間真的太趕。你呢？",
+          "最難的是跟所有人協調。"
+        ],
+        "expected": {
+          "keywords": [
+            "專案",
+            "截止",
+            "最難",
+            "覺得",
+            "你呢"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Đồng nghiệp hỏi ý kiến về công việc; tham gia cuộc nói chuyện thay vì trả lời xã giao."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "worker-d1-meeting",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "worker"
+    ],
+    "day": 1,
+    "step": 5,
+    "time": "14:00",
+    "location": "Phòng họp",
+    "short_title": "Bị hỏi giữa cuộc họp",
+    "title": "Bị hỏi giữa cuộc họp",
+    "mission": "Sếp hỏi vì sao kết quả lệch dự kiến; giải thích mà không đổ lỗi lung tung.",
+    "travel_theme": "office",
+    "travel_from": "Bàn làm việc",
+    "travel_to": "Phòng họp",
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "morgan-happy.svg",
+      "confused": "morgan-confused.svg",
+      "shocked": "morgan-shocked.svg"
+    },
+    "objectives": [
+      "Giải thích nguyên nhân có thể hiểu được",
+      "Đề xuất một bước xử lý tiếp theo"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Morgan — Manager",
+        "npc_role": "Morgan — Manager",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "The result is below target. What happened, and what are you going to do about it?",
+        "core_terms": [
+          "the main reason is…",
+          "we found…",
+          "next I’ll…",
+          "I suggest…"
+        ],
+        "suggestions": [
+          "The main reason is a delay in the data update. I suggest we rerun the report this afternoon."
+        ],
+        "expected": {
+          "keywords": [
+            "reason",
+            "delay",
+            "data",
+            "suggest",
+            "report"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "Morgan — 主管",
+        "npc_role": "Morgan — 主管",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "結果低於目標。發生什麼事？你打算怎麼處理？",
+        "core_terms": [
+          "主要原因是…",
+          "我們發現…",
+          "下一步我會…",
+          "我建議…"
+        ],
+        "suggestions": [
+          "主要原因是資料更新延遲。我建議今天下午重新跑一次報告。"
+        ],
+        "expected": {
+          "keywords": [
+            "原因",
+            "延遲",
+            "資料",
+            "建議",
+            "報告"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Sếp hỏi vì sao kết quả lệch dự kiến; giải thích mà không đổ lỗi lung tung."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "worker-d1-gym",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "worker"
+    ],
+    "day": 1,
+    "step": 6,
+    "time": "18:25",
+    "location": "Phòng gym",
+    "short_title": "Tập sau giờ làm",
+    "title": "Tập sau giờ làm",
+    "mission": "Huấn luyện viên hỏi mục tiêu và tình trạng hiện tại; mô tả rõ để được hướng dẫn.",
+    "travel_theme": "gym",
+    "travel_from": "Văn phòng",
+    "travel_to": "Phòng gym",
+    "background": "bg-store.svg",
+    "character": {
+      "happy": "morgan-happy.svg",
+      "confused": "morgan-confused.svg",
+      "shocked": "morgan-shocked.svg"
+    },
+    "objectives": [
+      "Nói mục tiêu tập hôm nay",
+      "Mô tả giới hạn hoặc tình trạng hiện tại"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Chris — Trainer",
+        "npc_role": "Chris — Trainer",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "Long day? What are we training today, and is anything sore?",
+        "core_terms": [
+          "I want to work on…",
+          "my back is sore",
+          "I’m trying to…"
+        ],
+        "suggestions": [
+          "I want to work on legs today, but my lower back is a little sore."
+        ],
+        "expected": {
+          "keywords": [
+            "legs",
+            "back",
+            "sore",
+            "train",
+            "work on"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "Chris — 教練",
+        "npc_role": "Chris — 教練",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "今天很累吧？你想練哪裡？有哪裡痠痛嗎？",
+        "core_terms": [
+          "我今天想練…",
+          "我的背有點痠",
+          "我想加強…"
+        ],
+        "suggestions": [
+          "我今天想練腿，但下背有一點痠。"
+        ],
+        "expected": {
+          "keywords": [
+            "練腿",
+            "下背",
+            "痠",
+            "今天",
+            "加強"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Huấn luyện viên hỏi mục tiêu và tình trạng hiện tại; mô tả rõ để được hướng dẫn."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "worker-d1-friend",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "worker"
+    ],
+    "day": 1,
+    "step": 7,
+    "time": "20:10",
+    "location": "Quán ăn / phố",
+    "short_title": "Gặp bạn tối",
+    "title": "Gặp bạn tối",
+    "mission": "Bạn hỏi công việc và rủ kế hoạch cuối tuần; kể một chuyện rồi quyết định kế hoạch.",
+    "travel_theme": "street",
+    "travel_from": "Phòng gym",
+    "travel_to": "Khu ăn uống",
+    "background": "bg-cafe.svg",
+    "character": {
+      "happy": "morgan-happy.svg",
+      "confused": "morgan-confused.svg",
+      "shocked": "morgan-shocked.svg"
+    },
+    "objectives": [
+      "Kể một chuyện xảy ra ở chỗ làm",
+      "Phản hồi hoặc đề xuất kế hoạch cuối tuần"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Leo — Friend",
+        "npc_role": "Leo — Friend",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "You survived work. Tell me the worst part, then we can decide what to do this weekend.",
+        "core_terms": [
+          "the worst part was…",
+          "this weekend",
+          "how about…",
+          "I’d rather…"
+        ],
+        "suggestions": [
+          "The worst part was explaining the same report twice. This weekend, how about a day trip?"
+        ],
+        "expected": {
+          "keywords": [
+            "worst",
+            "work",
+            "weekend",
+            "trip",
+            "report"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "Leo — 朋友",
+        "npc_role": "Leo — 朋友",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "你活著下班了。先說今天最慘的是什麼，然後我們再決定週末要幹嘛。",
+        "core_terms": [
+          "最慘的是…",
+          "這週末",
+          "要不要…",
+          "我比較想…"
+        ],
+        "suggestions": [
+          "最慘的是同一份報告解釋了兩次。這週末要不要去一日遊？"
+        ],
+        "expected": {
+          "keywords": [
+            "最慘",
+            "工作",
+            "週末",
+            "一日遊",
+            "報告"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Bạn hỏi công việc và rủ kế hoạch cuối tuần; kể một chuyện rồi quyết định kế hoạch."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "worker-d2-client",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "worker"
+    ],
+    "day": 2,
+    "step": 1,
+    "time": "09:30",
+    "location": "Văn phòng",
+    "short_title": "Khách đổi yêu cầu",
+    "title": "Khách đổi yêu cầu",
+    "mission": "Khách hàng gọi đổi yêu cầu; xác nhận chính xác thay đổi và thời gian.",
+    "travel_theme": "office",
+    "travel_from": "Nhà",
+    "travel_to": "Bàn làm việc",
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "morgan-happy.svg",
+      "confused": "morgan-confused.svg",
+      "shocked": "morgan-shocked.svg"
+    },
+    "objectives": [
+      "Xác nhận chính xác yêu cầu mới",
+      "Nói tác động tới thời gian hoặc bước tiếp theo"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Taylor — Client",
+        "npc_role": "Taylor — Client",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "We need one change before launch. Can you move the deadline and add the new section?",
+        "core_terms": [
+          "just to confirm…",
+          "that means…",
+          "deadline",
+          "we can…"
+        ],
+        "suggestions": [
+          "Just to confirm, you want the new section added before Friday, right?",
+          "We can do that, but it will move the final review to Monday."
+        ],
+        "expected": {
+          "keywords": [
+            "confirm",
+            "section",
+            "Friday",
+            "review",
+            "Monday"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "Taylor — 客戶",
+        "npc_role": "Taylor — 客戶",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "上線前還要改一個地方。可以調整期限，然後加上新的部分嗎？",
+        "core_terms": [
+          "我確認一下…",
+          "也就是說…",
+          "期限",
+          "我們可以…"
+        ],
+        "suggestions": [
+          "我確認一下，你希望星期五以前加上新的部分，對嗎？",
+          "可以，但最後審查會延到星期一。"
+        ],
+        "expected": {
+          "keywords": [
+            "確認",
+            "部分",
+            "星期五",
+            "審查",
+            "星期一"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Khách hàng gọi đổi yêu cầu; xác nhận chính xác thay đổi và thời gian."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "worker-d2-market",
+    "game_group": "life",
+    "gameplay": "conversation",
+    "life_roles": [
+      "worker"
+    ],
+    "day": 2,
+    "step": 2,
+    "time": "19:10",
+    "location": "Siêu thị",
+    "short_title": "Mua đồ sau ca",
+    "title": "Mua đồ sau ca",
+    "mission": "Tan làm đi mua đồ nhưng một sản phẩm hết; hỏi lựa chọn thay thế và quyết định.",
+    "travel_theme": "store",
+    "travel_from": "Văn phòng",
+    "travel_to": "Siêu thị",
+    "background": "bg-store.svg",
+    "character": {
+      "happy": "xiaoyu-happy.svg",
+      "confused": "xiaoyu-confused.svg",
+      "shocked": "xiaoyu-shocked.svg"
+    },
+    "objectives": [
+      "Hỏi sản phẩm hoặc lựa chọn thay thế",
+      "Chốt mình sẽ lấy gì"
+    ],
+    "win_condition": "Hoàn thành tình huống đời sống bằng giao tiếp đủ rõ để NPC hiểu và hành động hợp lý.",
+    "localized": {
+      "en": {
+        "npc_name": "Mina — Staff",
+        "npc_role": "Mina — Staff",
+        "player_role": "You are living an ordinary day in a new city.",
+        "opening": "That brand is sold out. Do you want something similar?",
+        "core_terms": [
+          "do you have…",
+          "something similar",
+          "instead",
+          "I’ll take…"
+        ],
+        "suggestions": [
+          "Do you have something similar but cheaper?",
+          "Okay, I’ll take this one instead."
+        ],
+        "expected": {
+          "keywords": [
+            "similar",
+            "cheaper",
+            "instead",
+            "take",
+            "sold out"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      },
+      "zh": {
+        "npc_name": "小米 — 店員",
+        "npc_role": "小米 — 店員",
+        "player_role": "你正在新城市過普通的一天。",
+        "opening": "那個牌子賣完了。要不要看看類似的？",
+        "core_terms": [
+          "有沒有…",
+          "類似的",
+          "改拿…",
+          "便宜一點"
+        ],
+        "suggestions": [
+          "有沒有類似但便宜一點的？",
+          "好，那我改拿這個。"
+        ],
+        "expected": {
+          "keywords": [
+            "類似",
+            "便宜",
+            "改拿",
+            "賣完",
+            "有沒有"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ]
+      }
+    },
+    "briefing_vi": {
+      "motivation": "Đây là bước tiếp theo trong một ngày sống bình thường của nhân vật. Hoàn thành tình huống để thời gian trong ngày tiếp tục và mở chặng kế tiếp.",
+      "situation": "Tan làm đi mua đồ nhưng một sản phẩm hết; hỏi lựa chọn thay thế và quyết định."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "wrong-number",
+    "game_group": "arcade",
+    "gameplay": "conversation",
+    "arcade_order": 1,
+    "unlock_level": 3,
+    "title": "Wrong Number",
+    "hook": "Mày đã đăng ký cuộc săn kho báu ở arcade. Ban tổ chức ghi nhầm tên mày thành Maya, nhưng số điện thoại là của mày và phần thưởng của mày đang nằm trong chiếc tủ cuối.",
+    "tag": "MYSTERY",
+    "visual": "phone",
+    "duration": "3–5 phút",
+    "location": "Arcade",
+    "mission": "Xác nhận vụ nhầm tên với Leo, hỏi các dữ kiện của cuộc săn kho báu và ráp đúng mã tủ 6 số để lấy phần thưởng của chính mày.",
+    "objectives": [
+      "Xác nhận vì sao Leo gọi nhầm mày là Maya",
+      "Hỏi về chiếc tủ cuối và phần thưởng của mày",
+      "Thu thập đủ dữ kiện để ráp mã 6 số",
+      "Nhập mã 6 số vào ô Đáp án"
+    ],
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "win_condition": "Chat chỉ dùng để lấy manh mối. Chỉ qua màn khi nhập đúng mã 6 số vào ô Đáp án.",
+    "localized": {
+      "en": {
+        "npc_name": "Leo — Arcade Host",
+        "npc_role": "The arcade host who mixed up your name on the scavenger-hunt list but still has your correct phone number.",
+        "player_role": "You are a registered scavenger-hunt player trying to claim your own final prize.",
+        "opening": "Hey, Maya—wait, sorry. I copied the wrong name onto this number. Did you sign up for the arcade scavenger hunt today? Your final prize is still waiting in the locker.",
+        "core_terms": [
+          "I signed up for…",
+          "why did you call me…?",
+          "what is the next clue?",
+          "prize locker",
+          "player card",
+          "high score"
+        ],
+        "suggestions": [
+          "Yes, I signed up for the scavenger hunt. Why did you call me Maya?",
+          "What clue do you have for my prize locker code?"
+        ],
+        "expected": {
+          "keywords": [
+            "wrong",
+            "number",
+            "who",
+            "envelope",
+            "downstairs"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "You signed up for the arcade scavenger hunt earlier today. Leo copied the wrong name, Maya, next to your phone number. Your entry is valid and your prize is locked in the final locker. Leo can give clues but cannot simply read the code because that would break the game rules."
+      },
+      "zh": {
+        "npc_name": "Leo — 遊樂場主持人",
+        "npc_role": "把你的名字抄錯成 Maya、但保留了正確電話號碼的遊樂場主持人。",
+        "player_role": "你是已登記的尋寶遊戲玩家，想拿回自己的最終獎勵。",
+        "opening": "嘿，Maya——等等，抱歉。我把這個號碼旁邊的名字抄錯了。你今天有報名遊樂場的尋寶活動嗎？你的最終獎品還在置物櫃裡等你。",
+        "core_terms": [
+          "我有報名…",
+          "你為什麼叫我…？",
+          "下一個線索是什麼？",
+          "獎品置物櫃",
+          "玩家卡",
+          "最高分"
+        ],
+        "suggestions": [
+          "有，我有參加尋寶。你為什麼叫我 Maya？",
+          "你有我的獎品置物櫃密碼線索嗎？"
+        ],
+        "expected": {
+          "keywords": [
+            "打錯",
+            "你是誰",
+            "信封",
+            "樓下",
+            "找誰"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "你今天稍早報名了遊樂場尋寶活動。Leo 把你的名字誤抄成 Maya，但電話號碼是你的。你的參賽資格有效，獎品鎖在最後一個置物櫃裡。依照遊戲規則，Leo 只能給線索，不能直接念出密碼。"
+      }
+    },
+    "secret_goal": {
+      "type": "code",
+      "answer": "417206",
+      "label": "mã tủ giải thưởng 6 số",
+      "goal": "Tìm mã tủ giải thưởng của chính mày.",
+      "pass_rule": "Nhập đúng đủ 6 chữ số vào ô Đáp án.",
+      "answer_placeholder": "Nhập mã tủ 6 số",
+      "clues": [
+        "Số thẻ người chơi của mày là 41 — đó là cặp đầu.",
+        "Điểm cao nhất trên máy cuối cùng mày vừa vượt là 72 — đó là cặp giữa.",
+        "Trong phong bì thưởng có 6 token xanh — cặp cuối được ghi là 06."
       ],
-      "okay": [
-        "I think I understand. Which size would you like—or should I roll a dice and let destiny choose?",
-        "Sure… probably. Is that for here or to go? The cup is having an identity crisis."
+      "clues_localized": {
+        "en": [
+          "Your player card number is 41 — that is the first pair.",
+          "The high score on the final machine you cleared is 72 — that is the middle pair.",
+          "The prize envelope contains 6 blue tokens — the last pair is written as 06."
+        ],
+        "zh": [
+          "你的玩家卡號是 41——這是前兩位。",
+          "你最後過關的機台最高分是 72——這是中間兩位。",
+          "獎勵信封裡有 6 枚藍色代幣——最後兩位寫成 06。"
+        ]
+      },
+      "clue_keywords": [
+        "hunt",
+        "scavenger",
+        "prize",
+        "locker",
+        "code",
+        "card",
+        "score",
+        "token",
+        "envelope",
+        "hint",
+        "clue"
       ],
-      "chaos": [
-        "Sir, this is a coffee shop. The banana cannot be your legal representative.",
-        "I understood exactly three emotions and zero drink orders. Try again before the espresso machine explodes."
+      "question_ideas": [
+        "Why did you call me Maya?",
+        "What is inside my prize locker?",
+        "What do you know about the first part of the code?",
+        "Is there another clue from the arcade machines?"
       ]
     },
-    "narrator": {
-      "great": ["Jamie nods. Somewhere, a language teacher sheds one proud tear.", "The coffee machine purrs like a financially stable cat."],
-      "okay": ["Jamie smiles politely while their brain displays a loading icon.", "A suspicious silence spreads across the café."],
-      "chaos": ["BOÀNG. Your dignity respawns at the nearest checkpoint.", "A customer in the corner quietly updates their emergency contact."]
+    "briefing_vi": {
+      "situation": "Chiều nay mày đã đăng ký một cuộc săn kho báu ở arcade bằng số điện thoại của mình. Nhân viên tên Leo chép nhầm tên trên danh sách thành “Maya”, nên tin nhắn đầu tiên gọi mày là Maya. Khi phát hiện nhầm, Leo xác nhận số điện thoại này vẫn thuộc một người chơi hợp lệ và phần thưởng cuối của mày đang được khóa trong tủ giải thưởng.",
+      "player_role": "Mày là người đã đăng ký cuộc săn kho báu và đang muốn nhận phần thưởng cuối của mình.",
+      "npc_role": "Leo là nhân viên/host của arcade. Anh ta có bảng dữ kiện của màn cuối nhưng theo luật không được đọc thẳng toàn bộ mã.",
+      "motivation": "Mã tủ liên quan trực tiếp tới mày: tủ chứa voucher và điểm thưởng mà mày đã chơi cả buổi để giành. Hết thời gian thì phần thưởng bị hủy.",
+      "goal": "Hỏi Leo để lấy ba phần dữ kiện, ráp thành mã tủ 6 số rồi nhập mã vào ô Đáp án.",
+      "pass_rule": "Chat chỉ để hỏi và lấy dữ kiện. Khi đã ráp được mã, nhập đúng 6 số vào ô Đáp án để mở tủ và qua màn."
     },
-    "feedback": {
-      "great": ["Câu rõ ý, lịch sự và đủ thông tin để nhân viên xử lý ngay.", "Tốt: có món, kích cỡ và yêu cầu cụ thể."],
-      "okay": ["Người nghe hiểu gần đúng, nhưng còn thiếu kích cỡ hoặc cách dùng.", "Ý chính ổn; thêm ‘please’ và một thông tin cụ thể sẽ tự nhiên hơn."],
-      "chaos": ["Câu chưa thành yêu cầu gọi đồ rõ ràng. Dùng mẫu ‘I'd like…’ trước.", "Mày vừa mở một nhánh cốt truyện không liên quan. Quay lại món uống nhé."]
-    },
-    "ending_replies": ["Mission complete! Here is your coffee. It contains caffeine, hope, and absolutely no accidental engagement.", "You did it. The drink is correct, the barista is calm, and nobody called security."],
-    "ending_narrator": ["NHIỆM VỤ HOÀN THÀNH. Mày rời quán với cà phê và danh dự còn nguyên.", "Achievement unlocked: Functional Human Before 9 A.M."]
+    "difficulty_group": "hardcore",
+    "recommended_level": "B1-B2"
   },
   {
-    "id": "interview-disaster",
-    "language": "en",
-    "difficulty": "B1–C1",
-    "icon": "💼",
-    "title": "Job Interview: Corporate Boss Battle",
-    "subtitle": "Thuyết phục nhà tuyển dụng rằng mày có năng lực và không phải ba con gấu trong áo khoác.",
-    "image": "scene-interview.svg",
-    "background": "bg-interview.svg",
-    "character": {"happy": "morgan-happy.svg", "confused": "morgan-confused.svg", "shocked": "morgan-shocked.svg"},
-    "npc_name": "Morgan — Recruiter",
-    "npc_role": "A sharp recruiter with dry humor and a suspiciously powerful eyebrow.",
-    "player_role": "Ứng viên đang cố vượt qua cuộc phỏng vấn.",
-    "mission": "Giới thiệu bản thân, mô tả một điểm mạnh và trả lời lý do muốn nhận công việc.",
-    "opening": "Welcome. Tell me about yourself—and please don't start with your zodiac sign.",
-    "vocab": ["I have experience in…", "My strength is…", "I learned…", "I’m interested in…", "I can contribute…"],
-    "suggestions": [
-      "I’m a student with experience in team projects, and I enjoy solving practical problems.",
-      "My strength is learning quickly and staying calm when a project changes.",
-      "I’m interested in this role because I can contribute while developing my skills."
+    "id": "sell-trash",
+    "game_group": "arcade",
+    "gameplay": "conversation",
+    "arcade_order": 2,
+    "unlock_level": 1,
+    "title": "Sell Me This Trash",
+    "hook": "Mày đang thi một cuộc thi bán hàng quái đản ở chợ cuối tuần: chỉ được bán một chiếc thìa nhựa cong. Khách chỉ mua nếu món đồ giải quyết đúng vấn đề của họ.",
+    "tag": "PERSUADE",
+    "visual": "sales",
+    "duration": "3–5 phút",
+    "location": "Arcade",
+    "mission": "Hỏi khách xem họ đang cần giải quyết chuyện gì, xác định công dụng họ cần rồi biến chiếc thìa cong thành một lời chào hàng hợp lý.",
+    "objectives": [
+      "Hỏi khách đang gặp vấn đề gì",
+      "Làm rõ họ đang có chai gì và vì sao chưa mở được",
+      "Xác định dụng cụ/công dụng họ thật sự cần",
+      "Dùng thông tin đó để chốt giải pháp"
     ],
-    "expected": {
-      "keywords": ["experience", "student", "project", "skill", "strength", "learn", "interested", "contribute"],
-      "polite": ["thank", "glad", "appreciate", "i'm"]
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
     },
-    "demo_replies": {
-      "great": ["Good answer. Clear, relevant, and no astrology. My eyebrow has lowered by three millimeters.", "That sounds practical. Tell me about one project where things went wrong and you didn't disappear into the forest."],
-      "okay": ["Interesting. Give me one specific example. ‘I work hard’ is currently fighting 400 identical CVs.", "I see the idea, but it needs evidence: one project, one action, one result."],
-      "chaos": ["You listed sleeping as a leadership skill. Bold. Legally confusing, but bold.", "That answer has escaped the interview and is now living independently in another genre."]
+    "win_condition": "Chỉ thắng khi mày nói đúng tên món đồ người mua thực sự cần.",
+    "localized": {
+      "en": {
+        "npc_name": "Weekend Market Customer",
+        "npc_role": "A customer holding an unopened glass soda during a bizarre sales contest.",
+        "player_role": "You are a contestant who must sell a bent plastic spoon by discovering a real customer need.",
+        "opening": "All right, salesperson. I have a problem and I am not buying that ridiculous spoon unless it actually helps me. Ask me what I need.",
+        "core_terms": [
+          "what are you trying to…?",
+          "what kind of…?",
+          "you could use this to…",
+          "it works as…",
+          "bottle cap"
+        ],
+        "suggestions": [
+          "What are you trying to do with that bottle?",
+          "If you need to open it, this bent edge could work as an improvised opener."
+        ],
+        "expected": {
+          "keywords": [
+            "benefit",
+            "perfect",
+            "use",
+            "worth",
+            "spoon"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "This is a contest called Sell the Useless. You only have a bent plastic spoon. The customer has an unopened glass soda. If you discover the real problem, you can pitch the spoon as an improvised solution."
+      },
+      "zh": {
+        "npc_name": "週末市集客人",
+        "npc_role": "在荒謬銷售比賽中拿著一瓶未開玻璃汽水的客人。",
+        "player_role": "你是參賽者，必須先找出真實需求，再把彎曲塑膠湯匙賣出去。",
+        "opening": "好吧，推銷員。我確實有個問題，但如果這支荒唐的湯匙幫不上忙，我絕對不買。先問我需要什麼。",
+        "core_terms": [
+          "你想要…嗎？",
+          "是什麼樣的…？",
+          "可以用這個來…",
+          "它可以當成…",
+          "瓶蓋"
+        ],
+        "suggestions": [
+          "你現在想把那個瓶子怎麼處理？",
+          "如果你要開瓶，這個彎邊可以暫時當開瓶器。"
+        ],
+        "expected": {
+          "keywords": [
+            "優點",
+            "適合",
+            "可以",
+            "值得",
+            "湯匙"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "這是一場「把廢物賣出去」比賽。你手上只有一支彎曲塑膠湯匙。客人有一瓶打不開的玻璃汽水。只要先找出問題，就能把湯匙包裝成臨時解法。"
+      }
     },
-    "narrator": {
-      "great": ["Morgan writes a note. It is not a drawing of a warning sign.", "The office plant seems impressed."],
-      "okay": ["Morgan's eyebrow enters evaluation mode.", "The silence now has a LinkedIn account."],
-      "chaos": ["A printer jams out of second-hand embarrassment.", "BOÀNG. Corporate damage detected."]
+    "secret_goal": {
+      "type": "phrase",
+      "answer": "bottle opener",
+      "aliases": [
+        "an opener",
+        "bottle-opener",
+        "open the bottle",
+        "opening a bottle"
+      ],
+      "label": "thứ khách thực sự cần",
+      "goal": "Tìm thứ khách cần để giải quyết vấn đề hiện tại.",
+      "pass_rule": "Nhập đúng nhu cầu/dụng cụ khách đang cần.",
+      "answer_placeholder": "Khách cần gì?",
+      "clues": [
+        "Khách đang cầm một chai soda thủy tinh nhưng nắp vẫn còn nguyên.",
+        "Nắp là loại kim loại bật lên, không phải nắp vặn.",
+        "Khách cần một thứ có thể cạy nắp chai ra."
+      ],
+      "clues_localized": {
+        "en": [
+          "The customer is holding a glass soda bottle that is still sealed.",
+          "It has a metal pop-off cap, not a twist cap.",
+          "They need something that can pry the bottle cap off."
+        ],
+        "zh": [
+          "客人手上拿著一瓶還沒打開的玻璃汽水。",
+          "瓶蓋是金屬撬開式，不是旋轉式。",
+          "他需要一個能把瓶蓋撬開的東西。"
+        ]
+      },
+      "clue_keywords": [
+        "bottle",
+        "soda",
+        "cap",
+        "open",
+        "need",
+        "problem",
+        "tool",
+        "spoon",
+        "hint",
+        "clue"
+      ],
+      "question_ideas": [
+        "What are you trying to open?",
+        "What kind of cap does the bottle have?",
+        "What do you normally use to open it?"
+      ]
     },
-    "feedback": {
-      "great": ["Câu trả lời liên quan và nghe giống người thật, không giống mẫu CV.", "Tốt: mày kết nối kinh nghiệm với giá trị cho công việc."],
-      "okay": ["Thêm một ví dụ cụ thể để câu trả lời có sức nặng.", "Tránh từ chung chung; dùng cấu trúc hành động và kết quả."],
-      "chaos": ["Quay lại ba phần: mày là ai, đã làm gì, có thể đóng góp gì.", "Câu trả lời đang lệch khỏi mục tiêu phỏng vấn."]
+    "briefing_vi": {
+      "situation": "Mày tham gia cuộc thi “Sell the Useless” ở chợ cuối tuần. Ban tổ chức đưa cho mày một chiếc thìa nhựa hơi cong và yêu cầu bán nó cho một vị khách thật. Người khách đang cầm một chai soda chưa mở nhưng không nói thẳng họ cần gì.",
+      "player_role": "Mày là thí sinh bán hàng, chỉ được dùng chiếc thìa cong để giải quyết vấn đề của khách.",
+      "npc_role": "Khách hàng khó tính. Họ sẽ mua nếu mày hiểu đúng nhu cầu thay vì quảng cáo bừa.",
+      "motivation": "Nếu bán được món đồ, mày thắng vòng thi và nhận XP/điểm hạng. Nếu không tìm đúng nhu cầu, khách bỏ đi.",
+      "goal": "Hỏi để phát hiện khách đang cần một cách mở chai, rồi xác định công dụng đúng để chốt bán.",
+      "pass_rule": "Tìm đúng nhu cầu cuối của khách và nhập đáp án. Câu chat trước đó là nơi mày moi nhu cầu và thử lời chào hàng."
     },
-    "ending_replies": ["That concludes the interview. You communicated clearly, and my eyebrow is now neutral.", "You survived. HR will contact you—unless the office plant hires you first."],
-    "ending_narrator": ["Boss battle cleared: Corporate Communication.", "Mày bước ra ngoài như một ứng viên và không còn như một nghi phạm."]
+    "difficulty_group": "fun",
+    "recommended_level": "A1-A2"
   },
   {
-    "id": "convenience-store",
-    "language": "zh",
-    "difficulty": "A1–B1",
-    "icon": "🍙",
-    "title": "便利商店：微波危機",
-    "subtitle": "Mua đồ ăn đêm và trả lời nhân viên trước khi cơm nắm tiến hoá.",
-    "image": "scene-store.svg",
-    "background": "bg-store.svg",
-    "character": {"happy": "xiaoyu-happy.svg", "confused": "xiaoyu-confused.svg", "shocked": "xiaoyu-shocked.svg"},
-    "npc_name": "小宇 — 店員",
-    "npc_role": "一位值夜班、靠咖啡維持理智的便利商店店員。",
-    "player_role": "Một sinh viên mua đồ ăn khuya ở cửa hàng tiện lợi.",
-    "mission": "Hỏi giá, trả lời có cần hâm nóng và chọn phương thức thanh toán.",
-    "opening": "晚上好！這個飯糰要微波嗎？先說好，微波太久它可能會得到超能力。",
-    "vocab": ["請問多少錢？", "要微波", "不用袋子", "刷卡", "付現", "謝謝"],
-    "suggestions": ["要微波，謝謝。請問一共多少錢？", "不用微波，也不用袋子。我刷卡。", "請幫我微波一下，我付現，謝謝。"],
-    "expected": {"keywords": ["微波", "多少錢", "刷卡", "付現", "袋子", "不用", "要"], "polite": ["請", "謝謝", "麻煩"]},
-    "demo_replies": {
-      "great": ["好的，幫你微波。總共八十五元。飯糰目前還沒有超能力，請放心。", "沒問題，不用袋子、刷卡。你拯救了地球，也拯救了我的夜班心情。"],
-      "okay": ["好的……所以要微波嗎？飯糰正在等待命運的判決。", "我大概懂了。你要刷卡還是付現？收銀機已經開始猜拳了。"],
-      "chaos": ["你剛剛說要去火星。這裡只有微波爐，距離可能不太夠。", "等等，飯糰不是你的主管。請再說一次你要不要微波。"]
+    "id": "grandma-angry",
+    "game_group": "arcade",
+    "gameplay": "conversation",
+    "arcade_order": 3,
+    "unlock_level": 1,
+    "title": "Đừng Làm Bà Nổi Giận",
+    "hook": "Bà đang ở phòng khám, bên ngoài bắt đầu mưa và bà nhờ mày mang một món đồ để bà còn về nhà được. Vấn đề là bà chỉ nhớ đặc điểm chứ không nói tên.",
+    "tag": "CHAOS",
+    "visual": "grandma",
+    "duration": "3–5 phút",
+    "location": "Arcade",
+    "mission": "Hỏi bà về công dụng, màu sắc và vị trí món đồ rồi tìm đúng thứ cần mang tới.",
+    "objectives": [
+      "Hiểu vì sao bà cần món đồ ngay",
+      "Hỏi món đó dùng khi nào",
+      "Hỏi màu sắc và nơi bà để nó",
+      "Nhập đúng tên món đồ cần mang"
+    ],
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
     },
-    "narrator": {
-      "great": ["店員熟練地操作微波爐。世界暫時安全。", "收銀機發出認可的嗶聲。"],
-      "okay": ["店員的眼神出現了一個小小的問號。", "飯糰安靜地觀看這場語言危機。"],
-      "chaos": ["BOÀNG。你的中文自信掉在了關東煮旁邊。", "後面的客人開始研究逃生路線。"]
+    "win_condition": "Chỉ thắng khi mày nói đúng tên và đặc điểm chính của món đồ bà muốn.",
+    "localized": {
+      "en": {
+        "npc_name": "Grandma",
+        "npc_role": "Your grandma waiting at the clinic while rain starts outside.",
+        "player_role": "You are at home and will pick Grandma up, but first you must bring the item she forgot.",
+        "opening": "Finally! It just started raining here. Before you come pick me up, bring that thing I left by the front door. You know—the one I use outside. Ask me if you need details, but please do not bring the wrong thing again.",
+        "core_terms": [
+          "what do you use it for?",
+          "what color is it?",
+          "where did you leave it?",
+          "bring it with me"
+        ],
+        "suggestions": [
+          "What do you use it for, Grandma?",
+          "What color is it, and exactly where did you leave it?"
+        ],
+        "expected": {
+          "keywords": [
+            "because",
+            "explain",
+            "first",
+            "then",
+            "forgot"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "Grandma is at a clinic and it has started raining. She forgot an item at home and needs you to bring it when you pick her up. She remembers what it looks like and where it is, but not the English word."
+      },
+      "zh": {
+        "npc_name": "阿嬤",
+        "npc_role": "正在診所等你、外面剛開始下雨的阿嬤。",
+        "player_role": "你人在家，準備去接阿嬤，但要先帶上她忘記的東西。",
+        "opening": "終於接了！這裡剛開始下雨。你來接我之前，把我放在大門旁邊的那個東西帶來。就是我在外面會用的那個。需要細節就問，但拜託別再拿錯。",
+        "core_terms": [
+          "你拿它做什麼？",
+          "它是什麼顏色？",
+          "你放在哪裡？",
+          "我會帶過去"
+        ],
+        "suggestions": [
+          "阿嬤，你通常什麼時候會用它？",
+          "它是什麼顏色？你到底放在門哪裡？"
+        ],
+        "expected": {
+          "keywords": [
+            "因為",
+            "解釋",
+            "先",
+            "然後",
+            "忘記"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "阿嬤在診所，外面開始下雨。她把一樣東西忘在家裡，希望你來接她時一起帶來。她記得外觀和位置，但一時想不起英文名稱。"
+      }
     },
-    "feedback": {
-      "great": ["Câu rõ ràng, có hành động và cách thanh toán.", "Tốt: dùng từ lịch sự và đủ thông tin."],
-      "okay": ["Người nghe hiểu một phần; nói rõ có cần hâm nóng và trả bằng gì.", "Thêm ‘請’ hoặc ‘謝謝’ để tự nhiên hơn."],
-      "chaos": ["Quay lại câu hỏi chính: 要不要微波？", "Câu trả lời đang đi du lịch khỏi cửa hàng tiện lợi."]
+    "secret_goal": {
+      "type": "phrase",
+      "answer": "blue umbrella",
+      "aliases": [
+        "a blue umbrella",
+        "umbrella"
+      ],
+      "label": "món đồ bà cần mang",
+      "goal": "Tìm món đồ bà cần trước khi rời phòng khám.",
+      "pass_rule": "Nhập đúng “blue umbrella” hoặc “umbrella”.",
+      "answer_placeholder": "Nhập món đồ cần mang",
+      "clues": [
+        "Bà dùng nó khi trời mưa.",
+        "Nó màu xanh.",
+        "Bà để nó cạnh cửa ra vào."
+      ],
+      "clues_localized": {
+        "en": [
+          "Grandma uses it when it rains.",
+          "It is blue.",
+          "She left it beside the front door."
+        ],
+        "zh": [
+          "阿嬤下雨時會用它。",
+          "它是藍色的。",
+          "她把它放在大門旁。"
+        ]
+      },
+      "clue_keywords": [
+        "rain",
+        "color",
+        "blue",
+        "door",
+        "bring",
+        "clinic",
+        "item",
+        "use",
+        "hint",
+        "clue"
+      ],
+      "question_ideas": [
+        "What do you use it for?",
+        "What color is it?",
+        "Where did you leave it?"
+      ]
     },
-    "ending_replies": ["完成！這是你的飯糰和發票。今晚沒有任何食物獲得超能力。", "任務成功。你買到宵夜，店員保住理智，微波爐也平安下班。"],
-    "ending_narrator": ["任務完成：便利商店生存術。", "Mày rời cửa hàng với đồ ăn nóng và tiếng Trung chưa nổ tung."]
+    "briefing_vi": {
+      "situation": "Bà gọi cho mày từ phòng khám. Trời vừa đổ mưa, bà chuẩn bị ra về nhưng để quên một món đồ ở nhà. Bà nhớ nó ở cạnh cửa và nhớ màu, nhưng đang cáu vì không nhớ tên tiếng Anh của nó.",
+      "player_role": "Mày đang ở nhà và sắp tới đón bà, nên phải mang đúng món đồ bà cần.",
+      "npc_role": "Bà của mày. Bà biết đặc điểm món đồ nhưng nói vòng vo và hơi thiếu kiên nhẫn.",
+      "motivation": "Nếu mang sai đồ, bà sẽ phải đứng chờ dưới mưa. Đây là việc mày thực sự phải làm trước khi đi đón bà.",
+      "goal": "Hỏi đủ đặc điểm để xác định món đồ rồi nhập đúng đáp án.",
+      "pass_rule": "Đúng món đồ và đặc điểm chính là qua màn."
+    },
+    "difficulty_group": "fun",
+    "recommended_level": "A1-A2"
   },
   {
-    "id": "professor-meeting",
-    "language": "zh",
-    "difficulty": "B1–C1",
-    "icon": "🧪",
-    "title": "教授辦公室：進度報告求生",
-    "subtitle": "Báo cáo tiến độ mà không dùng câu huyền thoại: ‘Em gần xong rồi ạ.’",
-    "image": "scene-professor.svg",
-    "background": "bg-professor.svg",
-    "character": {"happy": "professor-happy.svg", "confused": "professor-confused.svg", "shocked": "professor-shocked.svg"},
-    "npc_name": "陳教授",
-    "npc_role": "一位嚴格但幽默、能聞到模糊報告的教授。",
-    "player_role": "Một sinh viên đang báo cáo tiến độ dự án.",
-    "mission": "Nói phần đã hoàn thành, vấn đề đang gặp và kế hoạch tiếp theo.",
-    "opening": "你說「快做完了」已經兩個星期了。今天我們來定義一下，你的「快」到底是哪一個時區？",
-    "vocab": ["目前已經完成…", "遇到的問題是…", "原因可能是…", "下一步我會…", "預計…以前完成"],
-    "suggestions": ["目前已經完成基本測試，遇到的問題是結果不穩定，下一步我會先檢查資料和參數。", "目前進度大約百分之六十，主要問題是硬體延遲，預計星期五以前完成測試。", "我已經找到可能的原因，下一步會做三組對照實驗來確認。"],
-    "expected": {"keywords": ["完成", "問題", "原因", "下一步", "預計", "測試", "進度", "資料"], "polite": ["老師", "教授", "我會", "目前"]},
-    "demo_replies": {
-      "great": ["這次很清楚：完成項目、問題和下一步都有。很好，我的血壓也比較清楚了。", "可以。請把三組測試的結果整理成表格，下次不要只帶著希望來。"],
-      "okay": ["方向有了，但還不夠具體。你說的「很快」是星期五，還是下一個文明？", "請給我一個日期和一個可以檢查的結果，不要讓進度只存在你的心裡。"],
-      "chaos": ["你說資料在跟你作對。資料目前沒有律師，所以請提供更科學的證據。", "這不是進度報告，這是一首關於拖延的現代詩。再試一次。"]
+    "id": "taboo-trap",
+    "game_group": "arcade",
+    "gameplay": "conversation",
+    "arcade_order": 4,
+    "unlock_level": 3,
+    "title": "Taboo Trap",
+    "hook": "Đây là game show đoán từ. Host biết một từ bí mật nhưng bị cấm dùng ba từ dễ nhất để mô tả nó. Mày được hỏi rồi chốt đáp án.",
+    "tag": "WORD GAME",
+    "visual": "taboo",
+    "duration": "3–5 phút",
+    "location": "Arcade",
+    "mission": "Hỏi host các câu có ích, gom manh mối và đoán đúng từ bí mật trước khi hết lượt.",
+    "objectives": [
+      "Hiểu luật ba từ bị cấm",
+      "Hỏi về nơi thường thấy vật đó",
+      "Hỏi công dụng hoặc đặc điểm",
+      "Nhập từ bí mật"
+    ],
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
     },
-    "narrator": {
-      "great": ["教授點頭。實驗室的空氣突然可以呼吸了。", "白板上的公式停止了嘲笑。"],
-      "okay": ["教授拿起筆。那支筆看起來很有攻擊性。", "時鐘的滴答聲變得像審判。"],
-      "chaos": ["BOÀNG。你的「快做完」被送去重新定義。", "隔壁實驗室也感受到了尷尬的震波。"]
+    "win_condition": "Chỉ thắng khi mày đoán đúng từ bí mật.",
+    "localized": {
+      "en": {
+        "npc_name": "Taboo Host",
+        "npc_role": "A game-show host who knows the secret word but may not say “up,” “down,” or “floor.”",
+        "player_role": "You are the contestant trying to guess the hidden word.",
+        "opening": "Round three. I have one secret word. I am not allowed to say “up,” “down,” or “floor.” Ask me questions, then submit your guess whenever you think you know it.",
+        "core_terms": [
+          "where can I find it?",
+          "what does it do?",
+          "does it have…?",
+          "is it used for…?"
+        ],
+        "suggestions": [
+          "Where would I usually find it?",
+          "Does it carry people from one level of a building to another?"
+        ],
+        "expected": {
+          "keywords": [
+            "hold",
+            "head",
+            "opens",
+            "roof",
+            "protects"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "This is a formal Taboo round. The host knows the answer but is banned from using the three easiest words. You can ask questions and submit a guess at any time."
+      },
+      "zh": {
+        "npc_name": "Taboo 主持人",
+        "npc_role": "知道秘密單字、但不能說「上、下、樓層」三個禁字的主持人。",
+        "player_role": "你是要猜出秘密單字的參賽者。",
+        "opening": "第三回合。我手上有一個秘密單字，但不能說「上、下、樓層」。你可以先問問題，覺得知道答案時就直接提交。",
+        "core_terms": [
+          "通常在哪裡？",
+          "它有什麼用途？",
+          "它有…嗎？",
+          "它是拿來…的嗎？"
+        ],
+        "suggestions": [
+          "通常在哪種地方會看到它？",
+          "它會把人送到建築物不同高度嗎？"
+        ],
+        "expected": {
+          "keywords": [
+            "拿",
+            "頭上",
+            "打開",
+            "屋頂",
+            "保護"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "這是一個正式的 Taboo 回合。主持人知道答案，但不能使用三個最簡單的提示字。你可以不停提問，覺得知道時就提交答案。"
+      }
     },
-    "feedback": {
-      "great": ["Cấu trúc báo cáo rõ: đã làm, vấn đề, bước tiếp theo.", "Tốt: có nội dung kiểm chứng được và thời hạn."],
-      "okay": ["Cần thêm con số, thời hạn hoặc đầu ra cụ thể.", "Đừng chỉ nói ‘sẽ làm’; hãy nói làm gì và khi nào xong."],
-      "chaos": ["Dùng khung: 目前完成…／問題是…／下一步…", "Câu trả lời chưa phải báo cáo tiến độ có thể kiểm tra."]
+    "secret_goal": {
+      "type": "phrase",
+      "answer": "elevator",
+      "aliases": [
+        "lift"
+      ],
+      "label": "từ bí mật",
+      "goal": "Đoán từ mà host đang mô tả.",
+      "pass_rule": "Nhập đúng “elevator” hoặc “lift”.",
+      "answer_placeholder": "Nhập từ bí mật",
+      "clues": [
+        "Nó thường có trong các tòa nhà nhiều tầng.",
+        "Nó chở người giữa các tầng mà không cần đi cầu thang.",
+        "Nó có cửa tự động và bảng nút bấm."
+      ],
+      "clues_localized": {
+        "en": [
+          "You usually find it in multi-story buildings.",
+          "It carries people between levels without using the stairs.",
+          "It has automatic doors and a panel of buttons."
+        ],
+        "zh": [
+          "通常在多層建築裡可以找到它。",
+          "它不用走樓梯就能載人到不同樓層。",
+          "它有自動門和一排按鈕。"
+        ]
+      },
+      "clue_keywords": [
+        "building",
+        "stairs",
+        "door",
+        "button",
+        "level",
+        "carry",
+        "where",
+        "what does",
+        "hint",
+        "clue"
+      ],
+      "question_ideas": [
+        "Where do people usually find it?",
+        "Does it move people?",
+        "What does it have inside?"
+      ]
     },
-    "ending_replies": ["好，這次報告合格。下星期帶結果來，不要只帶咖啡和樂觀。", "任務完成。教授相信你的計畫了，大概有七成。這已經是學術奇蹟。"],
-    "ending_narrator": ["任務完成：教授辦公室生還者。", "Mày bước ra khỏi phòng. Deadline vẫn còn, nhưng danh dự đã được cứu."]
+    "briefing_vi": {
+      "situation": "Mày đang ở vòng Taboo của một game show. Host cầm một từ bí mật nhưng không được phép dùng ba từ “up”, “down” và “floor”. Mày có thể hỏi để host mô tả vòng quanh từ đó.",
+      "player_role": "Mày là người đoán từ trong game show.",
+      "npc_role": "Host biết đáp án nhưng phải tuân luật Taboo, chỉ được trả lời bằng những mô tả không dùng từ cấm.",
+      "motivation": "Đoán đúng thì mày giữ streak và lấy điểm vòng này; đoán sai vẫn được hỏi tiếp nếu còn lượt.",
+      "goal": "Dùng câu hỏi để suy ra từ bí mật rồi nhập đáp án.",
+      "pass_rule": "Nhập đúng từ bí mật là thắng vòng."
+    },
+    "difficulty_group": "hardcore",
+    "recommended_level": "B1-B2"
+  },
+  {
+    "id": "who-is-lying",
+    "game_group": "arcade",
+    "gameplay": "conversation",
+    "arcade_order": 5,
+    "unlock_level": 4,
+    "title": "Who Is Lying?",
+    "hook": "Mày sắp đi concert thì chiếc vé biến mất khỏi ngăn kéo ở căn hộ chung. Ba người cùng nhà đều nói mình không đụng vào phòng mày. Một người đang nói dối.",
+    "tag": "DETECTIVE",
+    "visual": "detective",
+    "duration": "3–5 phút",
+    "location": "Arcade",
+    "mission": "Hỏi về lời khai và bằng chứng của Alex, Mina, Nora để tìm người nói dối trước khi cửa concert đóng.",
+    "objectives": [
+      "Hỏi alibi của cả ba người",
+      "Hỏi bằng chứng thời gian của từng người",
+      "Tìm chi tiết không khớp",
+      "Nhập tên người nói dối"
+    ],
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "win_condition": "Chỉ thắng khi mày nêu đúng tên người nói dối.",
+    "localized": {
+      "en": {
+        "npc_name": "Building Security",
+        "npc_role": "A security staff member helping you compare roommate statements with timestamps and camera records.",
+        "player_role": "You own the missing concert ticket and need to identify the liar before you miss the show.",
+        "opening": "Your concert ticket is still missing, and doors open in thirty minutes. I have statements from Alex, Mina, and Nora plus some timestamped evidence. Ask me about their alibis and we will find the one story that does not match.",
+        "core_terms": [
+          "what is their alibi?",
+          "do we have proof?",
+          "what time…?",
+          "that does not match",
+          "camera footage"
+        ],
+        "suggestions": [
+          "What is Alex’s alibi, and is there any proof?",
+          "What does the hallway camera show about Nora?"
+        ],
+        "expected": {
+          "keywords": [
+            "time",
+            "home",
+            "train",
+            "match",
+            "lying"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "Your concert ticket disappeared from your drawer. Alex, Mina, and Nora all deny entering your room. Security has receipts and hallway-camera timestamps. One story is false."
+      },
+      "zh": {
+        "npc_name": "大樓保全",
+        "npc_role": "協助你比對室友口供、時間戳記與監視器畫面的保全。",
+        "player_role": "你是失蹤演唱會門票的主人，必須在錯過演出前找出說謊的人。",
+        "opening": "你的演唱會門票還是沒找到，而且三十分鐘後就開場。我這裡有 Alex、Mina、Nora 的口供，還有帶時間的證據。你可以問他們的不在場證明，我們找出哪個故事對不上。",
+        "core_terms": [
+          "他的不在場證明是什麼？",
+          "有證據嗎？",
+          "幾點？",
+          "這對不上",
+          "監視器畫面"
+        ],
+        "suggestions": [
+          "Alex 的不在場證明是什麼？有證據嗎？",
+          "走廊監視器拍到 Nora 什麼？"
+        ],
+        "expected": {
+          "keywords": [
+            "幾點",
+            "在家",
+            "火車",
+            "對不上",
+            "說謊"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "你的演唱會門票從抽屜裡消失。Alex、Mina、Nora 都否認進過你的房間。保全手上有收據與走廊監視器時間。三個故事中有一個是假的。"
+      }
+    },
+    "secret_goal": {
+      "type": "phrase",
+      "answer": "Nora",
+      "aliases": [
+        "nora is lying",
+        "it is nora"
+      ],
+      "label": "người nói dối",
+      "goal": "Tìm ai nói dối về việc có vào căn hộ hay không.",
+      "pass_rule": "Nhập đúng tên người nói dối.",
+      "answer_placeholder": "Nhập tên người nói dối",
+      "clues": [
+        "Alex nói ở café lúc 8:00; hóa đơn điện tử lúc 8:03 xác nhận anh ấy ở đó.",
+        "Mina nói đang ở siêu thị; hóa đơn thanh toán lúc 8:05 khớp với lời khai.",
+        "Nora nói cô ấy không về nhà sau 7:30, nhưng camera hành lang ghi cô ấy vào căn hộ lúc 8:12."
+      ],
+      "clues_localized": {
+        "en": [
+          "Alex says he was at a café at 8:00; an electronic receipt at 8:03 supports his story.",
+          "Mina says she was at the supermarket; a checkout receipt at 8:05 matches her statement.",
+          "Nora says she never came home after 7:30, but the hallway camera records her entering the apartment at 8:12."
+        ],
+        "zh": [
+          "Alex 說 8:00 在咖啡店；8:03 的電子收據支持他的說法。",
+          "Mina 說她在超市；8:05 的結帳收據和她的說法一致。",
+          "Nora 說 7:30 後就沒回家，但走廊監視器拍到她 8:12 進入公寓。"
+        ]
+      },
+      "clue_keywords": [
+        "alex",
+        "mina",
+        "nora",
+        "alibi",
+        "receipt",
+        "camera",
+        "time",
+        "ticket",
+        "apartment",
+        "evidence",
+        "hint",
+        "clue"
+      ],
+      "question_ideas": [
+        "What is Alex’s alibi?",
+        "Do we have proof for Mina’s story?",
+        "What does the hallway camera show about Nora?"
+      ]
+    },
+    "briefing_vi": {
+      "situation": "Chiếc vé concert của mày biến mất khỏi ngăn kéo chỉ 30 phút trước giờ mở cửa. Ba người cùng nhà — Alex, Mina và Nora — đều nói mình không vào phòng. Tòa nhà có camera hành lang và vài người có hóa đơn/biên nhận làm bằng chứng.",
+      "player_role": "Mày là chủ chiếc vé và phải tìm ra ai nói dối để lấy vé lại kịp giờ.",
+      "npc_role": "Nhân viên an ninh tòa nhà đang xem lời khai, camera và timestamp cùng mày.",
+      "motivation": "Nếu không tìm ra người nói dối sớm, mày bỏ lỡ concert và mất chiếc vé đã mua.",
+      "goal": "Đối chiếu lời khai với bằng chứng rồi nhập đúng tên người nói dối.",
+      "pass_rule": "Chỉ thắng khi nêu đúng người có lời khai mâu thuẫn với bằng chứng."
+    },
+    "difficulty_group": "hardcore",
+    "recommended_level": "B1-B2"
+  },
+  {
+    "id": "alien-customs",
+    "game_group": "arcade",
+    "gameplay": "conversation",
+    "arcade_order": 6,
+    "unlock_level": 4,
+    "title": "Alien Customs",
+    "hook": "Mày chuẩn bị lên chuyến shuttle về Trái Đất thì máy quét hải quan báo trong vali có một món đồ bị cấm. Món đó có thể đã bị cửa hàng lưu niệm bỏ nhầm vào túi.",
+    "tag": "ROLEPLAY",
+    "visual": "alien",
+    "duration": "3–5 phút",
+    "location": "Arcade",
+    "mission": "Hỏi Officer Z-14 về tín hiệu máy quét, suy ra món đồ nào gây báo động rồi khai báo đúng để được lên tàu.",
+    "objectives": [
+      "Hỏi vì sao vali bị giữ lại",
+      "Hỏi đặc điểm vật thể máy quét thấy",
+      "Liên hệ các manh mối với món đồ trong túi",
+      "Nhập đúng món đồ bị cấm"
+    ],
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "win_condition": "Chỉ thắng khi mày xác định đúng món đồ bị cấm.",
+    "localized": {
+      "en": {
+        "npc_name": "Officer Z-14",
+        "npc_role": "Alien customs officer whose scanner can describe the unknown banned object but cannot translate its Earth name.",
+        "player_role": "You are catching the last shuttle to Earth and need to identify a mystery object accidentally packed in your suitcase.",
+        "opening": "Earth passenger, stop. The scanner found one prohibited object in your suitcase. The souvenir shop may have packed it by mistake. Your shuttle closes soon, so ask me what the scanner detected and identify it.",
+        "core_terms": [
+          "what did the scanner detect?",
+          "what color is it?",
+          "what sound does it make?",
+          "where is it used?",
+          "prohibited item"
+        ],
+        "suggestions": [
+          "What size and color is the object?",
+          "What sound does it make when the scanner presses it?"
+        ],
+        "expected": {
+          "keywords": [
+            "bag",
+            "noise",
+            "toothbrush",
+            "show",
+            "inside"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "A souvenir shop may have placed the wrong item in your bag. The customs scanner flags it as banned because its squeak resembles a Zeta distress signal. You must identify and declare it before boarding closes."
+      },
+      "zh": {
+        "npc_name": "Z-14 官員",
+        "npc_role": "外星海關官員；掃描器能描述違禁物，但無法翻譯成地球物品名稱。",
+        "player_role": "你要趕最後一班回地球的接駁船，必須找出被紀念品店誤放進行李的神秘物品。",
+        "opening": "地球旅客，停一下。掃描器在你的行李裡發現一件違禁物。可能是紀念品店放錯了。你的接駁船快關門了，問我掃描器看到什麼，然後把它辨認出來。",
+        "core_terms": [
+          "掃描器發現什麼？",
+          "它是什麼顏色？",
+          "它發出什麼聲音？",
+          "通常在哪裡使用？",
+          "違禁物"
+        ],
+        "suggestions": [
+          "那個物體多大、什麼顏色？",
+          "掃描器擠壓它時會發出什麼聲音？"
+        ],
+        "expected": {
+          "keywords": [
+            "行李",
+            "聲音",
+            "牙刷",
+            "打開",
+            "裡面"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "紀念品店可能放錯東西到你的行李。海關掃描器因為那個物品的吱吱聲像 Zeta 求救訊號而判定為違禁品。登船前必須先辨認並申報。"
+      }
+    },
+    "secret_goal": {
+      "type": "phrase",
+      "answer": "rubber duck",
+      "aliases": [
+        "a rubber duck",
+        "duck",
+        "rubber-duck"
+      ],
+      "label": "món đồ bị cấm",
+      "goal": "Tìm vật thể khiến máy quét hải quan báo động.",
+      "pass_rule": "Nhập đúng tên món đồ bị cấm.",
+      "answer_placeholder": "Nhập món đồ bị cấm",
+      "clues": [
+        "Máy quét thấy một vật nhỏ màu vàng.",
+        "Khi bị ép, vật đó phát ra tiếng “squeak” giống tín hiệu cầu cứu của loài Zeta.",
+        "Trên Trái Đất, món này thường nổi trong bồn tắm."
+      ],
+      "clues_localized": {
+        "en": [
+          "The scanner sees a small yellow object.",
+          "When squeezed, it makes a squeak that sounds like a Zeta distress signal.",
+          "On Earth, this object is often found floating in a bathtub."
+        ],
+        "zh": [
+          "掃描器看到一個小型黃色物體。",
+          "被擠壓時，它會發出吱吱聲，聽起來像 Zeta 族的求救訊號。",
+          "在地球上，這種東西常常漂在浴缸裡。"
+        ]
+      },
+      "clue_keywords": [
+        "scanner",
+        "yellow",
+        "small",
+        "sound",
+        "squeak",
+        "bath",
+        "bag",
+        "banned",
+        "object",
+        "souvenir",
+        "hint",
+        "clue"
+      ],
+      "question_ideas": [
+        "What did the scanner detect?",
+        "What sound does the object make?",
+        "Where would humans normally use something like that?"
+      ]
+    },
+    "briefing_vi": {
+      "situation": "Mày đang ở trạm không gian, chuẩn bị lên shuttle cuối về Trái Đất. Hải quan quét vali và phát hiện một vật bị cấm mà mày không nhớ đã mua. Khả năng cửa hàng lưu niệm đã bỏ nhầm nó vào túi.",
+      "player_role": "Mày là hành khách cần xác định và khai báo đúng món đồ để kịp chuyến shuttle.",
+      "npc_role": "Officer Z-14 là nhân viên hải quan. Máy quét của họ biết màu, kích thước và loại âm thanh của vật thể nhưng không hiện tên tiếng Trái Đất.",
+      "motivation": "Nếu không xác định được vật thể trước giờ đóng cổng, toàn bộ vali bị giữ lại và mày lỡ chuyến shuttle cuối về Trái Đất.",
+      "goal": "Hỏi dữ kiện từ máy quét, suy ra món đồ và nhập đáp án đúng.",
+      "pass_rule": "Xác định đúng món đồ bị cấm để được thông quan."
+    },
+    "difficulty_group": "hardcore",
+    "recommended_level": "B1-B2"
+  },
+  {
+    "id": "excuse-emergency",
+    "game_group": "arcade",
+    "gameplay": "conversation",
+    "arcade_order": 7,
+    "unlock_level": 1,
+    "title": "Gate Panic",
+    "hook": "Mày tới sân bay sát giờ. Boarding pass vẫn ghi cổng cũ, bảng điện tử vừa hỏng và chuyến bay đã đổi cổng. Phải hỏi quầy thông tin để tìm đúng cổng trước khi đóng.",
+    "tag": "IMPROV",
+    "visual": "excuse",
+    "duration": "3–5 phút",
+    "location": "Arcade",
+    "mission": "Hỏi nhân viên sân bay các dữ kiện về cổng mới của Flight 218 rồi nhập đúng cổng để chạy tới đó.",
+    "objectives": [
+      "Nói rõ số chuyến bay đang tìm",
+      "Hỏi khu/section của cổng mới",
+      "Hỏi phạm vi hoặc đặc điểm số cổng",
+      "Nhập đúng cổng mới"
+    ],
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "win_condition": "Chỉ thắng khi mày nói đúng cổng cần tới.",
+    "localized": {
+      "en": {
+        "npc_name": "Airport Information Desk",
+        "npc_role": "An airport staff member using a backup system after the departure board fails.",
+        "player_role": "You are a late passenger on Flight 218 trying to find the changed gate before boarding closes.",
+        "opening": "Flight 218? Your printed pass is outdated—the gate changed, and this departure board just went offline. Boarding closes in eight minutes. Ask me what the backup system still shows.",
+        "core_terms": [
+          "Flight 218",
+          "which section…?",
+          "what is the gate number?",
+          "boarding closes",
+          "changed gate"
+        ],
+        "suggestions": [
+          "Which section is Flight 218 in now?",
+          "What do you know about the new gate number?"
+        ],
+        "expected": {
+          "keywords": [
+            "sorry",
+            "reason",
+            "train",
+            "called",
+            "finish"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "Your printed boarding pass says A8, but the flight changed gates. The local departure board is down. The desk has partial backup information. You have eight minutes before boarding closes."
+      },
+      "zh": {
+        "npc_name": "機場服務台",
+        "npc_role": "航班看板故障後，使用備援系統查資料的機場工作人員。",
+        "player_role": "你是 Flight 218 的遲到旅客，必須在登機結束前找到變更後的登機門。",
+        "opening": "Flight 218？你手上的登機證已經過期了——登機門剛換，而且這裡的航班看板又當機。八分鐘後停止登機。你可以問我備援系統還查得到什麼。",
+        "core_terms": [
+          "Flight 218",
+          "現在在哪一區？",
+          "登機門號碼是什麼？",
+          "停止登機",
+          "更換登機門"
+        ],
+        "suggestions": [
+          "Flight 218 現在在哪一區？",
+          "你知道新登機門號碼的哪些資訊？"
+        ],
+        "expected": {
+          "keywords": [
+            "對不起",
+            "原因",
+            "火車",
+            "電話",
+            "完成"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "紙本登機證寫 A8，但航班已換登機門，附近的電子看板又故障。服務台只剩部分備援資訊。八分鐘後停止登機。"
+      }
+    },
+    "secret_goal": {
+      "type": "phrase",
+      "answer": "Gate B12",
+      "aliases": [
+        "B12",
+        "gate b 12",
+        "b 12"
+      ],
+      "label": "cổng mới của Flight 218",
+      "goal": "Tìm cổng lên máy bay mới.",
+      "pass_rule": "Nhập đúng “B12” hoặc “Gate B12”.",
+      "answer_placeholder": "Nhập cổng mới",
+      "clues": [
+        "Hệ thống dự phòng xác nhận cổng mới nằm ở khu B.",
+        "Số cổng là số chẵn, lớn hơn 10 và nhỏ hơn 14.",
+        "Có một cổng duy nhất thỏa điều kiện đó: B12."
+      ],
+      "clues_localized": {
+        "en": [
+          "The backup system confirms the new gate is in section B.",
+          "The gate number is even, greater than 10, and less than 14.",
+          "Only one gate fits those conditions: B12."
+        ],
+        "zh": [
+          "備援系統確認新登機門在 B 區。",
+          "登機門號碼是偶數，大於 10 且小於 14。",
+          "只有一個登機門符合條件：B12。"
+        ]
+      },
+      "clue_keywords": [
+        "flight",
+        "218",
+        "gate",
+        "section",
+        "terminal",
+        "b",
+        "number",
+        "even",
+        "boarding",
+        "hint",
+        "clue"
+      ],
+      "question_ideas": [
+        "Which section is Flight 218 in now?",
+        "What do you know about the new gate number?",
+        "Is the gate number odd or even?"
+      ]
+    },
+    "briefing_vi": {
+      "situation": "Mày tới sân bay trễ. Boarding pass in từ sáng vẫn ghi cổng A8 nhưng Flight 218 vừa đổi cổng, còn bảng điện tử ở khu này đang lỗi. Boarding đóng sau 8 phút.",
+      "player_role": "Mày là hành khách Flight 218, đang cần tìm cổng mới càng nhanh càng tốt.",
+      "npc_role": "Nhân viên quầy thông tin có các mẩu cập nhật từ hệ thống dự phòng nhưng phải tra từng phần.",
+      "motivation": "Tìm sai cổng là lỡ chuyến bay. Đây là thông tin mày cần ngay lập tức, không phải câu đố ngẫu nhiên.",
+      "goal": "Hỏi đủ dữ kiện để suy ra cổng mới của Flight 218 rồi nhập đáp án.",
+      "pass_rule": "Nhập đúng cổng mới trước khi hết lượt."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "dating-disaster",
+    "game_group": "arcade",
+    "gameplay": "conversation",
+    "arcade_order": 8,
+    "unlock_level": 2,
+    "title": "Dating Disaster",
+    "hook": "Buổi hẹn đầu đang ổn thì một người lạ cầm áo khoác tiến thẳng tới bàn và người đi cùng mày bỗng căng thẳng. Mày cần biết người đó là ai trước khi phản ứng.",
+    "tag": "DRAMA",
+    "visual": "date",
+    "duration": "3–5 phút",
+    "location": "Arcade",
+    "mission": "Hỏi người đi cùng về người đang tới, ráp các chi tiết về mối quan hệ rồi xác định chính xác họ là ai.",
+    "objectives": [
+      "Hỏi người đang tới là ai",
+      "Hỏi họ quen nhau từ đâu",
+      "Hỏi vì sao người kia mang áo khoác tới",
+      "Nhập đúng mối quan hệ giữa họ"
+    ],
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "win_condition": "Chỉ thắng khi mày nói đúng món tráng miệng người kia thích nhất.",
+    "localized": {
+      "en": {
+        "npc_name": "Your Date",
+        "npc_role": "Your first-date partner, suddenly nervous because someone from their past is approaching with a jacket.",
+        "player_role": "You are on a first date and want to understand who the approaching person is before reacting.",
+        "opening": "Oh no. See the person walking over with my jacket? They are someone from my past. Please ask me before you assume the worst.",
+        "core_terms": [
+          "who are they to you?",
+          "how do you know them?",
+          "did you use to…?",
+          "why do they have your jacket?"
+        ],
+        "suggestions": [
+          "Who is that person to you?",
+          "How do you know them, and why do they have your jacket?"
+        ],
+        "expected": {
+          "keywords": [
+            "know",
+            "date",
+            "explain",
+            "expect",
+            "weird"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "An unfamiliar person is walking toward your table with your date’s jacket. Your date is visibly tense but willing to explain. Your job is to figure out the relationship before making assumptions."
+      },
+      "zh": {
+        "npc_name": "你的約會對象",
+        "npc_role": "第一次約會的對象；看到一個拿著外套的舊識走過來後突然變得緊張。",
+        "player_role": "你正在第一次約會，想先弄清楚走過來的人是誰，再決定怎麼反應。",
+        "opening": "糟了。看到那個拿著我外套走過來的人嗎？他是我過去認識的人。拜託先問我，不要直接往最糟的方向想。",
+        "core_terms": [
+          "他跟你是什麼關係？",
+          "你們怎麼認識？",
+          "你們以前有…嗎？",
+          "他為什麼拿著你的外套？"
+        ],
+        "suggestions": [
+          "那個人跟你是什麼關係？",
+          "你們怎麼認識的？他為什麼拿著你的外套？"
+        ],
+        "expected": {
+          "keywords": [
+            "認識",
+            "交往",
+            "解釋",
+            "遇到",
+            "尷尬"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "一個你不認識的人拿著約會對象的外套走向桌邊。你的約會對象明顯緊張，但願意解釋。你的任務是在亂猜之前先搞清楚兩人的關係。"
+      }
+    },
+    "secret_goal": {
+      "type": "phrase",
+      "answer": "ex-partner",
+      "aliases": [
+        "ex",
+        "their ex",
+        "ex boyfriend",
+        "ex-boyfriend",
+        "ex girlfriend",
+        "ex-girlfriend",
+        "former partner"
+      ],
+      "label": "mối quan hệ của người lạ",
+      "goal": "Tìm người đang bước tới là ai đối với người đi cùng mày.",
+      "pass_rule": "Nhập đúng “ex” hoặc “ex-partner”.",
+      "answer_placeholder": "Người đó là ai?",
+      "clues": [
+        "Hai người từng hẹn hò với nhau.",
+        "Họ chia tay khoảng sáu tháng trước.",
+        "Người kia chỉ tới để trả lại chiếc áo khoác còn giữ từ lúc chia tay."
+      ],
+      "clues_localized": {
+        "en": [
+          "They used to date each other.",
+          "They broke up about six months ago.",
+          "The person is only coming over to return a jacket they still had from the relationship."
+        ],
+        "zh": [
+          "他們以前交往過。",
+          "大約六個月前分手。",
+          "那個人只是來歸還交往時留下的一件外套。"
+        ]
+      },
+      "clue_keywords": [
+        "who",
+        "person",
+        "know",
+        "date",
+        "relationship",
+        "jacket",
+        "past",
+        "break up",
+        "ex",
+        "hint",
+        "clue"
+      ],
+      "question_ideas": [
+        "Who is that person to you?",
+        "How do you know them?",
+        "Why are they bringing your jacket?"
+      ]
+    },
+    "briefing_vi": {
+      "situation": "Mày đang ở buổi hẹn đầu. Một người mày chưa từng gặp đang đi về phía bàn, cầm một chiếc áo khoác. Người đi cùng mày nhìn thấy họ và lập tức căng thẳng.",
+      "player_role": "Mày là người đang đi hẹn và cần hiểu tình huống trước khi nói hoặc làm điều ngu ngốc.",
+      "npc_role": "Người đi cùng mày hơi ngượng nhưng sẽ trả lời nếu mày hỏi bình tĩnh.",
+      "motivation": "Biết người kia là ai quyết định cách mày phản ứng: chào bình thường, tránh hiểu lầm hay kết thúc buổi hẹn.",
+      "goal": "Hỏi đủ chi tiết để xác định mối quan hệ thật giữa người đi cùng và người đang tiến tới.",
+      "pass_rule": "Nhập đúng mối quan hệ cuối cùng."
+    },
+    "difficulty_group": "everyday",
+    "recommended_level": "A1-A2"
+  },
+  {
+    "id": "roast-battle",
+    "game_group": "arcade",
+    "gameplay": "conversation",
+    "arcade_order": 9,
+    "unlock_level": 5,
+    "title": "Roast Battle",
+    "hook": "Mày đang ở một giải đấu khẩu. Luật vòng này: mỗi đối thủ có một “hot take” ngớ ngẩn; tìm ra đúng chủ đề đó rồi chốt nó để knock-out.",
+    "tag": "BATTLE",
+    "visual": "roast",
+    "duration": "3–5 phút",
+    "location": "Arcade",
+    "mission": "Vừa đấu khẩu vừa dò phản ứng của đối thủ để tìm chủ đề đồ ăn mà họ cực kỳ nhạy cảm.",
+    "objectives": [
+      "Đáp lại ít nhất một câu roast",
+      "Dò xem chủ đề yếu điểm thuộc nhóm nào",
+      "Thu thập manh mối về món ăn gây tranh cãi",
+      "Nhập đúng chủ đề knock-out"
+    ],
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "win_condition": "Chỉ thắng khi mày tìm và nêu đúng chủ đề yếu điểm của đối thủ.",
+    "localized": {
+      "en": {
+        "npc_name": "Roast Opponent",
+        "npc_role": "Your tournament opponent, who has one hidden food hot take that counts as the knockout topic.",
+        "player_role": "You are competing in a roast tournament where finding the opponent’s hidden hot take wins the round.",
+        "opening": "Round rule: roast me all you want, but there is one hidden food opinion that counts as my knockout topic. Find it before I find yours. Your move.",
+        "core_terms": [
+          "is it about…?",
+          "what do you hate?",
+          "that is a terrible take",
+          "coming from someone who…"
+        ],
+        "suggestions": [
+          "Is your weak spot about food?",
+          "Do you have a pizza topping you absolutely hate?"
+        ],
+        "expected": {
+          "keywords": [
+            "least",
+            "tabs",
+            "purpose",
+            "browser",
+            "history"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "This is a formal knockout round. The host has assigned one hidden weak-spot topic. You can roast, ask questions, and test reactions. Identify the topic to win."
+      },
+      "zh": {
+        "npc_name": "吐槽對手",
+        "npc_role": "你的比賽對手；有一個隱藏的食物觀點是本回合的擊倒主題。",
+        "player_role": "你正在參加吐槽比賽，找到對手的隱藏 hot take 就能贏這一回合。",
+        "opening": "這回合規則很簡單：你可以盡量吐槽，但我有一個隱藏的食物觀點算是 knockout 主題。在我找到你的之前，先找到我的。換你。",
+        "core_terms": [
+          "是關於…嗎？",
+          "你最討厭什麼？",
+          "這個觀點太糟了",
+          "這話從你嘴裡說出來…"
+        ],
+        "suggestions": [
+          "你的弱點是跟食物有關嗎？",
+          "你有沒有一個超討厭的披薩配料？"
+        ],
+        "expected": {
+          "keywords": [
+            "至少",
+            "分頁",
+            "目的",
+            "瀏覽",
+            "紀錄"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "這是正式的 knockout 回合。主持人指定了一個隱藏弱點主題。你可以吐槽、提問、測試反應，找出主題就勝利。"
+      }
+    },
+    "secret_goal": {
+      "type": "phrase",
+      "answer": "pineapple pizza",
+      "aliases": [
+        "pizza with pineapple",
+        "pineapple on pizza"
+      ],
+      "label": "chủ đề knock-out",
+      "goal": "Tìm hot take đồ ăn mà đối thủ cực ghét.",
+      "pass_rule": "Nhập đúng “pineapple pizza”.",
+      "answer_placeholder": "Nhập chủ đề weak spot",
+      "clues": [
+        "Weak spot thuộc chủ đề đồ ăn.",
+        "Nó là một topping gây tranh cãi trên pizza.",
+        "Đối thủ cực ghét dứa xuất hiện trên pizza."
+      ],
+      "clues_localized": {
+        "en": [
+          "The weak spot is about food.",
+          "It is a controversial topping on pizza.",
+          "Your opponent absolutely hates pineapple on pizza."
+        ],
+        "zh": [
+          "弱點主題和食物有關。",
+          "它是披薩上一種很有爭議的配料。",
+          "你的對手非常討厭披薩上放鳳梨。"
+        ]
+      },
+      "clue_keywords": [
+        "food",
+        "pizza",
+        "topping",
+        "hate",
+        "opinion",
+        "weak spot",
+        "topic",
+        "pineapple",
+        "hint",
+        "clue"
+      ],
+      "question_ideas": [
+        "Is your weak spot about food?",
+        "What pizza topping do you hate?",
+        "Do you have a controversial pizza opinion?"
+      ]
+    },
+    "briefing_vi": {
+      "situation": "Đây là vòng knockout của giải Roast Battle. Host đã giấu một chủ đề “hot take” của đối thủ. Mày không cần chửi bừa; có thể hỏi, trêu và quan sát phản ứng để tìm đúng chủ đề.",
+      "player_role": "Mày là thí sinh đang cố tìm “weak spot topic” của đối thủ để thắng vòng.",
+      "npc_role": "Đối thủ roast mày liên tục nhưng sẽ phản ứng rõ hơn khi mày chạm gần tới chủ đề mà họ ghét.",
+      "motivation": "Đây là luật chính thức của vòng đấu. Tìm đúng chủ đề thì mày knock-out đối thủ và lấy điểm xếp hạng.",
+      "goal": "Tìm chủ đề đồ ăn khiến đối thủ mất bình tĩnh rồi nhập đáp án.",
+      "pass_rule": "Nhập đúng chủ đề weak spot là thắng."
+    },
+    "difficulty_group": "hardcore",
+    "recommended_level": "B1-B2"
+  },
+  {
+    "id": "one-brain-cell",
+    "game_group": "arcade",
+    "gameplay": "conversation",
+    "arcade_order": 10,
+    "unlock_level": 2,
+    "title": "NPC Một Tế Bào Não",
+    "hook": "Mày đang chuẩn bị phòng cho một buổi meetup. Helper bot hiểu câu “take a seat” theo nghĩa đen và đã mang một món đồ trong phòng đi cất. Khách sắp tới.",
+    "tag": "ABSURD",
+    "visual": "literal",
+    "duration": "3–5 phút",
+    "location": "Arcade",
+    "mission": "Hỏi bot nó đã nghe gì, đã mang vật nào đi và vật đó trông ra sao để tìm đúng món cần mang trả lại.",
+    "objectives": [
+      "Làm rõ câu lệnh bot đã hiểu sai",
+      "Hỏi bot đã mang vật đi đâu",
+      "Hỏi đặc điểm của vật bị mang đi",
+      "Nhập đúng tên vật cần trả lại"
+    ],
+    "background": "bg-interview.svg",
+    "character": {
+      "happy": "jamie-happy.svg",
+      "confused": "jamie-confused.svg",
+      "shocked": "jamie-shocked.svg"
+    },
+    "win_condition": "Chỉ thắng khi mày xác định đúng món đồ NPC đã hiểu nhầm.",
+    "localized": {
+      "en": {
+        "npc_name": "Literal Helper Bot",
+        "npc_role": "A helper robot that follows idioms literally and has moved one piece of furniture into storage.",
+        "player_role": "You are setting up a meetup room and need the missing item back before guests arrive.",
+        "opening": "Instruction completed: “take a seat.” I took the seat to storage. Guests arrive in four minutes. Which object would you like returned? You may ask for its properties.",
+        "core_terms": [
+          "what did you move?",
+          "what does it look like?",
+          "can it fold?",
+          "where did you put it?",
+          "I meant…"
+        ],
+        "suggestions": [
+          "What does the object you moved look like?",
+          "Can it fold, and where did you put it?"
+        ],
+        "expected": {
+          "keywords": [
+            "meant",
+            "chair",
+            "back",
+            "sit",
+            "literally"
+          ],
+          "polite": [
+            "please",
+            "thanks",
+            "thank you",
+            "could",
+            "can i",
+            "would"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "You said “take a seat,” meaning sit down. The helper bot interpreted it literally and carried one seat-like object into storage. Ask about what it moved and identify it."
+      },
+      "zh": {
+        "npc_name": "超字面 Helper Bot",
+        "npc_role": "會把慣用語照字面執行、並把一件家具搬進儲藏室的機器人。",
+        "player_role": "你正在布置 meetup 房間，必須在客人到之前把失蹤物品找回來。",
+        "opening": "指令已完成：「take a seat」。我已經把那個 seat 搬到儲藏室。客人四分鐘後抵達。你想要我搬回哪個物品？可以詢問它的特徵。",
+        "core_terms": [
+          "你搬了什麼？",
+          "它長什麼樣子？",
+          "它可以摺疊嗎？",
+          "你放在哪裡？",
+          "我的意思是…"
+        ],
+        "suggestions": [
+          "你搬走的物品長什麼樣子？",
+          "它可以摺疊嗎？你把它放在哪裡？"
+        ],
+        "expected": {
+          "keywords": [
+            "意思",
+            "椅子",
+            "放回",
+            "坐下",
+            "字面"
+          ],
+          "polite": [
+            "請",
+            "謝謝",
+            "可以",
+            "麻煩"
+          ]
+        },
+        "communication_skills": [
+          "understand_context",
+          "respond_relevantly",
+          "clarify",
+          "natural_conversation"
+        ],
+        "story_context": "你說「take a seat」本來只是叫機器人坐下。它卻照字面理解，把一個可以坐的物品搬進儲藏室。你要問清楚它搬了什麼。"
+      }
+    },
+    "secret_goal": {
+      "type": "phrase",
+      "answer": "folding chair",
+      "aliases": [
+        "a folding chair",
+        "chair"
+      ],
+      "label": "món đồ bot đã mang đi",
+      "goal": "Tìm món đồ bị helper bot mang vào kho do hiểu sai câu “take a seat”.",
+      "pass_rule": "Nhập đúng “folding chair” hoặc “chair”.",
+      "answer_placeholder": "Nhập món đồ bị mang đi",
+      "clues": [
+        "Bot hiểu “take a seat” là phải cầm một vật dùng để ngồi.",
+        "Vật đó có khung kim loại và có thể gập lại.",
+        "Bot đã mang chiếc ghế gấp vào kho phía sau."
+      ],
+      "clues_localized": {
+        "en": [
+          "The bot interpreted “take a seat” as physically taking an object people sit on.",
+          "The object has a metal frame and can fold flat.",
+          "The bot carried the folding chair into the storage room."
+        ],
+        "zh": [
+          "機器人把「take a seat」理解成真的拿走一個可以坐的物品。",
+          "那個物品有金屬框，而且可以摺疊。",
+          "機器人把折疊椅搬進後面的儲藏室。"
+        ]
+      },
+      "clue_keywords": [
+        "take a seat",
+        "seat",
+        "sit",
+        "object",
+        "metal",
+        "fold",
+        "storage",
+        "moved",
+        "carried",
+        "hint",
+        "clue"
+      ],
+      "question_ideas": [
+        "What did you think “take a seat” meant?",
+        "What does the object look like?",
+        "Can it fold?",
+        "Where did you put it?"
+      ]
+    },
+    "briefing_vi": {
+      "situation": "Mày đang chuẩn bị một phòng meetup. Mày bảo helper bot “take a seat”, ý là bảo nó ngồi xuống. Bot hiểu theo nghĩa đen và mang một “seat” nào đó vào kho. Khách sẽ tới sau vài phút.",
+      "player_role": "Mày là người tổ chức, cần xác định chính xác món đồ bị bot mang đi để trả phòng về trạng thái bình thường.",
+      "npc_role": "Helper bot cực kỳ literal. Nó nhớ hình dạng và vị trí món đồ nhưng không hiểu thành ngữ.",
+      "motivation": "Nếu không tìm món đồ và trả lại trước khi khách tới, phòng thiếu chỗ ngồi và buổi meetup bắt đầu như một trò hề.",
+      "goal": "Hỏi bot để xác định món đồ nó đã mang vào kho rồi nhập đáp án đúng.",
+      "pass_rule": "Nhập đúng tên món đồ bị mang đi."
+    },
+    "difficulty_group": "fun",
+    "recommended_level": "A1-A2"
   }
 ]

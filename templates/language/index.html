@@ -3,91 +3,401 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f6f0e5">
-  <title data-i18n-title="language.meta.title">Ngoại ngữ nhập vai — Mở Lối</title>
+  <meta name="theme-color" content="#eef3ea">
+  <title>Mở Lối — Học ngoại ngữ</title>
   <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='language/style.css') }}">
 </head>
 <body data-page="language">
 <header class="topbar">
   <div class="topbar-left">
-    <a class="back-platform" href="/home"><span data-i18n="language.back">← Trang chính</span></a>
-    <a class="brand" href="/language"><span><img src="{{ url_for('static', filename='icons/brand-logo.png') }}" alt="" class="brand-logo-small"></span><div><strong>Mở Lối</strong><small data-i18n="language.brand.subtitle">Ngoại ngữ nhập vai</small></div></a>
+    <a class="back-platform" href="/home">← Trang chính</a>
+    <a class="brand" href="/language">
+      <img src="{{ url_for('static', filename='icons/brand-logo.png') }}" alt="" class="brand-logo-small">
+      <div><strong>Mở Lối</strong><small>Hệ thống học ngoại ngữ</small></div>
+    </a>
   </div>
-  <div class="topbar-actions"><label class="lang-global"><span data-i18n="common.language">Ngôn ngữ</span><select class="global-language-select"><option value="vi">Tiếng Việt</option><option value="en">English</option><option value="zh">繁體中文</option></select></label>
+  <div class="topbar-actions">
     <span class="user-name">{{ display_name }}</span>
     <b id="quotaBadge">Đang tải lượt…</b>
     <b id="modeBadge">{{ 'TRỰC TUYẾN' if ai_configured else 'DEMO DỰ PHÒNG' }}</b>
-    <button id="howBtn" type="button">Cách chơi</button>
+    <button id="profileBtn" type="button">Nhân vật</button>
+    <button id="howBtn" type="button">Cách học</button>
   </div>
 </header>
 
 <main>
-  <section id="landing" class="landing">
-    <div class="hero-copy">
-      <small>VISUAL ROLE-PLAY LANGUAGE GAME</small>
-      <h1>Đừng chỉ học thuộc.<br><mark>Vào vai rồi phản xạ.</mark></h1>
-      <p>Chọn tình huống, tự trả lời bằng ngoại ngữ và hoàn thành nhiệm vụ trước khi câu chuyện biến thành meme.</p>
-      <div class="setup">
-        <label><span data-i18n="language.label.language">Ngôn ngữ</span><select id="languageSelect"><option value="all">Tất cả</option><option value="en">English</option><option value="zh">繁體中文</option></select></label>
-        <label><span data-i18n="language.label.level">Trình độ</span><select id="levelSelect"><option>A1-A2</option><option>B1-B2</option><option>C1-C2</option></select></label>
-        <label><span data-i18n="language.label.humor">Độ tấu hài</span><select id="humorSelect"><option value="chaotic-meme">Meme hỗn loạn</option><option value="deadpan">Tỉnh bơ vô tri</option><option value="dramatic">Drama quá mức</option><option value="gentle">Tếu nhưng hiền</option></select></label>
+  <section id="landing" class="landing learning-home v13-home">
+    <section class="roadmap-hero">
+      <div class="roadmap-profile">
+        <div id="avatarMini" class="avatar-mini actor-shell" data-gender="female" data-skin="light" data-hair-style="short" data-hair-color="black" data-outfit="casual" data-face="smile">
+          <div class="actor-mini-head"></div><div class="actor-mini-hair"></div><div class="actor-mini-body"></div>
+        </div>
+        <div><small>NHÂN VẬT</small><h1 id="playerName">Chưa tạo</h1><p><span id="playerRoleBadge">Chưa chọn cuộc sống</span> · <b id="learnerCefr">A1-A2</b></p></div>
       </div>
-    </div>
-    <div class="hero-card">
-      <img src="{{ url_for('static', filename='language/images/hero.svg') }}" alt="Minh hoạ game">
-      <div><small>NPC</small><strong>“Do you want coffee… or are you proposing to the menu?”</strong></div>
-    </div>
+      <div class="current-route-card">
+        <div class="current-route-copy"><small>LỘ TRÌNH HIỆN TẠI</small><h2 id="currentTrackTitle">Chọn mục tiêu học trước</h2><p id="currentTrackOutcome">Mày sẽ có một roadmap rõ ràng, từng unit và checkpoint để mở stage tiếp theo.</p></div>
+        <div class="route-target"><small>MỤC TIÊU</small><b id="currentTrackTarget">—</b><span id="currentStageLabel">Chưa bắt đầu</span></div>
+        <button id="changeTrackBtn" type="button">Đổi mục tiêu</button>
+      </div>
+      <div class="learner-scoreboard">
+        <article><small>LEVEL</small><b id="playerLevel">Lv.1</b></article>
+        <article><small>XP</small><b id="playerXp">0</b></article>
+        <article><small>STREAK</small><b id="playerStreak">0 ngày</b></article>
+      </div>
+      <div class="hero-progress"><i id="xpBar"></i></div>
+    </section>
 
-    <div class="section-head"><div><small>CHỌN VŨ TRỤ GẶP NẠN</small><h2>Cảnh nhập vai</h2></div><p>Mỗi cảnh có nhiệm vụ, nhân vật và mức độ mất kiểm soát riêng.</p></div>
-    <div id="sceneGrid" class="scene-grid">
-      {% for scene in scenes %}
-      <article class="scene-card" data-language="{{ scene.language }}">
-        <div class="scene-image"><img src="{{ url_for('static', filename='language/images/' + scene.image) }}" alt="{{ scene.title }}"><span>{{ 'ENGLISH' if scene.language == 'en' else '繁體中文' }}</span><em>{{ scene.difficulty }}</em></div>
-        <div class="scene-body"><b class="icon">{{ scene.icon }}</b><h3>{{ scene.title }}</h3><p>{{ scene.subtitle }}</p><div class="mission"><small>NHIỆM VỤ</small>{{ scene.mission }}</div><button class="playBtn" type="button" data-scene="{{ scene.id }}">Nhập vai ngay →</button></div>
-      </article>
-      {% endfor %}
-    </div>
+    <section class="roadmap-controls">
+      <div><small>NGÔN NGỮ</small><b>English</b></div>
+      <div><small>HỌC MỖI NGÀY</small><b id="dailyMinutesText">20 phút/ngày</b></div>
+      <div><small>STAGE HIỆN TẠI</small><b id="currentStageControl">—</b></div>
+      <button id="goalQuickBtn" type="button">Xem mục tiêu & roadmap</button>
+      <div class="compat-controls" aria-hidden="true">
+        <select id="languageSelect"><option value="en">English</option><option value="zh">繁體中文</option></select>
+        <select id="levelSelect"><option>A1-A2</option><option>B1-B2</option><option>C1-C2</option></select>
+        <select id="humorSelect"><option value="chaotic-meme">Meme hỗn loạn</option><option value="deadpan">Tỉnh bơ</option><option value="dramatic">Drama</option><option value="gentle">Tếu nhưng hiền</option></select>
+        <span id="learningGoalText">Toàn diện</span>
+      </div>
+    </section>
 
-    <section class="recent-section">
-      <div class="section-head recent-head"><div><small>LỊCH SỬ CỦA TÀI KHOẢN</small><h2>Phiên gần đây</h2></div><p>Điểm và tiến độ đã được lưu vào tài khoản, không mất khi server khởi động lại.</p></div>
-      <div id="recentSessions" class="recent-grid"><div class="empty-recent">Chưa có phiên nào. Chọn một cảnh phía trên để bắt đầu.</div></div>
+    <nav class="learning-tabs roadmap-tabs" aria-label="Hệ thống học ngoại ngữ">
+      <button class="learning-tab active" data-learning-tab="roadmap" type="button">Lộ trình</button>
+      <button class="learning-tab" data-learning-tab="foryou" type="button">Khám phá</button>
+      <button class="learning-tab" data-learning-tab="train" type="button">Luyện kỹ năng</button>
+      <button class="learning-tab" data-learning-tab="stories" type="button">Trò chơi</button>
+      <button class="learning-tab" data-learning-tab="progress" type="button">Tiến độ</button>
+    </nav>
+
+    <section id="roadmapPanel" class="learning-panel active roadmap-panel">
+      <header class="roadmap-panel-head">
+        <div><small>GOAL → STAGE → UNIT → CHECKPOINT</small><h2 id="roadmapTrackTitle">Chọn một mục tiêu để bắt đầu</h2><p id="roadmapTrackDescription">Mỗi stage chỉ mở sau khi mày hoàn thành stage trước và vượt checkpoint.</p></div>
+        <div class="roadmap-overall"><small>TIẾN ĐỘ HOẠT ĐỘNG</small><b id="roadmapProgressText">0%</b><div class="roadmap-progress-track"><i id="roadmapProgressBar"></i></div></div>
+      </header>
+      <div id="roadmapStages" class="roadmap-stages"><div class="empty-recent">Đang tải roadmap…</div></div>
+    </section>
+
+    <section id="forYouPanel" class="learning-panel foryou-panel">
+      <div class="foryou-head">
+        <div><small>KHÁM PHÁ</small><h2>Content thú vị ngoài roadmap</h2><p>Xem/nghe tình huống, nhặt từ/cụm nếu thực sự có cái mày chưa biết. Biết hết thì cứ bỏ qua, không bị ép chọn.</p></div>
+        <div class="foryou-mini-stats">
+          <article><small>ĐÃ NHẶT</small><b id="vocabDiscovered">0</b></article>
+          <article><small>ACTIVE</small><b id="vocabActive">0</b></article>
+          <article><small>MASTERED</small><b id="vocabMastered">0</b></article>
+          <article class="hidden-stat"><small>EXPOSURE</small><b id="vocabEncounters">0</b></article>
+        </div>
+      </div>
+      <div id="experienceFeed" class="experience-feed"><div class="empty-recent">Đang tạo feed phù hợp với mày…</div></div>
+    </section>
+
+    <section id="storiesPanel" class="learning-panel">
+      <div class="learning-section-title"><div><small>TRÒ CHƠI & MÔ PHỎNG</small><h2>Game là một bước trong lộ trình, không phải toàn bộ khóa học</h2></div><p>Chơi tự do ở đây hoặc mở game trực tiếp từ một unit để cover đúng thứ vừa học.</p></div>
+      <div class="story-strip">
+        <article><small>SERIES</small><b>Life</b><span>Sống một ngày bằng ngoại ngữ</span></article>
+        <article><small>COMING NEXT</small><b>Roommates</b><span>Drama đời thường A1–A2</span></article>
+        <article><small>COMING NEXT</small><b>First Job</b><span>Đi làm, đồng nghiệp, khách hàng</span></article>
+      </div>
+      <div class="game-filter-row">
+        <button class="game-filter active" data-game-filter="all" type="button">Tất cả</button>
+        <button class="game-filter" data-game-filter="everyday" type="button">Đời sống</button>
+        <button class="game-filter" data-game-filter="fun" type="button">Vui & lạ</button>
+        <button class="game-filter" data-game-filter="hardcore" type="button">Hardcore</button>
+      </div>
+      <div id="gamesGrid" class="games-grid"></div>
+    </section>
+
+    <section id="trainPanel" class="learning-panel">
+      <div class="learning-section-title"><div><small>TRAIN</small><h2>Khi mày muốn luyện nghiêm túc hơn</h2></div><p>4 kỹ năng là mode riêng. Từ vựng không học khô: nó đi vào WordDex sau khi mày nhặt từ trải nghiệm.</p></div>
+      <h3 class="train-section-label">4 kỹ năng</h3>
+      <div class="module-grid skills-grid v13-skill-grid">
+        <button class="module-card listening" data-module="listening" type="button"><span>NGHE</span><h3>Listening</h3><p>Hội thoại, voice note, announcement và tình huống thật.</p><b>Luyện nghe →</b></button>
+        <button class="module-card speaking" data-module="speaking" type="button"><span>NÓI</span><h3>Speaking</h3><p>Phản xạ 30–60 giây, roleplay và dùng từ đã nhặt.</p><b>Luyện nói →</b></button>
+        <button class="module-card reading" data-module="reading" type="button"><span>ĐỌC</span><h3>Reading</h3><p>Chat, caption, biển báo, email và story ngắn.</p><b>Luyện đọc →</b></button>
+        <button class="module-card writing" data-module="writing" type="button"><span>VIẾT</span><h3>Writing</h3><p>Reply, nhắn tin, caption, email và tình huống đời thật.</p><b>Luyện viết →</b></button>
+      </div>
+      <h3 class="train-section-label">Language tools</h3>
+      <div class="module-grid v13-tools-grid">
+        <button id="wordDexBtn" class="module-card worddex" type="button"><span>TỪ ĐÃ NHẶT</span><h3>WordDex</h3><p>Xem từ mày đã tự chọn từ video/chat/game, số lần gặp và mastery.</p><b>Mở WordDex →</b></button>
+        <button class="module-card phrases" data-module="phrases" type="button"><span>CỤM</span><h3>Câu giao tiếp</h3><p>Học nguyên cụm khi cần nói nhanh ngoài đời.</p><b>Luyện cụm →</b></button>
+        <button class="module-card grammar" data-module="grammar" type="button"><span>CẤU TRÚC</span><h3>Grammar in context</h3><p>Sửa câu trong tình huống thay vì học định nghĩa trước.</p><b>Luyện grammar →</b></button>
+        <button class="module-card pronunciation" data-module="pronunciation" type="button"><span>ÂM</span><h3>Phát âm</h3><p>Nghe mẫu, nói lại, minimal pair và nhịp câu.</p><b>Luyện âm →</b></button>
+      </div>
+      <div class="review-hero compact-review"><div><small>REVIEW</small><h3>Ôn lại thứ đã chạm</h3><p>Ưu tiên thứ mastery thấp và nội dung đến hạn.</p></div><button id="startReviewBtn" type="button">Ôn ngay</button></div>
+      <div id="reviewModules" class="review-modules"></div>
+    </section>
+
+    <section id="progressPanel" class="learning-panel">
+      <div class="progress-overview">
+        <article><small>CONTENT ĐÃ CHẠM</small><b id="learningCoverage">0%</b><span id="learningSeenTotal">0 mục</span></article>
+        <article><small>MASTERED</small><b id="learningMasteredTotal">0</b><span>lesson items</span></article>
+        <article><small>HẠNG TUẦN</small><b id="myRank">—</b><span id="rankWeek">Tuần hiện tại</span></article>
+      </div>
+      <div class="progress-grid">
+        <section class="progress-card worddex-card"><div class="card-head"><small>WORDDEX</small><h3>Từ mày tự nhặt từ trải nghiệm</h3></div><div id="vocabList" class="vocab-list"><div class="empty-recent">Chưa có từ nào. Vào For You và chọn từ mày chưa biết.</div></div></section>
+        <section class="progress-card"><div class="card-head"><small>4 SKILLS + TRAIN</small><h3>Kỹ năng học tập</h3></div><div id="learningModuleProgress" class="module-progress-list"></div></section>
+        <section class="progress-card"><div class="card-head"><small>COMMUNICATION</small><h3>Kỹ năng giao tiếp từ game</h3></div><div id="skillList" class="skill-list"><div class="empty-recent">Chưa đủ dữ liệu.</div></div></section>
+        <section class="progress-card"><div class="card-head"><small>WEEKLY LEAGUE</small><h3>Bảng xếp hạng</h3></div><div id="leaderboard" class="leaderboard"><div class="empty-recent">Chưa có dữ liệu.</div></div></section>
+      </div>
     </section>
   </section>
 
   <section id="game" class="game hidden">
-    <div class="toolbar"><button id="backBtn" type="button">← Chọn cảnh khác</button><div class="stats"><div><small>ĐIỂM</small><b id="scoreText">50</b></div><div><small>TIẾN ĐỘ</small><div class="bar"><i id="progressBar"></i></div></div></div></div>
-    <div class="game-layout">
-      <aside class="panel mission-panel">
-        <small>NHIỆM VỤ HIỆN TẠI</small><h2 id="missionTitle"></h2><p id="missionText"></p>
-        <div class="role"><small>VAI CỦA MÀY</small><b id="playerRole"></b></div>
-        <small>PHAO CỨU SINH</small><div id="vocabChips" class="chips"></div>
-        <button id="hintBtn" class="pink" type="button">Tung phao gợi ý</button><p class="micro">Không trừ lượt. Lòng tự trọng thì có thể.</p>
-        <div id="completionBox" class="completion hidden"><strong>Hoàn thành cảnh</strong><p>Điểm và tiến độ đã được lưu.</p><button id="newSceneBtn" type="button">Chọn cảnh mới</button></div>
-      </aside>
-      <section id="stage" class="stage">
-        <img id="sceneBackground" class="bg" src="" alt=""><div class="shade"></div><div id="effectLayer"></div>
-        <img id="characterImage" class="character" src="" alt="Nhân vật">
-        <div class="dialogue"><div id="narratorBox" class="narrator hidden"></div><div class="speaker"><b id="speakerName"></b><span id="moodLabel">ĐANG ĐỢI MÀY NÓI</span></div><div id="dialogueText"></div></div>
+    <div class="game-toolbar">
+      <button id="backBtn" type="button">← Rời tình huống</button>
+      <div class="game-kind"><small id="gameKind">GAME</small><b id="gameLocation">—</b></div>
+      <div class="stats">
+        <div><small>TỔNG</small><b id="scoreText">50</b></div>
+        <div><small>TIẾN ĐỘ</small><div class="bar"><i id="progressBar"></i></div></div>
+        <div><small>GIAO TIẾP</small><b id="communicationText">—</b></div>
+      </div>
+    </div>
+
+    <div class="roleplay-layout">
+      <section id="stage" class="stage" data-theme="street">
+        <div id="sceneBackground" class="bg-surface"></div>
+        <div class="stage-props">
+          <div class="prop-window"></div>
+          <div class="prop-counter"></div>
+          <div class="prop-board"></div>
+        </div>
+        <div id="effectLayer"></div>
+        <div id="arcadeOverlay" class="arcade-overlay hidden"></div>
+
+        <div id="playerActor" class="actor actor-player" data-gender="female" data-skin="light" data-hair-style="short" data-hair-color="black" data-outfit="casual" data-face="smile" data-pose="chat">
+          <div class="actor-hair"></div>
+          <div class="actor-head"><i class="eye left"></i><i class="eye right"></i><i class="mouth"></i></div>
+          <div class="actor-body"><i class="arm left"></i><i class="arm right"></i></div>
+          <div class="actor-legs"><i class="leg left"></i><i class="leg right"></i></div>
+        </div>
+        <div id="npcActor" class="actor actor-npc" data-gender="female" data-skin="tan" data-hair-style="bob" data-hair-color="brown" data-outfit="office" data-face="calm" data-pose="serve">
+          <div class="actor-hair"></div>
+          <div class="actor-head"><i class="eye left"></i><i class="eye right"></i><i class="mouth"></i></div>
+          <div class="actor-body"><i class="arm left"></i><i class="arm right"></i></div>
+          <div class="actor-legs"><i class="leg left"></i><i class="leg right"></i></div>
+        </div>
+
+        <div class="scene-caption">
+          <small id="sceneTimeLabel">TÌNH HUỐNG</small>
+          <h1 id="missionTitle"></h1>
+          <p id="missionText"></p>
+        </div>
+        <div class="dialogue">
+          <div id="narratorBox" class="narrator hidden"></div>
+          <div class="speaker"><span id="speakerName">NPC</span><i id="moodLabel">SẴN SÀNG</i></div>
+          <div id="dialogueText" class="line">…</div>
+        </div>
       </section>
-      <aside class="panel chat-panel">
-        <div class="chat-head"><div><small>HỘI THOẠI TRỰC TIẾP</small><b id="chatCharacter"></b></div><span id="liveLabel">● SẴN SÀNG</span></div>
+
+      <aside class="conversation-panel">
+        <div class="panel-head">
+          <div><small>HỘI THOẠI TRỰC TIẾP</small><b id="chatCharacter">NPC</b></div>
+          <span id="liveLabel">SẴN SÀNG</span>
+        </div>
         <div id="chatLog" class="chat-log"></div>
-        <div id="feedbackBox" class="feedback hidden"><small>GỠ RỐI SAU CÁNH GÀ</small><p id="feedbackText"></p><button id="useSuggestionBtn" type="button"></button></div>
-        <form id="replyForm"><textarea id="replyInput" maxlength="500" placeholder="Nhập câu trả lời trong vai của mày…"></textarea><div><span id="charCount">0/500</span><button id="sendBtn" type="submit">Nói câu này</button></div></form>
+
+        <section id="feedbackBox" class="feedback hidden">
+          <small>CÁCH TỰ NHIÊN HƠN</small>
+          <button id="useSuggestionBtn" type="button">Dùng câu gợi ý</button>
+        </section>
+
+        <section id="hintBox" class="hint hidden">
+          <small>GỢI Ý CẤP <span id="hintLevel">1</span></small>
+          <p id="hintText"></p>
+        </section>
+
+        <section id="turnScores" class="turn-scores hidden">
+          <article><small>TASK</small><b id="taskScore">—</b></article>
+          <article><small>COMM</small><b id="commScore">—</b></article>
+          <article><small>LANG</small><b id="langScore">—</b></article>
+          <article><small>SOLO</small><b id="indScore">—</b></article>
+        </section>
+
+        <div class="objective-top">
+          <small>MỤC TIÊU GIAO TIẾP</small>
+          <button id="toggleObjectivesBtn" type="button">Xem mục tiêu ẩn</button>
+        </div>
+        <div id="objectiveWrap" class="objective-wrap hidden">
+          <div id="objectiveList" class="objective-list"></div>
+        </div>
+
+        <section id="finalAnswerBox" class="final-answer-box hidden">
+          <div class="final-answer-head">
+            <div><small>ĐÁP ÁN CUỐI</small><strong id="finalAnswerLabel">Nhập đáp án khi mày đã đủ dữ kiện</strong></div>
+            <span id="clueCount">0/0 manh mối</span>
+          </div>
+          <div id="revealedClues" class="revealed-clues"></div>
+          <form id="finalAnswerForm" class="final-answer-form">
+            <input id="finalAnswerInput" maxlength="80" autocomplete="off" placeholder="Nhập đáp án">
+            <button id="finalAnswerSubmit" type="submit">Chốt đáp án</button>
+          </form>
+          <p id="finalAnswerMessage" class="final-answer-message">Chat phía trên để hỏi và lấy manh mối. Đáp án chỉ nhập ở đây.</p>
+        </section>
+
+        <form id="replyForm" class="reply-form">
+          <textarea id="replyInput" rows="4" maxlength="500" placeholder="Nói theo cách của mày. Không cần săn keyword."></textarea>
+          <div class="reply-actions">
+            <span id="charCount">0/500</span>
+            <div class="reply-buttons">
+              <button id="hintBtn" type="button">Gợi ý</button>
+              <button id="sendBtn" type="submit">Gửi</button>
+            </div>
+          </div>
+        </form>
+
+        <section id="completionBox" class="completion hidden">
+          <strong id="completeTitle">Đã hoàn thành</strong>
+          <b id="starResult">★★☆</b>
+          <button id="newSceneBtn" type="button">Tổng kết lượt này</button>
+        </section>
       </aside>
     </div>
+
   </section>
+    <button id="dictionaryFab" class="dictionary-fab" type="button" aria-label="Mở từ điển" title="Từ điển">
+      <span class="dictionary-book-icon" aria-hidden="true"></span>
+    </button>
+
+    <aside id="dictionaryPopup" class="dictionary-popup hidden" aria-label="Từ điển trong game">
+      <header class="dictionary-popup-head">
+        <div>
+          <small>TỪ ĐIỂN</small>
+          <strong>Tra ngay trong game</strong>
+        </div>
+        <button id="dictionaryPopupClose" type="button" aria-label="Đóng từ điển">×</button>
+      </header>
+      <div id="dictionaryChatLog" class="dictionary-chat-log">
+        <div class="dict-message bot">Gõ một từ hoặc cụm từ. Tao sẽ trả nghĩa, cách dùng và ví dụ ngay ở đây.</div>
+      </div>
+      <div id="dictionaryTyping" class="dictionary-typing hidden">Đang tra…</div>
+      <form id="dictionaryChatForm" class="dictionary-chat-form">
+        <input id="dictionaryChatInput" maxlength="80" autocomplete="off" placeholder="Ví dụ: stand, take off, 站…">
+        <button id="dictionaryChatSend" type="submit">Gửi</button>
+      </form>
+    </aside>
+
 </main>
 
-<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-<dialog id="howDialog"><button id="closeHowBtn" class="close" type="button">×</button><small>CÁCH CHƠI</small><h2>Không có đáp án ABCD.</h2><p>Mày tự nhập câu trả lời. Nhân vật giữ vai, phản ứng trước rồi mới góp ý ngắn bằng tiếng Việt.</p><ol><li>Chọn cảnh.</li><li>Trả lời bằng ngôn ngữ đang học.</li><li>Mỗi phản hồi dùng một lượt chung của tài khoản.</li><li>Hoàn thành thanh nhiệm vụ.</li></ol></dialog>
+<dialog id="goalDialog" class="goal-dialog">
+  <button class="close" data-close="goalDialog" type="button">×</button>
+  <header><small>BƯỚC 1 · XÁC ĐỊNH ĐÍCH</small><h2>Mày học English để đạt cái gì?</h2><p>Chọn một lộ trình chính. Có thể đổi sau, tiến độ cũ vẫn được giữ.</p></header>
+  <div id="goalTrackGrid" class="goal-track-grid"></div>
+  <section id="goalTargetSection" class="goal-target-section hidden">
+    <div><small>MỤC TIÊU CUỐI</small><h3 id="goalSelectedTitle">—</h3><p id="goalSelectedDescription"></p></div>
+    <label>Đích muốn đạt<select id="goalTargetSelect"></select></label>
+    <button id="confirmTrackBtn" type="button">Tạo roadmap</button>
+  </section>
+</dialog>
 
-<script>
-  window.LANGUAGE_SCENES = {{ scenes|tojson }};
-  window.LANGUAGE_IMAGE_BASE = {{ url_for('static', filename='language/images/')|tojson }};
-</script>
-<script src="{{ url_for('static', filename='global_i18n.js') }}" defer></script>
-<script src="{{ url_for('static', filename='language/app.js') }}" defer></script>
+<dialog id="unitDialog" class="unit-dialog">
+  <button class="close" data-close="unitDialog" type="button">×</button>
+  <header class="unit-dialog-head"><small id="unitStageLabel">STAGE</small><h2 id="unitDialogTitle">Unit</h2><p id="unitDialogOutcome"></p></header>
+  <div class="unit-progress-line"><span id="unitProgressText">0/0 bắt buộc</span><i id="unitProgressBar"></i></div>
+  <div id="unitActivities" class="unit-activities"></div>
+  <p class="unit-rule">Hoàn thành tất cả hoạt động bắt buộc để mở unit tiếp theo. Bài checkpoint cuối stage mới quyết định mày có được lên stage hay không.</p>
+</dialog>
+
+<dialog id="checkpointDialog" class="checkpoint-dialog">
+  <button class="close" data-close="checkpointDialog" type="button">×</button>
+  <header><small>LEVEL GATE</small><h2 id="checkpointTitle">Checkpoint</h2><p id="checkpointDescription"></p></header>
+  <div class="checkpoint-rule"><b id="checkpointPassRule">Cần 70 điểm</b><span id="checkpointSkillRule">Nghe + Đọc + Language use + Speaking + Writing</span></div>
+  <form id="checkpointForm" class="checkpoint-form"></form>
+  <footer class="checkpoint-actions"><button id="submitCheckpointBtn" type="button">Nộp bài & chấm level</button></footer>
+</dialog>
+
+<dialog id="lessonDialog" class="lesson-dialog">
+  <button class="close" data-close="lessonDialog" type="button">×</button>
+  <header class="lesson-head">
+    <div><small id="lessonModuleLabel">MODULE</small><h2 id="lessonTitle">Bài học</h2><p id="lessonSubline">0 / 0</p></div>
+    <div class="lesson-progress"><i id="lessonProgressBar"></i></div>
+  </header>
+  <div id="lessonBody" class="lesson-body"></div>
+  <section id="lessonFeedback" class="lesson-feedback hidden"></section>
+  <footer class="lesson-actions">
+    <button id="lessonAudioBtn" class="secondary hidden" type="button">Nghe</button>
+    <button id="lessonVoiceBtn" class="secondary hidden" type="button">Nói thử</button>
+    <button id="lessonSubmitBtn" type="button">Kiểm tra</button>
+    <button id="lessonNextBtn" class="hidden" type="button">Tiếp theo</button>
+  </footer>
+</dialog>
+
+<dialog id="profileDialog" class="profile-dialog">
+  <button class="close" data-close="profileDialog" type="button">×</button>
+  <h2>Tạo nhân vật của mày</h2>
+  <p>Chọn giới tính, cuộc sống và ngoại hình. Nhân vật này sẽ xuất hiện trực tiếp trong các tình huống thay vì chỉ là một ảnh tĩnh.</p>
+
+  <div class="creator-preview-wrap">
+    <div id="profilePreview" class="actor actor-preview" data-gender="female" data-skin="light" data-hair-style="short" data-hair-color="black" data-outfit="casual" data-face="smile" data-pose="chat">
+      <div class="actor-hair"></div>
+      <div class="actor-head"><i class="eye left"></i><i class="eye right"></i><i class="mouth"></i></div>
+      <div class="actor-body"><i class="arm left"></i><i class="arm right"></i></div>
+      <div class="actor-legs"><i class="leg left"></i><i class="leg right"></i></div>
+    </div>
+    <div><small>PREVIEW</small><b>Nhân vật của mày</b><span>Đổi tóc, da, trang phục và biểu cảm để xem ngay.</span></div>
+  </div>
+
+  <div class="gender-grid">
+    <button class="gender-choice" data-gender="male" type="button"><span class="portrait male"></span><div><b>Nam</b><small>Dáng gọn, phong cách linh hoạt</small></div></button>
+    <button class="gender-choice" data-gender="female" type="button"><span class="portrait female"></span><div><b>Nữ</b><small>Dáng gọn, phong cách linh hoạt</small></div></button>
+  </div>
+
+  <div class="profile-grid-two">
+    <label>Tên nhân vật<input id="characterNameInput" maxlength="40" placeholder="Ví dụ: Linh, Khoa, May..."></label>
+    <label>Ngôn ngữ mục tiêu<select id="profileLanguage"><option value="en">English</option><option value="zh">繁體中文</option></select></label>
+  </div>
+
+  <div class="profile-grid-two learning-settings-grid">
+    <label>Mỗi ngày muốn dành bao lâu?<select id="dailyMinutesSelect"><option value="5">5 phút</option><option value="10">10 phút</option><option value="15">15 phút</option><option value="20">20 phút</option><option value="30">30 phút</option><option value="45">45 phút</option></select></label>
+    <div class="profile-roadmap-note"><small>LỘ TRÌNH HỌC</small><b>Mục tiêu và level được quản lý ở tab Lộ trình.</b><span>Qua checkpoint mới mở stage tiếp theo; không tự nhảy level trong phần Nhân vật.</span></div>
+  </div>
+
+  <div class="life-role-grid">
+    <button class="life-role-choice" data-role="student" type="button"><small>LIFE PATH</small><b>Sinh viên</b><span>Đi học, căng tin, café, thư viện, bạn bè, ký túc xá…</span></button>
+    <button class="life-role-choice" data-role="worker" type="button"><small>LIFE PATH</small><b>Người đi làm</b><span>Đi làm, họp, tan ca, gym, gặp bạn, siêu thị…</span></button>
+  </div>
+
+  <div class="profile-grid-three">
+    <label>Màu da<select id="skinToneSelect"><option value="light">Sáng</option><option value="tan">Tự nhiên</option><option value="brown">Nâu</option><option value="deep">Đậm</option></select></label>
+    <label>Kiểu tóc<select id="hairStyleSelect"><option value="short">Ngắn</option><option value="bob">Bob</option><option value="long">Dài</option><option value="bun">Búi</option></select></label>
+    <label>Màu tóc<select id="hairColorSelect"><option value="black">Đen</option><option value="brown">Nâu</option><option value="blonde">Vàng</option><option value="pink">Hồng</option></select></label>
+    <label>Trang phục<select id="outfitStyleSelect"><option value="casual">Casual</option><option value="student">Sinh viên</option><option value="office">Công sở</option><option value="sport">Thể thao</option></select></label>
+    <label>Biểu cảm<select id="faceStyleSelect"><option value="smile">Tươi</option><option value="calm">Điềm tĩnh</option><option value="cool">Lạnh</option><option value="cute">Cute</option></select></label>
+  </div>
+
+  <button id="saveProfileBtn" class="primary-save" type="button">Lưu nhân vật</button>
+</dialog>
+
+<dialog id="howDialog" class="how-dialog">
+  <button class="close" data-close="howDialog" type="button">×</button>
+  <h2>Cách học</h2>
+  <p>V14 bắt đầu bằng mục tiêu rõ ràng. Chọn Giao tiếp & Đời sống, Work English, IELTS hoặc TOEIC; hệ thống dựng roadmap theo stage. Mỗi unit gồm trải nghiệm, ngôn ngữ cần dùng, 4 kỹ năng và game/mô phỏng. Hoàn thành unit chưa đủ để lên level: cuối mỗi stage phải vượt checkpoint. Khám phá, WordDex và game tự do vẫn tồn tại nhưng không thay thế roadmap.</p>
+</dialog>
+
+<dialog id="tutorialDialog" class="how-dialog tutorial-dialog">
+  <button class="close" data-close="tutorialDialog" type="button">×</button>
+  <div class="tutorial-step"><small id="tutorialStepIndex">BƯỚC 1 / 4</small><h2 id="tutorialStepTitle">Vào game kiểu gì?</h2><p id="tutorialStepBody">Mỗi game là một tình huống. Mày chỉ cần nói sao cho đối phương hiểu ý, không cần săn keyword.</p></div>
+  <div class="tutorial-actions">
+    <button id="tutorialPrevBtn" type="button">Lùi</button>
+    <button id="tutorialSkipBtn" type="button">Bỏ qua</button>
+    <button id="tutorialNextBtn" type="button">Next</button>
+    <button id="tutorialStartBtn" type="button" class="hidden">Bắt đầu</button>
+  </div>
+</dialog>
+
+<dialog id="summaryDialog" class="summary-dialog">
+  <button class="close" data-close="summaryDialog" type="button">×</button>
+  <h2>Tổng kết lượt vừa rồi</h2>
+  <div id="summaryStats" class="summary-stats"></div>
+  <div class="summary-card">
+    <small>TỪ / CỤM ĐƯỢC GHI NHẬN</small>
+    <div id="summaryTerms" class="summary-terms"></div>
+  </div>
+  <div class="summary-actions">
+    <button id="stayBtn" type="button">Ở lại xem tiếp</button>
+    <button id="confirmLeaveBtn" type="button">Về kệ game</button>
+  </div>
+</dialog>
+
+<div id="toast" class="toast hidden"></div>
+<script src="{{ url_for('static', filename='language/app.js') }}"></script>
 </body>
 </html>

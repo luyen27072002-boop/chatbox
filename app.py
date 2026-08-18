@@ -5,12 +5,14 @@ import os
 import re
 import unicodedata
 import uuid
+from io import BytesIO
 from datetime import timedelta
 from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
-from flask import Flask, g, jsonify, redirect, render_template, request, session
+from flask import Flask, g, jsonify, redirect, render_template, request, session, send_file
+from werkzeug.exceptions import RequestEntityTooLarge
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from ai_service import AIService, AIServiceError
@@ -48,6 +50,13 @@ from db import (
     update_conversation_summary,
     update_user_profile,
     update_user_settings,
+    record_consents,
+    get_attachment,
+    delete_pending_attachment,
+    list_attachments_by_ids,
+    bind_attachments_to_message,
+    get_message,
+    get_last_message,
 )
 from profile_engine import profile_schema
 from prompting import (
@@ -61,6 +70,15 @@ from prompting import (
 from safety import urgent_fallback_detected, urgent_support_message
 from life_features import register_life_features
 from language_game import register_language_game
+from astrology import register_astrology
+from finance import register_finance
+from self_discovery import register_self_discovery
+from career import register_career
+from legal import register_legal
+from security_baseline import log_security_event, register_security_baseline
+from attachment_service import AttachmentError, AttachmentService, public_attachment, is_image_attachment
+from artifact_service import ArtifactError, ArtifactService
+from action_router import infer_action, resolve_action, build_artifact_instruction, is_background_status_question
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
@@ -81,6 +99,11 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         FREE_WELCOME_LIMIT=int(os.getenv("FREE_WELCOME_LIMIT", os.getenv("FREE_MESSAGE_LIMIT", "10"))),
         FREE_DAILY_LIMIT=int(os.getenv("FREE_DAILY_LIMIT", "3")),
         MAX_MESSAGE_CHARS=int(os.getenv("MAX_MESSAGE_CHARS", "4000")),
+        CHAT_STORAGE_DIR=os.getenv("CHAT_STORAGE_DIR", str(BASE_DIR / "storage")),
+        CHAT_IMAGE_MAX_BYTES=int(os.getenv("CHAT_IMAGE_MAX_BYTES", str(25 * 1024 * 1024))),
+        CHAT_ATTACHMENT_MAX_BYTES=int(os.getenv("CHAT_ATTACHMENT_MAX_BYTES", str(50 * 1024 * 1024))),
+        CHAT_ATTACHMENT_TOTAL_MAX_BYTES=int(os.getenv("CHAT_ATTACHMENT_TOTAL_MAX_BYTES", str(50 * 1024 * 1024))),
+        CHAT_ATTACHMENT_MAX_FILES=int(os.getenv("CHAT_ATTACHMENT_MAX_FILES", "10")),
         MEMORY_REFRESH_EVERY=int(os.getenv("MEMORY_REFRESH_EVERY", "6")),
         STORE_CHAT_HISTORY=os.getenv("STORE_CHAT_HISTORY", "true").lower()
         in {"1", "true", "yes"},
@@ -96,16 +119,37 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         PAYOS_CHECKSUM_KEY=os.getenv("PAYOS_CHECKSUM_KEY", ""),
         PAYMENT_ALLOW_LOCALHOST=os.getenv("PAYMENT_ALLOW_LOCALHOST", "false").lower() in {"1", "true", "yes"},
         LANGUAGE_MAX_MESSAGE_CHARS=int(os.getenv("LANGUAGE_MAX_MESSAGE_CHARS", "500")),
+        ASTROLOGY_MAX_QUESTION_CHARS=int(os.getenv("ASTROLOGY_MAX_QUESTION_CHARS", "1200")),
+        MAX_CONTENT_LENGTH=int(os.getenv("MAX_REQUEST_BYTES", str(60 * 1024 * 1024))),
+        LEGAL_POLICY_VERSION=os.getenv("LEGAL_POLICY_VERSION", "2026-08-08-v1"),
+        REQUIRE_LEGAL_CONSENT=os.getenv("REQUIRE_LEGAL_CONSENT", "true").lower() in {"1", "true", "yes"},
     )
     if test_config:
         app.config.update(test_config)
+    if app.config.get("TESTING") and (not test_config or "CHAT_STORAGE_DIR" not in test_config):
+        app.config["CHAT_STORAGE_DIR"] = str(Path(app.config["DATABASE"]).resolve().parent / "storage")
+    if app.config.get("TESTING") and (not test_config or "REQUIRE_LEGAL_CONSENT" not in test_config):
+        app.config["REQUIRE_LEGAL_CONSENT"] = False
 
+    # Nếu .env cũ còn MAX_REQUEST_BYTES quá thấp (ví dụ 1 MB), tự nâng để khớp giới hạn upload mới.
+    min_request_bytes = max(
+        int(app.config["CHAT_ATTACHMENT_TOTAL_MAX_BYTES"]) + (5 * 1024 * 1024),
+        int(app.config["CHAT_ATTACHMENT_MAX_BYTES"]) + (5 * 1024 * 1024),
+        int(app.config["CHAT_IMAGE_MAX_BYTES"]) + (5 * 1024 * 1024),
+    )
+    app.config["MAX_CONTENT_LENGTH"] = max(
+        int(app.config.get("MAX_CONTENT_LENGTH") or 0),
+        min_request_bytes,
+    )
+
+    register_security_baseline(app)
     init_db_app(app)
     ai = app.config.get("AI_SERVICE") or AIService(
         api_key=app.config["OPENAI_API_KEY"],
         model=app.config["OPENAI_MODEL"],
         base_dir=BASE_DIR,
     )
+    app.extensions["ai_service"] = ai
     pricing = app.config.get("PRICING_CATALOG") or PricingCatalog(
         BASE_DIR / "data" / "pricing_plans.json"
     )
@@ -117,6 +161,11 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
 
     register_life_features(app)
     register_language_game(app)
+    register_astrology(app)
+    register_finance(app)
+    register_self_discovery(app)
+    register_career(app)
+    register_legal(app)
 
     @app.teardown_request
     def _refund_unfinished_quota(_exc):
@@ -173,30 +222,6 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
             display_name=account.get("display_name", "Bạn"),
         )
 
-    @app.get("/career/cv")
-    def career_cv():
-        user_id = _require_user_id()
-        if not user_id:
-            return redirect("/")
-        account = get_account(user_id) or {}
-        return render_template(
-            "career_coming_soon.html",
-            display_name=account.get("display_name", "Bạn"),
-            career_mode="cv",
-        )
-
-    @app.get("/career/jobs")
-    def career_jobs():
-        user_id = _require_user_id()
-        if not user_id:
-            return redirect("/")
-        account = get_account(user_id) or {}
-        return render_template(
-            "career_coming_soon.html",
-            display_name=account.get("display_name", "Bạn"),
-            career_mode="jobs",
-        )
-
     @app.get("/chat")
     def chat_page():
         user_id = _require_user_id()
@@ -216,7 +241,7 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 "conversation_engine": "v5-billing-payos",
                 "payment_configured": bool(payment_service.is_configured),
                 "auth": "session",
-                "modules": ["language", "career", "life"],
+                "modules": ["language", "career_cv", "career_interview", "career_jobs", "astrology", "finance", "self_discovery", "life"],
             }
         )
 
@@ -239,6 +264,16 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         email = str(payload.get("email", "")).strip().lower()
         password = str(payload.get("password", ""))
         remember = bool(payload.get("remember", True))
+        accept_terms = bool(payload.get("accept_terms", False))
+        accept_privacy = bool(payload.get("accept_privacy", False))
+        ai_disclosure_ack = bool(payload.get("ai_disclosure_ack", False))
+
+        if app.config.get("REQUIRE_LEGAL_CONSENT") and not (accept_terms and accept_privacy and ai_disclosure_ack):
+            return _error(
+                "Hãy đồng ý Điều khoản, Chính sách quyền riêng tư và xác nhận bạn hiểu Mở Lối sử dụng AI.",
+                400,
+                code="legal_consent_required",
+            )
 
         if len(display_name) < 2 or len(display_name) > 40:
             return _error("Tên hiển thị cần từ 2 đến 40 ký tự.", 400)
@@ -262,6 +297,19 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         except ValueError as exc:
             return _error(str(exc), 409, code="account_exists")
 
+        accepted_consents = []
+        if accept_terms:
+            accepted_consents.append("terms")
+        if accept_privacy:
+            accepted_consents.append("privacy")
+        if ai_disclosure_ack:
+            accepted_consents.append("ai_disclosure")
+        if accepted_consents:
+            record_consents(
+                str(account["id"]),
+                accepted_consents,
+                str(app.config["LEGAL_POLICY_VERSION"]),
+            )
         session.clear()
         session["account_id"] = account["id"]
         session.permanent = remember
@@ -277,6 +325,7 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         if not account_row or not check_password_hash(
             str(account_row["password_hash"]), password
         ):
+            log_security_event("login_failed")
             return _error("Tên đăng nhập/email hoặc mật khẩu chưa đúng.", 401)
 
         account_id = str(account_row["id"])
@@ -444,6 +493,127 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
             }
         )
 
+    def _chat_attachment_service() -> AttachmentService:
+        return AttachmentService(
+            base_dir=Path(app.config["CHAT_STORAGE_DIR"]),
+            max_file_bytes=int(app.config["CHAT_ATTACHMENT_MAX_BYTES"]),
+            max_total_bytes=int(app.config["CHAT_ATTACHMENT_TOTAL_MAX_BYTES"]),
+            max_image_bytes=int(app.config["CHAT_IMAGE_MAX_BYTES"]),
+            max_files=int(app.config["CHAT_ATTACHMENT_MAX_FILES"]),
+        )
+
+    @app.errorhandler(RequestEntityTooLarge)
+    def handle_request_too_large(_exc):
+        image_mb = max(1, round(int(app.config["CHAT_IMAGE_MAX_BYTES"]) / (1024 * 1024)))
+        file_mb = max(1, round(int(app.config["CHAT_ATTACHMENT_MAX_BYTES"]) / (1024 * 1024)))
+        total_mb = max(1, round(int(app.config["CHAT_ATTACHMENT_TOTAL_MAX_BYTES"]) / (1024 * 1024)))
+        return _error(
+            f"Tệp quá lớn. Ảnh tối đa {image_mb} MB, tệp thường tối đa {file_mb} MB, tổng mỗi lần gửi tối đa {total_mb} MB.",
+            413,
+            code="request_too_large",
+        )
+
+    @app.post("/api/attachments")
+    def attachment_upload():
+        user_id = _require_user_id()
+        if not user_id:
+            return _auth_error()
+        files = request.files.getlist("files") or request.files.getlist("file")
+        try:
+            created = _chat_attachment_service().save_uploads(user_id, files)
+        except AttachmentError as exc:
+            return _error(str(exc), exc.status, code=exc.code)
+        return jsonify({"attachments": [public_attachment(item) for item in created]}), 201
+
+    @app.get("/api/attachments/<attachment_id>")
+    def attachment_download(attachment_id: str):
+        user_id = _require_user_id()
+        if not user_id:
+            return _auth_error()
+        attachment = get_attachment(user_id, attachment_id, include_path=True)
+        if not attachment:
+            return _error("Không tìm thấy tệp đính kèm.", 404, code="not_found")
+        service = _chat_attachment_service()
+        wants_download = request.args.get("download") in {"1", "true", "yes"}
+        signed_url = service.signed_download_url(attachment, as_attachment=wants_download)
+        if signed_url:
+            return redirect(signed_url)
+        try:
+            content = service.read_attachment_bytes(attachment)
+        except AttachmentError as exc:
+            return _error(str(exc), exc.status, code=exc.code)
+        return send_file(
+            BytesIO(content),
+            mimetype=str(attachment.get("mime_type") or "application/octet-stream"),
+            download_name=str(attachment.get("original_name") or "download"),
+            as_attachment=wants_download,
+        )
+
+    @app.delete("/api/attachments/<attachment_id>")
+    def attachment_delete(attachment_id: str):
+        user_id = _require_user_id()
+        if not user_id:
+            return _auth_error()
+        attachment = delete_pending_attachment(user_id, attachment_id)
+        if not attachment:
+            return _error("Tệp không tồn tại hoặc đã được gửi.", 409, code="attachment_bound")
+        _chat_attachment_service().delete_local_attachment(attachment)
+        return jsonify({"ok": True})
+
+    @app.post("/api/exports")
+    def export_chat_artifact():
+        user_id = _require_user_id()
+        if not user_id:
+            return _auth_error()
+        payload = request.get_json(silent=True) or {}
+        fmt = str(payload.get("format", "")).lower().strip()
+        message_id = payload.get("message_id")
+        conversation_id = str(payload.get("conversation_id", "")).strip()
+        messages: list[dict[str, Any]] = []
+        title = "Luyện export"
+        bind_message_id: int | None = None
+        bind_conversation_id = ""
+
+        if message_id not in (None, ""):
+            try:
+                message = get_message(user_id, int(message_id))
+            except (TypeError, ValueError):
+                message = None
+            if not message:
+                return _error("Không tìm thấy tin nhắn để xuất.", 404, code="not_found")
+            messages = [message]
+            bind_message_id = int(message["id"])
+            bind_conversation_id = str(message.get("conversation_id") or "")
+            title = "Câu trả lời của Luyện"
+        elif conversation_id:
+            conversation = get_conversation(user_id, conversation_id)
+            if not conversation:
+                return _error("Không tìm thấy cuộc trò chuyện để xuất.", 404, code="not_found")
+            messages = get_history(user_id, conversation_id, limit=10000)
+            title = str(conversation.get("title") or "Cuộc trò chuyện")
+            last = get_last_message(user_id, conversation_id)
+            bind_message_id = int(last["id"]) if last else None
+            bind_conversation_id = conversation_id
+        else:
+            return _error("Hãy chọn tin nhắn hoặc cuộc trò chuyện cần xuất.", 400)
+
+        try:
+            generated = ArtifactService().generate(fmt, title, messages)
+        except ArtifactError as exc:
+            return _error(str(exc), 400, code="invalid_export")
+        metadata = _chat_attachment_service().save_generated_bytes(
+            user_id=user_id,
+            content=generated.content,
+            original_name=generated.filename,
+            mime_type=generated.mime_type,
+            kind="generated_file",
+            suffix=generated.suffix,
+        )
+        if bind_message_id and bind_conversation_id:
+            bind_attachments_to_message(user_id, [str(metadata["id"])], bind_message_id, bind_conversation_id)
+            metadata = get_attachment(user_id, str(metadata["id"]), include_path=True) or metadata
+        return jsonify({"attachment": public_attachment(metadata)}), 201
+
     @app.post("/api/chat")
     def chat():
         user_id = _require_user_id()
@@ -451,8 +621,13 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
             return _auth_error()
         payload = request.get_json(silent=True) or {}
         message = str(payload.get("message", "")).strip()
-        selected_mode = str(payload.get("mode", "listen"))
-        mode = _resolve_requested_mode(str(payload.get("message", "")), selected_mode)
+        raw_attachment_ids = payload.get("attachment_ids", [])
+        if raw_attachment_ids is None:
+            raw_attachment_ids = []
+        if not isinstance(raw_attachment_ids, list):
+            return _error("Danh sách tệp đính kèm không hợp lệ.", 400, code="invalid_attachment")
+        attachment_ids = [str(item).strip() for item in raw_attachment_ids if str(item).strip()]
+        mode = "adaptive"
         category = str(payload.get("category", "other"))
         pronoun_style = str(payload.get("pronoun_style", "minh_ban"))
         response_style = str(payload.get("response_style", "luyen"))
@@ -460,14 +635,21 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         language = str(payload.get("language", "vi"))
         conversation_id = str(payload.get("conversation_id", "")).strip()
 
-        if not message:
-            return _error("Tin nhắn đang trống.", 400)
+        if not message and not attachment_ids:
+            return _error("Hãy nhập tin nhắn hoặc đính kèm ít nhất một tệp.", 400)
         if len(message) > app.config["MAX_MESSAGE_CHARS"]:
             return _error(
                 f"Tin nhắn tối đa {app.config['MAX_MESSAGE_CHARS']} ký tự.", 400
             )
-        if mode not in VALID_MODES:
-            return _error("Chế độ trò chuyện không hợp lệ.", 400)
+        if len(attachment_ids) > int(app.config["CHAT_ATTACHMENT_MAX_FILES"]):
+            return _error("Có quá nhiều tệp đính kèm.", 400, code="invalid_attachment")
+        current_attachments = list_attachments_by_ids(user_id, attachment_ids, include_path=True)
+        if len(current_attachments) != len(attachment_ids):
+            return _error("Có tệp đính kèm không hợp lệ hoặc không thuộc tài khoản này.", 400, code="invalid_attachment")
+        if sum(int(item.get("size_bytes") or 0) for item in current_attachments) > int(app.config["CHAT_ATTACHMENT_TOTAL_MAX_BYTES"]):
+            return _error("Tổng dung lượng tệp vượt quá giới hạn.", 413, code="attachments_total_too_large")
+        if any(item.get("message_id") is not None for item in current_attachments):
+            return _error("Có tệp đã được gửi trước đó.", 409, code="attachment_bound")
         if category not in VALID_CATEGORIES:
             return _error("Chủ đề không hợp lệ.", 400)
         if pronoun_style not in VALID_PRONOUN_STYLES:
@@ -525,7 +707,9 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 recovered_stale_conversation = True
 
         history_rows = (
-            get_history(user_id, conversation_id, limit=14)
+            get_history(
+                user_id, conversation_id, limit=14, include_attachment_private=True
+            )
             if conversation_id
             else []
         )
@@ -535,22 +719,77 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
             else ""
         )
 
-        direct_persona_reply = _persona_direct_reply(
+        ai_client = getattr(ai, "client", None)
+        if ai_client is not None:
+            try:
+                for attachment in current_attachments:
+                    _chat_attachment_service().ensure_openai_file_id(ai_client, user_id, attachment)
+                for row in history_rows:
+                    if row.get("role") != "user":
+                        continue
+                    for attachment in row.get("attachments", []) or []:
+                        _chat_attachment_service().ensure_openai_file_id(ai_client, user_id, attachment)
+            except AttachmentError as exc:
+                if quota_event:
+                    refund_message_quota(str(quota_event["id"]))
+                    g.pending_quota_event_id = ""
+                return _error(str(exc), exc.status, code=exc.code)
+
+        action_resolution = resolve_action(message, current_attachments, history_rows)
+        action_decision = action_resolution.decision
+        effective_message = action_resolution.effective_message
+        effective_attachments = action_resolution.attachments
+        app.logger.info(
+            "Action router kind=%s format=%s scope=%s reason=%s continued=%s",
+            action_decision.kind,
+            action_decision.format or "-",
+            action_decision.scope,
+            action_decision.reason,
+            action_resolution.continued,
+        )
+        wants_image = action_decision.kind == "image"
+        artifact_request = (
+            (str(action_decision.format), action_decision.scope)
+            if action_decision.kind == "artifact" and action_decision.format
+            else None
+        )
+        artifact_instruction = build_artifact_instruction(
+            action_decision, effective_attachments, effective_message
+        ) if artifact_request else ""
+        background_status_reply = None
+        if is_background_status_question(message):
+            if language == "en":
+                background_status_reply = "There is no background task running. If the previous message did not return the file or image, that task did not finish; tell me to redo it and I will complete it in this request."
+            elif language == "zh-Hans":
+                background_status_reply = "现在没有后台任务在运行。如果上一条没有返回文件或图片，那次任务其实没有完成；直接让我重做，我会在这一轮里完成。"
+            elif language == "zh-Hant":
+                background_status_reply = "現在沒有背景任務在執行。如果上一則沒有回傳檔案或圖片，那次任務其實沒有完成；直接叫我重做，我會在這一輪完成。"
+            else:
+                background_status_reply = (
+                    "Không có tác vụ nào đang chạy nền. Nếu lượt trước chưa trả ra file/ảnh thì thực ra nó chưa hoàn thành; bảo tao làm lại, tao sẽ xử lý xong ngay trong lượt đó."
+                    if pronoun_style == "tao_may" else
+                    "Không có tác vụ nào đang chạy nền. Nếu lượt trước chưa trả ra file/ảnh thì tác vụ đó chưa hoàn thành; bảo mình làm lại, mình sẽ xử lý ngay trong lượt đó."
+                )
+        direct_persona_reply = None if (wants_image or artifact_request or background_status_reply) else _persona_direct_reply(
             message=message,
             response_style=response_style,
             pronoun_style=pronoun_style,
             language=language,
         )
 
+        generated_attachments: list[dict[str, Any]] = []
         if urgent_by_text:
             reply = urgent_support_message(pronoun_style, language)
             safety_route = True
+        elif background_status_reply:
+            reply = background_status_reply
+            safety_route = False
         elif direct_persona_reply:
             reply = direct_persona_reply
             safety_route = False
         else:
             try:
-                moderation = ai.moderate(message)
+                moderation = ai.moderate(message) if message else type("Decision", (), {"requires_urgent_support": False, "must_block": False})()
                 if moderation.requires_urgent_support:
                     # Nếu moderation phát hiện nguy cấp sau khi đã giữ lượt,
                     # hoàn lại ngay để phản hồi an toàn không bị tính phí.
@@ -580,18 +819,36 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                         )
                     safety_route = True
                 else:
-                    reply = ai.generate_reply(
-                        message=message,
-                        mode=mode,
-                        category=category,
-                        pronoun_style=pronoun_style,
-                        response_style=response_style,
-                        tone_style=tone_style,
-                        language=language,
-                        memory_summary=conversation_summary,
-                        recent_history=history_rows,
-                        user_profile=profile,
-                    )
+                    if wants_image:
+                        image_bytes, reply = ai.generate_image(
+                            message=effective_message or "Chỉnh ảnh theo nội dung tệp đính kèm.",
+                            recent_history=history_rows,
+                            attachments=effective_attachments,
+                        )
+                        generated = _chat_attachment_service().save_generated_bytes(
+                            user_id=user_id,
+                            content=image_bytes,
+                            original_name="generated-image.png",
+                            mime_type="image/png",
+                            kind="generated_image",
+                            suffix=".png",
+                        )
+                        generated_attachments.append(generated)
+                    else:
+                        reply = ai.generate_reply(
+                            message=effective_message,
+                            mode=mode,
+                            category=category,
+                            pronoun_style=pronoun_style,
+                            response_style=response_style,
+                            tone_style=tone_style,
+                            language=language,
+                            memory_summary=conversation_summary,
+                            recent_history=history_rows,
+                            user_profile=profile,
+                            attachments=effective_attachments,
+                            task_instruction=artifact_instruction,
+                        )
                     safety_route = False
             except AIServiceError as exc:
                 if quota_event:
@@ -600,18 +857,69 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 app.logger.exception("Conversation service failed")
                 return _error(str(exc), 503, code="service_unavailable")
 
+        if artifact_request and not safety_route:
+            fmt, scope = artifact_request
+            if scope == "conversation":
+                export_messages = (
+                    get_history(user_id, conversation_id, limit=10000)
+                    if conversation_id
+                    else []
+                )
+                export_messages.extend(
+                    [
+                        {
+                            "role": "user",
+                            "content": message,
+                            "attachments": [public_attachment(item) for item in current_attachments],
+                        },
+                        {"role": "assistant", "content": reply, "attachments": []},
+                    ]
+                )
+                export_title = str((conversation or {}).get("title") or "Cuộc trò chuyện")
+            else:
+                export_messages = [{"role": "assistant", "content": reply, "attachments": []}]
+                if effective_attachments:
+                    source_name = str(effective_attachments[0].get("original_name") or "Tài liệu")
+                    export_title = f"{Path(source_name).stem} - kết quả"
+                else:
+                    export_title = "Câu trả lời của Luyện"
+            try:
+                artifact = ArtifactService().generate(fmt, export_title, export_messages)
+                generated_file = _chat_attachment_service().save_generated_bytes(
+                    user_id=user_id,
+                    content=artifact.content,
+                    original_name=artifact.filename,
+                    mime_type=artifact.mime_type,
+                    kind="generated_file",
+                    suffix=artifact.suffix,
+                )
+                generated_attachments.append(generated_file)
+            except (ArtifactError, OSError) as exc:
+                if quota_event:
+                    refund_message_quota(str(quota_event["id"]))
+                    g.pending_quota_event_id = ""
+                app.logger.exception("Artifact generation failed")
+                return _error(
+                    f"Chưa thể tạo file yêu cầu: {exc}",
+                    503,
+                    code="artifact_generation_failed",
+                )
+
         # Cuộc trò chuyện mới chỉ được tạo sau khi đã có phản hồi hợp lệ.
         # Nhờ vậy lỗi API hoặc hết lượt không sinh ra đoạn chat trống.
         if not conversation_id:
+            conversation_preview = message or (f"Đính kèm: {current_attachments[0]['original_name']}" if current_attachments else "Tệp đính kèm")
             conversation = create_conversation(
                 user_id,
-                title=_title_from_message(message),
-                preview=message,
+                title=_title_from_message(conversation_preview),
+                preview=conversation_preview,
             )
             conversation_id = str(conversation["id"])
 
+        user_message_id: int | None = None
+        assistant_message_id: int | None = None
         if app.config["STORE_CHAT_HISTORY"]:
-            save_message(
+            user_message_id = save_message(
                 user_id,
                 conversation_id,
                 "user",
@@ -622,7 +930,9 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 tone_style=tone_style,
                 profile_archetype=profile_archetype,
             )
-            save_message(
+            if attachment_ids:
+                bind_attachments_to_message(user_id, attachment_ids, user_message_id, conversation_id)
+            assistant_message_id = save_message(
                 user_id,
                 conversation_id,
                 "assistant",
@@ -633,6 +943,13 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 tone_style=tone_style,
                 profile_archetype=profile_archetype,
             )
+            if generated_attachments:
+                bind_attachments_to_message(
+                    user_id,
+                    [str(item["id"]) for item in generated_attachments],
+                    assistant_message_id,
+                    conversation_id,
+                )
         if quota_event:
             if not finalize_message_quota(str(quota_event["id"])):
                 raise RuntimeError("Không thể chốt lượt nhắn đã giữ.")
@@ -673,6 +990,9 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 "free_limit": app.config["FREE_WELCOME_LIMIT"],
                 "quota": _quota_for(user_id, app),
                 "quota_source": quota_event["source"] if quota_event else "safety",
+                "attachments": [public_attachment(item) for item in generated_attachments],
+                "user_message_id": user_message_id,
+                "assistant_message_id": assistant_message_id,
             }
         )
 
@@ -949,6 +1269,69 @@ def _persona_direct_reply(
     return None
 
 
+def _wants_image_generation(message: str, attachments: list[dict[str, Any]] | None = None) -> bool:
+    text = " ".join(str(message or "").lower().split())
+    if not text:
+        return False
+
+    explicit_phrases = (
+        "tạo ảnh", "tạo hình", "hình ảnh", "ảnh minh họa", "minh họa", "vẽ ", "vẽ cho",
+        "thiết kế ảnh", "thiết kế poster", "tạo poster", "vẽ poster", "render ",
+        "generate image", "create image", "make an image", "make me an image",
+        "draw ", "illustrate", "image of", "photo of", "poster of", "show me an image",
+        "chỉnh ảnh", "sửa ảnh", "edit image", "retouch image",
+    )
+    if any(token in text for token in explicit_phrases):
+        return True
+
+    ask_verbs = ("cho", "gửi", "làm", "tạo", "vẽ", "thiết kế", "render", "generate", "create", "make", "show")
+    image_nouns = ("ảnh", "hình", "hình ảnh", "minh họa", "poster", "banner", "avatar", "thumbnail", "cover", "wallpaper")
+    if any(noun in text for noun in image_nouns) and any(verb in text for verb in ask_verbs):
+        return True
+
+    has_image = any(is_image_attachment(item) for item in attachments or [])
+    edit_words = ("chỉnh", "sửa", "xóa", "thêm", "đổi", "retouch", "remove", "add", "replace", "crop", "background")
+    return has_image and any(word in text for word in edit_words)
+
+
+def _requested_artifact_export(message: str) -> tuple[str, str] | None:
+    """Return (format, scope) for explicit user requests to create/export a file.
+
+    scope is ``reply`` for a newly generated answer or ``conversation`` when the
+    user explicitly asks to export the current chat. This intentionally requires
+    both an action word and a file-format marker so ordinary questions about PDF
+    or Excel do not accidentally generate artifacts.
+    """
+    text = " ".join(str(message or "").lower().split())
+    if not text:
+        return None
+    formats = (
+        ("docx", ("word", "docx")),
+        ("pdf", ("pdf",)),
+        ("xlsx", ("excel", "xlsx", "spreadsheet")),
+        ("txt", ("txt", "text file", "file text")),
+    )
+    fmt = next((name for name, markers in formats if any(marker in text for marker in markers)), None)
+    if not fmt:
+        return None
+    actions = (
+        "tạo file", "làm file", "xuất file", "xuất ", "tải thành", "lưu thành",
+        "export ", "create file", "make a file", "save as", "download as",
+    )
+    format_words = r"(?:word|docx|pdf|excel|xlsx|spreadsheet|txt)"
+    flexible_file_action = re.search(r"\b(?:tạo|create|make)\b.{0,36}\b" + format_words + r"\b", text)
+    flexible_lam_action = re.search(r"\blàm\b(?!\s+sao).{0,36}\b" + format_words + r"\b", text)
+    if not any(token in text for token in actions) and not flexible_file_action and not flexible_lam_action:
+        return None
+    conversation_markers = (
+        "toàn bộ cuộc trò chuyện", "cuộc trò chuyện này", "đoạn chat này",
+        "toàn bộ chat", "chat này", "whole conversation", "entire conversation",
+        "whole chat", "entire chat",
+    )
+    scope = "conversation" if any(marker in text for marker in conversation_markers) else "reply"
+    return fmt, scope
+
+
 def _resolve_requested_mode(message: str, selected_mode: str) -> str:
     """Đổi mode khi người dùng yêu cầu rõ, kể cả câu có dấu chấm hoặc dấu cảm thán."""
     text = " ".join(message.lower().split())
@@ -1035,4 +1418,7 @@ def _error(
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    debug_local = os.getenv("FLASK_DEBUG", "false").lower() in {"1", "true", "yes"}
+    if app.config.get("IS_PRODUCTION"):
+        debug_local = False
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", "5000")), debug=debug_local)

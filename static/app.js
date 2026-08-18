@@ -27,19 +27,33 @@ const TONE_OPTIONS = {
 const uiText = {
   vi: {
     brandTagline: "Nơi bạn là chính mình.",
-    auth: { kicker: "Một tài khoản cho học tập, sự nghiệp và cuộc sống", title: "Bắt đầu từ nơi bạn đang cần.", desc: "Luyện ngoại ngữ, chuẩn bị CV, tìm việc phù hợp và giữ một góc trò chuyện riêng — tất cả trong cùng một tài khoản.", bubbleUser: "", bubbleBot: "", loginTab: "Đăng nhập", registerTab: "Tạo tài khoản", loginTitle: "Chào mừng quay lại", loginDesc: "Đăng nhập để tiếp tục hành trình của bạn.", loginId: "Tên đăng nhập hoặc email", password: "Mật khẩu", remember: "Giữ đăng nhập trên máy này", loginButton: "Vào Mở Lối", registerTitle: "Tạo tài khoản", registerDesc: "Một tài khoản dùng chung cho học tập, sự nghiệp và cuộc sống.", displayName: "Tên hiển thị", username: "Tên đăng nhập", email: "Email", confirmPassword: "Nhập lại mật khẩu", registerButton: "Tạo tài khoản", languageLabel: "Ngôn ngữ", features: { language: { title: "Ngoại ngữ nhập vai", desc: "Học qua tình huống thực tế" }, cv: { title: "CV & phỏng vấn", desc: "Chuẩn bị hồ sơ tự tin hơn" }, jobs: { title: "Tìm việc phù hợp", desc: "Định hướng cơ hội rõ hơn" }, life: { title: "Trò chuyện & nhật ký", desc: "Giữ góc riêng của bạn" } } },
-    needsLabel: { minh_ban: "Bạn đang cần gì?", tao_may: "Mày đang cần gì?" },
+    auth: {
+      kicker: "Ở đây không cần phải tỏ ra ổn",
+      title: "Có chuyện thì cứ kể.",
+      desc: "Một cuộc trò chuyện riêng, nhớ được câu chuyện của bạn và biết lúc nào nên nghe, lúc nào nên nói thẳng.",
+      bubbleUser: "Dạo này mình thấy mệt mà không biết nói với ai.",
+      bubbleBot: "Ừ, kể từ đoạn làm bạn nặng đầu nhất đi.",
+      loginTab: "Đăng nhập",
+      registerTab: "Tạo tài khoản",
+      loginTitle: "Chào mừng quay lại",
+      loginDesc: "Câu chuyện cũ vẫn ở đúng chỗ.",
+      loginId: "Tên đăng nhập hoặc email",
+      password: "Mật khẩu",
+      remember: "Giữ đăng nhập trên máy này",
+      loginButton: "Vào không gian của tôi",
+      registerTitle: "Tạo một góc riêng",
+      registerDesc: "Mỗi tài khoản có lịch sử và phần ghi nhớ riêng.",
+      displayName: "Tên hiển thị",
+      username: "Tên đăng nhập",
+      email: "Email",
+      confirmPassword: "Nhập lại mật khẩu",
+      registerButton: "Tạo tài khoản",
+    },
     hearFromLabel: { minh_ban: "Bạn muốn nghe từ ai?", tao_may: "Mày muốn nghe từ ai?" },
     personalityLabel: { minh_ban: "Tính cách của bạn", tao_may: "Tính cách của mày" },
     categoryField: "Chuyện đang kể",
     categories: { love: "Tình cảm", study: "Học hành", family: "Gia đình", career: "Công việc và tương lai", friends: "Bạn bè", other: "Chuyện khác" },
     pronouns: { minh_ban: "Mình – bạn", tao_may: "Tao – mày" },
-    modeTitles: { listen: "Chỉ lắng nghe", clarify: "Cùng phân tích", advice: "Cho hướng xử lý" },
-    modeCards: {
-      listen: { title: "Lắng nghe", desc: { minh_ban: "Cho mình biết bạn đang cảm thấy thế nào?", tao_may: "Cho tao biết mày đang cảm thấy thế nào?" } },
-      clarify: { title: "Cùng phân tích", desc: { minh_ban: "Chúng ta cùng nhau xem tại sao nó lại như vậy.", tao_may: "Tao với mày cùng xem tại sao nó lại như vậy." } },
-      advice: { title: "Cho hướng xử lý", desc: { minh_ban: "Cùng mình tìm hướng giải quyết nhé.", tao_may: "Cùng tao tìm hướng giải quyết nhé." } },
-    },
     styleButtonDesc: "Tùy chuyện mà mềm hay thẳng",
     styles: {
       adaptive: { name: "Lúc này lúc kia", description: "Để xem hôm nay bạn muốn gì" },
@@ -97,15 +111,12 @@ const uiText = {
   },
   en: {
     brandTagline: "A quiet corner where you can be yourself.",
-    auth: { kicker: "One account for learning, career, and life", title: "Start where you need help today.", desc: "Practice languages, prepare your CV, find suitable jobs, and keep a private chat corner — all with one account.", bubbleUser: "", bubbleBot: "", loginTab: "Sign in", registerTab: "Create account", loginTitle: "Welcome back", loginDesc: "Sign in to continue your journey.", loginId: "Username or email", password: "Password", remember: "Keep me signed in on this device", loginButton: "Enter Mo Loi", registerTitle: "Create account", registerDesc: "One shared account for learning, career, and life.", displayName: "Display name", username: "Username", email: "Email", confirmPassword: "Confirm password", registerButton: "Create account", languageLabel: "Language", features: { language: { title: "Role-play languages", desc: "Learn through real situations" }, cv: { title: "CV & interview", desc: "Prepare your profile with confidence" }, jobs: { title: "Find matching jobs", desc: "See opportunities more clearly" }, life: { title: "Chat & journal", desc: "Keep your own private corner" } } },
-    needsLabel: "What do you need right now?",
+    auth: { kicker: "You don't have to pretend you're okay here", title: "If you need to talk, talk.", desc: "A private conversation that remembers your story and knows when to listen and when to be direct.", bubbleUser: "Lately I've felt tired and I don't know who to talk to.", bubbleBot: "Yeah, start with the part that's weighing on you the most.", loginTab: "Sign in", registerTab: "Create account", loginTitle: "Welcome back", loginDesc: "Your old conversations are still here.", loginId: "Username or email", password: "Password", remember: "Keep me signed in on this device", loginButton: "Enter chat", registerTitle: "Create your own corner", registerDesc: "Each account has its own history and memory.", displayName: "Display name", username: "Username", email: "Email", confirmPassword: "Confirm password", registerButton: "Create account" },
     hearFromLabel: "Who do you want to hear from?",
     personalityLabel: "Your personality",
     categoryField: "Current topic",
     categories: { love: "Love", study: "Study", family: "Family", career: "Work & future", friends: "Friends", other: "Something else" },
     pronouns: { minh_ban: "Gentle", tao_may: "Close-friend" },
-    modeTitles: { listen: "Just listening", clarify: "Think it through", advice: "Give direction" },
-    modeCards: { listen: { title: "Listen", desc: "Tell me how you're feeling." }, clarify: { title: "Think together", desc: "Let's sort out what is really going on." }, advice: { title: "Next steps", desc: "Let's find a practical way forward." } },
     styleButtonDesc: "Soft or direct, depending on the moment",
     styles: { adaptive: { name: "Whatever fits today", description: "Let's see what you need today" }, strict: { name: "Tough one", description: "Direct, fair, no sugarcoating" }, gentle: { name: "Gentle one", description: "Soft, but still honest" }, rational: { name: "Rational one", description: "Facts before feelings" }, practical: { name: "Practical one", description: "Focus on what can be done next" }, light_humor: { name: "Light humor", description: "A little lighter, not careless" }, luyen: { name: "Luyện", description: "Give it a try" } },
     experiencesButton: "What you've been through",
@@ -125,15 +136,12 @@ const uiText = {
   },
   "zh-Hans": {
     brandTagline: "一个可以做自己的小角落。",
-    auth: { kicker: "一个账号连接学习、职涯与生活", title: "从你现在最需要的地方开始。", desc: "练习语言、准备履历、寻找合适工作，并保留一个私人的聊天角落——全部都在同一个账号里。", bubbleUser: "", bubbleBot: "", loginTab: "登录", registerTab: "创建账号", loginTitle: "欢迎回来", loginDesc: "登录后继续你的旅程。", loginId: "用户名或邮箱", password: "密码", remember: "在这台设备上保持登录", loginButton: "进入 Mở Lối", registerTitle: "创建账号", registerDesc: "一个账号共用学习、职涯与生活空间。", displayName: "显示名称", username: "用户名", email: "邮箱", confirmPassword: "确认密码", registerButton: "创建账号", languageLabel: "语言", features: { language: { title: "情境语言学习", desc: "透过真实情境学习" }, cv: { title: "履历与面试", desc: "更有自信地准备资料" }, jobs: { title: "适合的工作", desc: "更清楚地看见机会" }, life: { title: "聊天与日记", desc: "保留属于你的私人角落" } } },
-    needsLabel: "你现在最需要什么？",
+    auth: { kicker: "在这里，你不用假装自己没事", title: "有话就说吧。", desc: "这是一个私密的对话空间，会记得你的故事，也知道什么时候该倾听，什么时候该说得直接一点。", bubbleUser: "最近我很累，但不知道该跟谁说。", bubbleBot: "嗯，那就先从最让你心烦的那部分开始说。", loginTab: "登录", registerTab: "创建账号", loginTitle: "欢迎回来", loginDesc: "你以前的对话都还在。", loginId: "用户名或邮箱", password: "密码", remember: "在这台设备上保持登录", loginButton: "进入对话", registerTitle: "创建你的专属角落", registerDesc: "每个账号都有独立的记录与记忆。", displayName: "显示名称", username: "用户名", email: "邮箱", confirmPassword: "确认密码", registerButton: "创建账号" },
     hearFromLabel: "你想听谁的回应？",
     personalityLabel: "你的性格",
     categoryField: "当前话题",
     categories: { love: "感情", study: "学习", family: "家庭", career: "工作与未来", friends: "朋友", other: "其他" },
     pronouns: { minh_ban: "温和模式", tao_may: "熟络模式" },
-    modeTitles: { listen: "只倾听", clarify: "一起分析", advice: "给出方向" },
-    modeCards: { listen: { title: "倾听", desc: "告诉我你现在是什么感觉。" }, clarify: { title: "一起分析", desc: "我们一起看看事情为什么会这样。" }, advice: { title: "找方向", desc: "一起找一个可行的处理办法。" } },
     styleButtonDesc: "柔和一点，或直接一点，都可以",
     styles: { adaptive: { name: "看情况来", description: "先看看你今天更需要什么" }, strict: { name: "严格型", description: "直接、公平、不拐弯" }, gentle: { name: "温和型", description: "柔和，但不敷衍" }, rational: { name: "理性型", description: "先看事实，再看情绪" }, practical: { name: "务实型", description: "先做最实际的下一步" }, light_humor: { name: "轻松一点", description: "稍微轻松，但不会乱开玩笑" }, luyen: { name: "Luyện", description: "来试试看" } },
     experiencesButton: "你经历过的事",
@@ -153,15 +161,12 @@ const uiText = {
   },
   "zh-Hant": {
     brandTagline: "一個可以做自己的小角落。",
-    auth: { kicker: "一個帳號連結學習、職涯與生活", title: "從你現在最需要的地方開始。", desc: "練習語言、準備履歷、尋找適合工作，並保留一個私人的聊天角落——全部都在同一個帳號裡。", bubbleUser: "", bubbleBot: "", loginTab: "登入", registerTab: "建立帳號", loginTitle: "歡迎回來", loginDesc: "登入後繼續你的旅程。", loginId: "使用者名稱或電子郵件", password: "密碼", remember: "在這台裝置上保持登入", loginButton: "進入 Mở Lối", registerTitle: "建立帳號", registerDesc: "一個帳號共用學習、職涯與生活空間。", displayName: "顯示名稱", username: "使用者名稱", email: "電子郵件", confirmPassword: "確認密碼", registerButton: "建立帳號", languageLabel: "語言", features: { language: { title: "情境語言學習", desc: "透過真實情境學習" }, cv: { title: "履歷與面試", desc: "更有自信地準備資料" }, jobs: { title: "適合的工作", desc: "更清楚地看見機會" }, life: { title: "聊天與日記", desc: "保留屬於你的私人角落" } } },
-    needsLabel: "你現在最需要什麼？",
+    auth: { kicker: "在這裡，你不用假裝自己沒事", title: "有話就說吧。", desc: "這是一個私密的對話空間，會記得你的故事，也知道什麼時候該傾聽，什麼時候該說得直接一點。", bubbleUser: "最近我很累，但不知道該跟誰說。", bubbleBot: "嗯，那就先從最讓你煩的那部分開始說。", loginTab: "登入", registerTab: "建立帳號", loginTitle: "歡迎回來", loginDesc: "你以前的對話都還在。", loginId: "使用者名稱或電子郵件", password: "密碼", remember: "在這台裝置上保持登入", loginButton: "進入對話", registerTitle: "建立你的專屬角落", registerDesc: "每個帳號都有自己的記錄與記憶。", displayName: "顯示名稱", username: "使用者名稱", email: "電子郵件", confirmPassword: "確認密碼", registerButton: "建立帳號" },
     hearFromLabel: "你想聽誰的回應？",
     personalityLabel: "你的性格",
     categoryField: "目前主題",
     categories: { love: "感情", study: "學習", family: "家庭", career: "工作與未來", friends: "朋友", other: "其他" },
     pronouns: { minh_ban: "溫和模式", tao_may: "熟絡模式" },
-    modeTitles: { listen: "只傾聽", clarify: "一起分析", advice: "給出方向" },
-    modeCards: { listen: { title: "傾聽", desc: "告訴我你現在是什麼感覺。" }, clarify: { title: "一起分析", desc: "我們一起看看事情為什麼會這樣。" }, advice: { title: "找方向", desc: "一起找一個可行的處理辦法。" } },
     styleButtonDesc: "柔和一點，或直接一點，都可以",
     styles: { adaptive: { name: "看情況來", description: "先看看你今天更需要什麼" }, strict: { name: "嚴格型", description: "直接、公平、不拐彎" }, gentle: { name: "溫和型", description: "柔和，但不敷衍" }, rational: { name: "理性型", description: "先看事實，再看情緒" }, practical: { name: "務實型", description: "先做最實際的下一步" }, light_humor: { name: "輕鬆一點", description: "稍微輕鬆，但不會亂開玩笑" }, luyen: { name: "Luyện", description: "來試試看" } },
     experiencesButton: "你經歷過的事",
@@ -202,7 +207,6 @@ const traitLabels = {
 const state = {
   userId: null,
   account: null,
-  mode: localStorage.getItem("oday_mode") || "listen",
   category: localStorage.getItem("oday_category") || "other",
   pronounStyle: localStorage.getItem("oday_pronoun") || "minh_ban",
   language: localStorage.getItem("oday_language") || "vi",
@@ -220,6 +224,10 @@ const state = {
   profileStep: 1,
   quizIndex: 0,
   isSending: false,
+  isUploadingAttachments: false,
+  pendingAttachments: [],
+  exportTarget: null,
+  exportTargetWrap: null,
 };
 
 const els = {
@@ -242,6 +250,12 @@ const els = {
   form: document.getElementById("chatForm"),
   input: document.getElementById("messageInput"),
   send: document.getElementById("sendButton"),
+  attachmentButton: document.getElementById("attachmentButton"),
+  attachmentInput: document.getElementById("attachmentInput"),
+  pendingAttachments: document.getElementById("pendingAttachments"),
+  exportConversationButton: document.getElementById("exportConversationButton"),
+  exportDialog: document.getElementById("exportDialog"),
+  closeExportDialog: document.getElementById("closeExportDialog"),
   messages: document.getElementById("messages"),
   welcome: document.getElementById("welcomeCard"),
   status: document.getElementById("statusLine"),
@@ -337,15 +351,6 @@ function styleMeta(styleKey) {
   };
 }
 
-function modeMeta(modeKey) {
-  const local = localeText();
-  const item = local.modeCards?.[modeKey] || uiText.vi.modeCards[modeKey];
-  return {
-    title: item?.title || modeKey,
-    desc: pickText(item?.desc),
-    topbar: local.modeTitles?.[modeKey] || uiText.vi.modeTitles[modeKey] || modeKey,
-  };
-}
 
 function userMetaLabel() {
   const local = localeText();
@@ -413,21 +418,10 @@ function applyUIText() {
   });
   setText('#registerForm .remember-row span', t.auth.remember);
   setText('#registerForm button[type="submit"]', t.auth.registerButton);
-  setText('#authLanguageLabel', t.auth.languageLabel || 'Language');
-  const authFeatures = t.auth.features || {};
-  setText('#authFeatureLangTitle', authFeatures.language?.title || 'Role-play languages');
-  setText('#authFeatureLangDesc', authFeatures.language?.desc || 'Learn through real situations');
-  setText('#authFeatureCvTitle', authFeatures.cv?.title || 'CV & interview');
-  setText('#authFeatureCvDesc', authFeatures.cv?.desc || 'Prepare your profile with confidence');
-  setText('#authFeatureJobsTitle', authFeatures.jobs?.title || 'Find matching jobs');
-  setText('#authFeatureJobsDesc', authFeatures.jobs?.desc || 'See opportunities more clearly');
-  setText('#authFeatureLifeTitle', authFeatures.life?.title || 'Chat & journal');
-  setText('#authFeatureLifeDesc', authFeatures.life?.desc || 'Keep your own private corner');
 
   const sectionLabels = document.querySelectorAll('.panel-section .section-label');
-  if (sectionLabels[0]) sectionLabels[0].textContent = pickText(t.needsLabel);
-  if (sectionLabels[1]) sectionLabels[1].textContent = pickText(t.hearFromLabel);
-  if (sectionLabels[2]) sectionLabels[2].textContent = pickText(t.personalityLabel);
+  if (sectionLabels[0]) sectionLabels[0].textContent = pickText(t.hearFromLabel);
+  if (sectionLabels[1]) sectionLabels[1].textContent = pickText(t.personalityLabel);
   setText('#categoryFieldLabel', t.categoryField);
 
   fillSimpleSelect(els.language, SUPPORTED_LANGUAGES.map((item) => ({ value: item.value, label: item.label })), state.language);
@@ -438,16 +432,9 @@ function applyUIText() {
   ], state.pronounStyle);
   fillSimpleSelect(els.category, Object.entries(t.categories).map(([value, label]) => ({ value, label })), state.category);
 
-  document.querySelectorAll('[data-mode]').forEach((button) => {
-    const info = modeMeta(button.dataset.mode);
-    const strong = button.querySelector('strong');
-    const small = button.querySelector('small');
-    if (strong) strong.textContent = info.title;
-    if (small) small.textContent = info.desc;
-  });
 
   setText('#usageSuffix', t.usageSuffix);
-  setText('#modeTitle', modeMeta(state.mode).topbar);
+  setText('#modeTitle', state.language === 'vi' ? 'Nói chuyện tự nhiên' : 'Adaptive conversation');
   const currentStyle = styleMeta(state.responseStyle);
   setText('#activeStyleText', currentStyle.name);
   setText('#selectedStyleName', currentStyle.name);
@@ -603,6 +590,9 @@ function bindAuthEvents() {
           email: document.getElementById("registerEmail").value.trim(),
           password,
           remember: document.getElementById("registerRemember").checked,
+          accept_terms: document.getElementById("acceptTerms")?.checked === true,
+          accept_privacy: document.getElementById("acceptPrivacy")?.checked === true,
+          ai_disclosure_ack: document.getElementById("ackAI")?.checked === true,
         },
       });
       window.location.reload();
@@ -633,10 +623,6 @@ function setBusy(button, busy, text) {
 }
 
 function normalizeSavedState() {
-  if (!uiText.vi.modeTitles[state.mode]) {
-    state.mode = "listen";
-    localStorage.setItem("oday_mode", state.mode);
-  }
   if (!responseStyles[state.responseStyle]) {
     state.responseStyle = "luyen";
   }
@@ -671,9 +657,6 @@ function makeIcon(symbolId) {
 }
 
 function applySavedControls() {
-  document.querySelectorAll("[data-mode]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.mode === state.mode);
-  });
   document.querySelectorAll("[data-response-style]").forEach((button) => {
     button.classList.toggle(
       "active",
@@ -694,14 +677,18 @@ function bindAppEvents() {
   if (appEventsBound) return;
   appEventsBound = true;
 
-  document.querySelectorAll("[data-mode]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.mode = button.dataset.mode;
-      localStorage.setItem("oday_mode", state.mode);
-      applySavedControls();
-      closeSidebar();
-      els.input.focus();
-    });
+  els.attachmentButton?.addEventListener("click", () => els.attachmentInput?.click());
+  els.attachmentInput?.addEventListener("change", () => uploadAttachments(els.attachmentInput.files || []));
+  els.exportConversationButton?.addEventListener("click", () => {
+    if (!state.currentConversationId) {
+      setStatus("Chưa có cuộc trò chuyện để xuất.", true);
+      return;
+    }
+    openExportPicker({ conversation_id: state.currentConversationId }, null);
+  });
+  els.closeExportDialog?.addEventListener("click", () => closeDialog(els.exportDialog));
+  document.querySelectorAll("[data-export-format]").forEach((button) => {
+    button.addEventListener("click", () => exportContent(button.dataset.exportFormat));
   });
 
   els.stylePickerButton.addEventListener("click", () =>
@@ -763,7 +750,7 @@ function bindAppEvents() {
     event.preventDefault();
     await sendMessage();
   });
-  els.input.addEventListener("input", resizeInput);
+  els.input.addEventListener("input", () => { resizeInput(); updateSendState(); });
   els.input.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
@@ -1086,6 +1073,8 @@ async function loadConversation(conversationId) {
         message.content,
         false,
         message.response_style || state.responseStyle,
+        message.attachments || [],
+        message.id || null,
       ),
     );
     closeDialog(els.conversationsDialog);
@@ -1418,24 +1407,108 @@ function clearProfileError() {
   els.profileError.textContent = "";
 }
 
+function updateSendState() {
+  if (!els.send) return;
+  const hasContent = Boolean(els.input?.value.trim()) || state.pendingAttachments.length > 0;
+  els.send.disabled = state.isSending || state.isUploadingAttachments || !hasContent;
+  if (els.attachmentButton) els.attachmentButton.disabled = state.isSending || state.isUploadingAttachments;
+}
+
+function renderPendingAttachments() {
+  const root = els.pendingAttachments;
+  if (!root) return;
+  root.replaceChildren();
+  root.hidden = state.pendingAttachments.length === 0;
+  state.pendingAttachments.forEach((item) => {
+    const chip = document.createElement("div");
+    chip.className = "pending-attachment";
+    if (String(item.mime_type || "").startsWith("image/")) {
+      const img = document.createElement("img");
+      img.src = attachmentUrl(item, false);
+      img.alt = "";
+      chip.appendChild(img);
+    }
+    const copy = document.createElement("span");
+    const name = document.createElement("strong");
+    name.textContent = item.original_name || "Tệp";
+    const size = document.createElement("small");
+    size.textContent = humanFileSize(item.size_bytes);
+    copy.append(name, size);
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.setAttribute("aria-label", "Bỏ tệp");
+    remove.textContent = "×";
+    remove.addEventListener("click", async () => {
+      try {
+        await api(`/api/attachments/${encodeURIComponent(item.id)}`, { method: "DELETE" });
+        state.pendingAttachments = state.pendingAttachments.filter((x) => x.id !== item.id);
+        renderPendingAttachments();
+        updateSendState();
+      } catch (error) {
+        setStatus(error.message, true);
+      }
+    });
+    chip.append(copy, remove);
+    root.appendChild(chip);
+  });
+}
+
+async function uploadAttachments(files) {
+  const selected = [...files];
+  if (!selected.length) return;
+  if (state.pendingAttachments.length + selected.length > 8) {
+    setStatus("Mỗi tin nhắn tối đa 8 tệp.", true);
+    return;
+  }
+  state.isUploadingAttachments = true;
+  updateSendState();
+  setStatus("Đang tải tệp lên...");
+  try {
+    const form = new FormData();
+    selected.forEach((file) => form.append("files", file));
+    const response = await fetch("/api/attachments", {
+      method: "POST",
+      body: form,
+      credentials: "same-origin",
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const error = new Error(data.error || `Lỗi HTTP ${response.status}`);
+      error.status = response.status;
+      error.code = data.code || "";
+      throw error;
+    }
+    state.pendingAttachments.push(...(data.attachments || []));
+    renderPendingAttachments();
+    setStatus("");
+  } catch (error) {
+    setStatus(error.message, true);
+  } finally {
+    state.isUploadingAttachments = false;
+    if (els.attachmentInput) els.attachmentInput.value = "";
+    updateSendState();
+  }
+}
+
 async function sendMessage() {
   const message = els.input.value.trim();
-  if (!message || state.isSending) return;
+  if ((!message && !state.pendingAttachments.length) || state.isSending || state.isUploadingAttachments) return;
   state.isSending = true;
-  els.send.disabled = true;
+  updateSendState();
   els.input.disabled = true;
   const style = styleMeta(state.responseStyle);
   const t = localeText();
   setStatus(`${style.name} · ${toneLabel()} ${t.statuses.thinking}`);
   if (els.welcome) els.welcome.hidden = true;
-  renderMessage("user", message, true, state.responseStyle);
+  const sentAttachments = [...state.pendingAttachments];
+  const userRow = renderMessage("user", message, true, state.responseStyle, sentAttachments, null);
   els.input.value = "";
   resizeInput();
   const loading = renderLoading(state.responseStyle);
   try {
     const chatBody = {
       message,
-      mode: state.mode,
+      attachment_ids: sentAttachments.map((item) => item.id),
       category: state.category,
       pronoun_style: state.pronounStyle,
       response_style: state.responseStyle,
@@ -1446,20 +1519,11 @@ async function sendMessage() {
 
     let data;
     try {
-      data = await api("/api/chat", {
-        method: "POST",
-        body: chatBody,
-      });
+      data = await api("/api/chat", { method: "POST", body: chatBody });
     } catch (error) {
       const staleConversation =
-        error.status === 404 &&
-        error.code === "not_found" &&
-        Boolean(state.currentConversationId);
-
+        error.status === 404 && error.code === "not_found" && Boolean(state.currentConversationId);
       if (!staleConversation) throw error;
-
-      // Database may have been replaced while the browser still keeps an old
-      // conversation id. Reset it and resend the same message as a new chat.
       state.currentConversationId = null;
       state.currentConversationTitle = "";
       data = await api("/api/chat", {
@@ -1469,35 +1533,113 @@ async function sendMessage() {
       setStatus("Đoạn chat cũ không còn trong dữ liệu. Đã mở một đoạn chat mới.");
       setTimeout(() => setStatus(""), 2200);
     }
-    state.currentConversationId =
-      data.conversation_id || state.currentConversationId;
-    state.currentConversationTitle =
-      data.conversation?.title || state.currentConversationTitle;
-    if (data.mode && data.mode !== state.mode) {
-      state.mode = data.mode;
-      localStorage.setItem("oday_mode", state.mode);
-      applySavedControls();
-    }
+    state.currentConversationId = data.conversation_id || state.currentConversationId;
+    state.currentConversationTitle = data.conversation?.title || state.currentConversationTitle;
+    if (data.user_message_id) userRow.dataset.messageId = String(data.user_message_id);
+    state.pendingAttachments = [];
+    renderPendingAttachments();
     loading.remove();
     renderMessage(
       "assistant",
       data.reply,
       true,
       data.response_style || state.responseStyle,
+      data.attachments || [],
+      data.assistant_message_id || null,
     );
     updateUsage(data.quota || { daily_used: data.used_today, daily_limit: data.daily_limit });
-    setStatus(
-      data.safety_route ? localeText().statuses.safetyPriority : "",
-    );
+    setStatus(data.safety_route ? localeText().statuses.safetyPriority : "");
   } catch (error) {
     loading.remove();
-    renderMessage("assistant", `Có lỗi: ${error.message}`, true, state.responseStyle);
+    renderMessage("assistant", `Có lỗi: ${error.message}`, true, state.responseStyle, [], null);
     setStatus(error.message, true);
   } finally {
     state.isSending = false;
-    els.send.disabled = false;
     els.input.disabled = false;
+    updateSendState();
     els.input.focus();
+  }
+}
+
+function humanFileSize(bytes) {
+  const value = Number(bytes || 0);
+  if (value < 1024) return `${value} B`;
+  if (value < 1024 * 1024) return `${(value / 1024).toFixed(1)} KB`;
+  return `${(value / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function attachmentUrl(item, download = false) {
+  return `/api/attachments/${encodeURIComponent(item.id)}${download ? "?download=1" : ""}`;
+}
+
+function downloadAttachmentFile(item) {
+  if (!item?.id) return;
+  const link = document.createElement("a");
+  link.href = attachmentUrl(item, true);
+  link.download = item.original_name || "download";
+  link.style.display = "none";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+
+function renderAttachmentCards(wrap, attachments = []) {
+  if (!attachments.length) return null;
+  let root = wrap.querySelector(".message-attachments");
+  if (!root) {
+    root = document.createElement("div");
+    root.className = "message-attachments";
+    wrap.appendChild(root);
+  }
+  attachments.forEach((item) => {
+    if (!item?.id || root.querySelector(`[data-attachment-id="${CSS.escape(String(item.id))}"]`)) return;
+    const link = document.createElement("a");
+    link.className = `attachment-card ${String(item.mime_type || "").startsWith("image/") ? "image" : "file"}`;
+    link.dataset.attachmentId = item.id;
+    link.href = attachmentUrl(item, !String(item.mime_type || "").startsWith("image/"));
+    link.target = "_blank";
+    link.rel = "noopener";
+    if (String(item.mime_type || "").startsWith("image/")) {
+      const img = document.createElement("img");
+      img.src = attachmentUrl(item, false);
+      img.alt = item.original_name || "Ảnh";
+      img.loading = "lazy";
+      link.appendChild(img);
+    }
+    const copy = document.createElement("span");
+    const name = document.createElement("strong");
+    name.textContent = item.original_name || "Tệp";
+    const meta = document.createElement("small");
+    meta.textContent = `${item.kind === "generated_file" ? "File đã xuất" : item.kind === "generated_image" ? "Ảnh đã tạo" : "Tệp đính kèm"} · ${humanFileSize(item.size_bytes)}`;
+    copy.append(name, meta);
+    link.appendChild(copy);
+    root.appendChild(link);
+  });
+  return root;
+}
+
+function openExportPicker(target, wrap = null) {
+  state.exportTarget = target;
+  state.exportTargetWrap = wrap;
+  openDialog(els.exportDialog);
+}
+
+async function exportContent(format) {
+  if (!state.exportTarget) return;
+  try {
+    setStatus(`Đang tạo ${format.toUpperCase()}...`);
+    const data = await api("/api/exports", {
+      method: "POST",
+      body: { ...state.exportTarget, format },
+    });
+    closeDialog(els.exportDialog);
+    if (state.exportTargetWrap && data.attachment) {
+      renderAttachmentCards(state.exportTargetWrap, [data.attachment]);
+    }
+    setStatus(`Đã tạo ${data.attachment?.original_name || format.toUpperCase()}.`);
+    if (data.attachment?.id) downloadAttachmentFile(data.attachment);
+  } catch (error) {
+    setStatus(error.message, true);
   }
 }
 
@@ -1506,9 +1648,12 @@ function renderMessage(
   content,
   animate = true,
   responseStyle = "luyen",
+  attachments = [],
+  messageId = null,
 ) {
   const row = document.createElement("div");
   row.className = `message-row ${role}`;
+  if (messageId) row.dataset.messageId = String(messageId);
   if (animate) row.style.opacity = "0";
   const avatar = document.createElement("div");
   avatar.className = "message-avatar";
@@ -1523,14 +1668,22 @@ function renderMessage(
   wrap.className = "message-wrap";
   const bubble = document.createElement("div");
   bubble.className = "bubble";
-  bubble.textContent = content;
-  wrap.appendChild(bubble);
+  bubble.textContent = content || "";
+  if (content) wrap.appendChild(bubble);
+  renderAttachmentCards(wrap, attachments);
   const meta = document.createElement("div");
   meta.className = "message-meta";
-  meta.textContent =
-    role === "user"
-      ? userMetaLabel()
-      : styleMeta(responseStyle).name || window.APP_CONFIG.brandName;
+  const label = document.createElement("span");
+  label.textContent = role === "user" ? userMetaLabel() : styleMeta(responseStyle).name || window.APP_CONFIG.brandName;
+  meta.appendChild(label);
+  if (role === "assistant" && messageId) {
+    const exportButton = document.createElement("button");
+    exportButton.type = "button";
+    exportButton.className = "message-export-button";
+    exportButton.textContent = "Xuất";
+    exportButton.addEventListener("click", () => openExportPicker({ message_id: messageId }, wrap));
+    meta.appendChild(exportButton);
+  }
   wrap.appendChild(meta);
   row.append(avatar, wrap);
   els.messages.appendChild(row);
@@ -1649,6 +1802,8 @@ async function api(url, options = {}) {
   }
   return data;
 }
+
+updateSendState();
 
 init().catch((error) => {
   showAuth();

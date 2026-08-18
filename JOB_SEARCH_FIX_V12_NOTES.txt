@@ -1,0 +1,18 @@
+MỞ LỐI — JOB SEARCH FIX V12
+
+Terminal chẩn đoán:
+- Brave key OK.
+- Brave 422 vì country=VN không được Web Search hỗ trợ.
+- Error của Brave cho phép ALL.
+- Jooble key OK, HTTP 200 nhưng query tiếng Việt trả 0.
+
+Đã sửa:
+- Brave country=ALL.
+- Hà Nội/Việt Nam vẫn nằm trong query nên search vẫn nhắm Việt Nam.
+- Jooble map nghề Việt -> từ khóa Anh.
+- Jooble city query 0 -> retry 1 lần location=Vietnam.
+- Kết quả fallback được đánh dấu toàn Việt Nam.
+- Giữ cache + filter + multi-source.
+
+Chạy:
+python diagnose_job_sources_v12.py

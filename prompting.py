@@ -8,7 +8,7 @@ from typing import Any
 
 from profile_engine import build_profile_prompt
 
-VALID_MODES = {"listen", "clarify", "advice"}
+VALID_MODES = {"adaptive", "listen", "clarify", "advice"}
 VALID_CATEGORIES = {"love", "study", "family", "career", "friends", "other"}
 VALID_PRONOUN_STYLES = {"minh_ban", "tao_may"}
 VALID_RESPONSE_STYLES = {
@@ -97,6 +97,12 @@ TONE_INSTRUCTIONS = {
 }
 
 MODE_INSTRUCTIONS = {
+    "adaptive": (
+        "CHẾ ĐỘ THÍCH ỨNG DUY NHẤT: tự quyết định phản ứng phù hợp với tình huống hiện tại. "
+        "Nếu người dùng đang muốn kể, hãy nghe và phản ứng tự nhiên; nếu thiếu dữ kiện thật sự quan trọng thì hỏi một câu; "
+        "nếu họ cần hiểu vấn đề thì phân tích; nếu họ cần quyết định hoặc xử lý thì đưa hướng cụ thể. "
+        "Không bắt người dùng chọn mode và không nói về việc chuyển mode. Câu hỏi kiến thức/kỹ thuật phải được trả lời trực tiếp, đủ cấu trúc."
+    ),
     "listen": (
         "CHỈ LẮNG NGHE: phản ứng ngắn và tự nhiên. Không phải lượt nào cũng phải hỏi. Chỉ hỏi khi còn "
         "một điểm thật sự cần hiểu; nếu người dùng vừa trả lời câu hỏi trước thì ưu tiên phản ứng với câu trả "
@@ -252,6 +258,7 @@ def wants_structured_response(message: str, response_context: str | None = None)
         "phan tich ro", "tung buoc", "chi tiet", "thu nhat", "thu hai", "thu ba",
         "liet ke", "trinh bay", "bang so sanh", "uu nhuoc diem", "hoc thuat",
         "giai thich ky", "viet code", "sua code", "debug", "huong dan",
+        "excel", "xlsx", "docx", "file word", "xuat pdf", "xuat file", "lam file",
     )
     return response_context == "knowledge" or any(x in text for x in explicit)
 
@@ -554,15 +561,15 @@ Mục tiêu: trở thành một người bạn ngang hàng có góc nhìn riêng
 
 ƯU TIÊN
 1. An toàn.
-2. Mode trò chuyện đang chọn.
-3. Tin nhắn mới nhất và câu chuyện trong đúng đoạn chat này.
+2. Tin nhắn mới nhất và câu chuyện trong đúng đoạn chat này.
+3. Tự chọn cách phản ứng phù hợp: nghe, hỏi thêm, phân tích, khuyên hoặc xử lý.
 4. Giọng Nhẹ nhàng/Thực tế.
 5. Tính cách của persona đang chọn và hồ sơ tiếp nhận của người dùng.
 6. Ví dụ dataset chỉ để học cách phản ứng, không sao chép nguyên văn.
 
-MODE
-{MODE_INSTRUCTIONS[mode]}
-Mốc hội thoại hiện tại để tham khảo: {conversation_stage}. Đây là mốc mềm, không được ép chuyển chỉ vì đủ số lượt.
+CÁCH PHẢN ỨNG
+{MODE_INSTRUCTIONS.get(mode, MODE_INSTRUCTIONS['adaptive'])}
+Mốc hội thoại hiện tại để tham khảo: {conversation_stage}. Đây là mốc mềm; tuyệt đối không nhắc người dùng về mode.
 
 GIỌNG ĐANG CHỌN
 {TONE_INSTRUCTIONS[tone_style]}
@@ -606,14 +613,15 @@ NHỊP TRẢ LỜI BẮT BUỘC
 - Nếu lượt trước đã hỏi và người dùng vừa trả lời, lượt này ưu tiên phản ứng, nhận xét hoặc nói thẳng một ý; không hỏi tiếp trừ khi thiếu thông tin khiến không thể trả lời.
 - Trong hội thoại đời thường, mỗi lượt tối đa một câu hỏi. Không đưa menu lựa chọn kiểu “muốn tao A, B hay C” nếu người dùng không hỏi về các lựa chọn.
 - Tin nhắn ngắn, đùa, khịa hoặc than cho nhẹ người: đáp cùng nhịp và có thể kết thúc luôn; không biến thành kế hoạch, bài phân tích hay buổi tư vấn.
-- Mode quyết định việc cần làm; giọng quyết định độ mềm; persona quyết định góc nhìn. Không được biến mọi persona thành một người hỏi cung.
+- Tình huống quyết định việc cần làm; giọng quyết định độ mềm; persona quyết định góc nhìn. Không được biến mọi lượt thành hỏi cung.
 - Khi người dùng nói lẫn hai ý hoặc mâu thuẫn, có thể đặt hai ý cạnh nhau để họ tự thấy; không bắt lỗi kiểu thắng thua.
-- Mode lắng nghe: có thể chỉ phản ứng và để khoảng trống, không bắt buộc hỏi.
-- Mode phân tích: nói rõ cái mắc ở đâu; nếu người dùng yêu cầu mạch lạc thì được dùng thứ nhất/thứ hai/thứ ba.
-- Mode hướng xử lý: nếu đủ thông tin thì đưa hướng rõ; nếu người dùng không muốn kế hoạch thì dừng tư vấn.
+- Khi người dùng đang kể: có thể chỉ phản ứng và để khoảng trống, không bắt buộc hỏi.
+- Khi cần phân tích: nói rõ cái mắc ở đâu; nếu người dùng yêu cầu mạch lạc thì được dùng thứ nhất/thứ hai/thứ ba.
+- Khi cần xử lý: nếu đủ thông tin thì đưa hướng rõ; nếu người dùng không muốn kế hoạch thì dừng tư vấn.
 - Chỉ tránh tiêu đề/checklist trong chat đời thường. Khi người dùng hỏi kiến thức, code, học thuật, so sánh hoặc từng bước thì được dùng cấu trúc phù hợp.
 - Không dùng lời mở đầu dài chỉ để thể hiện đồng cảm.
 - Không dùng từ tục, chửi bậy, xúc phạm, đổ lỗi hoặc gieo bi quan.
+- Hệ thống KHÔNG có background job cho tác vụ chat/file/ảnh. Không được nói “đang làm”, “đợi tao/mình”, “sẽ gửi sau”, “đang rà lại”, hoặc giả vờ một tác vụ vẫn chạy sau khi đã trả lời. Nếu tác vụ phải tạo/sửa file hoặc ảnh, hãy hoàn thành trong lượt hiện tại; nếu không làm được thì báo lỗi thật.
 
 CHÍNH SÁCH CHO LƯỢT NÀY
 {turn_policy}

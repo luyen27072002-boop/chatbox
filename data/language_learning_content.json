@@ -1,0 +1,1493 @@
+{
+  "en": {
+    "vocabulary": [
+      {
+        "id": "en-v-need",
+        "level": "A1-A2",
+        "term": "need",
+        "meaning": "cần",
+        "example": "I need some help.",
+        "translation": "Tôi cần một chút giúp đỡ.",
+        "importance": 5,
+        "question": "Which meaning matches 'need'?",
+        "options": [
+          "cần",
+          "quên",
+          "đợi",
+          "đổi"
+        ],
+        "answer": "cần"
+      },
+      {
+        "id": "en-v-want",
+        "level": "A1-A2",
+        "term": "want",
+        "meaning": "muốn",
+        "example": "I want a coffee.",
+        "translation": "Tôi muốn một ly cà phê.",
+        "importance": 5,
+        "question": "Which meaning matches 'want'?",
+        "options": [
+          "muốn",
+          "mượn",
+          "mang",
+          "mất"
+        ],
+        "answer": "muốn"
+      },
+      {
+        "id": "en-v-actually",
+        "level": "A1-A2",
+        "term": "actually",
+        "meaning": "thực ra / thật ra",
+        "example": "Actually, I don't drink coffee.",
+        "translation": "Thực ra tôi không uống cà phê.",
+        "importance": 5,
+        "question": "What does 'actually' usually mean here?",
+        "options": [
+          "thực ra",
+          "ngay lập tức",
+          "thỉnh thoảng",
+          "sau cùng"
+        ],
+        "answer": "thực ra"
+      },
+      {
+        "id": "en-v-maybe",
+        "level": "A1-A2",
+        "term": "maybe",
+        "meaning": "có lẽ",
+        "example": "Maybe we can go later.",
+        "translation": "Có lẽ chúng ta có thể đi sau.",
+        "importance": 5,
+        "question": "Choose the best meaning of 'maybe'.",
+        "options": [
+          "có lẽ",
+          "chắc chắn",
+          "chưa từng",
+          "thường xuyên"
+        ],
+        "answer": "có lẽ"
+      },
+      {
+        "id": "en-v-usually",
+        "level": "A1-A2",
+        "term": "usually",
+        "meaning": "thường / thường xuyên",
+        "example": "I usually eat at home.",
+        "translation": "Tôi thường ăn ở nhà.",
+        "importance": 5,
+        "question": "'Usually' describes something that happens…",
+        "options": [
+          "thường xuyên",
+          "không bao giờ",
+          "chỉ một lần",
+          "ngay bây giờ"
+        ],
+        "answer": "thường xuyên"
+      },
+      {
+        "id": "en-v-enough",
+        "level": "A1-A2",
+        "term": "enough",
+        "meaning": "đủ",
+        "example": "Do we have enough time?",
+        "translation": "Chúng ta có đủ thời gian không?",
+        "importance": 5,
+        "question": "Choose the meaning of 'enough'.",
+        "options": [
+          "đủ",
+          "rẻ",
+          "nhanh",
+          "đói"
+        ],
+        "answer": "đủ"
+      },
+      {
+        "id": "en-v-change",
+        "level": "A1-A2",
+        "term": "change",
+        "meaning": "thay đổi; tiền thừa",
+        "example": "Can I change my order?",
+        "translation": "Tôi có thể đổi đơn gọi món không?",
+        "importance": 5,
+        "question": "In 'change my order', change means…",
+        "options": [
+          "thay đổi",
+          "tính tiền",
+          "mang đi",
+          "đợi"
+        ],
+        "answer": "thay đổi"
+      },
+      {
+        "id": "en-v-available",
+        "level": "A1-A2",
+        "term": "available",
+        "meaning": "có sẵn / rảnh",
+        "example": "Is this table available?",
+        "translation": "Bàn này còn trống không?",
+        "importance": 4,
+        "question": "If a table is available, it is…",
+        "options": [
+          "có thể dùng",
+          "đã hỏng",
+          "quá đắt",
+          "đang đóng"
+        ],
+        "answer": "có thể dùng"
+      },
+      {
+        "id": "en-v-appointment",
+        "level": "A1-A2",
+        "term": "appointment",
+        "meaning": "cuộc hẹn",
+        "example": "I have a doctor's appointment at three.",
+        "translation": "Tôi có lịch hẹn bác sĩ lúc ba giờ.",
+        "importance": 4,
+        "question": "What is an appointment?",
+        "options": [
+          "cuộc hẹn",
+          "vé xe",
+          "hóa đơn",
+          "kỳ nghỉ"
+        ],
+        "answer": "cuộc hẹn"
+      },
+      {
+        "id": "en-v-receipt",
+        "level": "A1-A2",
+        "term": "receipt",
+        "meaning": "hóa đơn / biên lai",
+        "example": "Can I get a receipt?",
+        "translation": "Tôi có thể lấy hóa đơn không?",
+        "importance": 4,
+        "question": "You usually get a receipt after…",
+        "options": [
+          "thanh toán",
+          "ngủ",
+          "tập gym",
+          "gọi điện"
+        ],
+        "answer": "thanh toán"
+      },
+      {
+        "id": "en-v-instead",
+        "level": "A1-A2",
+        "term": "instead",
+        "meaning": "thay vào đó",
+        "example": "Let's walk instead.",
+        "translation": "Thay vào đó, chúng ta đi bộ nhé.",
+        "importance": 5,
+        "question": "Choose the best meaning of 'instead'.",
+        "options": [
+          "thay vào đó",
+          "bởi vì",
+          "thậm chí",
+          "đột nhiên"
+        ],
+        "answer": "thay vào đó"
+      },
+      {
+        "id": "en-v-almost",
+        "level": "A1-A2",
+        "term": "almost",
+        "meaning": "gần như",
+        "example": "I'm almost ready.",
+        "translation": "Tôi gần như sẵn sàng rồi.",
+        "importance": 5,
+        "question": "'Almost ready' means…",
+        "options": [
+          "gần sẵn sàng",
+          "hoàn toàn chưa sẵn sàng",
+          "đã rời đi",
+          "đang ngủ"
+        ],
+        "answer": "gần sẵn sàng"
+      },
+      {
+        "id": "en-v-still",
+        "level": "A1-A2",
+        "term": "still",
+        "meaning": "vẫn còn",
+        "example": "Are you still at work?",
+        "translation": "Bạn vẫn còn ở chỗ làm à?",
+        "importance": 5,
+        "question": "What does 'still' mean here?",
+        "options": [
+          "vẫn còn",
+          "đã từng",
+          "sắp",
+          "hiếm khi"
+        ],
+        "answer": "vẫn còn"
+      },
+      {
+        "id": "en-v-already",
+        "level": "A1-A2",
+        "term": "already",
+        "meaning": "đã rồi",
+        "example": "I already ate.",
+        "translation": "Tôi ăn rồi.",
+        "importance": 5,
+        "question": "'Already' often shows something happened…",
+        "options": [
+          "sớm hơn hiện tại",
+          "vào tương lai",
+          "không bao giờ",
+          "mỗi ngày"
+        ],
+        "answer": "sớm hơn hiện tại"
+      },
+      {
+        "id": "en-v-probably",
+        "level": "A1-A2",
+        "term": "probably",
+        "meaning": "có lẽ, khá chắc",
+        "example": "I'll probably be late.",
+        "translation": "Có lẽ tôi sẽ muộn.",
+        "importance": 5,
+        "question": "'Probably' is closest to…",
+        "options": [
+          "có lẽ, khá chắc",
+          "không thể nào",
+          "ngay lập tức",
+          "một mình"
+        ],
+        "answer": "có lẽ, khá chắc"
+      },
+      {
+        "id": "en-v-somewhere",
+        "level": "A1-A2",
+        "term": "somewhere",
+        "meaning": "đâu đó",
+        "example": "I left my keys somewhere here.",
+        "translation": "Tôi để chìa khóa đâu đó quanh đây.",
+        "importance": 4,
+        "question": "Choose the meaning of 'somewhere'.",
+        "options": [
+          "đâu đó",
+          "mọi nơi",
+          "không nơi nào",
+          "bên ngoài"
+        ],
+        "answer": "đâu đó"
+      },
+      {
+        "id": "en-v-busy",
+        "level": "A1-A2",
+        "term": "busy",
+        "meaning": "bận",
+        "example": "I'm busy this afternoon.",
+        "translation": "Chiều nay tôi bận.",
+        "importance": 5,
+        "question": "If you are busy, you…",
+        "options": [
+          "có nhiều việc",
+          "đang rảnh",
+          "đang đói",
+          "đang lạc đường"
+        ],
+        "answer": "có nhiều việc"
+      },
+      {
+        "id": "en-v-free",
+        "level": "A1-A2",
+        "term": "free",
+        "meaning": "rảnh; miễn phí",
+        "example": "Are you free tonight?",
+        "translation": "Tối nay bạn rảnh không?",
+        "importance": 5,
+        "question": "In 'Are you free tonight?', free means…",
+        "options": [
+          "rảnh",
+          "miễn phí",
+          "mệt",
+          "vắng"
+        ],
+        "answer": "rảnh"
+      },
+      {
+        "id": "en-v-choose",
+        "level": "A1-A2",
+        "term": "choose",
+        "meaning": "chọn",
+        "example": "You can choose any seat.",
+        "translation": "Bạn có thể chọn bất kỳ chỗ nào.",
+        "importance": 5,
+        "question": "Choose means…",
+        "options": [
+          "chọn",
+          "đổi",
+          "đóng",
+          "đưa"
+        ],
+        "answer": "chọn"
+      },
+      {
+        "id": "en-v-happen",
+        "level": "A1-A2",
+        "term": "happen",
+        "meaning": "xảy ra",
+        "example": "What happened?",
+        "translation": "Chuyện gì đã xảy ra?",
+        "importance": 5,
+        "question": "What does 'happen' mean?",
+        "options": [
+          "xảy ra",
+          "nghĩ",
+          "mang",
+          "bắt đầu"
+        ],
+        "answer": "xảy ra"
+      },
+      {
+        "id": "en-v-mean",
+        "level": "A1-A2",
+        "term": "mean",
+        "meaning": "có nghĩa là",
+        "example": "What does this word mean?",
+        "translation": "Từ này có nghĩa là gì?",
+        "importance": 5,
+        "question": "In this sentence, 'mean' is about…",
+        "options": [
+          "ý nghĩa",
+          "giá tiền",
+          "thời gian",
+          "kích thước"
+        ],
+        "answer": "ý nghĩa"
+      },
+      {
+        "id": "en-v-bring",
+        "level": "A1-A2",
+        "term": "bring",
+        "meaning": "mang đến",
+        "example": "Can you bring some water?",
+        "translation": "Bạn có thể mang ít nước tới không?",
+        "importance": 5,
+        "question": "Bring means…",
+        "options": [
+          "mang đến",
+          "mang đi",
+          "vứt bỏ",
+          "mua"
+        ],
+        "answer": "mang đến"
+      },
+      {
+        "id": "en-v-leave",
+        "level": "A1-A2",
+        "term": "leave",
+        "meaning": "rời đi; để lại",
+        "example": "I need to leave now.",
+        "translation": "Tôi cần đi bây giờ.",
+        "importance": 5,
+        "question": "In 'leave now', leave means…",
+        "options": [
+          "rời đi",
+          "đến nơi",
+          "ngồi xuống",
+          "đợi"
+        ],
+        "answer": "rời đi"
+      },
+      {
+        "id": "en-v-arrive",
+        "level": "A1-A2",
+        "term": "arrive",
+        "meaning": "đến nơi",
+        "example": "What time did you arrive?",
+        "translation": "Bạn đến lúc mấy giờ?",
+        "importance": 5,
+        "question": "Arrive means…",
+        "options": [
+          "đến nơi",
+          "rời đi",
+          "quay lại",
+          "lạc đường"
+        ],
+        "answer": "đến nơi"
+      },
+      {
+        "id": "en-v-reliable",
+        "level": "B1-B2",
+        "term": "reliable",
+        "meaning": "đáng tin cậy",
+        "example": "She's very reliable at work.",
+        "translation": "Cô ấy rất đáng tin trong công việc.",
+        "importance": 4,
+        "question": "Reliable means…",
+        "options": [
+          "đáng tin cậy",
+          "khó chịu",
+          "không chắc chắn",
+          "bất ngờ"
+        ],
+        "answer": "đáng tin cậy"
+      },
+      {
+        "id": "en-v-issue",
+        "level": "B1-B2",
+        "term": "issue",
+        "meaning": "vấn đề",
+        "example": "There's an issue with my order.",
+        "translation": "Có vấn đề với đơn hàng của tôi.",
+        "importance": 5,
+        "question": "In this sentence, issue means…",
+        "options": [
+          "vấn đề",
+          "phiên bản",
+          "phần thưởng",
+          "cuộc hẹn"
+        ],
+        "answer": "vấn đề"
+      },
+      {
+        "id": "en-v-suggest",
+        "level": "B1-B2",
+        "term": "suggest",
+        "meaning": "đề xuất",
+        "example": "I suggest taking the train.",
+        "translation": "Tôi đề xuất đi tàu.",
+        "importance": 5,
+        "question": "Suggest means…",
+        "options": [
+          "đề xuất",
+          "từ chối",
+          "quên",
+          "xác nhận"
+        ],
+        "answer": "đề xuất"
+      }
+    ],
+    "phrases": [
+      {
+        "id": "en-p-say-again",
+        "level": "A1-A2",
+        "phrase": "Could you say that again?",
+        "meaning": "Bạn có thể nói lại được không?",
+        "use": "Khi nghe không rõ.",
+        "question": "Which sentence asks someone to repeat?",
+        "options": [
+          "Could you say that again?",
+          "Where are you going?",
+          "How much is it?",
+          "Are you busy?"
+        ],
+        "answer": "Could you say that again?"
+      },
+      {
+        "id": "en-p-mean",
+        "level": "A1-A2",
+        "phrase": "What do you mean?",
+        "meaning": "Ý bạn là gì?",
+        "use": "Khi không hiểu ý người kia.",
+        "question": "You don't understand someone's meaning. What can you say?",
+        "options": [
+          "What do you mean?",
+          "What time is it?",
+          "What do you want to eat?",
+          "What happened yesterday?"
+        ],
+        "answer": "What do you mean?"
+      },
+      {
+        "id": "en-p-not-sure",
+        "level": "A1-A2",
+        "phrase": "I'm not sure, but…",
+        "meaning": "Tôi không chắc, nhưng…",
+        "use": "Đưa ra ý kiến không chắc chắn.",
+        "question": "Choose a natural phrase when you are uncertain.",
+        "options": [
+          "I'm not sure, but…",
+          "I know exactly.",
+          "No problem at all.",
+          "See you yesterday."
+        ],
+        "answer": "I'm not sure, but…"
+      },
+      {
+        "id": "en-p-id-like",
+        "level": "A1-A2",
+        "phrase": "I'd like…",
+        "meaning": "Tôi muốn…",
+        "use": "Gọi món hoặc yêu cầu lịch sự.",
+        "question": "Which phrase is natural for ordering?",
+        "options": [
+          "I'd like a coffee, please.",
+          "I coffee now.",
+          "Give coffee me.",
+          "Coffee was me."
+        ],
+        "answer": "I'd like a coffee, please."
+      },
+      {
+        "id": "en-p-can-i-have",
+        "level": "A1-A2",
+        "phrase": "Can I have…?",
+        "meaning": "Tôi có thể lấy / gọi… được không?",
+        "use": "Yêu cầu đồ vật hoặc món ăn.",
+        "question": "Which request is natural?",
+        "options": [
+          "Can I have some water?",
+          "Can I water have is?",
+          "Water have I can?",
+          "I am water?"
+        ],
+        "answer": "Can I have some water?"
+      },
+      {
+        "id": "en-p-help",
+        "level": "A1-A2",
+        "phrase": "Could you help me?",
+        "meaning": "Bạn có thể giúp tôi được không?",
+        "use": "Xin giúp đỡ lịch sự.",
+        "question": "You are lost. What can you say first?",
+        "options": [
+          "Could you help me?",
+          "I lost you.",
+          "You must help.",
+          "Where help?"
+        ],
+        "answer": "Could you help me?"
+      },
+      {
+        "id": "en-p-how-much",
+        "level": "A1-A2",
+        "phrase": "How much is it?",
+        "meaning": "Cái này bao nhiêu tiền?",
+        "use": "Hỏi giá.",
+        "question": "Which phrase asks for the price?",
+        "options": [
+          "How much is it?",
+          "How long is it?",
+          "How old is it?",
+          "How far is it?"
+        ],
+        "answer": "How much is it?"
+      },
+      {
+        "id": "en-p-where-can",
+        "level": "A1-A2",
+        "phrase": "Where can I…?",
+        "meaning": "Tôi có thể … ở đâu?",
+        "use": "Hỏi địa điểm để làm việc gì đó.",
+        "question": "You need an ATM. Which question fits?",
+        "options": [
+          "Where can I find an ATM?",
+          "When can I ATM?",
+          "Who is an ATM?",
+          "Why can I ATM?"
+        ],
+        "answer": "Where can I find an ATM?"
+      },
+      {
+        "id": "en-p-dont-have",
+        "level": "A1-A2",
+        "phrase": "I don't have…",
+        "meaning": "Tôi không có…",
+        "use": "Nói thiếu một đồ vật hoặc thông tin.",
+        "question": "You forgot your ID. What can you say?",
+        "options": [
+          "I don't have my ID with me.",
+          "I am not ID.",
+          "My ID don't.",
+          "No have ID me."
+        ],
+        "answer": "I don't have my ID with me."
+      },
+      {
+        "id": "en-p-looking-for",
+        "level": "A1-A2",
+        "phrase": "I'm looking for…",
+        "meaning": "Tôi đang tìm…",
+        "use": "Tìm người, đồ vật hoặc địa điểm.",
+        "question": "Which sentence says you are searching for something?",
+        "options": [
+          "I'm looking for the station.",
+          "I look the station yesterday.",
+          "Station looks me.",
+          "I'm watching station."
+        ],
+        "answer": "I'm looking for the station."
+      },
+      {
+        "id": "en-p-that-works",
+        "level": "A1-A2",
+        "phrase": "That works for me.",
+        "meaning": "Như vậy ổn với tôi.",
+        "use": "Đồng ý với thời gian/kế hoạch.",
+        "question": "Your friend suggests 7 p.m. and you agree. What can you say?",
+        "options": [
+          "That works for me.",
+          "That works at me.",
+          "I work seven.",
+          "That is work."
+        ],
+        "answer": "That works for me."
+      },
+      {
+        "id": "en-p-running-late",
+        "level": "A1-A2",
+        "phrase": "I'm running late.",
+        "meaning": "Tôi đang bị muộn.",
+        "use": "Báo mình sẽ tới trễ.",
+        "question": "You're 10 minutes late. Which message is natural?",
+        "options": [
+          "I'm running late.",
+          "I'm running early.",
+          "I late running.",
+          "Late is me."
+        ],
+        "answer": "I'm running late."
+      },
+      {
+        "id": "en-p-let-check",
+        "level": "A1-A2",
+        "phrase": "Let me check.",
+        "meaning": "Để tôi kiểm tra xem.",
+        "use": "Khi cần thời gian kiểm tra thông tin.",
+        "question": "Someone asks if you're free tomorrow. You need to check your calendar. What can you say?",
+        "options": [
+          "Let me check.",
+          "Check me now.",
+          "I am calendar.",
+          "Tomorrow checks."
+        ],
+        "answer": "Let me check."
+      },
+      {
+        "id": "en-p-anything-else",
+        "level": "A1-A2",
+        "phrase": "Anything else?",
+        "meaning": "Còn gì nữa không?",
+        "use": "Hỏi xem có cần thêm gì không.",
+        "question": "A cashier wants to know if you need more items. What can they ask?",
+        "options": [
+          "Anything else?",
+          "Any else thing is?",
+          "What else anything?",
+          "Something no?"
+        ],
+        "answer": "Anything else?"
+      }
+    ],
+    "grammar": [
+      {
+        "id": "en-g-be",
+        "level": "A1-A2",
+        "title": "am / is / are",
+        "rule": "Dùng am/is/are để nói trạng thái, danh tính và vị trí hiện tại.",
+        "example": "I am tired. She is at home. They are busy.",
+        "question": "Choose the correct sentence.",
+        "options": [
+          "She is busy.",
+          "She are busy.",
+          "She am busy.",
+          "She be busy."
+        ],
+        "answer": "She is busy."
+      },
+      {
+        "id": "en-g-present-simple",
+        "level": "A1-A2",
+        "title": "Present simple",
+        "rule": "Dùng hiện tại đơn cho thói quen và sự thật. He/She/It thường thêm -s.",
+        "example": "I work here. He works here.",
+        "question": "Choose the correct sentence.",
+        "options": [
+          "He works at a café.",
+          "He work at a café.",
+          "He working at a café.",
+          "He is work at a café."
+        ],
+        "answer": "He works at a café."
+      },
+      {
+        "id": "en-g-doesnt",
+        "level": "A1-A2",
+        "title": "don't / doesn't",
+        "rule": "I/you/we/they dùng don't; he/she/it dùng doesn't + động từ nguyên mẫu.",
+        "example": "I don't know. She doesn't drive.",
+        "question": "Choose the correct sentence.",
+        "options": [
+          "She doesn't like coffee.",
+          "She don't likes coffee.",
+          "She doesn't likes coffee.",
+          "She not like coffee."
+        ],
+        "answer": "She doesn't like coffee."
+      },
+      {
+        "id": "en-g-past",
+        "level": "A1-A2",
+        "title": "Past simple",
+        "rule": "Dùng quá khứ đơn cho việc đã kết thúc. Động từ có quy tắc thường thêm -ed; nhiều động từ bất quy tắc cần nhớ riêng.",
+        "example": "I arrived at eight. I went home early.",
+        "question": "Yesterday, I ___ home at 6.",
+        "options": [
+          "went",
+          "go",
+          "going",
+          "goes"
+        ],
+        "answer": "went"
+      },
+      {
+        "id": "en-g-there",
+        "level": "A1-A2",
+        "title": "there is / there are",
+        "rule": "There is + số ít. There are + số nhiều.",
+        "example": "There is a café nearby. There are two buses.",
+        "question": "Choose the correct sentence.",
+        "options": [
+          "There are two shops here.",
+          "There is two shops here.",
+          "There two shops are here.",
+          "It are two shops here."
+        ],
+        "answer": "There are two shops here."
+      },
+      {
+        "id": "en-g-can",
+        "level": "A1-A2",
+        "title": "can / could",
+        "rule": "Can dùng cho khả năng/yêu cầu; Could thường lịch sự mềm hơn trong yêu cầu.",
+        "example": "Can you help me? Could you say that again?",
+        "question": "Which request sounds polite and natural?",
+        "options": [
+          "Could you help me, please?",
+          "You help me now.",
+          "Help can you me?",
+          "Could you helping me?"
+        ],
+        "answer": "Could you help me, please?"
+      },
+      {
+        "id": "en-g-some-any",
+        "level": "A1-A2",
+        "title": "some / any",
+        "rule": "Some thường dùng trong câu khẳng định; any thường dùng trong câu hỏi/phủ định.",
+        "example": "I need some water. Do you have any water?",
+        "question": "Choose the correct sentence.",
+        "options": [
+          "Do you have any cash?",
+          "Do you have some cash? always",
+          "You any cash have?",
+          "Have cash some you?"
+        ],
+        "answer": "Do you have any cash?"
+      },
+      {
+        "id": "en-g-present-cont",
+        "level": "A1-A2",
+        "title": "Present continuous",
+        "rule": "am/is/are + V-ing cho hành động đang xảy ra ngay bây giờ.",
+        "example": "I'm waiting outside.",
+        "question": "What are you doing now?",
+        "options": [
+          "I'm waiting for the bus.",
+          "I wait bus now every day.",
+          "I waiting bus.",
+          "I am wait bus."
+        ],
+        "answer": "I'm waiting for the bus."
+      },
+      {
+        "id": "en-g-going-to",
+        "level": "A1-A2",
+        "title": "be going to",
+        "rule": "be going to + verb dùng cho kế hoạch hoặc dự định.",
+        "example": "I'm going to meet a friend tonight.",
+        "question": "Choose the correct sentence about a plan.",
+        "options": [
+          "I'm going to study tonight.",
+          "I going study tonight.",
+          "I'm go to study tonight.",
+          "I to studying tonight."
+        ],
+        "answer": "I'm going to study tonight."
+      },
+      {
+        "id": "en-g-because",
+        "level": "A1-A2",
+        "title": "because",
+        "rule": "Because nối một lý do với sự việc.",
+        "example": "I'm late because the bus was slow.",
+        "question": "Choose the best completion: I'm tired ___ I slept late.",
+        "options": [
+          "because",
+          "but",
+          "or",
+          "than"
+        ],
+        "answer": "because"
+      }
+    ],
+    "listening": [
+      {
+        "id": "en-l-1",
+        "level": "A1-A2",
+        "title": "Coffee order",
+        "audio_text": "Hi. Can I get a large iced coffee with no sugar, please?",
+        "question": "What does the customer want?",
+        "options": [
+          "A large iced coffee with no sugar",
+          "A small hot tea",
+          "A large coffee with extra sugar",
+          "A bottle of water"
+        ],
+        "answer": "A large iced coffee with no sugar"
+      },
+      {
+        "id": "en-l-2",
+        "level": "A1-A2",
+        "title": "Running late",
+        "audio_text": "I'm running about ten minutes late. Please start without me.",
+        "question": "How late is the speaker?",
+        "options": [
+          "About ten minutes",
+          "About one hour",
+          "Two minutes",
+          "Thirty minutes"
+        ],
+        "answer": "About ten minutes"
+      },
+      {
+        "id": "en-l-3",
+        "level": "A1-A2",
+        "title": "Train platform",
+        "audio_text": "The train to Central Station leaves from platform four at six fifteen.",
+        "question": "Which platform?",
+        "options": [
+          "Platform 4",
+          "Platform 6",
+          "Platform 15",
+          "Platform 10"
+        ],
+        "answer": "Platform 4"
+      },
+      {
+        "id": "en-l-4",
+        "level": "A1-A2",
+        "title": "Meeting change",
+        "audio_text": "The meeting is not at two anymore. Let's meet at three thirty instead.",
+        "question": "What is the new meeting time?",
+        "options": [
+          "3:30",
+          "2:00",
+          "2:30",
+          "4:00"
+        ],
+        "answer": "3:30"
+      },
+      {
+        "id": "en-l-5",
+        "level": "A1-A2",
+        "title": "Store question",
+        "audio_text": "Excuse me, do you have this shirt in a larger size?",
+        "question": "What does the customer need?",
+        "options": [
+          "A larger size",
+          "A lower price",
+          "A different color only",
+          "A receipt"
+        ],
+        "answer": "A larger size"
+      },
+      {
+        "id": "en-l-6",
+        "level": "A1-A2",
+        "title": "Doctor appointment",
+        "audio_text": "Your appointment is tomorrow morning at nine. Please arrive fifteen minutes early.",
+        "question": "When should the person arrive?",
+        "options": [
+          "8:45",
+          "9:15",
+          "9:00 exactly",
+          "8:15"
+        ],
+        "answer": "8:45"
+      }
+    ],
+    "reading": [
+      {
+        "id": "en-r-1",
+        "level": "A1-A2",
+        "title": "Friend message",
+        "passage": "Hey, I'm still at work. Can we meet at 7:30 instead of 7? Sorry!",
+        "question": "What changed?",
+        "options": [
+          "The meeting time changed to 7:30",
+          "The meeting was cancelled",
+          "They will meet at work",
+          "They will meet tomorrow"
+        ],
+        "answer": "The meeting time changed to 7:30"
+      },
+      {
+        "id": "en-r-2",
+        "level": "A1-A2",
+        "title": "Café sign",
+        "passage": "Kitchen closes at 8:30 p.m. Drinks are available until 9:00 p.m.",
+        "question": "Can you order food at 8:45 p.m.?",
+        "options": [
+          "No",
+          "Yes",
+          "Only on weekends",
+          "The sign doesn't say"
+        ],
+        "answer": "No"
+      },
+      {
+        "id": "en-r-3",
+        "level": "A1-A2",
+        "title": "Package notice",
+        "passage": "We tried to deliver your package today. Please pick it up at the front desk after 5 p.m.",
+        "question": "Where is the package?",
+        "options": [
+          "At the front desk",
+          "At the post office",
+          "At the neighbor's house",
+          "In the elevator"
+        ],
+        "answer": "At the front desk"
+      },
+      {
+        "id": "en-r-4",
+        "level": "A1-A2",
+        "title": "Class notice",
+        "passage": "Tomorrow's class will be online. The Zoom link is in your email. Class starts at 10 a.m.",
+        "question": "Where will the class happen?",
+        "options": [
+          "Online",
+          "In room 10",
+          "At the library",
+          "At a café"
+        ],
+        "answer": "Online"
+      },
+      {
+        "id": "en-r-5",
+        "level": "A1-A2",
+        "title": "Gym membership",
+        "passage": "Members can use the gym from 6 a.m. to 11 p.m. Towels are free. Lockers need a $1 coin.",
+        "question": "What do you need for a locker?",
+        "options": [
+          "A $1 coin",
+          "A towel",
+          "A passport",
+          "A card"
+        ],
+        "answer": "A $1 coin"
+      }
+    ],
+    "writing": [
+      {
+        "id": "en-w-1",
+        "level": "A1-A2",
+        "title": "Text a friend",
+        "prompt": "Nhắn cho bạn bằng tiếng Anh: bạn sẽ đến muộn khoảng 15 phút và muốn họ gọi món trước.",
+        "focus": [
+          "running late",
+          "time",
+          "request"
+        ],
+        "min_words": 12,
+        "model": "I'm running about 15 minutes late. Could you order first? I'll be there soon."
+      },
+      {
+        "id": "en-w-2",
+        "level": "A1-A2",
+        "title": "Ask for help",
+        "prompt": "Viết một tin nhắn ngắn cho lễ tân: bạn để quên chìa khóa phòng và cần giúp đỡ.",
+        "focus": [
+          "problem",
+          "request",
+          "politeness"
+        ],
+        "min_words": 12,
+        "model": "Hi, I left my room key inside. Could you help me open the door, please?"
+      },
+      {
+        "id": "en-w-3",
+        "level": "A1-A2",
+        "title": "Change an appointment",
+        "prompt": "Viết tin nhắn xin đổi lịch hẹn từ thứ Hai sang thứ Ba vì bạn bận.",
+        "focus": [
+          "appointment",
+          "because",
+          "new time"
+        ],
+        "min_words": 15,
+        "model": "Hi, could I move my appointment from Monday to Tuesday? I'm busy on Monday. Thank you."
+      },
+      {
+        "id": "en-w-4",
+        "level": "A1-A2",
+        "title": "Simple complaint",
+        "prompt": "Bạn nhận sai món. Viết 2–3 câu lịch sự để nói vấn đề và yêu cầu đổi món.",
+        "focus": [
+          "clarify",
+          "request",
+          "politeness"
+        ],
+        "min_words": 15,
+        "model": "Sorry, this isn't what I ordered. I ordered chicken, not fish. Could you change it, please?"
+      }
+    ],
+    "speaking": [
+      {
+        "id": "en-s-1",
+        "level": "A1-A2",
+        "title": "Introduce yourself",
+        "prompt": "Giới thiệu bản thân trong 3–4 câu: tên, bạn đang làm gì, nơi đang sống và một sở thích.",
+        "focus": [
+          "introduction",
+          "present simple"
+        ],
+        "model": "Hi, I'm Tony. I'm a student. I live in Taipei, and I like going to the gym."
+      },
+      {
+        "id": "en-s-2",
+        "level": "A1-A2",
+        "title": "Order a drink",
+        "prompt": "Hãy gọi một đồ uống, nói kích cỡ và một yêu cầu thêm.",
+        "focus": [
+          "I'd like",
+          "size",
+          "extra detail"
+        ],
+        "model": "I'd like a large iced coffee with no sugar, please."
+      },
+      {
+        "id": "en-s-3",
+        "level": "A1-A2",
+        "title": "Ask for directions",
+        "prompt": "Bạn đang tìm ga tàu. Hãy hỏi một người lạ một cách lịch sự.",
+        "focus": [
+          "request",
+          "where"
+        ],
+        "model": "Excuse me, could you tell me where the train station is?"
+      },
+      {
+        "id": "en-s-4",
+        "level": "A1-A2",
+        "title": "Explain being late",
+        "prompt": "Nói 2–3 câu giải thích rằng bạn đến muộn vì xe buýt chậm.",
+        "focus": [
+          "past",
+          "because"
+        ],
+        "model": "Sorry I'm late. The bus was very slow, and I had to wait a long time."
+      },
+      {
+        "id": "en-s-5",
+        "level": "A1-A2",
+        "title": "Make a plan",
+        "prompt": "Rủ một người bạn đi ăn tối và đề xuất thời gian.",
+        "focus": [
+          "invitation",
+          "time"
+        ],
+        "model": "Are you free tonight? Do you want to have dinner at seven?"
+      }
+    ],
+    "pronunciation": [
+      {
+        "id": "en-pr-1",
+        "level": "A1-A2",
+        "title": "ship / sheep",
+        "target": "ship",
+        "contrast": "sheep",
+        "tip": "Âm /ɪ/ trong ship ngắn hơn /iː/ trong sheep.",
+        "example": "The ship is big."
+      },
+      {
+        "id": "en-pr-2",
+        "level": "A1-A2",
+        "title": "live / leave",
+        "target": "live",
+        "contrast": "leave",
+        "tip": "live dùng nguyên âm ngắn /ɪ/; leave dùng /iː/ dài hơn.",
+        "example": "I live near the station."
+      },
+      {
+        "id": "en-pr-3",
+        "level": "A1-A2",
+        "title": "think",
+        "target": "think",
+        "contrast": "sink",
+        "tip": "Đặt đầu lưỡi nhẹ giữa hai răng cho âm /θ/.",
+        "example": "I think it's fine."
+      },
+      {
+        "id": "en-pr-4",
+        "level": "A1-A2",
+        "title": "very",
+        "target": "very",
+        "contrast": "berry",
+        "tip": "Âm /v/: răng trên chạm nhẹ môi dưới.",
+        "example": "I'm very busy today."
+      },
+      {
+        "id": "en-pr-5",
+        "level": "A1-A2",
+        "title": "world",
+        "target": "world",
+        "contrast": "word",
+        "tip": "Nói chậm từng phần: world, giữ âm /r/ và kết thúc bằng /ld/.",
+        "example": "It's a small world."
+      }
+    ]
+  },
+  "zh": {
+    "vocabulary": [
+      {
+        "id": "zh-v-xuyao",
+        "level": "A1-A2",
+        "term": "需要",
+        "meaning": "cần",
+        "example": "我需要幫忙。",
+        "translation": "Tôi cần giúp đỡ.",
+        "importance": 5,
+        "question": "「需要」是什麼意思？",
+        "options": [
+          "cần",
+          "muốn",
+          "đợi",
+          "đổi"
+        ],
+        "answer": "cần"
+      },
+      {
+        "id": "zh-v-xiang",
+        "level": "A1-A2",
+        "term": "想",
+        "meaning": "muốn / nghĩ",
+        "example": "我想喝咖啡。",
+        "translation": "Tôi muốn uống cà phê.",
+        "importance": 5,
+        "question": "Trong câu 「我想喝咖啡」, 想 nghĩa là…",
+        "options": [
+          "muốn",
+          "đã",
+          "không",
+          "đến"
+        ],
+        "answer": "muốn"
+      },
+      {
+        "id": "zh-v-keyi",
+        "level": "A1-A2",
+        "term": "可以",
+        "meaning": "có thể / được",
+        "example": "可以幫我嗎？",
+        "translation": "Có thể giúp tôi không?",
+        "importance": 5,
+        "question": "「可以」gần nhất với…",
+        "options": [
+          "có thể",
+          "phải",
+          "không bao giờ",
+          "rất"
+        ],
+        "answer": "có thể"
+      },
+      {
+        "id": "zh-v-yijing",
+        "level": "A1-A2",
+        "term": "已經",
+        "meaning": "đã rồi",
+        "example": "我已經吃了。",
+        "translation": "Tôi ăn rồi.",
+        "importance": 5,
+        "question": "「已經」nghĩa là…",
+        "options": [
+          "đã rồi",
+          "sắp",
+          "có lẽ",
+          "thường"
+        ],
+        "answer": "đã rồi"
+      },
+      {
+        "id": "zh-v-hai",
+        "level": "A1-A2",
+        "term": "還",
+        "meaning": "vẫn / còn",
+        "example": "你還在公司嗎？",
+        "translation": "Bạn vẫn ở công ty à?",
+        "importance": 5,
+        "question": "Trong câu này, 還 nghĩa là…",
+        "options": [
+          "vẫn còn",
+          "đã xong",
+          "ngay lập tức",
+          "không"
+        ],
+        "answer": "vẫn còn"
+      },
+      {
+        "id": "zh-v-yuyue",
+        "level": "A1-A2",
+        "term": "預約",
+        "meaning": "đặt trước / cuộc hẹn",
+        "example": "我有預約。",
+        "translation": "Tôi có đặt lịch trước.",
+        "importance": 4,
+        "question": "「預約」là…",
+        "options": [
+          "đặt trước / cuộc hẹn",
+          "hóa đơn",
+          "địa chỉ",
+          "bữa sáng"
+        ],
+        "answer": "đặt trước / cuộc hẹn"
+      }
+    ],
+    "phrases": [
+      {
+        "id": "zh-p-repeat",
+        "level": "A1-A2",
+        "phrase": "可以再說一次嗎？",
+        "meaning": "Có thể nói lại một lần nữa không?",
+        "use": "Khi nghe không rõ.",
+        "question": "Câu nào dùng để nhờ người khác nói lại?",
+        "options": [
+          "可以再說一次嗎？",
+          "你去哪裡？",
+          "多少錢？",
+          "你忙嗎？"
+        ],
+        "answer": "可以再說一次嗎？"
+      },
+      {
+        "id": "zh-p-mean",
+        "level": "A1-A2",
+        "phrase": "這是什麼意思？",
+        "meaning": "Cái này có nghĩa là gì?",
+        "use": "Hỏi nghĩa.",
+        "question": "Muốn hỏi nghĩa, chọn câu nào?",
+        "options": [
+          "這是什麼意思？",
+          "現在幾點？",
+          "你吃了嗎？",
+          "你住哪裡？"
+        ],
+        "answer": "這是什麼意思？"
+      },
+      {
+        "id": "zh-p-help",
+        "level": "A1-A2",
+        "phrase": "可以幫我嗎？",
+        "meaning": "Có thể giúp tôi không?",
+        "use": "Xin giúp đỡ.",
+        "question": "Câu xin giúp đỡ là…",
+        "options": [
+          "可以幫我嗎？",
+          "我要走了。",
+          "我不知道。",
+          "沒關係。"
+        ],
+        "answer": "可以幫我嗎？"
+      },
+      {
+        "id": "zh-p-want",
+        "level": "A1-A2",
+        "phrase": "我想要…",
+        "meaning": "Tôi muốn…",
+        "use": "Gọi món / yêu cầu.",
+        "question": "Muốn gọi một ly cà phê, câu mở đầu tự nhiên là…",
+        "options": [
+          "我想要一杯咖啡。",
+          "咖啡是我。",
+          "我要咖啡嗎？",
+          "我在咖啡。"
+        ],
+        "answer": "我想要一杯咖啡。"
+      }
+    ],
+    "grammar": [
+      {
+        "id": "zh-g-shi",
+        "level": "A1-A2",
+        "title": "是",
+        "rule": "是 dùng để nối chủ ngữ với danh tính hoặc phân loại.",
+        "example": "我是學生。",
+        "question": "Chọn câu đúng: Tôi là sinh viên.",
+        "options": [
+          "我是學生。",
+          "我學生是。",
+          "是我學生。",
+          "我在學生。"
+        ],
+        "answer": "我是學生。"
+      },
+      {
+        "id": "zh-g-you",
+        "level": "A1-A2",
+        "title": "有 / 沒有",
+        "rule": "有 = có; 沒有 = không có.",
+        "example": "我有時間。／我沒有時間。",
+        "question": "Tôi không có thời gian = ?",
+        "options": [
+          "我沒有時間。",
+          "我不時間。",
+          "我不是時間。",
+          "時間沒有我。"
+        ],
+        "answer": "我沒有時間。"
+      },
+      {
+        "id": "zh-g-zai",
+        "level": "A1-A2",
+        "title": "在",
+        "rule": "在 dùng cho vị trí hoặc hành động đang diễn ra trong mẫu 在 + V.",
+        "example": "我在家。／我在吃飯。",
+        "question": "Tôi đang ăn = ?",
+        "options": [
+          "我在吃飯。",
+          "我是吃飯。",
+          "我有吃飯。",
+          "我吃飯在。"
+        ],
+        "answer": "我在吃飯。"
+      }
+    ],
+    "listening": [
+      {
+        "id": "zh-l-1",
+        "level": "A1-A2",
+        "title": "買咖啡",
+        "audio_text": "我要一杯大杯冰咖啡，不要糖，謝謝。",
+        "question": "Người nói muốn gì?",
+        "options": [
+          "Cà phê đá cỡ lớn không đường",
+          "Trà nóng cỡ nhỏ",
+          "Cà phê nhiều đường",
+          "Nước lọc"
+        ],
+        "answer": "Cà phê đá cỡ lớn không đường"
+      },
+      {
+        "id": "zh-l-2",
+        "level": "A1-A2",
+        "title": "遲到",
+        "audio_text": "我會晚十分鐘，你們先開始吧。",
+        "question": "Người nói sẽ muộn bao lâu?",
+        "options": [
+          "10 phút",
+          "1 giờ",
+          "2 phút",
+          "30 phút"
+        ],
+        "answer": "10 phút"
+      }
+    ],
+    "reading": [
+      {
+        "id": "zh-r-1",
+        "level": "A1-A2",
+        "title": "朋友訊息",
+        "passage": "我還在公司。我們可以七點半見嗎？不好意思！",
+        "question": "Thời gian gặp mới là khi nào?",
+        "options": [
+          "7:30",
+          "7:00",
+          "8:00",
+          "Ngày mai"
+        ],
+        "answer": "7:30"
+      },
+      {
+        "id": "zh-r-2",
+        "level": "A1-A2",
+        "title": "咖啡店公告",
+        "passage": "廚房晚上八點半關。飲料可以點到九點。",
+        "question": "8:45 tối có gọi đồ ăn được không?",
+        "options": [
+          "Không",
+          "Có",
+          "Chỉ cuối tuần",
+          "Không rõ"
+        ],
+        "answer": "Không"
+      }
+    ],
+    "writing": [
+      {
+        "id": "zh-w-1",
+        "level": "A1-A2",
+        "title": "跟朋友說會遲到",
+        "prompt": "Dùng tiếng Trung nhắn cho bạn rằng bạn sẽ muộn khoảng 10 phút và bảo họ cứ bắt đầu trước.",
+        "focus": [
+          "晚",
+          "分鐘",
+          "先"
+        ],
+        "min_words": 6,
+        "model": "我會晚十分鐘，你先開始吧。"
+      },
+      {
+        "id": "zh-w-2",
+        "level": "A1-A2",
+        "title": "請求幫忙",
+        "prompt": "Dùng tiếng Trung nói rằng bạn quên chìa khóa và cần lễ tân giúp.",
+        "focus": [
+          "忘記",
+          "鑰匙",
+          "幫忙"
+        ],
+        "min_words": 6,
+        "model": "我忘記帶鑰匙了，可以幫我嗎？"
+      }
+    ],
+    "speaking": [
+      {
+        "id": "zh-s-1",
+        "level": "A1-A2",
+        "title": "自我介紹",
+        "prompt": "Giới thiệu tên, nghề/sinh viên và nơi bạn sống bằng 2–3 câu tiếng Trung.",
+        "focus": [
+          "我是",
+          "我住在"
+        ],
+        "model": "你好，我叫Tony。我是學生。我住在台北。"
+      },
+      {
+        "id": "zh-s-2",
+        "level": "A1-A2",
+        "title": "點飲料",
+        "prompt": "Gọi một đồ uống và nói kích cỡ bằng tiếng Trung.",
+        "focus": [
+          "我想要",
+          "大杯/小杯"
+        ],
+        "model": "我想要一杯大杯冰咖啡，謝謝。"
+      }
+    ],
+    "pronunciation": [
+      {
+        "id": "zh-pr-1",
+        "level": "A1-A2",
+        "title": "需要 xūyào",
+        "target": "需要",
+        "contrast": "",
+        "tip": "xū là thanh 1 cao và đều; yào là thanh 4 đi xuống rõ.",
+        "example": "我需要幫忙。"
+      },
+      {
+        "id": "zh-pr-2",
+        "level": "A1-A2",
+        "title": "可以 kěyǐ",
+        "target": "可以",
+        "contrast": "",
+        "tip": "Hai âm thanh 3 liên tiếp thường làm âm đầu lên giọng theo biến điệu trong lời nói tự nhiên.",
+        "example": "可以幫我嗎？"
+      }
+    ]
+  }
+}

@@ -1,0 +1,752 @@
+{
+  "big5": {
+    "type": "likert",
+    "title": {
+      "vi": "Tính cách Big Five",
+      "en": "Big Five personality",
+      "zh": "Big Five 人格"
+    },
+    "questions": [
+      {
+        "id": "b1",
+        "dimension": "extraversion",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi dễ bắt chuyện với người mới.",
+          "en": "I find it easy to start conversations with new people.",
+          "zh": "我很容易和新認識的人開啟話題。"
+        }
+      },
+      {
+        "id": "b2",
+        "dimension": "extraversion",
+        "reverse": true,
+        "text": {
+          "vi": "Tôi thường thích đứng ngoài các hoạt động đông người.",
+          "en": "I often prefer staying out of large-group activities.",
+          "zh": "我常常比較喜歡不參與大型群體活動。"
+        }
+      },
+      {
+        "id": "b3",
+        "dimension": "extraversion",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi có nhiều năng lượng khi ở cùng người khác.",
+          "en": "Being around other people often gives me energy.",
+          "zh": "和別人在一起時，我通常會更有精神。"
+        }
+      },
+      {
+        "id": "b4",
+        "dimension": "extraversion",
+        "reverse": true,
+        "text": {
+          "vi": "Tôi hiếm khi chủ động nói lên ý kiến trong nhóm.",
+          "en": "I rarely volunteer my opinion in a group.",
+          "zh": "在團體中，我很少主動說出自己的想法。"
+        }
+      },
+      {
+        "id": "b5",
+        "dimension": "agreeableness",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi thường cố hiểu lý do phía sau hành động của người khác.",
+          "en": "I usually try to understand the reasons behind other people’s actions.",
+          "zh": "我通常會試著理解別人行為背後的原因。"
+        }
+      },
+      {
+        "id": "b6",
+        "dimension": "agreeableness",
+        "reverse": true,
+        "text": {
+          "vi": "Khi tranh luận, thắng quan trọng với tôi hơn giữ hòa khí.",
+          "en": "In an argument, winning matters more to me than keeping the peace.",
+          "zh": "爭論時，贏比維持和氣對我更重要。"
+        }
+      },
+      {
+        "id": "b7",
+        "dimension": "agreeableness",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi sẵn sàng giúp khi người khác thực sự cần.",
+          "en": "I am willing to help when someone genuinely needs it.",
+          "zh": "當別人真的需要時，我願意伸出援手。"
+        }
+      },
+      {
+        "id": "b8",
+        "dimension": "agreeableness",
+        "reverse": true,
+        "text": {
+          "vi": "Tôi dễ nghi ngờ ý tốt của người khác.",
+          "en": "I am quick to doubt other people’s good intentions.",
+          "zh": "我很容易懷疑別人的善意。"
+        }
+      },
+      {
+        "id": "b9",
+        "dimension": "conscientiousness",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi thường hoàn thành việc đúng hạn.",
+          "en": "I usually finish things on time.",
+          "zh": "我通常能準時完成事情。"
+        }
+      },
+      {
+        "id": "b10",
+        "dimension": "conscientiousness",
+        "reverse": true,
+        "text": {
+          "vi": "Bàn làm việc hoặc lịch của tôi thường rất lộn xộn.",
+          "en": "My desk or schedule is often very disorganized.",
+          "zh": "我的桌面或行程常常很混亂。"
+        }
+      },
+      {
+        "id": "b11",
+        "dimension": "conscientiousness",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi có xu hướng chuẩn bị trước thay vì chờ tới phút cuối.",
+          "en": "I tend to prepare ahead instead of waiting until the last minute.",
+          "zh": "我傾向事先準備，而不是拖到最後一刻。"
+        }
+      },
+      {
+        "id": "b12",
+        "dimension": "conscientiousness",
+        "reverse": true,
+        "text": {
+          "vi": "Tôi dễ bỏ dở việc khi mất hứng.",
+          "en": "I easily abandon tasks when I lose interest.",
+          "zh": "一旦失去興趣，我很容易把事情做到一半就放下。"
+        }
+      },
+      {
+        "id": "b13",
+        "dimension": "emotional_stability",
+        "reverse": false,
+        "text": {
+          "vi": "Sau một chuyện khó chịu, tôi thường lấy lại bình tĩnh khá nhanh.",
+          "en": "After something upsetting, I usually regain my balance fairly quickly.",
+          "zh": "遇到不愉快的事後，我通常能很快恢復平靜。"
+        }
+      },
+      {
+        "id": "b14",
+        "dimension": "emotional_stability",
+        "reverse": true,
+        "text": {
+          "vi": "Tôi thường lo lắng về những điều nhỏ.",
+          "en": "I often worry about small things.",
+          "zh": "我常常會為小事擔心。"
+        }
+      },
+      {
+        "id": "b15",
+        "dimension": "emotional_stability",
+        "reverse": false,
+        "text": {
+          "vi": "Dưới áp lực, tôi vẫn có thể suy nghĩ tương đối rõ ràng.",
+          "en": "Under pressure, I can still think relatively clearly.",
+          "zh": "在壓力下，我仍能相對清楚地思考。"
+        }
+      },
+      {
+        "id": "b16",
+        "dimension": "emotional_stability",
+        "reverse": true,
+        "text": {
+          "vi": "Tâm trạng của tôi dễ bị kéo xuống bởi một chuyện không như ý.",
+          "en": "A single disappointment can easily pull my mood down.",
+          "zh": "一件不如意的事很容易讓我的情緒低落。"
+        }
+      },
+      {
+        "id": "b17",
+        "dimension": "openness",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi thích thử cách làm hoặc góc nhìn mới.",
+          "en": "I enjoy trying new ways of doing things or seeing things.",
+          "zh": "我喜歡嘗試新的做法或觀點。"
+        }
+      },
+      {
+        "id": "b18",
+        "dimension": "openness",
+        "reverse": true,
+        "text": {
+          "vi": "Tôi thường không hứng thú với ý tưởng quá khác lạ.",
+          "en": "I am usually not interested in ideas that feel very unusual.",
+          "zh": "我通常對太過新奇的想法沒有興趣。"
+        }
+      },
+      {
+        "id": "b19",
+        "dimension": "openness",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi thích tìm hiểu vì tò mò, ngay cả khi chưa có ích ngay.",
+          "en": "I like learning out of curiosity even when it has no immediate use.",
+          "zh": "即使眼前沒有實際用途，我也會因好奇而想學習。"
+        }
+      },
+      {
+        "id": "b20",
+        "dimension": "openness",
+        "reverse": true,
+        "text": {
+          "vi": "Tôi thích những thứ quen thuộc hơn là khám phá điều mới.",
+          "en": "I prefer familiar things over exploring something new.",
+          "zh": "比起探索新事物，我更偏好熟悉的東西。"
+        }
+      }
+    ]
+  },
+  "eq": {
+    "type": "likert",
+    "title": {
+      "vi": "Năng lực cảm xúc",
+      "en": "Emotional skills",
+      "zh": "情緒能力"
+    },
+    "questions": [
+      {
+        "id": "e1",
+        "dimension": "self_awareness",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi thường nhận ra mình đang buồn, giận hay căng thẳng trước khi phản ứng.",
+          "en": "I usually notice whether I am sad, angry, or stressed before I react.",
+          "zh": "我通常能在做出反應前察覺自己是難過、生氣還是緊張。"
+        }
+      },
+      {
+        "id": "e2",
+        "dimension": "self_awareness",
+        "reverse": true,
+        "text": {
+          "vi": "Nhiều lúc tôi không biết tại sao tâm trạng mình lại thay đổi.",
+          "en": "I often do not know why my mood has changed.",
+          "zh": "很多時候我不知道自己的情緒為什麼改變。"
+        }
+      },
+      {
+        "id": "e3",
+        "dimension": "self_awareness",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi có thể gọi tên khá chính xác cảm xúc mình đang có.",
+          "en": "I can name what I am feeling fairly accurately.",
+          "zh": "我通常能相當準確地說出自己正在感受什麼。"
+        }
+      },
+      {
+        "id": "e4",
+        "dimension": "self_awareness",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi biết tình huống nào thường khiến mình mất bình tĩnh.",
+          "en": "I know which situations tend to make me lose my composure.",
+          "zh": "我知道哪些情境通常會讓自己失去冷靜。"
+        }
+      },
+      {
+        "id": "e5",
+        "dimension": "self_regulation",
+        "reverse": false,
+        "text": {
+          "vi": "Khi bực, tôi có thể trì hoãn phản ứng để suy nghĩ thêm.",
+          "en": "When upset, I can delay my response long enough to think.",
+          "zh": "生氣時，我能先暫停反應，讓自己多想一下。"
+        }
+      },
+      {
+        "id": "e6",
+        "dimension": "self_regulation",
+        "reverse": true,
+        "text": {
+          "vi": "Khi cảm xúc mạnh, tôi thường nói hoặc làm điều mình hối tiếc sau đó.",
+          "en": "When emotions run high, I often say or do things I later regret.",
+          "zh": "情緒很強烈時，我常會說或做出之後後悔的事。"
+        }
+      },
+      {
+        "id": "e7",
+        "dimension": "self_regulation",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi có vài cách hiệu quả để tự kéo mình về trạng thái ổn định.",
+          "en": "I have a few effective ways to bring myself back to a steady state.",
+          "zh": "我有幾種有效的方法讓自己恢復穩定。"
+        }
+      },
+      {
+        "id": "e8",
+        "dimension": "self_regulation",
+        "reverse": true,
+        "text": {
+          "vi": "Khi kế hoạch thay đổi bất ngờ, tôi rất khó điều chỉnh tâm trạng.",
+          "en": "When plans change unexpectedly, I find it very hard to adjust emotionally.",
+          "zh": "計畫突然改變時，我很難調整自己的情緒。"
+        }
+      },
+      {
+        "id": "e9",
+        "dimension": "empathy",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi thường nhận ra khi ai đó nói “ổn” nhưng thực ra không ổn.",
+          "en": "I often notice when someone says they are fine but actually are not.",
+          "zh": "我常能察覺別人嘴上說沒事，但其實並不好。"
+        }
+      },
+      {
+        "id": "e10",
+        "dimension": "empathy",
+        "reverse": true,
+        "text": {
+          "vi": "Tôi khó hiểu tại sao người khác lại buồn vì những chuyện tôi thấy nhỏ.",
+          "en": "I find it hard to understand why others get upset about things that seem small to me.",
+          "zh": "我很難理解別人為何會因我覺得很小的事而難過。"
+        }
+      },
+      {
+        "id": "e11",
+        "dimension": "empathy",
+        "reverse": false,
+        "text": {
+          "vi": "Trước khi phán xét, tôi thường thử nhìn chuyện đó từ vị trí của người kia.",
+          "en": "Before judging, I often try to see the situation from the other person’s position.",
+          "zh": "在下判斷前，我通常會試著站在對方的位置看事情。"
+        }
+      },
+      {
+        "id": "e12",
+        "dimension": "empathy",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi để ý đến giọng nói và cách cư xử để đoán cảm xúc của người khác.",
+          "en": "I pay attention to tone and behavior to understand how others feel.",
+          "zh": "我會注意語氣與行為來理解別人的情緒。"
+        }
+      },
+      {
+        "id": "e13",
+        "dimension": "social_skills",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi có thể nói điều khó nghe theo cách vẫn tôn trọng người khác.",
+          "en": "I can say difficult things while still being respectful.",
+          "zh": "我能用尊重對方的方式說出不太好聽的話。"
+        }
+      },
+      {
+        "id": "e14",
+        "dimension": "social_skills",
+        "reverse": true,
+        "text": {
+          "vi": "Khi có xung đột, tôi thường né tránh cho tới khi vấn đề tự qua.",
+          "en": "When conflict happens, I usually avoid it and hope it goes away.",
+          "zh": "發生衝突時，我通常會逃避，希望問題自己消失。"
+        }
+      },
+      {
+        "id": "e15",
+        "dimension": "social_skills",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi biết khi nào nên lắng nghe và khi nào nên nói rõ quan điểm.",
+          "en": "I know when to listen and when to state my view clearly.",
+          "zh": "我知道什麼時候該傾聽，什麼時候該清楚表達自己的立場。"
+        }
+      },
+      {
+        "id": "e16",
+        "dimension": "social_skills",
+        "reverse": false,
+        "text": {
+          "vi": "Tôi có thể điều chỉnh cách nói tùy người và hoàn cảnh mà không giả tạo.",
+          "en": "I can adjust how I communicate to the person and situation without feeling fake.",
+          "zh": "我能依對象與情境調整說話方式，同時不覺得虛假。"
+        }
+      }
+    ]
+  },
+  "reasoning": {
+    "type": "choice",
+    "title": {
+      "vi": "Tư duy & logic",
+      "en": "Thinking & logic",
+      "zh": "思考與邏輯"
+    },
+    "questions": [
+      {
+        "id": "r1",
+        "dimension": "pattern",
+        "text": {
+          "vi": "2, 4, 8, 16, ?",
+          "en": "2, 4, 8, 16, ?",
+          "zh": "2, 4, 8, 16, ?"
+        },
+        "options": {
+          "vi": [
+            "18",
+            "24",
+            "32",
+            "36"
+          ],
+          "en": [
+            "18",
+            "24",
+            "32",
+            "36"
+          ],
+          "zh": [
+            "18",
+            "24",
+            "32",
+            "36"
+          ]
+        },
+        "answer": 2
+      },
+      {
+        "id": "r2",
+        "dimension": "pattern",
+        "text": {
+          "vi": "3, 6, 11, 18, 27, ?",
+          "en": "3, 6, 11, 18, 27, ?",
+          "zh": "3, 6, 11, 18, 27, ?"
+        },
+        "options": {
+          "vi": [
+            "36",
+            "38",
+            "40",
+            "42"
+          ],
+          "en": [
+            "36",
+            "38",
+            "40",
+            "42"
+          ],
+          "zh": [
+            "36",
+            "38",
+            "40",
+            "42"
+          ]
+        },
+        "answer": 1
+      },
+      {
+        "id": "r3",
+        "dimension": "numerical",
+        "text": {
+          "vi": "Nếu 5 cuốn sổ giá 75.000đ, 8 cuốn cùng giá mỗi cuốn sẽ là bao nhiêu?",
+          "en": "If 5 notebooks cost 75,000 VND, how much would 8 cost at the same unit price?",
+          "zh": "5 本筆記本共 75,000 越盾，單價相同時 8 本多少錢？"
+        },
+        "options": {
+          "vi": [
+            "96.000đ",
+            "110.000đ",
+            "120.000đ",
+            "125.000đ"
+          ],
+          "en": [
+            "96,000 VND",
+            "110,000 VND",
+            "120,000 VND",
+            "125,000 VND"
+          ],
+          "zh": [
+            "96,000 越盾",
+            "110,000 越盾",
+            "120,000 越盾",
+            "125,000 越盾"
+          ]
+        },
+        "answer": 2
+      },
+      {
+        "id": "r4",
+        "dimension": "logic",
+        "text": {
+          "vi": "Tất cả chim én đều là chim. Một số chim di cư. Kết luận nào chắc chắn đúng?",
+          "en": "All swallows are birds. Some birds migrate. Which statement is definitely true?",
+          "zh": "所有燕子都是鳥。有些鳥會遷徙。哪一項一定正確？"
+        },
+        "options": {
+          "vi": [
+            "Tất cả chim én di cư",
+            "Không chim én nào di cư",
+            "Chim én là chim",
+            "Một số chim di cư là chim én"
+          ],
+          "en": [
+            "All swallows migrate",
+            "No swallows migrate",
+            "Swallows are birds",
+            "Some migrating birds are swallows"
+          ],
+          "zh": [
+            "所有燕子都遷徙",
+            "沒有燕子遷徙",
+            "燕子是鳥",
+            "有些遷徙的鳥是燕子"
+          ]
+        },
+        "answer": 2
+      },
+      {
+        "id": "r5",
+        "dimension": "logic",
+        "text": {
+          "vi": "Lan cao hơn Mai. Mai cao hơn An. Ai thấp nhất?",
+          "en": "Lan is taller than Mai. Mai is taller than An. Who is shortest?",
+          "zh": "Lan 比 Mai 高，Mai 比 An 高。誰最矮？"
+        },
+        "options": {
+          "vi": [
+            "Lan",
+            "Mai",
+            "An",
+            "Không đủ dữ liệu"
+          ],
+          "en": [
+            "Lan",
+            "Mai",
+            "An",
+            "Not enough information"
+          ],
+          "zh": [
+            "Lan",
+            "Mai",
+            "An",
+            "資訊不足"
+          ]
+        },
+        "answer": 2
+      },
+      {
+        "id": "r6",
+        "dimension": "pattern",
+        "text": {
+          "vi": "A, C, F, J, O, ?",
+          "en": "A, C, F, J, O, ?",
+          "zh": "A, C, F, J, O, ?"
+        },
+        "options": {
+          "vi": [
+            "S",
+            "T",
+            "U",
+            "V"
+          ],
+          "en": [
+            "S",
+            "T",
+            "U",
+            "V"
+          ],
+          "zh": [
+            "S",
+            "T",
+            "U",
+            "V"
+          ]
+        },
+        "answer": 2
+      },
+      {
+        "id": "r7",
+        "dimension": "numerical",
+        "text": {
+          "vi": "Một món giảm 20% còn 400.000đ. Giá trước giảm là?",
+          "en": "An item is 20% off and now costs 400,000 VND. What was the original price?",
+          "zh": "一件商品打八折後是 400,000 越盾，原價是多少？"
+        },
+        "options": {
+          "vi": [
+            "480.000đ",
+            "500.000đ",
+            "520.000đ",
+            "540.000đ"
+          ],
+          "en": [
+            "480,000 VND",
+            "500,000 VND",
+            "520,000 VND",
+            "540,000 VND"
+          ],
+          "zh": [
+            "480,000 越盾",
+            "500,000 越盾",
+            "520,000 越盾",
+            "540,000 越盾"
+          ]
+        },
+        "answer": 1
+      },
+      {
+        "id": "r8",
+        "dimension": "logic",
+        "text": {
+          "vi": "Nếu hôm nay không mưa thì Nam đi chạy. Nam không đi chạy. Với điều kiện trên, kết luận hợp lý nhất là?",
+          "en": "If it does not rain today, Nam goes running. Nam did not go running. Based on that condition, what is the most reasonable conclusion?",
+          "zh": "如果今天不下雨，Nam 就去跑步。Nam 沒去跑步。依照這個條件，最合理的結論是？"
+        },
+        "options": {
+          "vi": [
+            "Hôm nay mưa",
+            "Nam bị ốm",
+            "Nam không thích chạy",
+            "Không thể suy ra gì"
+          ],
+          "en": [
+            "It rained today",
+            "Nam is sick",
+            "Nam dislikes running",
+            "Nothing can be inferred"
+          ],
+          "zh": [
+            "今天下雨了",
+            "Nam 生病了",
+            "Nam 不喜歡跑步",
+            "無法推論"
+          ]
+        },
+        "answer": 0
+      },
+      {
+        "id": "r9",
+        "dimension": "spatial",
+        "text": {
+          "vi": "Một mũi tên đang chỉ lên. Quay 90° theo chiều kim đồng hồ hai lần, nó sẽ chỉ hướng nào?",
+          "en": "An arrow points up. Rotate it 90° clockwise twice. Which direction does it point?",
+          "zh": "一個箭頭朝上，順時針旋轉 90° 兩次後會朝哪裡？"
+        },
+        "options": {
+          "vi": [
+            "Lên",
+            "Xuống",
+            "Trái",
+            "Phải"
+          ],
+          "en": [
+            "Up",
+            "Down",
+            "Left",
+            "Right"
+          ],
+          "zh": [
+            "上",
+            "下",
+            "左",
+            "右"
+          ]
+        },
+        "answer": 1
+      },
+      {
+        "id": "r10",
+        "dimension": "spatial",
+        "text": {
+          "vi": "Một tờ giấy hình vuông gấp đôi theo chiều dọc rồi lại gấp đôi theo chiều ngang. Mở ra sẽ có bao nhiêu phần bằng nhau?",
+          "en": "A square sheet is folded in half vertically, then in half horizontally. When fully opened, how many equal sections are there?",
+          "zh": "一張正方形紙先縱向對折，再橫向對折。完全打開後有幾個相等區域？"
+        },
+        "options": {
+          "vi": [
+            "2",
+            "3",
+            "4",
+            "8"
+          ],
+          "en": [
+            "2",
+            "3",
+            "4",
+            "8"
+          ],
+          "zh": [
+            "2",
+            "3",
+            "4",
+            "8"
+          ]
+        },
+        "answer": 2
+      },
+      {
+        "id": "r11",
+        "dimension": "pattern",
+        "text": {
+          "vi": "1, 1, 2, 3, 5, 8, ?",
+          "en": "1, 1, 2, 3, 5, 8, ?",
+          "zh": "1, 1, 2, 3, 5, 8, ?"
+        },
+        "options": {
+          "vi": [
+            "11",
+            "12",
+            "13",
+            "15"
+          ],
+          "en": [
+            "11",
+            "12",
+            "13",
+            "15"
+          ],
+          "zh": [
+            "11",
+            "12",
+            "13",
+            "15"
+          ]
+        },
+        "answer": 2
+      },
+      {
+        "id": "r12",
+        "dimension": "numerical",
+        "text": {
+          "vi": "Ba người chia đều 270.000đ. Sau đó một người trả thêm 30.000đ cho nhóm. Tổng phần người đó thực trả là?",
+          "en": "Three people split 270,000 VND equally. Then one person pays an extra 30,000 VND for the group. How much did that person pay in total?",
+          "zh": "三人平均分攤 270,000 越盾，之後其中一人再替大家多付 30,000 越盾。這個人總共付了多少？"
+        },
+        "options": {
+          "vi": [
+            "90.000đ",
+            "100.000đ",
+            "120.000đ",
+            "150.000đ"
+          ],
+          "en": [
+            "90,000 VND",
+            "100,000 VND",
+            "120,000 VND",
+            "150,000 VND"
+          ],
+          "zh": [
+            "90,000 越盾",
+            "100,000 越盾",
+            "120,000 越盾",
+            "150,000 越盾"
+          ]
+        },
+        "answer": 2
+      }
+    ]
+  }
+}

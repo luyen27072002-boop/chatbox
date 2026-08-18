@@ -1,0 +1,42 @@
+MỞ LỐI — JOB MAX COVERAGE V10
+
+Mục tiêu:
+Tăng tối đa độ phủ nguồn mà không crawler trái phép từng website.
+
+Nguồn:
+1. Jooble structured feed.
+2. Brave group "vn_boards":
+   TopCV, VietnamWorks, CareerViet, Việc Làm 24h, JobsGO, JobOKO,
+   CareerLink, Glints, Indeed, LinkedIn Jobs, ITviec, TopDev, JobStreet.
+3. Brave group "official_recruiters":
+   Sàn giao dịch việc làm quốc gia, DOLAB-JICA,
+   Manpower Vietnam, Adecco Vietnam, RGF HR Agent.
+4. Brave group "public_ats":
+   Lever, Greenhouse, Ashby, SmartRecruiters.
+5. Brave group "company_social":
+   career pages công ty + bài tuyển dụng công khai được Brave index.
+6. Remotive chỉ cho search quốc tế.
+
+ATS enrichment:
+- Lever URL được nâng cấp bằng Lever Postings API public.
+- Greenhouse URL được nâng cấp bằng Greenhouse Job Board API public.
+- Tối đa 10 ATS result/search để tránh gọi ngoài quá nhiều.
+
+Brave cost control:
+- Tối đa 4 Brave requests cho một query mới.
+- Mỗi group cache riêng 30 phút.
+- Cùng query/location trong cache không gọi Brave lại.
+- Filter local không tự search, user phải bấm Tìm việc.
+
+Giới hạn:
+- Không thể lấy 100% job private/group kín/chưa được search engine index.
+- Không tự đăng nhập Facebook/LinkedIn để crawl.
+- Không scrape trực tiếp TopCV/VietnamWorks/etc.
+- SmartRecruiters direct Posting API cần API key của customer nên V10 chỉ discovery qua Brave.
+- Social result phải coi là nguồn cần user tự kiểm tra.
+
+Không đụng:
+- auth/payment/db schema
+- CV/phỏng vấn
+- Tử vi/finance/self-discovery/language
+- .env/app.db
